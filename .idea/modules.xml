@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/example-service-go.iml" filepath="$PROJECT_DIR$/.idea/example-service-go.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/import-service.iml" filepath="$PROJECT_DIR$/.idea/import-service.iml" />
     </modules>
   </component>
 </project>

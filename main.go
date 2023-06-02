@@ -7,21 +7,23 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 	"os"
-	"sr-example/example-service/controller"
-	"sr-example/example-service/service"
+	client2 "sr-import/import-service/client"
+	"sr-import/import-service/controller"
+	"sr-import/import-service/service"
 	"time"
 )
 
 var client *mongo.Client
 
 func main() {
-	ctx := connectDB()
+	//ctx := connectDB()
 	service.Init(client)
 	controller.Run()
+	client2.ExecClient()
 
-	if err := client.Disconnect(ctx); err != nil {
-		panic(err)
-	}
+	//if err := client.Disconnect(ctx); err != nil {
+	//	panic(err)
+	//}
 }
 
 func connectDB() context.Context {
