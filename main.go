@@ -3,13 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
+	client2 "github.com/swimresults/import-service/client"
+	"github.com/swimresults/import-service/controller"
+	"github.com/swimresults/import-service/service"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 	"os"
-	client2 "sr-import/import-service/client"
-	"sr-import/import-service/controller"
-	"sr-import/import-service/service"
 	"time"
 )
 

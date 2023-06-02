@@ -1,4 +1,4 @@
-module sr-import/import-service
+module github.com/swimresults/import-service
 
 go 1.18
 
