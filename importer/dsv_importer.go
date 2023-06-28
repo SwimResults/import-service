@@ -8,7 +8,7 @@ import (
 )
 
 func VeranstaltungsortPlz() string {
-	dat, err := os.ReadFile("assets/definition.dsv7")
+	dat, err := os.ReadFile("assets/Ergebnisdatei.dsv6")
 	if err != nil {
 		panic(err)
 	}
