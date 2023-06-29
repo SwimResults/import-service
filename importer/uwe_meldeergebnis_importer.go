@@ -2,11 +2,8 @@ package importer
 
 import (
 	"fmt"
-	athleteClient "github.com/swimresults/athlete-service/client"
 	athleteModel "github.com/swimresults/athlete-service/model"
-	"github.com/swimresults/meeting-service/client"
 	"github.com/swimresults/meeting-service/model"
-	startClient "github.com/swimresults/start-service/client"
 	startModel "github.com/swimresults/start-service/model"
 	"regexp"
 	"strconv"
@@ -14,7 +11,7 @@ import (
 	"time"
 )
 
-var doTheImport = true
+var doTheImport = false
 var meeting = "ESS23F"
 
 func DoTheMagic() error {
@@ -22,12 +19,6 @@ func DoTheMagic() error {
 	if err1 != nil {
 		return err1
 	}
-
-	c := client.NewEventClient("https://api.swimresults.de/meeting/v1/")
-	hc := startClient.NewHeatClient("https://api.swimresults.de/start/v1/")
-	sc := startClient.NewStartClient("https://api.swimresults.de/start/v1/")
-	ac := athleteClient.NewAthleteClient("https://api.swimresults.de/athlete/v1/")
-	tc := athleteClient.NewTeamClient("https://api.swimresults.de/athlete/v1/")
 
 	wks := strings.Split(str, "Wettkampf ")
 	for _, s1 := range wks {
@@ -93,7 +84,7 @@ func DoTheMagic() error {
 		style := strings.Trim(sr3, " ")
 
 		if doTheImport {
-			newEvent, created, err3 := c.ImportEvent(event, style, 1)
+			newEvent, created, err3 := ec.ImportEvent(event, style, 1)
 			if err3 != nil {
 				println("----------")
 				println(err3.Error())

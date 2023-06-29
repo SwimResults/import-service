@@ -1,0 +1,1801 @@
+(* erzeugt mit EasyWk - DAS Schwimmwettkampfprogramm *)
+(* Version 5.23 vom 18.05.2023                       *)
+(* Registriert für: Bezirksschwimmverband Südwestsachsen *)
+(* www.easywk.de / info@easywk.de *)
+(* erzeugt am 26.06.2023 um 21:18 Uhr                *)
+FORMAT: Wettkampfergebnisliste;7;
+ERZEUGER: EasyWk;5.23;info@easywk.de;
+VERANSTALTUNG: Erzgebirgsspiele 2023 - Finale;Annaberg-Buchholz;25;AUTOMATISCH;
+VERANSTALTER: KSB Erzgebirge;
+AUSRICHTER: SV07 Annaberg-Buchholz;Albert, Uwe;;;;;;;info@swim-time.de;
+ABSCHNITT: 2;24.06.2023;09:00;;
+KAMPFGERICHT: 2;ZBV;Rülke, Nathalie;SV07 Annaberg-Buchholz;
+KAMPFGERICHT: 2;ZBV;Schwipper, Lisa;SV07 Annaberg-Buchholz;
+KAMPFGERICHT: 2;SCH;Klose, Birgit;SV 1990 Zschopau;
+KAMPFGERICHT: 2;SCH;Riedel, Lutz;SC Plauen 06;
+KAMPFGERICHT: 2;STA;Nemnitz, Sebastian;SV07 Annaberg-Buchholz;
+KAMPFGERICHT: 2;STA;Nemnitz, Sebastian;SV07 Annaberg-Buchholz;
+KAMPFGERICHT: 2;AUS;Nemnitz, Anna;SV07 Annaberg-Buchholz;
+KAMPFGERICHT: 2;PKF;Lindner, Sally;SSV Freiberg;
+KAMPFGERICHT: 2;SR;Schauer, Lars;SV07 Annaberg-Buchholz;
+KAMPFGERICHT: 2;SR;Neubert, Carmen;ST Erzgebirge;
+KAMPFGERICHT: 2;ZRO;Krauß, Mike;FC Erzgebirge Aue;
+KAMPFGERICHT: 2;ZR;Schönrock, Lisa;FC Erzgebirge Aue;
+KAMPFGERICHT: 2;ZR;Rülke, Peter;SV07 Annaberg-Buchholz;
+KAMPFGERICHT: 2;WRO;Fröhner, Torsten;SV07 Annaberg-Buchholz;
+KAMPFGERICHT: 2;WR;Fröhner, Torsten;SV07 Annaberg-Buchholz;
+KAMPFGERICHT: 2;WR;Richter, Claudia;ST Erzgebirge;
+KAMPFGERICHT: 2;WR;Richter, Claudia;ST Erzgebirge;
+KAMPFGERICHT: 2;WR;Schmieder, Heike;SV 1990 Zschopau;
+KAMPFGERICHT: 2;WR;Schmieder, Heike;SV 1990 Zschopau;
+KAMPFGERICHT: 2;ZN;Sorge, Alexandra;SV07 Annaberg-Buchholz;
+KAMPFGERICHT: 2;ZN;Schwipper, Romy;SV07 Annaberg-Buchholz;
+KAMPFGERICHT: 2;ZN;Fritzsch, Theres;FC Erzgebirge Aue;
+KAMPFGERICHT: 2;ZN;Hunger, Lars;SV 1990 Zschopau;
+KAMPFGERICHT: 2;ZN;Güßmann, Carolyn;SV Schneeberg Schwimmen;
+KAMPFGERICHT: 2;ZN;Sorge, Alexandra;SV07 Annaberg-Buchholz;
+KAMPFGERICHT: 2;ZN;Ullmann, Heidi;FC Erzgebirge Aue;
+KAMPFGERICHT: 2;ZN;Göhler, Dirk;ST Erzgebirge;
+KAMPFGERICHT: 2;ZN;Stolba, Johannes;SV07 Annaberg-Buchholz;
+KAMPFGERICHT: 2;ZN;Müller, Diana;FC Erzgebirge Aue;
+KAMPFGERICHT: 2;SP;Rülke, Antje;SV07 Annaberg-Buchholz;
+KAMPFGERICHT: 2;SP;Klinger, Ulrich;SV07 Annaberg-Buchholz;
+WETTKAMPF: 101;F;2;1;50;R;GL;W;SW;1;E; (* 50m Rücken weiblich (Finale) *)
+WETTKAMPF: 102;F;2;1;50;R;GL;M;SW;2;E; (* 50m Rücken männlich (Finale) *)
+WETTKAMPF: 103;F;2;1;50;B;GL;W;SW;3;E; (* 50m Brust weiblich (Finale) *)
+WETTKAMPF: 104;F;2;1;50;B;GL;M;SW;4;E; (* 50m Brust männlich (Finale) *)
+WETTKAMPF: 105;F;2;1;50;S;GL;W;SW;5;E; (* 50m Schmetterling weiblich (Finale) *)
+WETTKAMPF: 106;F;2;1;50;S;GL;M;SW;6;E; (* 50m Schmetterling männlich (Finale) *)
+WETTKAMPF: 107;F;2;1;50;F;GL;W;SW;7;E; (* 50m Freistil weiblich (Finale) *)
+WETTKAMPF: 108;F;2;1;50;F;GL;M;SW;8;E; (* 50m Freistil männlich (Finale) *)
+WETTKAMPF: 109;F;2;1;100;R;GL;W;SW;9;E; (* 100m Rücken weiblich (Finale) *)
+WETTKAMPF: 110;F;2;1;100;R;GL;M;SW;10;E; (* 100m Rücken männlich (Finale) *)
+WETTKAMPF: 111;F;2;1;50;F;BE;W;SW;11;E; (* 50m Kraul-Beinbew. weiblich (Finale) *)
+WETTKAMPF: 112;F;2;1;50;F;BE;M;SW;12;E; (* 50m Kraul-Beinbew. männlich (Finale) *)
+WETTKAMPF: 113;F;2;1;100;B;GL;W;SW;13;E; (* 100m Brust weiblich (Finale) *)
+WETTKAMPF: 114;F;2;1;100;B;GL;M;SW;14;E; (* 100m Brust männlich (Finale) *)
+WETTKAMPF: 115;F;2;1;50;B;BE;W;SW;15;E; (* 50m Brust-Beinbew. weiblich (Finale) *)
+WETTKAMPF: 116;F;2;1;50;B;BE;M;SW;16;E; (* 50m Brust-Beinbew. männlich (Finale) *)
+WETTKAMPF: 117;F;2;1;100;S;GL;W;SW;17;E; (* 100m Schmetterling weiblich (Finale) *)
+WETTKAMPF: 118;F;2;1;100;S;GL;M;SW;18;E; (* 100m Schmetterling männlich (Finale) *)
+WETTKAMPF: 119;F;2;1;50;S;BE;W;SW;19;E; (* 50m Delphin-Beinbew. weiblich (Finale) *)
+WETTKAMPF: 120;F;2;1;50;S;BE;M;SW;20;E; (* 50m Delphin-Beinbew. männlich (Finale) *)
+WETTKAMPF: 121;F;2;1;100;F;GL;W;SW;21;E; (* 100m Freistil weiblich (Finale) *)
+WETTKAMPF: 122;F;2;1;100;F;GL;M;SW;22;E; (* 100m Freistil männlich (Finale) *)
+WETTKAMPF: 123;F;2;1;50;R;BE;W;SW;23;E; (* 50m Rücken-Beinbew. weiblich (Finale) *)
+WETTKAMPF: 124;F;2;1;50;R;BE;M;SW;24;E; (* 50m Rücken-Beinbew. männlich (Finale) *)
+WETTKAMPF: 125;F;2;1;100;L;GL;W;SW;25;E; (* 100m Lagen weiblich (Finale) *)
+WETTKAMPF: 126;F;2;1;100;L;GL;M;SW;26;E; (* 100m Lagen männlich (Finale) *)
+WETTKAMPF: 27;E;2;8;50;L;GL;X;SW;;; (* 8x50m Erzgebirgsstaffel Lagen mixed *)
+WERTUNG: 101;F;28001;JG;2015;2015;W;Jahrgang 2015;
+WERTUNG: 101;F;28002;JG;2014;2014;W;Jahrgang 2014;
+WERTUNG: 101;F;28003;JG;2013;2013;W;Jahrgang 2013;
+WERTUNG: 101;F;28004;JG;2012;2012;W;Jahrgang 2012;
+WERTUNG: 101;F;28005;JG;2011;2011;W;Jahrgang 2011;
+WERTUNG: 101;F;28006;JG;2010;2010;W;Jahrgang 2010;
+WERTUNG: 101;F;28007;JG;2009;2009;W;Jahrgang 2009;
+WERTUNG: 101;F;28008;JG;2007;2008;W;Jahrgänge 2007/2008;
+WERTUNG: 101;F;28009;JG;0;2006;W;Jahrgänge 2006 und älter;
+WERTUNG: 102;F;29001;JG;2015;2015;M;Jahrgang 2015;
+WERTUNG: 102;F;29002;JG;2014;2014;M;Jahrgang 2014;
+WERTUNG: 102;F;29003;JG;2013;2013;M;Jahrgang 2013;
+WERTUNG: 102;F;29004;JG;2012;2012;M;Jahrgang 2012;
+WERTUNG: 102;F;29005;JG;2011;2011;M;Jahrgang 2011;
+WERTUNG: 102;F;29006;JG;2010;2010;M;Jahrgang 2010;
+WERTUNG: 102;F;29007;JG;2009;2009;M;Jahrgang 2009;
+WERTUNG: 102;F;29008;JG;2007;2008;M;Jahrgänge 2007/2008;
+WERTUNG: 102;F;29009;JG;0;2006;M;Jahrgänge 2006 und älter;
+WERTUNG: 103;F;30001;JG;2015;2015;W;Jahrgang 2015;
+WERTUNG: 103;F;30002;JG;2014;2014;W;Jahrgang 2014;
+WERTUNG: 103;F;30003;JG;2013;2013;W;Jahrgang 2013;
+WERTUNG: 103;F;30004;JG;2012;2012;W;Jahrgang 2012;
+WERTUNG: 103;F;30005;JG;2011;2011;W;Jahrgang 2011;
+WERTUNG: 103;F;30006;JG;2010;2010;W;Jahrgang 2010;
+WERTUNG: 103;F;30007;JG;2009;2009;W;Jahrgang 2009;
+WERTUNG: 103;F;30008;JG;2007;2008;W;Jahrgänge 2007/2008;
+WERTUNG: 103;F;30009;JG;0;2006;W;Jahrgänge 2006 und älter;
+WERTUNG: 104;F;31001;JG;2015;2015;M;Jahrgang 2015;
+WERTUNG: 104;F;31002;JG;2014;2014;M;Jahrgang 2014;
+WERTUNG: 104;F;31003;JG;2013;2013;M;Jahrgang 2013;
+WERTUNG: 104;F;31004;JG;2012;2012;M;Jahrgang 2012;
+WERTUNG: 104;F;31005;JG;2011;2011;M;Jahrgang 2011;
+WERTUNG: 104;F;31006;JG;2010;2010;M;Jahrgang 2010;
+WERTUNG: 104;F;31007;JG;2009;2009;M;Jahrgang 2009;
+WERTUNG: 104;F;31008;JG;2007;2008;M;Jahrgänge 2007/2008;
+WERTUNG: 104;F;31009;JG;0;2006;M;Jahrgänge 2006 und älter;
+WERTUNG: 105;F;32002;JG;2014;2014;W;Jahrgang 2014;
+WERTUNG: 105;F;32003;JG;2013;2013;W;Jahrgang 2013;
+WERTUNG: 105;F;32004;JG;2012;2012;W;Jahrgang 2012;
+WERTUNG: 105;F;32005;JG;2011;2011;W;Jahrgang 2011;
+WERTUNG: 105;F;32006;JG;2010;2010;W;Jahrgang 2010;
+WERTUNG: 105;F;32007;JG;2009;2009;W;Jahrgang 2009;
+WERTUNG: 105;F;32008;JG;2007;2008;W;Jahrgänge 2007/2008;
+WERTUNG: 105;F;32009;JG;0;2006;W;Jahrgänge 2006 und älter;
+WERTUNG: 106;F;33002;JG;2014;2014;M;Jahrgang 2014;
+WERTUNG: 106;F;33003;JG;2013;2013;M;Jahrgang 2013;
+WERTUNG: 106;F;33004;JG;2012;2012;M;Jahrgang 2012;
+WERTUNG: 106;F;33005;JG;2011;2011;M;Jahrgang 2011;
+WERTUNG: 106;F;33006;JG;2010;2010;M;Jahrgang 2010;
+WERTUNG: 106;F;33007;JG;2009;2009;M;Jahrgang 2009;
+WERTUNG: 106;F;33008;JG;2007;2008;M;Jahrgänge 2007/2008;
+WERTUNG: 106;F;33009;JG;0;2006;M;Jahrgänge 2006 und älter;
+WERTUNG: 107;F;34001;JG;2015;2015;W;Jahrgang 2015;
+WERTUNG: 107;F;34002;JG;2014;2014;W;Jahrgang 2014;
+WERTUNG: 107;F;34003;JG;2013;2013;W;Jahrgang 2013;
+WERTUNG: 107;F;34004;JG;2012;2012;W;Jahrgang 2012;
+WERTUNG: 107;F;34005;JG;2011;2011;W;Jahrgang 2011;
+WERTUNG: 107;F;34006;JG;2010;2010;W;Jahrgang 2010;
+WERTUNG: 107;F;34007;JG;2009;2009;W;Jahrgang 2009;
+WERTUNG: 107;F;34008;JG;2007;2008;W;Jahrgänge 2007/2008;
+WERTUNG: 107;F;34009;JG;0;2006;W;Jahrgänge 2006 und älter;
+WERTUNG: 108;F;35001;JG;2015;2015;M;Jahrgang 2015;
+WERTUNG: 108;F;35002;JG;2014;2014;M;Jahrgang 2014;
+WERTUNG: 108;F;35003;JG;2013;2013;M;Jahrgang 2013;
+WERTUNG: 108;F;35004;JG;2012;2012;M;Jahrgang 2012;
+WERTUNG: 108;F;35005;JG;2011;2011;M;Jahrgang 2011;
+WERTUNG: 108;F;35006;JG;2010;2010;M;Jahrgang 2010;
+WERTUNG: 108;F;35007;JG;2009;2009;M;Jahrgang 2009;
+WERTUNG: 108;F;35008;JG;2007;2008;M;Jahrgänge 2007/2008;
+WERTUNG: 108;F;35009;JG;0;2006;M;Jahrgänge 2006 und älter;
+WERTUNG: 109;F;36003;JG;2013;2013;W;Jahrgang 2013;
+WERTUNG: 109;F;36004;JG;2012;2012;W;Jahrgang 2012;
+WERTUNG: 109;F;36005;JG;2011;2011;W;Jahrgang 2011;
+WERTUNG: 109;F;36006;JG;2010;2010;W;Jahrgang 2010;
+WERTUNG: 109;F;36007;JG;2009;2009;W;Jahrgang 2009;
+WERTUNG: 109;F;36008;JG;2007;2008;W;Jahrgänge 2007/2008;
+WERTUNG: 109;F;36009;JG;0;2006;W;Jahrgänge 2006 und älter;
+WERTUNG: 110;F;37003;JG;2013;2013;M;Jahrgang 2013;
+WERTUNG: 110;F;37004;JG;2012;2012;M;Jahrgang 2012;
+WERTUNG: 110;F;37005;JG;2011;2011;M;Jahrgang 2011;
+WERTUNG: 110;F;37006;JG;2010;2010;M;Jahrgang 2010;
+WERTUNG: 110;F;37007;JG;2009;2009;M;Jahrgang 2009;
+WERTUNG: 110;F;37008;JG;2007;2008;M;Jahrgänge 2007/2008;
+WERTUNG: 110;F;37009;JG;0;2006;M;Jahrgänge 2006 und älter;
+WERTUNG: 111;F;38001;JG;2015;2015;W;Jahrgang 2015;
+WERTUNG: 111;F;38002;JG;2014;2014;W;Jahrgang 2014;
+WERTUNG: 112;F;39001;JG;2015;2015;M;Jahrgang 2015;
+WERTUNG: 112;F;39002;JG;2014;2014;M;Jahrgang 2014;
+WERTUNG: 113;F;40003;JG;2013;2013;W;Jahrgang 2013;
+WERTUNG: 113;F;40004;JG;2012;2012;W;Jahrgang 2012;
+WERTUNG: 113;F;40005;JG;2011;2011;W;Jahrgang 2011;
+WERTUNG: 113;F;40006;JG;2010;2010;W;Jahrgang 2010;
+WERTUNG: 113;F;40007;JG;2009;2009;W;Jahrgang 2009;
+WERTUNG: 113;F;40008;JG;2007;2008;W;Jahrgänge 2007/2008;
+WERTUNG: 113;F;40009;JG;0;2006;W;Jahrgänge 2006 und älter;
+WERTUNG: 114;F;41003;JG;2013;2013;M;Jahrgang 2013;
+WERTUNG: 114;F;41004;JG;2012;2012;M;Jahrgang 2012;
+WERTUNG: 114;F;41005;JG;2011;2011;M;Jahrgang 2011;
+WERTUNG: 114;F;41006;JG;2010;2010;M;Jahrgang 2010;
+WERTUNG: 114;F;41007;JG;2009;2009;M;Jahrgang 2009;
+WERTUNG: 114;F;41008;JG;2007;2008;M;Jahrgänge 2007/2008;
+WERTUNG: 114;F;41009;JG;0;2006;M;Jahrgänge 2006 und älter;
+WERTUNG: 115;F;42001;JG;2015;2015;W;Jahrgang 2015;
+WERTUNG: 115;F;42002;JG;2014;2014;W;Jahrgang 2014;
+WERTUNG: 116;F;43001;JG;2015;2015;M;Jahrgang 2015;
+WERTUNG: 116;F;43002;JG;2014;2014;M;Jahrgang 2014;
+WERTUNG: 117;F;44003;JG;2013;2013;W;Jahrgang 2013;
+WERTUNG: 117;F;44004;JG;2012;2012;W;Jahrgang 2012;
+WERTUNG: 117;F;44005;JG;2011;2011;W;Jahrgang 2011;
+WERTUNG: 117;F;44006;JG;2010;2010;W;Jahrgang 2010;
+WERTUNG: 117;F;44007;JG;2009;2009;W;Jahrgang 2009;
+WERTUNG: 117;F;44008;JG;2007;2008;W;Jahrgänge 2007/2008;
+WERTUNG: 117;F;44009;JG;0;2006;W;Jahrgänge 2006 und älter;
+WERTUNG: 118;F;45003;JG;2013;2013;M;Jahrgang 2013;
+WERTUNG: 118;F;45004;JG;2012;2012;M;Jahrgang 2012;
+WERTUNG: 118;F;45005;JG;2011;2011;M;Jahrgang 2011;
+WERTUNG: 118;F;45006;JG;2010;2010;M;Jahrgang 2010;
+WERTUNG: 118;F;45007;JG;2009;2009;M;Jahrgang 2009;
+WERTUNG: 118;F;45008;JG;2007;2008;M;Jahrgänge 2007/2008;
+WERTUNG: 118;F;45009;JG;0;2006;M;Jahrgänge 2006 und älter;
+WERTUNG: 119;F;46001;JG;2015;2015;W;Jahrgang 2015;
+WERTUNG: 119;F;46002;JG;2014;2014;W;Jahrgang 2014;
+WERTUNG: 120;F;47001;JG;2015;2015;M;Jahrgang 2015;
+WERTUNG: 120;F;47002;JG;2014;2014;M;Jahrgang 2014;
+WERTUNG: 121;F;48003;JG;2013;2013;W;Jahrgang 2013;
+WERTUNG: 121;F;48004;JG;2012;2012;W;Jahrgang 2012;
+WERTUNG: 121;F;48005;JG;2011;2011;W;Jahrgang 2011;
+WERTUNG: 121;F;48006;JG;2010;2010;W;Jahrgang 2010;
+WERTUNG: 121;F;48007;JG;2009;2009;W;Jahrgang 2009;
+WERTUNG: 121;F;48008;JG;2007;2008;W;Jahrgänge 2007/2008;
+WERTUNG: 121;F;48009;JG;0;2006;W;Jahrgänge 2006 und älter;
+WERTUNG: 122;F;49003;JG;2013;2013;M;Jahrgang 2013;
+WERTUNG: 122;F;49004;JG;2012;2012;M;Jahrgang 2012;
+WERTUNG: 122;F;49005;JG;2011;2011;M;Jahrgang 2011;
+WERTUNG: 122;F;49006;JG;2010;2010;M;Jahrgang 2010;
+WERTUNG: 122;F;49007;JG;2009;2009;M;Jahrgang 2009;
+WERTUNG: 122;F;49008;JG;2007;2008;M;Jahrgänge 2007/2008;
+WERTUNG: 122;F;49009;JG;0;2006;M;Jahrgänge 2006 und älter;
+WERTUNG: 123;F;50001;JG;2015;2015;W;Jahrgang 2015;
+WERTUNG: 123;F;50002;JG;2014;2014;W;Jahrgang 2014;
+WERTUNG: 124;F;51001;JG;2015;2015;M;Jahrgang 2015;
+WERTUNG: 124;F;51002;JG;2014;2014;M;Jahrgang 2014;
+WERTUNG: 125;F;52003;JG;2013;2013;W;Jahrgang 2013;
+WERTUNG: 125;F;52004;JG;2012;2012;W;Jahrgang 2012;
+WERTUNG: 125;F;52005;JG;2011;2011;W;Jahrgang 2011;
+WERTUNG: 125;F;52006;JG;2010;2010;W;Jahrgang 2010;
+WERTUNG: 125;F;52007;JG;2009;2009;W;Jahrgang 2009;
+WERTUNG: 125;F;52008;JG;2007;2008;W;Jahrgänge 2007/2008;
+WERTUNG: 125;F;52009;JG;0;2006;W;Jahrgänge 2006 und älter;
+WERTUNG: 126;F;53003;JG;2013;2013;M;Jahrgang 2013;
+WERTUNG: 126;F;53004;JG;2012;2012;M;Jahrgang 2012;
+WERTUNG: 126;F;53005;JG;2011;2011;M;Jahrgang 2011;
+WERTUNG: 126;F;53006;JG;2010;2010;M;Jahrgang 2010;
+WERTUNG: 126;F;53007;JG;2009;2009;M;Jahrgang 2009;
+WERTUNG: 126;F;53008;JG;2007;2008;M;Jahrgänge 2007/2008;
+WERTUNG: 126;F;53009;JG;0;2006;M;Jahrgänge 2006 und älter;
+WERTUNG: 27;E;27001;JG;0;2013;X;Offene Wertung;
+VEREIN: ASB -Wasserrettungsdienst;0;0;GER;
+VEREIN: BSZ Adam-Ries;0;0;GER;
+VEREIN: DLRG Bezirk Bad Schlema;0;0;GER;
+VEREIN: FC Erzgebirge Aue;7123;12;GER;
+VEREIN: Grundschule an der Riesenburg;0;0;GER;
+VEREIN: Grundschule Mildenau;0;0;GER;
+VEREIN: GS Altstadt Lößnitz;0;0;GER;
+VEREIN: Jenaplanschule Markersbach;0;0;GER;
+VEREIN: LKG St. Annen;0;0;GER;
+VEREIN: Oberschule Scheibenberg;0;0;GER;
+VEREIN: ST Erzgebirge;5134;12;GER;
+VEREIN: SV 1990 Zschopau;3382;12;GER;
+VEREIN: SV Schneeberg Schwimmen;7124;12;GER;
+VEREIN: SV Tanne Thalheim e.V.;0;12;GER;
+VEREIN: SV07 Annaberg-Buchholz;3380;12;GER;
+VEREIN: Volkskochschule Annaberg;0;0;GER;
+VEREIN: Zwönitzer Schwimmverein e.V.;0;12;GER;
+PNERGEBNIS: 101;F;28007;1;;Hunger, Lea;402166;353;W;2009;;SV 1990 Zschopau;3382;00:00:34,80;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 101;F;28007;2;;Petrick, Martha;433480;199;W;2009;;FC Erzgebirge Aue;7123;00:00:36,68;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 101;F;28007;3;;Wittig, Emma;415865;150;W;2009;;ST Erzgebirge;5134;00:00:37,36;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 101;F;28007;4;;Häckel, Lilly;402684;304;W;2009;;SV07 Annaberg-Buchholz;3380;00:00:40,57;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 101;F;28007;5;;Lippert, Annalena;000000;30;W;2009;;SV Tanne Thalheim e.V.;0000;00:00:45,29;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 101;F;28007;6;;Gersten, Manja;421838;231;W;2009;;SV Schneeberg Schwimmen;7124;00:00:47,59;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 101;F;28007;7;;Andrushchyk, Albina;000000;279;W;2009;;LKG St. Annen;0000;00:00:48,45;;;GER;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 101;F;28007;8;;Schröer, Alyssa;000000;325;W;2009;;SV07 Annaberg-Buchholz;3380;00:00:50,35;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 101;F;28007;0;NA;Pavlenko, Anastasiia;000000;281;W;2009;;LKG St. Annen;0000;00:00:00,00;;;GER;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 101;F;28007;0;AB;Morgenstern, Lia;000000;6;W;2009;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 101;F;28006;1;;Sandow, Kena;433481;203;W;2010;;FC Erzgebirge Aue;7123;00:00:38,72;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 101;F;28006;2;;Richter, Mathilda;416938;318;W;2010;;SV07 Annaberg-Buchholz;3380;00:00:39,21;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 101;F;28006;3;;Göhler, Lucy;402479;83;W;2010;;ST Erzgebirge;5134;00:00:40,14;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 101;F;28006;4;;Ullmann, Linn;419258;207;W;2010;;FC Erzgebirge Aue;7123;00:00:42,70;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 101;F;28006;5;;Veith, Lucia Zoe;000000;259;W;2010;;SV Schneeberg Schwimmen;7124;00:00:42,72;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 101;F;28006;6;;Frauenlob, Elise;446324;297;W;2010;;SV07 Annaberg-Buchholz;3380;00:00:43,17;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 101;F;28006;7;;Zellhuber, Hanna;000000;265;W;2010;;SV Schneeberg Schwimmen;7124;00:00:45,63;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 101;F;28006;8;;Weber, Alissa - Marie;000000;379;W;2010;;SV 1990 Zschopau;3382;00:00:46,92;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 101;F;28006;9;;Emmrich, Sophie;453164;290;W;2010;;SV07 Annaberg-Buchholz;3380;00:00:46,99;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 101;F;28006;0;NA;Thierbach, Zoe;000000;43;W;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 101;F;28005;1;;Weidauer, Lavinia;419465;212;W;2011;;FC Erzgebirge Aue;7123;00:00:37,91;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 101;F;28005;2;;Seyfarth, Hella;437452;327;W;2011;;SV07 Annaberg-Buchholz;3380;00:00:40,69;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 101;F;28005;3;;Wolf, Anastasia;425176;264;W;2011;;SV Schneeberg Schwimmen;7124;00:00:41,06;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 101;F;28005;4;;Müller, Annica;429663;109;W;2011;;ST Erzgebirge;5134;00:00:43,26;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 101;F;28005;5;;Naumann, Lilly;432056;246;W;2011;;SV Schneeberg Schwimmen;7124;00:00:45,43;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 101;F;28005;6;;Herold, Pia;459711;190;W;2011;;FC Erzgebirge Aue;7123;00:00:46,47;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 101;F;28005;7;;Hunger, Mara;440026;354;W;2011;;SV 1990 Zschopau;3382;00:00:46,78;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 101;F;28005;8;;Salomo, Jule;000000;38;W;2011;;SV Tanne Thalheim e.V.;0000;00:00:48,17;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 101;F;28005;9;;Neubert, Sally;429664;121;W;2011;;ST Erzgebirge;5134;00:00:50,39;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 101;F;28005;0;NA;Oettel, Amelié;458125;125;W;2011;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 101;F;28005;0;AB;Kaden, Nele;466489;99;W;2011;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 101;F;28005;0;AB;Uhlig, Charlotte;446989;255;W;2011;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 101;F;28005;0;AB;Thorandt, Cecilia;000000;330;W;2011;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 101;F;28004;1;;Müller, Zoe;417100;196;W;2012;;FC Erzgebirge Aue;7123;00:00:38,54;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 101;F;28004;2;;Nitsche, Lea;459626;198;W;2012;;FC Erzgebirge Aue;7123;00:00:44,03;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 101;F;28004;3;;Waldenburger, Lina;465925;209;W;2012;;FC Erzgebirge Aue;7123;00:00:45,66;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 101;F;28004;4;;Ulbricht, Emily;000000;331;W;2012;;SV07 Annaberg-Buchholz;3380;00:00:50,36;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 101;F;28004;5;;Richter, Anne;000000;372;W;2012;;SV 1990 Zschopau;3382;00:00:50,47;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 101;F;28004;6;;Heimrath, Dorothea;000000;23;W;2012;;SV Tanne Thalheim e.V.;0000;00:00:53,06;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 101;F;28004;7;;Kunze, Sina;000000;105;W;2012;;ST Erzgebirge;5134;00:00:57,86;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 101;F;28004;0;DS;Müller, Frida;461992;110;W;2012;;ST Erzgebirge;5134;00:00:00,00;Bei der Wende wurde die Wand nicht berührt.;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 101;F;28004;0;DS;Langer, Mia;461959;106;W;2012;;ST Erzgebirge;5134;00:00:00,00;Die Sportlerin hat während der Schwimmstrecke die Rückenlage verlassen.;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 101;F;28004;0;AB;Schmiedel, Hannah;000000;41;W;2012;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 101;F;28004;0;AB;Riegler, Aada;000000;64;W;2012;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 101;F;28004;0;AB;Auerswald, Alina;459709;173;W;2012;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 101;F;28004;0;AB;Tenelsen, Fenja;434707;205;W;2012;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 101;F;28003;1;;Uhlig, Magdalena;451879;257;W;2013;;SV Schneeberg Schwimmen;7124;00:00:44,73;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 101;F;28003;2;;Lohse, Talisa;000000;311;W;2013;;SV07 Annaberg-Buchholz;3380;00:00:49,05;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 101;F;28003;3;;Oestreich, Sophia;458275;124;W;2013;;ST Erzgebirge;5134;00:00:49,82;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 101;F;28003;4;;Decker, Helene;464574;338;W;2013;;SV 1990 Zschopau;3382;00:00:52,56;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 101;F;28003;5;;Klaus, Emma;461960;101;W;2013;;ST Erzgebirge;5134;00:00:55,47;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 101;F;28003;6;;Hähnel, Leni;000000;22;W;2013;;SV Tanne Thalheim e.V.;0000;00:00:58,11;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 101;F;28003;7;;Mildner, Donna;000000;114;W;2013;;ST Erzgebirge;5134;00:00:59,78;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 101;F;28003;8;;Eberwein, Nora;000000;180;W;2013;;FC Erzgebirge Aue;7123;00:01:00,69;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 101;F;28003;9;;Stieglitz, Zoe;000000;139;W;2013;;ST Erzgebirge;5134;00:01:02,70;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 101;F;28003;0;NA;Schäfer, Hanna;000000;320;W;2013;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 101;F;28003;0;AB;Schelberger, Samira;000000;39;W;2013;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 101;F;28003;0;AB;Unger, Emma;000000;208;W;2013;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 101;F;28003;0;AB;Ulbricht, Louisa;000000;378;W;2013;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 101;F;28002;1;;Grunert, Florentine;452985;269;W;2014;;FC Erzgebirge Aue;7123;00:00:48,36;;;GER;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 101;F;28002;2;;Decker, Hanna;459712;178;W;2014;;FC Erzgebirge Aue;7123;00:00:52,07;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 101;F;28002;3;;Viertel, Victoria-Luise;461991;144;W;2014;;ST Erzgebirge;5134;00:00:54,10;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 101;F;28002;4;;Großmann, Amielou Louise;000000;345;W;2014;;SV 1990 Zschopau;3382;00:00:54,63;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 101;F;28002;5;;Rieger, Olivia;000000;373;W;2014;;SV 1990 Zschopau;3382;00:00:58,82;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 101;F;28002;6;;Schmiedel, Rebecca;000000;324;W;2014;;SV07 Annaberg-Buchholz;3380;00:01:00,96;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 101;F;28002;7;;Gläser, Chloe;000000;184;W;2014;;FC Erzgebirge Aue;7123;00:01:00,99;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 101;F;28002;8;;Lohße, Emma;000000;362;W;2014;;SV 1990 Zschopau;3382;00:01:03,18;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 101;F;28002;9;;Bergmann, Sienna;000000;175;W;2014;;FC Erzgebirge Aue;7123;00:01:04,56;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 101;F;28002;10;;Meusel, Lotta Chayenne;000000;364;W;2014;;SV 1990 Zschopau;3382;00:01:04,82;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 101;F;28002;0;NA;Schönfuß, Emma;000000;223;W;2014;;GS Altstadt Lößnitz;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 101;F;28002;0;AB;Friedrich, Käthe;000000;152;W;2014;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 101;F;28002;0;AB;Fabritzek, Matilda;000000;181;W;2014;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 101;F;28001;1;;Morgenstern, Elena;471532;116;W;2015;;ST Erzgebirge;5134;00:00:57,71;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 101;F;28001;2;;Lindner, Magdalena;000000;241;W;2015;;SV Schneeberg Schwimmen;7124;00:00:58,78;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 101;F;28001;3;;Wagner, Lina;000000;333;W;2015;;SV07 Annaberg-Buchholz;3380;00:01:00,16;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 101;F;28001;4;;Kunze, Ella;000000;104;W;2015;;ST Erzgebirge;5134;00:01:05,91;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 101;F;28001;5;;Engert, Sasou;000000;292;W;2015;;SV07 Annaberg-Buchholz;3380;00:01:08,57;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 101;F;28001;6;;Vazquez Grundig, Frieda Nelli;000000;3;W;2015;;SV07 Annaberg-Buchholz;3380;00:01:08,71;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 101;F;28001;7;;Wendler, Hilde Ella;000000;262;W;2015;;SV Schneeberg Schwimmen;7124;00:01:10,51;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 101;F;28001;8;;Preißler, Amy;000000;126;W;2015;;ST Erzgebirge;5134;00:01:19,52;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 101;F;28001;0;NA;Kalbe, Mathea;000000;236;W;2015;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 101;F;28001;0;NA;Prommerberger, Tami;000000;371;W;2015;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 101;F;28001;0;AB;Wimmer, Mia;000000;73;W;2015;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 101;F;28001;0;AB;Kästner, Nelly Lou;000000;307;W;2015;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 101;F;28009;1;;Richter, Nele;402475;132;W;2002;20;ST Erzgebirge;5134;00:00:33,50;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 101;F;28009;2;;Katsala, Mariia;458276;100;W;2002;20;ST Erzgebirge;5134;00:00:34,50;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 101;F;28009;3;;Naumann, Sophie;419630;247;W;2006;;SV Schneeberg Schwimmen;7124;00:00:34,83;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 101;F;28009;4;;Kreißig, Lilly;393190;361;W;2006;;SV 1990 Zschopau;3382;00:00:35,21;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 101;F;28009;5;;Rülke, Katyana;343550;317;W;2005;;SV07 Annaberg-Buchholz;3380;00:00:35,42;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 101;F;28009;6;;Schmidt, Charlotte;395180;254;W;2006;;SV Schneeberg Schwimmen;7124;00:00:35,84;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 101;F;28009;7;;Gersten, Julia;301388;230;W;2003;20;SV Schneeberg Schwimmen;7124;00:00:39,94;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 101;F;28009;0;DS;Wägner, Madeleine;422523;145;W;2006;;ST Erzgebirge;5134;00:00:00,00;Die Sportlerin hat bei der Wende nach Verlassen der Rückenlage die eigentliche Wendenbewegung nicht unverzüglich ausgeführt.;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 101;F;28009;0;AB;Müller, Mia;349891;1;W;2006;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 101;F;28009;0;AB;Bochmann, Sofie;000000;16;W;2004;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 101;F;28009;0;AB;Sorge, Maria;000000;329;W;2005;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 101;F;28009;0;AB;Trofimchyk, Sofia;000000;386;W;2004;;Volkskochschule Annaberg;0000;00:00:00,00;;;GER;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 101;F;28008;1;;Zingler, Lotte Pauline;365814;382;W;2007;;SV 1990 Zschopau;3382;00:00:34,27;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 101;F;28008;2;;Steiner, Tiffany;355425;266;W;2007;;ST Erzgebirge;5134;00:00:34,81;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 101;F;28008;3;;Tanneberger, Fiona;430278;377;W;2007;;SV 1990 Zschopau;3382;00:00:36,67;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 101;F;28008;4;;Rößler, Helena;349894;250;W;2008;;SV Schneeberg Schwimmen;7124;00:00:37,29;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 101;F;28008;5;;Huschmann, Paula;416419;235;W;2008;;SV Schneeberg Schwimmen;7124;00:00:39,97;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 101;F;28008;6;;Künzel, Collien;393376;98;W;2008;;ST Erzgebirge;5134;00:00:40,07;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 101;F;28008;7;;Voigt, Lina;395183;260;W;2007;;SV Schneeberg Schwimmen;7124;00:00:40,65;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 101;F;28008;8;;Richter, Tine;429666;133;W;2008;;ST Erzgebirge;5134;00:00:41,39;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 101;F;28008;0;DS;Hüllenhagen, Zoe;365442;187;W;2008;;FC Erzgebirge Aue;7123;00:00:00,00;Die Sportlerin blieb nach dem Start mehr als 15 m völlig untergetaucht.;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 101;F;28008;0;DS;Blei, Mia;000000;14;W;2007;;SV Tanne Thalheim e.V.;0000;00:00:00,00;Die Sportlerin hat bei der Wende nach Verlassen der Rückenlage nicht unverzüglich die eigentliche Wendenbewegung ausgeführt.;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 101;F;28008;0;AB;Barfeld, Clara;000000;12;W;2008;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 101;F;28008;0;AB;Einenkel, Enie;411895;289;W;2008;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 101;F;28008;0;AB;Fritz, Lene;423559;341;W;2008;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 102;F;29007;1;;Findeisen, Erik;415866;81;M;2009;;ST Erzgebirge;5134;00:00:35,59;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 102;F;29007;2;;Reichel, Janne;411557;253;M;2009;;SV Schneeberg Schwimmen;7124;00:00:36,93;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 102;F;29007;3;;Neubert, Domenic;429667;118;M;2009;;ST Erzgebirge;5134;00:00:37,51;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 102;F;29007;4;;Weber, Anton;395001;211;M;2009;;FC Erzgebirge Aue;7123;00:00:40,20;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 102;F;29007;5;;Grunert, Ferdinand;395006;185;M;2009;;FC Erzgebirge Aue;7123;00:00:40,41;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 102;F;29007;6;;Bludau, Hannes;464634;336;M;2009;;SV 1990 Zschopau;3382;00:00:42,87;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 102;F;29007;0;NA;Tutzschky, Lukas;461949;142;M;2009;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 102;F;29007;0;DS;Voigt, Moritz;395182;261;M;2009;;SV Schneeberg Schwimmen;7124;00:00:00,00;Der Sportler hat bei der Wende nach Verlassen der Rückenlage nicht unverzüglich die eigentliche Wendenbewegung ausgeführt.;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 102;F;29007;0;DS;Hildermann, Conner;000000;351;M;2009;;SV 1990 Zschopau;3382;00:00:00,00;Bei der Wende wurde die Wand nicht berührt.;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 102;F;29007;0;DS;Gabler, Ansgar;000000;85;M;2009;;ST Erzgebirge;5134;00:00:00,00;Der Sportler hat den Start absichtlich verzögert.;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 102;F;29007;0;AB;Mögling, Arvid;000000;156;M;2009;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 102;F;29007;0;AB;Reuther, Collin;000000;160;M;2009;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 102;F;29006;1;;Wietz, Paul;395002;214;M;2010;;FC Erzgebirge Aue;7123;00:00:38,57;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 102;F;29006;2;;Kossakowski, Paul;000000;28;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:40,44;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 102;F;29006;3;;Weber, Tobias;000000;47;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:40,80;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 102;F;29006;4;;Eichhorn, Jamie;000000;164;M;2010;;DLRG Bezirk Bad Schlema;0000;00:00:45,41;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 102;F;29006;5;;Treffkorn, Johann;429665;141;M;2010;;ST Erzgebirge;5134;00:00:45,87;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 102;F;29006;0;NA;Fabian, Dominik;000000;19;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 102;F;29006;0;NA;Günther, Jason;000000;21;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 102;F;29006;0;NA;Richartz, Tim;000000;36;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 102;F;29006;0;DS;Richter, Tomek;437283;319;M;2010;;SV07 Annaberg-Buchholz;3380;00:00:00,00;Der Sportler hat den Startvorgang behindert.;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 102;F;29006;0;DS;Gläser, Simon;461951;89;M;2010;;ST Erzgebirge;5134;00:00:00,00;Bei der Wende wurde die Wand nicht berührt.;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 102;F;29006;0;AB;Friedrich, Kurt;000000;153;M;2010;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 102;F;29006;0;AB;Kunze, Patrice;459707;238;M;2010;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 102;F;29005;1;;Güßmann, Ben;425179;229;M;2011;;SV Schneeberg Schwimmen;7124;00:00:40,12;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 102;F;29005;2;;Lötzsch, Theo;419466;194;M;2011;;FC Erzgebirge Aue;7123;00:00:40,41;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 102;F;29005;3;;Leichsenring, Jonas;446990;239;M;2011;;SV Schneeberg Schwimmen;7124;00:00:41,94;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 102;F;29005;4;;Schmieder, Julian Magnus;394210;8;M;2011;;SV 1990 Zschopau;3382;00:00:45,12;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 102;F;29005;5;;Sak, Savelii;000000;277;M;2011;;Jenaplanschule Markersbach;0000;00:00:47,19;;;GER;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 102;F;29005;6;;Kandler, Manuel;000000;26;M;2011;;SV Tanne Thalheim e.V.;0000;00:00:48,36;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 102;F;29005;7;;Frohs, Erik;000000;82;M;2011;;ST Erzgebirge;5134;00:00:48,72;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 102;F;29005;8;;Fauska, Franz;458123;78;M;2011;;ST Erzgebirge;5134;00:00:50,25;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 102;F;29005;9;;Barth, Lenny;000000;57;M;2011;;Zwönitzer Schwimmverein e.V.;0000;00:00:55,20;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 102;F;29005;0;AB;Klier, Malwin;000000;27;M;2011;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 102;F;29005;0;AB;Kühnl, Niklas;000000;154;M;2011;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 102;F;29005;0;AB;Tümpner, Philip;000000;162;M;2011;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 102;F;29005;0;AB;Ernst, Lukas;000000;295;M;2011;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 102;F;29004;1;;Schieck, Martin;000000;40;M;2012;;SV Tanne Thalheim e.V.;0000;00:00:48,90;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 102;F;29004;2;;Grüger, Joshua;000000;303;M;2012;;SV07 Annaberg-Buchholz;3380;00:00:50,33;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 102;F;29004;3;;Bochmann, Noa;461952;77;M;2012;;ST Erzgebirge;5134;00:00:51,76;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 102;F;29004;4;;Gerlach, Enno;000000;342;M;2012;;SV 1990 Zschopau;3382;00:00:52,71;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 102;F;29004;5;;Gimmler, Ruben;000000;87;M;2012;;ST Erzgebirge;5134;00:00:53,33;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 102;F;29004;6;;Fritzsch, Simon;000000;299;M;2012;;SV07 Annaberg-Buchholz;3380;00:00:53,36;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 102;F;29004;7;;Marek, Josia;000000;313;M;2012;;SV07 Annaberg-Buchholz;3380;00:00:55,36;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 102;F;29004;8;;Weigel, Richard;000000;213;M;2012;;FC Erzgebirge Aue;7123;00:00:55,76;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 102;F;29004;0;NA;Morgenstern, Gustav;000000;5;M;2012;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 102;F;29004;0;NA;Colditz, Lukas;000000;59;M;2012;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 102;F;29004;0;AB;Werner, Leo;000000;263;M;2012;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 102;F;29003;1;;Lindner, Michael;458458;242;M;2013;;SV Schneeberg Schwimmen;7124;00:00:50,15;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 102;F;29003;2;;Meyer, Sammy;458126;113;M;2013;;ST Erzgebirge;5134;00:00:50,73;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 102;F;29003;3;;Rebentrost, Helios;461954;127;M;2013;;ST Erzgebirge;5134;00:00:51,87;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 102;F;29003;4;;Lippold, Paul;000000;61;M;2013;;Zwönitzer Schwimmverein e.V.;0000;00:00:53,60;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 102;F;29003;5;;Lehmann, Jay;461955;107;M;2013;;ST Erzgebirge;5134;00:00:54,10;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 102;F;29003;6;;Nestler, Kurt;000000;315;M;2013;;SV07 Annaberg-Buchholz;3380;00:00:55,99;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 102;F;29003;7;;Bergelt, Kurt;000000;58;M;2013;;Zwönitzer Schwimmverein e.V.;0000;00:00:59,41;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 102;F;29003;8;;Gabler, Wieland;000000;86;M;2013;;ST Erzgebirge;5134;00:01:00,71;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 102;F;29003;9;;Uloth, Luca;000000;45;M;2013;;SV Tanne Thalheim e.V.;0000;00:01:00,84;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 102;F;29003;10;;Lippert, Elias;000000;31;M;2013;;SV Tanne Thalheim e.V.;0000;00:01:01,34;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 102;F;29003;0;AB;Arnold, Henri;000000;76;M;2013;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 102;F;29003;0;AB;Rehpennig, Jannik;000000;158;M;2013;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 102;F;29002;1;;Gläser, Julian;458122;88;M;2014;;ST Erzgebirge;5134;00:00:51,69;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 102;F;29002;2;;Reuter, Nils;464573;7;M;2014;;SV 1990 Zschopau;3382;00:00:55,77;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 102;F;29002;3;;Ertl, Armin;000000;296;M;2014;;SV07 Annaberg-Buchholz;3380;00:00:59,27;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 102;F;29002;4;;Geißler, Matteo;000000;302;M;2014;;SV07 Annaberg-Buchholz;3380;00:00:59,81;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 102;F;29002;5;;Neubert, Johann;000000;222;M;2014;;GS Altstadt Lößnitz;0000;00:01:01,99;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 102;F;29002;0;NA;Fay, Miroslav;000000;79;M;2014;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 102;F;29002;0;NA;Beyer, Henry;000000;176;M;2014;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 102;F;29002;0;AB;Fabian, Vincent;000000;20;M;2014;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 102;F;29002;0;AB;Winterfeld, Ben;000000;149;M;2014;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 102;F;29002;0;AB;Leers, Tim;000000;155;M;2014;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 102;F;29002;0;AB;Ratayski, Aaron;000000;268;M;2014;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 102;F;29002;0;AB;Baumann, Emilio;000000;334;M;2014;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 102;F;29001;1;;Müller, Gustav;000000;111;M;2015;;ST Erzgebirge;5134;00:00:58,15;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 102;F;29001;2;;Heymann, Jimmy;000000;305;M;2015;;SV07 Annaberg-Buchholz;3380;00:00:58,99;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 102;F;29001;3;;Schaffer, Luke;000000;321;M;2015;;SV07 Annaberg-Buchholz;3380;00:01:03,74;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 102;F;29001;4;;Unger, Bruno;471531;143;M;2015;;ST Erzgebirge;5134;00:01:04,24;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 102;F;29001;5;;Nitschke, Lenas;000000;32;M;2015;;SV Tanne Thalheim e.V.;0000;00:01:16,56;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 102;F;29001;6;;Hübner, Niklas;000000;186;M;2015;;FC Erzgebirge Aue;7123;00:01:19,20;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 102;F;29001;7;;Reuße, Ben;000000;128;M;2015;;ST Erzgebirge;5134;00:01:47,40;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 102;F;29001;0;AB;Berger, Kurt;000000;174;M;2015;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 102;F;29009;1;;Weiß, Johann;327133;146;M;2005;;ST Erzgebirge;5134;00:00:30,51;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 102;F;29009;2;;Püschel, Louis;000000;288;M;2005;;SV Schneeberg Schwimmen;7124;00:00:30,67;;;GER;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 102;F;29009;3;;Schauer, Lukas;365572;322;M;2006;;SV07 Annaberg-Buchholz;3380;00:00:31,74;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 102;F;29009;4;;Uhlig, Johannes;361411;256;M;2006;;SV Schneeberg Schwimmen;7124;00:00:32,11;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 102;F;29009;5;;Fischer, Till;363420;228;M;2005;;SV Schneeberg Schwimmen;7124;00:00:32,30;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 102;F;29009;6;;Rößler, Louis;297284;251;M;2004;;SV Schneeberg Schwimmen;7124;00:00:32,45;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 102;F;29009;7;;Gerstner, Fynn;355312;343;M;2004;;SV 1990 Zschopau;3382;00:00:33,64;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 102;F;29009;0;NA;Reuter, Erik;338774;129;M;2005;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 102;F;29009;0;NA;Reuter, Til;382218;130;M;2006;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 102;F;29009;0;DS;Goris, Knut;336333;233;M;2005;;SV Schneeberg Schwimmen;7124;00:00:00,00;Der Sportler hat bei der Wende nach Verlassen der Rückenlage die eigentliche Wendenbewegung nicht unverzüglich ausgeführt.;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 102;F;29009;0;AB;Bochmann, Robert;000000;15;M;2000;20;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 102;F;29009;0;AB;Conrad, Valentin;000000;18;M;2003;20;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 102;F;29009;0;AB;Hösel, Max;355424;347;M;2006;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 102;F;29008;1;;Richter, Kimi;384061;131;M;2007;;ST Erzgebirge;5134;00:00:29,45;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 102;F;29008;2;;Ullmann, Konstantin;349898;206;M;2008;;FC Erzgebirge Aue;7123;00:00:32,88;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 102;F;29008;3;;Kraus, Tim;395174;193;M;2008;;FC Erzgebirge Aue;7123;00:00:33,86;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 102;F;29008;4;;Heidenreich, Luca;415867;91;M;2008;;ST Erzgebirge;5134;00:00:34,12;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 102;F;29008;5;;Kreißig, Pirmin;409206;4;M;2007;;SV 1990 Zschopau;3382;00:00:36,84;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 102;F;29008;6;;Neubert, Johannes;393375;119;M;2007;;ST Erzgebirge;5134;00:00:36,97;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 102;F;29008;7;;Meyer, Oliver;377625;367;M;2007;;SV 1990 Zschopau;3382;00:00:37,28;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 102;F;29008;8;;Wohlgemuth, Moritz;349897;215;M;2007;;FC Erzgebirge Aue;7123;00:00:37,29;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 102;F;29008;9;;Dietel, Cedric;365445;179;M;2007;;FC Erzgebirge Aue;7123;00:00:37,53;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 102;F;29008;0;DS;Kulai, Vasyl;429668;103;M;2008;;ST Erzgebirge;5134;00:00:00,00;Der Sportler hat bei der Wende nach Verlassen der Rückenlage die eigentliche Wendenbewegung nicht unverzüglich ausgeführt.;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 102;F;29008;0;AB;Heimrath, Johannes;000000;24;M;2007;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 102;F;29008;0;AB;Ilg, Johann Wolfgang;000000;25;M;2007;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 102;F;29008;0;AB;Haase, Tim Justin;000000;167;M;2007;;DLRG Bezirk Bad Schlema;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 103;F;30007;1;;Wittig, Emma;415865;150;W;2009;;ST Erzgebirge;5134;00:00:37,75;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 103;F;30007;2;;Hunger, Lea;402166;353;W;2009;;SV 1990 Zschopau;3382;00:00:38,11;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 103;F;30007;3;;Gersten, Manja;421838;231;W;2009;;SV Schneeberg Schwimmen;7124;00:00:50,66;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 103;F;30007;4;;Weißflog, Cora Lena;000000;48;W;2009;;SV Tanne Thalheim e.V.;0000;00:00:52,25;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 103;F;30007;5;;Koksha, Marharyta;000000;284;W;2009;;LKG St. Annen;0000;00:00:56,05;;;GER;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 103;F;30007;6;;Schröer, Alyssa;000000;325;W;2009;;SV07 Annaberg-Buchholz;3380;00:00:58,62;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 103;F;30007;0;AB;Morgenstern, Lia;000000;6;W;2009;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 103;F;30006;1;;Frauenlob, Elise;446324;297;W;2010;;SV07 Annaberg-Buchholz;3380;00:00:41,60;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 103;F;30006;2;;Ullmann, Linn;419258;207;W;2010;;FC Erzgebirge Aue;7123;00:00:43,80;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 103;F;30006;3;;Göhler, Lucy;402479;83;W;2010;;ST Erzgebirge;5134;00:00:44,73;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 103;F;30006;4;;Zellhuber, Hanna;000000;265;W;2010;;SV Schneeberg Schwimmen;7124;00:00:47,99;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 103;F;30006;5;;Riegler, Sophia;000000;66;W;2010;;Zwönitzer Schwimmverein e.V.;0000;00:00:48,53;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 103;F;30006;6;;Veith, Lucia Zoe;000000;259;W;2010;;SV Schneeberg Schwimmen;7124;00:00:49,92;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 103;F;30006;7;;Weber, Alissa - Marie;000000;379;W;2010;;SV 1990 Zschopau;3382;00:00:50,24;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 103;F;30006;8;;Zimmermann, Nele;000000;51;W;2010;;SV Tanne Thalheim e.V.;0000;00:00:51,02;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 103;F;30006;9;;Hermann, Sara;402477;93;W;2010;;ST Erzgebirge;5134;00:00:52,30;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 103;F;30006;0;NA;Thierbach, Zoe;000000;43;W;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 103;F;30006;0;AB;Reinhardt, Pauline;000000;159;W;2010;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 103;F;30005;1;;Hiemann, Elisa;461993;95;W;2011;;ST Erzgebirge;5134;00:00:43,11;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 103;F;30005;2;;Schreiter, Melissa;447078;136;W;2011;;ST Erzgebirge;5134;00:00:43,63;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 103;F;30005;3;;Müller, Annica;429663;109;W;2011;;ST Erzgebirge;5134;00:00:44,34;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 103;F;30005;4;;Weidauer, Lavinia;419465;212;W;2011;;FC Erzgebirge Aue;7123;00:00:45,08;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 103;F;30005;5;;Nitschke, Lenja;000000;33;W;2011;;SV Tanne Thalheim e.V.;0000;00:00:46,21;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 103;F;30005;6;;Herold, Pia;459711;190;W;2011;;FC Erzgebirge Aue;7123;00:00:47,86;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 103;F;30005;7;;Heymann, Fiona;425180;234;W;2011;;SV Schneeberg Schwimmen;7124;00:00:47,95;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 103;F;30005;7;;Naumann, Lilly;432056;246;W;2011;;SV Schneeberg Schwimmen;7124;00:00:47,95;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 103;F;30005;9;;Hunger, Mara;440026;354;W;2011;;SV 1990 Zschopau;3382;00:00:48,57;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 103;F;30005;0;DS;Salomo, Jule;000000;38;W;2011;;SV Tanne Thalheim e.V.;0000;00:00:00,00;Nach dem Start hat die Sportlerin mehrere Delphinbeinschläge ausgeführt.;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 103;F;30005;0;AB;Uhlig, Charlotte;446989;255;W;2011;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 103;F;30005;0;AB;Pella, Hanna;000000;370;W;2011;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 103;F;30004;1;;Riediger, Lani;459623;202;W;2012;;FC Erzgebirge Aue;7123;00:00:46,07;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 103;F;30004;2;;Nitsche, Lea;459626;198;W;2012;;FC Erzgebirge Aue;7123;00:00:48,09;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 103;F;30004;3;;Waldenburger, Lina;465925;209;W;2012;;FC Erzgebirge Aue;7123;00:00:49,18;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 103;F;30004;4;;Heimrath, Dorothea;000000;23;W;2012;;SV Tanne Thalheim e.V.;0000;00:00:50,75;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 103;F;30004;5;;Müller, Frida;461992;110;W;2012;;ST Erzgebirge;5134;00:00:52,16;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 103;F;30004;6;;Georgi, Maya;000000;166;W;2012;;DLRG Bezirk Bad Schlema;0000;00:00:53,82;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 103;F;30004;7;;Langer, Mia;461959;106;W;2012;;ST Erzgebirge;5134;00:00:54,58;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 103;F;30004;8;;Ruprecht, Sarina Svenja;000000;374;W;2012;;SV 1990 Zschopau;3382;00:00:55,63;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 103;F;30004;9;;Richter, Anne;000000;372;W;2012;;SV 1990 Zschopau;3382;00:01:06,33;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 103;F;30004;0;DS;Müller, Zoe;417100;196;W;2012;;FC Erzgebirge Aue;7123;00:00:00,00;Beim Anschlag an der Wende hat die Sportlerin nicht mit beiden Händen gleichzeitig angeschlagen.;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 103;F;30004;0;AB;Schediwy, Lilly;000000;68;W;2012;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 103;F;30004;0;AB;Auerswald, Alina;459709;173;W;2012;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 103;F;30004;0;AB;Schmiedel, Emily;000000;323;W;2012;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 103;F;30003;1;;Uhlig, Magdalena;451879;257;W;2013;;SV Schneeberg Schwimmen;7124;00:00:47,91;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 103;F;30003;2;;Klaus, Emma;461960;101;W;2013;;ST Erzgebirge;5134;00:00:51,86;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 103;F;30003;3;;Decker, Helene;464574;338;W;2013;;SV 1990 Zschopau;3382;00:00:53,05;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 103;F;30003;4;;Keller, Emma;460563;357;W;2013;;SV 1990 Zschopau;3382;00:00:54,09;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 103;F;30003;5;;Lohse, Talisa;000000;311;W;2013;;SV07 Annaberg-Buchholz;3380;00:00:54,20;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 103;F;30003;6;;Oestreich, Sophia;458275;124;W;2013;;ST Erzgebirge;5134;00:00:58,25;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 103;F;30003;7;;Unger, Ella;000000;258;W;2013;;SV Schneeberg Schwimmen;7124;00:01:02,37;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 103;F;30003;8;;Günther, Zoe-Marie;000000;84;W;2013;;ST Erzgebirge;5134;00:01:05,87;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 103;F;30003;0;NA;Schäfer, Hanna;000000;320;W;2013;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 103;F;30003;0;DS;Eberwein, Nora;000000;180;W;2013;;FC Erzgebirge Aue;7123;00:00:00,00;Beim Anschlag an der Wende hat die Sportlerin nicht mit beiden Händen gleichzeitig angeschlagen.;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 103;F;30003;0;AB;Neef, Marie;000000;248;W;2013;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 103;F;30003;0;AB;Gamig, Marian;000000;301;W;2013;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 103;F;30003;0;AB;Ulbricht, Louisa;000000;378;W;2013;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 103;F;30002;1;;Grunert, Florentine;452985;269;W;2014;;FC Erzgebirge Aue;7123;00:00:52,49;;;GER;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 103;F;30002;2;;Großmann, Amielou Louise;000000;345;W;2014;;SV 1990 Zschopau;3382;00:00:54,20;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 103;F;30002;3;;Rieger, Olivia;000000;373;W;2014;;SV 1990 Zschopau;3382;00:00:56,71;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 103;F;30002;4;;Viertel, Victoria-Luise;461991;144;W;2014;;ST Erzgebirge;5134;00:00:57,17;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 103;F;30002;5;;Schubert, Lena;000000;137;W;2014;;ST Erzgebirge;5134;00:01:12,55;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 103;F;30002;6;;Gläser, Chloe;000000;184;W;2014;;FC Erzgebirge Aue;7123;00:01:13,08;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 103;F;30002;0;DS;Lohße, Emma;000000;362;W;2014;;SV 1990 Zschopau;3382;00:00:00,00;Beim Beinschlag wurden die Füße in der Rückwärtsbewegung nicht auswärts gedreht.;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 103;F;30002;0;DS;Bergmann, Sienna;000000;175;W;2014;;FC Erzgebirge Aue;7123;00:00:00,00;Bei der Wende wurde die Wand nicht berührt.;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 103;F;30002;0;DS;Meyer, Amelie;000000;314;W;2014;;SV07 Annaberg-Buchholz;3380;00:00:00,00;Beim Zielanschlag hat die Sportlerin nicht mit beiden Händen gleichzeitig angeschlagen.;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 103;F;30002;0;AB;Friedrich, Käthe;000000;152;W;2014;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 103;F;30002;0;AB;Freier, Lena-Marie;000000;298;W;2014;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 103;F;30001;1;;Strauß, Josy;000000;70;W;2015;;Zwönitzer Schwimmverein e.V.;0000;00:01:03,56;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 103;F;30001;2;;Dähn, Mica;465953;177;W;2015;;FC Erzgebirge Aue;7123;00:01:05,53;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 103;F;30001;3;;Meuschke, Maxi;460747;197;W;2015;;FC Erzgebirge Aue;7123;00:01:06,42;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 103;F;30001;4;;Kunze, Ella;000000;104;W;2015;;ST Erzgebirge;5134;00:01:13,10;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 103;F;30001;5;;Wendler, Hilde Ella;000000;262;W;2015;;SV Schneeberg Schwimmen;7124;00:01:15,45;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 103;F;30001;0;NA;Huber, Aurelie;000000;220;W;2015;;GS Altstadt Lößnitz;0000;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 103;F;30001;0;NA;Kalbe, Mathea;000000;236;W;2015;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 103;F;30001;0;NA;Prommerberger, Tami;000000;371;W;2015;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 103;F;30001;0;DS;Engert, Sasou;000000;292;W;2015;;SV07 Annaberg-Buchholz;3380;00:00:00,00;Beim Anschlag an der Wende hat die Sportlerin nicht mit beiden Händen gleichzeitig angeschlagen.;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 103;F;30001;0;DS;Lindner, Magdalena;000000;241;W;2015;;SV Schneeberg Schwimmen;7124;00:00:00,00;Nach dem Start hat die Sportlerin mehrere Delphinbeinschläge ausgeführt.;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 103;F;30001;0;AB;Müller, Johanna;000000;62;W;2015;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 103;F;30001;0;AB;Riegler, Larena;000000;65;W;2015;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 103;F;30001;0;AB;Wimmer, Mia;000000;73;W;2015;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 103;F;30009;1;;Polusik, Adele;378079;200;W;2006;;FC Erzgebirge Aue;7123;00:00:37,75;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 103;F;30009;2;;Naumann, Sophie;419630;247;W;2006;;SV Schneeberg Schwimmen;7124;00:00:39,79;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 103;F;30009;3;;Kreißig, Lilly;393190;361;W;2006;;SV 1990 Zschopau;3382;00:00:40,77;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 103;F;30009;4;;Rülke, Katyana;343550;317;W;2005;;SV07 Annaberg-Buchholz;3380;00:00:42,36;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 103;F;30009;5;;Fritzsch, Julie;363418;183;W;2006;;FC Erzgebirge Aue;7123;00:00:43,96;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 103;F;30009;6;;Zimmermann, Emma;000000;50;W;2005;;SV Tanne Thalheim e.V.;0000;00:00:44,67;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 103;F;30009;0;NA;Mildner, Joelina;332266;115;W;2004;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 103;F;30009;0;NA;Richter, Nele;402475;132;W;2002;20;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 103;F;30009;0;NA;Wassermann, Ciara;365444;210;W;2006;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 103;F;30009;0;AB;Müller, Mia;349891;1;W;2006;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 103;F;30009;0;AB;Brekau, Lena;000000;17;W;2006;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 103;F;30009;0;AB;Kunze, Alice;380349;237;W;2001;20;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 103;F;30009;0;AB;Schmidt, Charlotte;395180;254;W;2006;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 103;F;30008;1;;Tanneberger, Fiona;430278;377;W;2007;;SV 1990 Zschopau;3382;00:00:38,02;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 103;F;30008;2;;Voigt, Lina;395183;260;W;2007;;SV Schneeberg Schwimmen;7124;00:00:40,75;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 103;F;30008;3;;Steiner, Tiffany;355425;266;W;2007;;ST Erzgebirge;5134;00:00:41,75;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 103;F;30008;4;;Huschmann, Paula;416419;235;W;2008;;SV Schneeberg Schwimmen;7124;00:00:42,56;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 103;F;30008;5;;Wanke, Joy;382217;267;W;2007;;ST Erzgebirge;5134;00:00:43,37;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 103;F;30008;6;;Blei, Mia;000000;14;W;2007;;SV Tanne Thalheim e.V.;0000;00:00:43,94;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 103;F;30008;7;;Voike, Anna;000000;46;W;2008;;SV Tanne Thalheim e.V.;0000;00:00:44,55;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 103;F;30008;8;;Natarova, Mariia;000000;276;W;2008;;Jenaplanschule Markersbach;0000;00:00:46,15;;;GER;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 103;F;30008;9;;Arnold, Nelly Sue;000000;11;W;2008;;SV Tanne Thalheim e.V.;0000;00:00:46,16;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 103;F;30008;0;NA;Guba, Mailin;393192;346;W;2007;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 103;F;30008;0;AB;Lange, Saskia;000000;170;W;2008;;DLRG Bezirk Bad Schlema;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 103;F;30008;0;AB;Rößler, Helena;349894;250;W;2008;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 103;F;30008;0;AB;Schwipper, Lisa;397284;326;W;2008;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 104;F;31007;1;;Findeisen, Erik;415866;81;M;2009;;ST Erzgebirge;5134;00:00:37,38;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 104;F;31007;2;;Voigt, Moritz;395182;261;M;2009;;SV Schneeberg Schwimmen;7124;00:00:37,77;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 104;F;31007;3;;Lohse, Rouven;000000;310;M;2009;;SV07 Annaberg-Buchholz;3380;00:00:41,66;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 104;F;31007;4;;Bludau, Hannes;464634;336;M;2009;;SV 1990 Zschopau;3382;00:00:41,73;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 104;F;31007;5;;Weber, Anton;395001;211;M;2009;;FC Erzgebirge Aue;7123;00:00:43,82;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 104;F;31007;6;;Neubert, Domenic;429667;118;M;2009;;ST Erzgebirge;5134;00:00:44,58;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 104;F;31007;7;;Gabler, Ansgar;000000;85;M;2009;;ST Erzgebirge;5134;00:00:47,05;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 104;F;31007;8;;Hildermann, Conner;000000;351;M;2009;;SV 1990 Zschopau;3382;00:00:50,46;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 104;F;31007;0;NA;Tutzschky, Lukas;461949;142;M;2009;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 104;F;31007;0;DS;Weiß, Marinus;000000;172;M;2009;;DLRG Bezirk Bad Schlema;0000;00:00:00,00;Beim Beinschlag wurden die Füße in der Rückwärtsbewegung nicht auswärts gedreht.;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 104;F;31007;0;AB;Mögling, Arvid;000000;156;M;2009;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 104;F;31007;0;AB;Reuther, Collin;000000;160;M;2009;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 104;F;31007;0;AB;Keller, Timon;000000;359;M;2009;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 104;F;31006;1;;Zingler, Gustav Albert;409207;381;M;2010;;SV 1990 Zschopau;3382;00:00:35,90;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 104;F;31006;2;;Uloth, Darius;000000;44;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:39,86;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 104;F;31006;3;;Richter, Tomek;437283;319;M;2010;;SV07 Annaberg-Buchholz;3380;00:00:43,40;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 104;F;31006;4;;Gläser, Simon;461951;89;M;2010;;ST Erzgebirge;5134;00:00:43,63;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 104;F;31006;5;;Engert, Fabian;423325;291;M;2010;;SV07 Annaberg-Buchholz;3380;00:00:46,74;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 104;F;31006;6;;Küchler, Lucas;000000;168;M;2010;;DLRG Bezirk Bad Schlema;0000;00:00:49,26;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 104;F;31006;7;;Mai, Nick;000000;363;M;2010;;SV 1990 Zschopau;3382;00:00:49,64;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 104;F;31006;0;NA;Fabian, Dominik;000000;19;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 104;F;31006;0;NA;Günther, Jason;000000;21;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 104;F;31006;0;NA;Richartz, Tim;000000;36;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 104;F;31006;0;AB;Uhlmann, Fayn;000000;71;M;2010;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 104;F;31006;0;AB;Friedrich, Kurt;000000;153;M;2010;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 104;F;31006;0;AB;Kunze, Patrice;459707;238;M;2010;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 104;F;31005;1;;Güßmann, Ben;425179;229;M;2011;;SV Schneeberg Schwimmen;7124;00:00:42,60;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 104;F;31005;2;;Nestler, Kilian;000000;368;M;2011;;SV 1990 Zschopau;3382;00:00:43,71;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 104;F;31005;3;;Leichsenring, Jonas;446990;239;M;2011;;SV Schneeberg Schwimmen;7124;00:00:47,52;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 104;F;31005;4;;Lötzsch, Theo;419466;194;M;2011;;FC Erzgebirge Aue;7123;00:00:47,96;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 104;F;31005;5;;Barth, Lenny;000000;57;M;2011;;Zwönitzer Schwimmverein e.V.;0000;00:00:49,81;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 104;F;31005;6;;Sak, Savelii;000000;277;M;2011;;Jenaplanschule Markersbach;0000;00:00:49,91;;;GER;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 104;F;31005;7;;Kandler, Manuel;000000;26;M;2011;;SV Tanne Thalheim e.V.;0000;00:00:50,47;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 104;F;31005;8;;Fauska, Franz;458123;78;M;2011;;ST Erzgebirge;5134;00:00:50,97;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 104;F;31005;9;;Schmieder, Julian Magnus;394210;8;M;2011;;SV 1990 Zschopau;3382;00:00:54,40;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 104;F;31005;0;DS;Schubert, Sten;464575;375;M;2011;;SV 1990 Zschopau;3382;00:00:00,00;Die Bewegung der Beine auf der Wettkampfstrecke erfolgte nicht gleichzeitig.;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 104;F;31005;0;AB;Kühnl, Niklas;000000;154;M;2011;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 104;F;31005;0;AB;Tümpner, Philip;000000;162;M;2011;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 104;F;31004;1;;Kraus, Finn;432063;192;M;2012;;FC Erzgebirge Aue;7123;00:00:46,85;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 104;F;31004;2;;Kopp, Albrecht;000000;270;M;2012;;SV Tanne Thalheim e.V.;0000;00:00:47,34;;;GER;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 104;F;31004;3;;Gottschalk, Karl;461957;90;M;2012;;ST Erzgebirge;5134;00:00:51,04;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 104;F;31004;4;;Gimmler, Ruben;000000;87;M;2012;;ST Erzgebirge;5134;00:00:55,63;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 104;F;31004;5;;Bochmann, Noa;461952;77;M;2012;;ST Erzgebirge;5134;00:00:57,25;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 104;F;31004;6;;Päßler, Michael;459761;249;M;2012;;SV Schneeberg Schwimmen;7124;00:00:57,33;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 104;F;31004;7;;Fritzsch, Simon;000000;299;M;2012;;SV07 Annaberg-Buchholz;3380;00:00:59,03;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 104;F;31004;8;;Marek, Josia;000000;313;M;2012;;SV07 Annaberg-Buchholz;3380;00:01:00,85;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 104;F;31004;0;NA;Morgenstern, Gustav;000000;5;M;2012;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 104;F;31004;0;DS;Colditz, Lukas;000000;59;M;2012;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;Beim Beinschlag wurden die Füße in der Rückwärtsbewegung nicht auswärts gedreht.;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 104;F;31004;0;AB;Rauch, Paul;000000;252;M;2012;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 104;F;31003;1;;Konrad, Christian;461953;102;M;2013;;ST Erzgebirge;5134;00:00:50,91;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 104;F;31003;2;;Lippold, Paul;000000;61;M;2013;;Zwönitzer Schwimmverein e.V.;0000;00:00:53,23;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 104;F;31003;3;;Uloth, Luca;000000;45;M;2013;;SV Tanne Thalheim e.V.;0000;00:00:53,86;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 104;F;31003;4;;Lindner, Michael;458458;242;M;2013;;SV Schneeberg Schwimmen;7124;00:00:54,47;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 104;F;31003;5;;Rebentrost, Helios;461954;127;M;2013;;ST Erzgebirge;5134;00:00:55,49;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 104;F;31003;6;;Bergelt, Kurt;000000;58;M;2013;;Zwönitzer Schwimmverein e.V.;0000;00:00:55,91;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 104;F;31003;7;;Nestler, Kurt;000000;315;M;2013;;SV07 Annaberg-Buchholz;3380;00:00:57,82;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 104;F;31003;8;;Lehmann, Jay;461955;107;M;2013;;ST Erzgebirge;5134;00:01:01,85;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 104;F;31003;0;NA;Groß, Bela Ferenc;000000;344;M;2013;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 104;F;31003;0;DS;Gabler, Wieland;000000;86;M;2013;;ST Erzgebirge;5134;00:00:00,00;Der Sportler führte mit den Beinen wechselseitig Bewegungen (Kraulbeinbewegung) aus.;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 104;F;31003;0;AB;Rehpennig, Jannik;000000;158;M;2013;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 104;F;31003;0;AB;Bauer, Jonas;000000;217;M;2013;;GS Altstadt Lößnitz;0000;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 104;F;31003;0;AB;Becher, Juliano;000000;218;M;2013;;GS Altstadt Lößnitz;0000;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 104;F;31002;1;;Reuter, Nils;464573;7;M;2014;;SV 1990 Zschopau;3382;00:00:58,71;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 104;F;31002;2;;Gläser, Julian;458122;88;M;2014;;ST Erzgebirge;5134;00:00:59,55;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 104;F;31002;3;;Geißler, Matteo;000000;302;M;2014;;SV07 Annaberg-Buchholz;3380;00:01:04,52;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 104;F;31002;4;;Hüttinger, Richard;000000;348;M;2014;;SV 1990 Zschopau;3382;00:01:05,52;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 104;F;31002;0;AB;Fabian, Vincent;000000;20;M;2014;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 104;F;31002;0;AB;Leers, Tim;000000;155;M;2014;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 104;F;31002;0;AB;Baumann, Emilio;000000;334;M;2014;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 104;F;31001;1;;Unger, Bruno;471531;143;M;2015;;ST Erzgebirge;5134;00:00:54,13;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 104;F;31001;2;;Müller, Gustav;000000;111;M;2015;;ST Erzgebirge;5134;00:01:06,70;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 104;F;31001;3;;Nitschke, Lenas;000000;32;M;2015;;SV Tanne Thalheim e.V.;0000;00:01:07,17;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 104;F;31001;4;;Schaffer, Luke;000000;321;M;2015;;SV07 Annaberg-Buchholz;3380;00:01:10,39;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 104;F;31001;5;;Reuße, Ben;000000;128;M;2015;;ST Erzgebirge;5134;00:01:15,90;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 104;F;31001;0;AB;Klotz, Jerome;000000;221;M;2015;;GS Altstadt Lößnitz;0000;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 104;F;31001;0;AB;Keller, Valentin;000000;360;M;2015;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 104;F;31001;0;AB;Sowadde, Levi;000000;376;M;2015;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 104;F;31009;1;;Weiß, Johann;327133;146;M;2005;;ST Erzgebirge;5134;00:00:33,11;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 104;F;31009;2;;Conrad, Valentin;000000;18;M;2003;20;SV Tanne Thalheim e.V.;0000;00:00:33,36;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 104;F;31009;3;;Goris, Knut;336333;233;M;2005;;SV Schneeberg Schwimmen;7124;00:00:34,78;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 104;F;31009;4;;Siegel, Paul;343558;328;M;2005;;SV07 Annaberg-Buchholz;3380;00:00:34,95;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 104;F;31009;5;;Weiß, Konrad;298099;147;M;2002;20;ST Erzgebirge;5134;00:00:35,33;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 104;F;31009;6;;Gerschler, Louis;320389;2;M;2003;20;SV07 Annaberg-Buchholz;3380;00:00:35,71;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 104;F;31009;7;;Püschel, Louis;000000;288;M;2005;;SV Schneeberg Schwimmen;7124;00:00:36,56;;;GER;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 104;F;31009;8;;Reuter, Erik;338774;129;M;2005;;ST Erzgebirge;5134;00:00:36,75;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 104;F;31009;9;;Uhlig, Johannes;361411;256;M;2006;;SV Schneeberg Schwimmen;7124;00:00:36,77;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 104;F;31009;10;;Heydel, Ian;433479;191;M;2006;;FC Erzgebirge Aue;7123;00:00:37,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 104;F;31009;0;AB;Bochmann, Robert;000000;15;M;2000;20;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 104;F;31009;0;AB;Fischer, Till;363420;228;M;2005;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 104;F;31009;0;AB;Rößler, Louis;297284;251;M;2004;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 104;F;31008;1;;Richter, Kimi;384061;131;M;2007;;ST Erzgebirge;5134;00:00:34,36;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 104;F;31008;2;;Heidenreich, Luca;415867;91;M;2008;;ST Erzgebirge;5134;00:00:36,05;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 104;F;31008;3;;Meusel, Noah Joel;393191;365;M;2008;;SV 1990 Zschopau;3382;00:00:37,47;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 104;F;31008;4;;Neubert, Johannes;393375;119;M;2007;;ST Erzgebirge;5134;00:00:37,67;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 104;F;31008;5;;Kreißig, Pirmin;409206;4;M;2007;;SV 1990 Zschopau;3382;00:00:37,82;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 104;F;31008;6;;Reinhold, Tom;419464;201;M;2007;;FC Erzgebirge Aue;7123;00:00:38,58;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 104;F;31008;7;;Kraus, Tim;395174;193;M;2008;;FC Erzgebirge Aue;7123;00:00:39,39;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 104;F;31008;8;;Kulai, Vasyl;429668;103;M;2008;;ST Erzgebirge;5134;00:00:39,60;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 104;F;31008;9;;Wohlgemuth, Moritz;349897;215;M;2007;;FC Erzgebirge Aue;7123;00:00:41,34;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 104;F;31008;0;NA;Lykhodid, Nazar;000000;285;M;2008;;Oberschule Scheibenberg;0000;00:00:00,00;;;GER;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 104;F;31008;0;AB;Ilg, Johann Wolfgang;000000;25;M;2007;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 104;F;31008;0;AB;Haase, Tim Justin;000000;167;M;2007;;DLRG Bezirk Bad Schlema;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 104;F;31008;0;AB;Uhlmann, Linus;000000;171;M;2007;;DLRG Bezirk Bad Schlema;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 105;F;32007;1;;Wittig, Emma;415865;150;W;2009;;ST Erzgebirge;5134;00:00:35,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 105;F;32007;2;;Petrick, Martha;433480;199;W;2009;;FC Erzgebirge Aue;7123;00:00:35,61;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 105;F;32007;3;;Lippert, Annalena;000000;30;W;2009;;SV Tanne Thalheim e.V.;0000;00:00:45,70;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 105;F;32007;4;;Weißflog, Cora Lena;000000;48;W;2009;;SV Tanne Thalheim e.V.;0000;00:00:47,64;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 105;F;32006;1;;Sandow, Kena;433481;203;W;2010;;FC Erzgebirge Aue;7123;00:00:37,88;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 105;F;32006;2;;Göhler, Lucy;402479;83;W;2010;;ST Erzgebirge;5134;00:00:42,87;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 105;F;32006;3;;Lorenz, Milena;417871;108;W;2010;;ST Erzgebirge;5134;00:00:43,98;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 105;F;32006;4;;Richter, Mathilda;416938;318;W;2010;;SV07 Annaberg-Buchholz;3380;00:00:44,78;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 105;F;32006;5;;Zimmermann, Nele;000000;51;W;2010;;SV Tanne Thalheim e.V.;0000;00:00:47,06;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 105;F;32006;6;;Frauenlob, Elise;446324;297;W;2010;;SV07 Annaberg-Buchholz;3380;00:00:48,24;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 105;F;32006;7;;Emmrich, Sophie;453164;290;W;2010;;SV07 Annaberg-Buchholz;3380;00:00:49,49;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 105;F;32006;8;;Hermann, Sara;402477;93;W;2010;;ST Erzgebirge;5134;00:00:50,47;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 105;F;32006;0;NA;Thierbach, Zoe;000000;43;W;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 105;F;32005;1;;Müller, Annica;429663;109;W;2011;;ST Erzgebirge;5134;00:00:39,09;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 105;F;32005;2;;Schreiter, Melissa;447078;136;W;2011;;ST Erzgebirge;5134;00:00:40,57;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 105;F;32005;3;;Heymann, Fiona;425180;234;W;2011;;SV Schneeberg Schwimmen;7124;00:00:40,78;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 105;F;32005;4;;Wolf, Anastasia;425176;264;W;2011;;SV Schneeberg Schwimmen;7124;00:00:41,53;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 105;F;32005;5;;Hiemann, Elisa;461993;95;W;2011;;ST Erzgebirge;5134;00:00:42,89;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 105;F;32005;6;;Naumann, Lilly;432056;246;W;2011;;SV Schneeberg Schwimmen;7124;00:00:43,22;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 105;F;32005;7;;Lang, Cora;437282;309;W;2011;;SV07 Annaberg-Buchholz;3380;00:00:45,46;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 105;F;32005;8;;Neubert, Sally;429664;121;W;2011;;ST Erzgebirge;5134;00:00:53,75;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 105;F;32005;0;AB;Nitschke, Lenja;000000;33;W;2011;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 105;F;32005;0;AB;Kaden, Nele;466489;99;W;2011;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 105;F;32004;1;;Riediger, Lani;459623;202;W;2012;;FC Erzgebirge Aue;7123;00:00:49,65;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 105;F;32004;2;;Langer, Mia;461959;106;W;2012;;ST Erzgebirge;5134;00:00:53,29;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 105;F;32004;0;AB;Tenelsen, Fenja;434707;205;W;2012;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 105;F;32004;0;AB;Schmiedel, Hannah;000000;41;W;2012;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 105;F;32003;1;;Keller, Emma;460563;357;W;2013;;SV 1990 Zschopau;3382;00:00:47,31;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 105;F;32002;1;;Decker, Hanna;459712;178;W;2014;;FC Erzgebirge Aue;7123;00:01:02,10;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 105;F;32009;1;;Richter, Nele;402475;132;W;2002;20;ST Erzgebirge;5134;00:00:31,88;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 105;F;32009;2;;Kreißig, Lilly;393190;361;W;2006;;SV 1990 Zschopau;3382;00:00:34,12;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 105;F;32009;3;;Katsala, Mariia;458276;100;W;2002;20;ST Erzgebirge;5134;00:00:34,68;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 105;F;32009;4;;Polusik, Adele;378079;200;W;2006;;FC Erzgebirge Aue;7123;00:00:35,21;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 105;F;32009;5;;Naumann, Sophie;419630;247;W;2006;;SV Schneeberg Schwimmen;7124;00:00:35,68;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 105;F;32009;6;;Kunze, Alice;380349;237;W;2001;20;SV Schneeberg Schwimmen;7124;00:00:36,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 105;F;32009;7;;Schmidt, Charlotte;395180;254;W;2006;;SV Schneeberg Schwimmen;7124;00:00:36,21;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 105;F;32009;8;;Fritzsch, Julie;363418;183;W;2006;;FC Erzgebirge Aue;7123;00:00:39,06;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 105;F;32009;9;;Zimmermann, Emma;000000;50;W;2005;;SV Tanne Thalheim e.V.;0000;00:00:44,08;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 105;F;32009;0;NA;Wassermann, Ciara;365444;210;W;2006;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 105;F;32009;0;AB;Brekau, Lena;000000;17;W;2006;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 105;F;32009;0;AB;Salomo, Jamie Marie;000000;37;W;2002;20;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 105;F;32008;1;;Hüllenhagen, Zoe;365442;187;W;2008;;FC Erzgebirge Aue;7123;00:00:32,61;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 105;F;32008;2;;Zingler, Lotte Pauline;365814;382;W;2007;;SV 1990 Zschopau;3382;00:00:34,24;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 105;F;32008;3;;Steiner, Tiffany;355425;266;W;2007;;ST Erzgebirge;5134;00:00:34,31;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 105;F;32008;4;;Rößler, Helena;349894;250;W;2008;;SV Schneeberg Schwimmen;7124;00:00:37,19;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 105;F;32008;5;;Blei, Mia;000000;14;W;2007;;SV Tanne Thalheim e.V.;0000;00:00:37,39;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 105;F;32008;6;;Richter, Tine;429666;133;W;2008;;ST Erzgebirge;5134;00:00:38,25;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 105;F;32008;7;;Wanke, Joy;382217;267;W;2007;;ST Erzgebirge;5134;00:00:38,58;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 105;F;32008;8;;Huschmann, Paula;416419;235;W;2008;;SV Schneeberg Schwimmen;7124;00:00:39,75;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 105;F;32008;9;;Hermann, Rebekka;402476;92;W;2007;;ST Erzgebirge;5134;00:00:41,41;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 105;F;32008;0;NA;Guba, Mailin;393192;346;W;2007;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 105;F;32008;0;AB;Barfeld, Clara;000000;12;W;2008;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 105;F;32008;0;AB;Voigt, Lina;395183;260;W;2007;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 105;F;32008;0;AB;Fritz, Lene;423559;341;W;2008;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 106;F;33007;1;;Voigt, Moritz;395182;261;M;2009;;SV Schneeberg Schwimmen;7124;00:00:31,04;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 106;F;33007;2;;Findeisen, Erik;415866;81;M;2009;;ST Erzgebirge;5134;00:00:32,14;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 106;F;33007;3;;Neubert, Domenic;429667;118;M;2009;;ST Erzgebirge;5134;00:00:37,73;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 106;F;33007;4;;Reichel, Janne;411557;253;M;2009;;SV Schneeberg Schwimmen;7124;00:00:38,52;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 106;F;33007;5;;Grunert, Ferdinand;395006;185;M;2009;;FC Erzgebirge Aue;7123;00:00:38,78;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 106;F;33007;6;;Bludau, Hannes;464634;336;M;2009;;SV 1990 Zschopau;3382;00:00:44,14;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 106;F;33007;0;NA;Tutzschky, Lukas;461949;142;M;2009;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 106;F;33006;1;;Zingler, Gustav Albert;409207;381;M;2010;;SV 1990 Zschopau;3382;00:00:32,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 106;F;33006;2;;Uloth, Darius;000000;44;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:39,62;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 106;F;33006;3;;Kossakowski, Paul;000000;28;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:41,11;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 106;F;33006;4;;Weber, Tobias;000000;47;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:44,11;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 106;F;33006;5;;Gläser, Simon;461951;89;M;2010;;ST Erzgebirge;5134;00:00:44,53;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 106;F;33006;6;;Wietz, Paul;395002;214;M;2010;;FC Erzgebirge Aue;7123;00:00:45,12;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 106;F;33006;0;DS;Engert, Fabian;423325;291;M;2010;;SV07 Annaberg-Buchholz;3380;00:00:00,00;Der Sportler führte einen Brustarmzug aus.;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 106;F;33005;1;;Güßmann, Ben;425179;229;M;2011;;SV Schneeberg Schwimmen;7124;00:00:38,18;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 106;F;33005;2;;Leichsenring, Jonas;446990;239;M;2011;;SV Schneeberg Schwimmen;7124;00:00:41,38;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 106;F;33005;3;;Kandler, Manuel;000000;26;M;2011;;SV Tanne Thalheim e.V.;0000;00:00:43,82;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 106;F;33005;0;AB;Klier, Malwin;000000;27;M;2011;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 106;F;33004;1;;Kraus, Finn;432063;192;M;2012;;FC Erzgebirge Aue;7123;00:00:46,28;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 106;F;33004;2;;Kopp, Albrecht;000000;270;M;2012;;SV Tanne Thalheim e.V.;0000;00:00:46,61;;;GER;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 106;F;33004;3;;Schieck, Martin;000000;40;M;2012;;SV Tanne Thalheim e.V.;0000;00:00:53,01;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 106;F;33004;4;;Päßler, Michael;459761;249;M;2012;;SV Schneeberg Schwimmen;7124;00:01:00,48;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 106;F;33003;1;;Konrad, Christian;461953;102;M;2013;;ST Erzgebirge;5134;00:00:53,39;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 106;F;33003;2;;Rebentrost, Helios;461954;127;M;2013;;ST Erzgebirge;5134;00:00:56,37;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 106;F;33003;3;;Meyer, Sammy;458126;113;M;2013;;ST Erzgebirge;5134;00:00:59,22;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 106;F;33003;4;;Lehmann, Jay;461955;107;M;2013;;ST Erzgebirge;5134;00:00:59,91;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 106;F;33002;1;;Gläser, Julian;458122;88;M;2014;;ST Erzgebirge;5134;00:00:57,72;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 106;F;33009;1;;Weiß, Johann;327133;146;M;2005;;ST Erzgebirge;5134;00:00:28,47;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 106;F;33009;2;;Rößler, Louis;297284;251;M;2004;;SV Schneeberg Schwimmen;7124;00:00:29,12;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 106;F;33009;3;;Reuter, Erik;338774;129;M;2005;;ST Erzgebirge;5134;00:00:29,31;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 106;F;33009;4;;Gerschler, Louis;320389;2;M;2003;20;SV07 Annaberg-Buchholz;3380;00:00:29,54;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 106;F;33009;5;;Uhlig, Johannes;361411;256;M;2006;;SV Schneeberg Schwimmen;7124;00:00:29,64;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 106;F;33009;6;;Goris, Knut;336333;233;M;2005;;SV Schneeberg Schwimmen;7124;00:00:30,24;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 106;F;33009;7;;Fischer, Till;363420;228;M;2005;;SV Schneeberg Schwimmen;7124;00:00:30,34;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 106;F;33009;8;;Schauer, Lukas;365572;322;M;2006;;SV07 Annaberg-Buchholz;3380;00:00:30,60;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 106;F;33009;9;;Püschel, Louis;000000;288;M;2005;;SV Schneeberg Schwimmen;7124;00:00:30,76;;;GER;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 106;F;33009;10;;Weiß, Konrad;298099;147;M;2002;20;ST Erzgebirge;5134;00:00:31,23;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 106;F;33009;0;AB;Conrad, Valentin;000000;18;M;2003;20;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 106;F;33008;1;;Richter, Kimi;384061;131;M;2007;;ST Erzgebirge;5134;00:00:29,47;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 106;F;33008;2;;Ullmann, Konstantin;349898;206;M;2008;;FC Erzgebirge Aue;7123;00:00:30,10;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 106;F;33008;3;;Meusel, Noah Joel;393191;365;M;2008;;SV 1990 Zschopau;3382;00:00:31,37;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 106;F;33008;4;;Meyer, Oliver;377625;367;M;2007;;SV 1990 Zschopau;3382;00:00:33,77;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 106;F;33008;5;;Kreißig, Pirmin;409206;4;M;2007;;SV 1990 Zschopau;3382;00:00:34,07;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 106;F;33008;5;;Heidenreich, Luca;415867;91;M;2008;;ST Erzgebirge;5134;00:00:34,07;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 106;F;33008;7;;Reinhold, Tom;419464;201;M;2007;;FC Erzgebirge Aue;7123;00:00:36,47;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 106;F;33008;8;;Kulai, Vasyl;429668;103;M;2008;;ST Erzgebirge;5134;00:00:36,91;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 106;F;33008;9;;Dietel, Cedric;365445;179;M;2007;;FC Erzgebirge Aue;7123;00:00:37,60;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 106;F;33008;0;AB;Heimrath, Johannes;000000;24;M;2007;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 106;F;33008;0;AB;Ilg, Johann Wolfgang;000000;25;M;2007;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 107;F;34007;1;;Petrick, Martha;433480;199;W;2009;;FC Erzgebirge Aue;7123;00:00:31,66;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 107;F;34007;2;;Wittig, Emma;415865;150;W;2009;;ST Erzgebirge;5134;00:00:32,07;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 107;F;34007;3;;Hunger, Lea;402166;353;W;2009;;SV 1990 Zschopau;3382;00:00:32,49;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 107;F;34007;4;;Koschnicke, Marla;397287;308;W;2009;;SV07 Annaberg-Buchholz;3380;00:00:35,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 107;F;34007;5;;Häckel, Lilly;402684;304;W;2009;;SV07 Annaberg-Buchholz;3380;00:00:36,99;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 107;F;34007;6;;Weißflog, Cora Lena;000000;48;W;2009;;SV Tanne Thalheim e.V.;0000;00:00:39,86;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 107;F;34007;7;;Lippert, Annalena;000000;30;W;2009;;SV Tanne Thalheim e.V.;0000;00:00:40,92;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 107;F;34007;8;;Schröer, Alyssa;000000;325;W;2009;;SV07 Annaberg-Buchholz;3380;00:00:49,62;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 107;F;34007;0;NA;Andrushchyk, Albina;000000;279;W;2009;;LKG St. Annen;0000;00:00:00,00;;;GER;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 107;F;34007;0;AB;Morgenstern, Lia;000000;6;W;2009;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 107;F;34007;0;AB;Pavlenko, Anastasiia;000000;281;W;2009;;LKG St. Annen;0000;00:00:00,00;;;GER;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 107;F;34006;1;;Sandow, Kena;433481;203;W;2010;;FC Erzgebirge Aue;7123;00:00:34,16;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 107;F;34006;2;;Göhler, Lucy;402479;83;W;2010;;ST Erzgebirge;5134;00:00:34,53;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 107;F;34006;3;;Ullmann, Linn;419258;207;W;2010;;FC Erzgebirge Aue;7123;00:00:35,13;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 107;F;34006;4;;Richter, Mathilda;416938;318;W;2010;;SV07 Annaberg-Buchholz;3380;00:00:38,22;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 107;F;34006;5;;Veith, Lucia Zoe;000000;259;W;2010;;SV Schneeberg Schwimmen;7124;00:00:38,41;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 107;F;34006;6;;Fischer, Ida;000000;182;W;2010;;FC Erzgebirge Aue;7123;00:00:40,36;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 107;F;34006;7;;Hermann, Sara;402477;93;W;2010;;ST Erzgebirge;5134;00:00:41,64;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 107;F;34006;8;;Weber, Alissa - Marie;000000;379;W;2010;;SV 1990 Zschopau;3382;00:00:42,66;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 107;F;34006;9;;Lorenz, Milena;417871;108;W;2010;;ST Erzgebirge;5134;00:00:43,13;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 107;F;34006;0;NA;Thierbach, Zoe;000000;43;W;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 107;F;34005;1;;Weidauer, Lavinia;419465;212;W;2011;;FC Erzgebirge Aue;7123;00:00:32,61;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 107;F;34005;2;;Müller, Annica;429663;109;W;2011;;ST Erzgebirge;5134;00:00:33,19;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 107;F;34005;3;;Wolf, Anastasia;425176;264;W;2011;;SV Schneeberg Schwimmen;7124;00:00:36,11;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 107;F;34005;4;;Heymann, Fiona;425180;234;W;2011;;SV Schneeberg Schwimmen;7124;00:00:37,10;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 107;F;34005;5;;Hiemann, Elisa;461993;95;W;2011;;ST Erzgebirge;5134;00:00:37,41;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 107;F;34005;6;;Nitschke, Lenja;000000;33;W;2011;;SV Tanne Thalheim e.V.;0000;00:00:39,69;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 107;F;34005;7;;Herold, Pia;459711;190;W;2011;;FC Erzgebirge Aue;7123;00:00:40,86;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 107;F;34005;8;;Lang, Cora;437282;309;W;2011;;SV07 Annaberg-Buchholz;3380;00:00:42,64;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 107;F;34005;9;;Hunger, Mara;440026;354;W;2011;;SV 1990 Zschopau;3382;00:00:43,31;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 107;F;34005;10;;Neubert, Sally;429664;121;W;2011;;ST Erzgebirge;5134;00:00:44,92;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 107;F;34005;0;AB;Kaden, Nele;466489;99;W;2011;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 107;F;34005;0;AB;Seyfarth, Hella;437452;327;W;2011;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 107;F;34004;1;;Müller, Zoe;417100;196;W;2012;;FC Erzgebirge Aue;7123;00:00:36,41;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 107;F;34004;2;;Riediger, Lani;459623;202;W;2012;;FC Erzgebirge Aue;7123;00:00:36,67;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 107;F;34004;3;;Müller, Frida;461992;110;W;2012;;ST Erzgebirge;5134;00:00:39,16;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 107;F;34004;4;;Nitsche, Lea;459626;198;W;2012;;FC Erzgebirge Aue;7123;00:00:39,38;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 107;F;34004;5;;Waldenburger, Lina;465925;209;W;2012;;FC Erzgebirge Aue;7123;00:00:41,57;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 107;F;34004;6;;Langer, Mia;461959;106;W;2012;;ST Erzgebirge;5134;00:00:45,67;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 107;F;34004;7;;Georgi, Maya;000000;166;W;2012;;DLRG Bezirk Bad Schlema;0000;00:00:47,14;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 107;F;34004;8;;Heimrath, Dorothea;000000;23;W;2012;;SV Tanne Thalheim e.V.;0000;00:00:47,42;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 107;F;34004;9;;Ulbricht, Emily;000000;331;W;2012;;SV07 Annaberg-Buchholz;3380;00:00:47,87;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 107;F;34004;0;AB;Schmiedel, Hannah;000000;41;W;2012;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 107;F;34004;0;AB;Riegler, Aada;000000;64;W;2012;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 107;F;34004;0;AB;Auerswald, Alina;459709;173;W;2012;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 107;F;34004;0;AB;Tenelsen, Fenja;434707;205;W;2012;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 107;F;34003;1;;Uhlig, Magdalena;451879;257;W;2013;;SV Schneeberg Schwimmen;7124;00:00:38,67;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 107;F;34003;2;;Keller, Emma;460563;357;W;2013;;SV 1990 Zschopau;3382;00:00:40,08;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 107;F;34003;3;;Oestreich, Sophia;458275;124;W;2013;;ST Erzgebirge;5134;00:00:43,21;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 107;F;34003;4;;Decker, Helene;464574;338;W;2013;;SV 1990 Zschopau;3382;00:00:44,05;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 107;F;34003;5;;Klaus, Emma;461960;101;W;2013;;ST Erzgebirge;5134;00:00:51,12;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 107;F;34003;6;;Hähnel, Leni;000000;22;W;2013;;SV Tanne Thalheim e.V.;0000;00:00:52,41;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 107;F;34003;7;;Mildner, Donna;000000;114;W;2013;;ST Erzgebirge;5134;00:00:53,10;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 107;F;34003;8;;Stieglitz, Zoe;000000;139;W;2013;;ST Erzgebirge;5134;00:01:03,96;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 107;F;34003;9;;Unger, Ella;000000;258;W;2013;;SV Schneeberg Schwimmen;7124;00:01:12,32;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 107;F;34003;0;NA;Herrmann, Lisa;000000;94;W;2013;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 107;F;34003;0;AB;Petri, Zazou;000000;35;W;2013;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 107;F;34003;0;AB;Schelberger, Samira;000000;39;W;2013;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 107;F;34002;1;;Decker, Hanna;459712;178;W;2014;;FC Erzgebirge Aue;7123;00:00:52,79;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 107;F;34002;2;;Lohße, Emma;000000;362;W;2014;;SV 1990 Zschopau;3382;00:01:00,94;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 107;F;34002;3;;Viertel, Victoria-Luise;461991;144;W;2014;;ST Erzgebirge;5134;00:01:01,32;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 107;F;34002;4;;Meusel, Lotta Chayenne;000000;364;W;2014;;SV 1990 Zschopau;3382;00:01:03,92;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 107;F;34002;0;NA;Schönfuß, Emma;000000;223;W;2014;;GS Altstadt Lößnitz;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 107;F;34002;0;AB;Zeuner, Emely;000000;49;W;2014;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 107;F;34002;0;AB;Friedrich, Käthe;000000;152;W;2014;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 107;F;34001;1;;Dähn, Mica;465953;177;W;2015;;FC Erzgebirge Aue;7123;00:00:54,67;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 107;F;34001;2;;Morgenstern, Elena;471532;116;W;2015;;ST Erzgebirge;5134;00:00:56,64;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 107;F;34009;1;;Richter, Nele;402475;132;W;2002;20;ST Erzgebirge;5134;00:00:29,23;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 107;F;34009;2;;Polusik, Adele;378079;200;W;2006;;FC Erzgebirge Aue;7123;00:00:30,08;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 107;F;34009;3;;Katsala, Mariia;458276;100;W;2002;20;ST Erzgebirge;5134;00:00:30,94;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 107;F;34009;4;;Kreißig, Lilly;393190;361;W;2006;;SV 1990 Zschopau;3382;00:00:31,39;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 107;F;34009;5;;Naumann, Sophie;419630;247;W;2006;;SV Schneeberg Schwimmen;7124;00:00:31,45;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 107;F;34009;6;;Schmidt, Charlotte;395180;254;W;2006;;SV Schneeberg Schwimmen;7124;00:00:31,54;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 107;F;34009;7;;Kunze, Alice;380349;237;W;2001;20;SV Schneeberg Schwimmen;7124;00:00:32,59;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 107;F;34009;8;;Fritzsch, Julie;363418;183;W;2006;;FC Erzgebirge Aue;7123;00:00:32,67;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 107;F;34009;0;NA;Mildner, Joelina;332266;115;W;2004;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 107;F;34009;0;NA;Wassermann, Ciara;365444;210;W;2006;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 107;F;34009;0;AB;Salomo, Jamie Marie;000000;37;W;2002;20;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 107;F;34009;0;AB;Sorge, Maria;000000;329;W;2005;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 107;F;34008;1;;Hüllenhagen, Zoe;365442;187;W;2008;;FC Erzgebirge Aue;7123;00:00:29,38;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 107;F;34008;2;;Tanneberger, Fiona;430278;377;W;2007;;SV 1990 Zschopau;3382;00:00:30,56;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 107;F;34008;3;;Zingler, Lotte Pauline;365814;382;W;2007;;SV 1990 Zschopau;3382;00:00:31,37;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 107;F;34008;4;;Steiner, Tiffany;355425;266;W;2007;;ST Erzgebirge;5134;00:00:31,70;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 107;F;34008;5;;Richter, Tine;429666;133;W;2008;;ST Erzgebirge;5134;00:00:32,42;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 107;F;34008;6;;Huschmann, Paula;416419;235;W;2008;;SV Schneeberg Schwimmen;7124;00:00:33,68;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 107;F;34008;7;;Rößler, Helena;349894;250;W;2008;;SV Schneeberg Schwimmen;7124;00:00:34,62;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 107;F;34008;8;;Blei, Mia;000000;14;W;2007;;SV Tanne Thalheim e.V.;0000;00:00:34,90;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 107;F;34008;9;;Wanke, Joy;382217;267;W;2007;;ST Erzgebirge;5134;00:00:35,35;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 107;F;34008;0;NA;Guba, Mailin;393192;346;W;2007;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 107;F;34008;0;AB;Barfeld, Clara;000000;12;W;2008;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 107;F;34008;0;AB;Einenkel, Enie;411895;289;W;2008;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 107;F;34008;0;AB;Fritz, Lene;423559;341;W;2008;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 108;F;35007;1;;Voigt, Moritz;395182;261;M;2009;;SV Schneeberg Schwimmen;7124;00:00:29,16;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 108;F;35007;2;;Findeisen, Erik;415866;81;M;2009;;ST Erzgebirge;5134;00:00:29,45;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 108;F;35007;3;;Reichel, Janne;411557;253;M;2009;;SV Schneeberg Schwimmen;7124;00:00:32,29;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 108;F;35007;4;;Weber, Anton;395001;211;M;2009;;FC Erzgebirge Aue;7123;00:00:32,90;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 108;F;35007;5;;Neubert, Domenic;429667;118;M;2009;;ST Erzgebirge;5134;00:00:33,71;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 108;F;35007;6;;Grunert, Ferdinand;395006;185;M;2009;;FC Erzgebirge Aue;7123;00:00:33,76;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 108;F;35007;7;;Bludau, Hannes;464634;336;M;2009;;SV 1990 Zschopau;3382;00:00:37,96;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 108;F;35007;8;;Lohse, Rouven;000000;310;M;2009;;SV07 Annaberg-Buchholz;3380;00:00:38,81;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 108;F;35007;0;NA;Gabler, Ansgar;000000;85;M;2009;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 108;F;35007;0;NA;Tutzschky, Lukas;461949;142;M;2009;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 108;F;35007;0;AB;Reuther, Collin;000000;160;M;2009;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 108;F;35006;1;;Zingler, Gustav Albert;409207;381;M;2010;;SV 1990 Zschopau;3382;00:00:29,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 108;F;35006;2;;Uloth, Darius;000000;44;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:31,82;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 108;F;35006;3;;Weber, Tobias;000000;47;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:34,77;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 108;F;35006;4;;Wietz, Paul;395002;214;M;2010;;FC Erzgebirge Aue;7123;00:00:34,91;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 108;F;35006;5;;Richter, Tomek;437283;319;M;2010;;SV07 Annaberg-Buchholz;3380;00:00:35,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 108;F;35006;6;;Engert, Fabian;423325;291;M;2010;;SV07 Annaberg-Buchholz;3380;00:00:35,83;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 108;F;35006;7;;Kossakowski, Paul;000000;28;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:37,47;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 108;F;35006;8;;Gläser, Simon;461951;89;M;2010;;ST Erzgebirge;5134;00:00:37,52;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 108;F;35006;0;NA;Fabian, Dominik;000000;19;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 108;F;35006;0;NA;Günther, Jason;000000;21;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 108;F;35006;0;AB;Kunze, Patrice;459707;238;M;2010;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 108;F;35005;1;;Güßmann, Ben;425179;229;M;2011;;SV Schneeberg Schwimmen;7124;00:00:32,41;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 108;F;35005;2;;Lötzsch, Theo;419466;194;M;2011;;FC Erzgebirge Aue;7123;00:00:36,76;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 108;F;35005;3;;Schmieder, Julian Magnus;394210;8;M;2011;;SV 1990 Zschopau;3382;00:00:38,88;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 108;F;35005;4;;Kandler, Manuel;000000;26;M;2011;;SV Tanne Thalheim e.V.;0000;00:00:41,20;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 108;F;35005;5;;Frohs, Erik;000000;82;M;2011;;ST Erzgebirge;5134;00:00:42,06;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 108;F;35005;6;;Barth, Lenny;000000;57;M;2011;;Zwönitzer Schwimmverein e.V.;0000;00:00:42,59;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 108;F;35005;7;;Fauska, Franz;458123;78;M;2011;;ST Erzgebirge;5134;00:00:42,95;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 108;F;35005;8;;Nestler, Kilian;000000;368;M;2011;;SV 1990 Zschopau;3382;00:00:43,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 108;F;35005;9;;Schubert, Sten;464575;375;M;2011;;SV 1990 Zschopau;3382;00:00:48,84;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 108;F;35005;0;AB;Klier, Malwin;000000;27;M;2011;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 108;F;35005;0;AB;Koksha, Artem;000000;282;M;2011;;LKG St. Annen;0000;00:00:00,00;;;GER;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 108;F;35005;0;AB;Enzmann, Florian;000000;293;M;2011;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 108;F;35005;0;AB;Ernst, Lukas;000000;295;M;2011;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 108;F;35004;1;;Kraus, Finn;432063;192;M;2012;;FC Erzgebirge Aue;7123;00:00:36,67;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 108;F;35004;2;;Colditz, Lukas;000000;59;M;2012;;Zwönitzer Schwimmverein e.V.;0000;00:00:40,47;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 108;F;35004;3;;Kopp, Albrecht;000000;270;M;2012;;SV Tanne Thalheim e.V.;0000;00:00:41,50;;;GER;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 108;F;35004;4;;Grüger, Joshua;000000;303;M;2012;;SV07 Annaberg-Buchholz;3380;00:00:43,44;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 108;F;35004;5;;Cherkasov, Denys;000000;337;M;2012;;SV 1990 Zschopau;3382;00:00:44,18;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 108;F;35004;6;;Weigel, Richard;000000;213;M;2012;;FC Erzgebirge Aue;7123;00:00:44,35;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 108;F;35004;7;;Schieck, Martin;000000;40;M;2012;;SV Tanne Thalheim e.V.;0000;00:00:45,04;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 108;F;35004;8;;Bochmann, Noa;461952;77;M;2012;;ST Erzgebirge;5134;00:00:45,93;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 108;F;35004;9;;Gottschalk, Karl;461957;90;M;2012;;ST Erzgebirge;5134;00:00:46,16;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 108;F;35004;0;NA;Morgenstern, Gustav;000000;5;M;2012;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 108;F;35004;0;AB;Fritzsch, Simon;000000;299;M;2012;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 108;F;35003;1;;Meyer, Sammy;458126;113;M;2013;;ST Erzgebirge;5134;00:00:42,20;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 108;F;35003;2;;Konrad, Christian;461953;102;M;2013;;ST Erzgebirge;5134;00:00:42,93;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 108;F;35003;3;;Rebentrost, Helios;461954;127;M;2013;;ST Erzgebirge;5134;00:00:47,07;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 108;F;35003;4;;Nordheim, Matteo;461956;122;M;2013;;ST Erzgebirge;5134;00:00:49,07;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 108;F;35003;5;;Lehmann, Jay;461955;107;M;2013;;ST Erzgebirge;5134;00:00:49,47;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 108;F;35003;6;;Lippold, Paul;000000;61;M;2013;;Zwönitzer Schwimmverein e.V.;0000;00:00:50,10;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 108;F;35003;7;;Nestler, Kurt;000000;315;M;2013;;SV07 Annaberg-Buchholz;3380;00:00:50,40;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 108;F;35003;8;;Uloth, Luca;000000;45;M;2013;;SV Tanne Thalheim e.V.;0000;00:00:56,02;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 108;F;35003;9;;Lippert, Elias;000000;31;M;2013;;SV Tanne Thalheim e.V.;0000;00:01:02,51;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 108;F;35003;0;AB;Müller, Julius;000000;63;M;2013;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 108;F;35003;0;AB;Arnold, Henri;000000;76;M;2013;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 108;F;35003;0;AB;Böttrich, Ben;000000;216;M;2013;;GS Altstadt Lößnitz;0000;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 108;F;35002;1;;Reuter, Nils;464573;7;M;2014;;SV 1990 Zschopau;3382;00:00:44,91;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 108;F;35002;2;;Gläser, Julian;458122;88;M;2014;;ST Erzgebirge;5134;00:00:45,17;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 108;F;35002;3;;Ertl, Armin;000000;296;M;2014;;SV07 Annaberg-Buchholz;3380;00:00:47,37;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 108;F;35002;4;;Geißler, Matteo;000000;302;M;2014;;SV07 Annaberg-Buchholz;3380;00:00:57,01;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 108;F;35002;5;;Neubert, Johann;000000;222;M;2014;;GS Altstadt Lößnitz;0000;00:01:02,57;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 108;F;35002;0;NA;Fay, Miroslav;000000;79;M;2014;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 108;F;35002;0;AB;Fabian, Vincent;000000;20;M;2014;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 108;F;35002;0;AB;Leers, Tim;000000;155;M;2014;;ASB -Wasserrettungsdienst;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 108;F;35002;0;AB;Ratayski, Aaron;000000;268;M;2014;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 108;F;35001;1;;Unger, Bruno;471531;143;M;2015;;ST Erzgebirge;5134;00:00:55,21;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 108;F;35001;2;;Müller, Gustav;000000;111;M;2015;;ST Erzgebirge;5134;00:01:00,12;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 108;F;35001;3;;Nitschke, Lenas;000000;32;M;2015;;SV Tanne Thalheim e.V.;0000;00:01:08,16;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 108;F;35009;1;;Siegel, Paul;343558;328;M;2005;;SV07 Annaberg-Buchholz;3380;00:00:25,66;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 108;F;35009;2;;Rößler, Louis;297284;251;M;2004;;SV Schneeberg Schwimmen;7124;00:00:26,25;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 108;F;35009;3;;Weiß, Johann;327133;146;M;2005;;ST Erzgebirge;5134;00:00:26,35;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 108;F;35009;4;;Reuter, Erik;338774;129;M;2005;;ST Erzgebirge;5134;00:00:26,77;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 108;F;35009;5;;Uhlig, Johannes;361411;256;M;2006;;SV Schneeberg Schwimmen;7124;00:00:26,97;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 108;F;35009;6;;Fischer, Till;363420;228;M;2005;;SV Schneeberg Schwimmen;7124;00:00:27,60;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 108;F;35009;7;;Goris, Knut;336333;233;M;2005;;SV Schneeberg Schwimmen;7124;00:00:27,72;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 108;F;35009;8;;Schauer, Lukas;365572;322;M;2006;;SV07 Annaberg-Buchholz;3380;00:00:27,82;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 108;F;35009;9;;Weiß, Konrad;298099;147;M;2002;20;ST Erzgebirge;5134;00:00:27,91;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 108;F;35009;10;;Püschel, Louis;000000;288;M;2005;;SV Schneeberg Schwimmen;7124;00:00:28,00;;;GER;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 108;F;35009;0;AB;Conrad, Valentin;000000;18;M;2003;20;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 108;F;35008;1;;Richter, Kimi;384061;131;M;2007;;ST Erzgebirge;5134;00:00:26,30;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 108;F;35008;2;;Ullmann, Konstantin;349898;206;M;2008;;FC Erzgebirge Aue;7123;00:00:28,01;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 108;F;35008;3;;Meusel, Noah Joel;393191;365;M;2008;;SV 1990 Zschopau;3382;00:00:29,06;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 108;F;35008;4;;Kraus, Tim;395174;193;M;2008;;FC Erzgebirge Aue;7123;00:00:29,36;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 108;F;35008;5;;Meyer, Oliver;377625;367;M;2007;;SV 1990 Zschopau;3382;00:00:29,49;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 108;F;35008;6;;Wohlgemuth, Moritz;349897;215;M;2007;;FC Erzgebirge Aue;7123;00:00:29,73;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 108;F;35008;7;;Neubert, Johannes;393375;119;M;2007;;ST Erzgebirge;5134;00:00:30,13;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 108;F;35008;8;;Heidenreich, Luca;415867;91;M;2008;;ST Erzgebirge;5134;00:00:30,28;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 108;F;35008;9;;Dietel, Cedric;365445;179;M;2007;;FC Erzgebirge Aue;7123;00:00:31,97;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 108;F;35008;10;;Kulai, Vasyl;429668;103;M;2008;;ST Erzgebirge;5134;00:00:33,11;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 108;F;35008;0;AB;Uhlmann, Linus;000000;171;M;2007;;DLRG Bezirk Bad Schlema;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 109;F;36007;1;;Hunger, Lea;402166;353;W;2009;;SV 1990 Zschopau;3382;00:01:18,69;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 353;109;F;25;00:00:38,66;
+PNERGEBNIS: 109;F;36007;2;;Häckel, Lilly;402684;304;W;2009;;SV07 Annaberg-Buchholz;3380;00:01:31,56;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 304;109;F;25;00:00:43,60;
+PNERGEBNIS: 109;F;36007;0;NA;Wittig, Emma;415865;150;W;2009;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 109;F;36007;0;AB;Morgenstern, Lia;000000;6;W;2009;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 109;F;36006;1;;Göhler, Lucy;402479;83;W;2010;;ST Erzgebirge;5134;00:01:28,75;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 83;109;F;25;00:00:44,08;
+PNERGEBNIS: 109;F;36006;2;;Zellhuber, Hanna;000000;265;W;2010;;SV Schneeberg Schwimmen;7124;00:01:40,76;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 265;109;F;25;00:00:48,29;
+PNERGEBNIS: 109;F;36006;3;;Emmrich, Sophie;453164;290;W;2010;;SV07 Annaberg-Buchholz;3380;00:01:41,77;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 290;109;F;25;00:00:51,44;
+PNERGEBNIS: 109;F;36006;4;;Lorenz, Milena;417871;108;W;2010;;ST Erzgebirge;5134;00:01:51,01;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 108;109;F;25;00:00:51,88;
+PNERGEBNIS: 109;F;36006;0;DS;Richter, Mathilda;416938;318;W;2010;;SV07 Annaberg-Buchholz;3380;00:00:00,00;Die Sportlerin hat bei der zweiten Wende nach Verlassen der Rückenlage keinen kontinuierlichen Armzug durchgeführt.;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 109;F;36006;0;AB;Ernst, Lisa;000000;294;W;2010;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 109;F;36005;1;;Schreiter, Melissa;447078;136;W;2011;;ST Erzgebirge;5134;00:01:29,27;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 136;109;F;25;00:00:43,64;
+PNERGEBNIS: 109;F;36005;2;;Seyfarth, Hella;437452;327;W;2011;;SV07 Annaberg-Buchholz;3380;00:01:31,14;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 327;109;F;25;00:00:44,34;
+PNERGEBNIS: 109;F;36005;3;;Wolf, Anastasia;425176;264;W;2011;;SV Schneeberg Schwimmen;7124;00:01:32,69;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 264;109;F;25;00:00:44,37;
+PNERGEBNIS: 109;F;36005;4;;Naumann, Lilly;432056;246;W;2011;;SV Schneeberg Schwimmen;7124;00:01:41,53;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 246;109;F;25;00:00:49,16;
+PNERGEBNIS: 109;F;36005;5;;Salomo, Jule;000000;38;W;2011;;SV Tanne Thalheim e.V.;0000;00:01:46,72;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 38;109;F;25;00:00:47,54;
+PNERGEBNIS: 109;F;36005;0;AB;Kaden, Nele;466489;99;W;2011;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 109;F;36005;0;AB;Thorandt, Cecilia;000000;330;W;2011;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 109;F;36004;1;;Müller, Zoe;417100;196;W;2012;;FC Erzgebirge Aue;7123;00:01:25,33;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 196;109;F;25;00:00:41,66;
+PNERGEBNIS: 109;F;36004;2;;Waldenburger, Lina;465925;209;W;2012;;FC Erzgebirge Aue;7123;00:01:39,74;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 209;109;F;25;00:00:46,82;
+PNERGEBNIS: 109;F;36004;3;;Langer, Mia;461959;106;W;2012;;ST Erzgebirge;5134;00:01:51,42;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 106;109;F;25;00:00:53,82;
+PNERGEBNIS: 109;F;36004;4;;Ulbricht, Emily;000000;331;W;2012;;SV07 Annaberg-Buchholz;3380;00:01:52,44;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 331;109;F;25;00:00:57,27;
+PNERGEBNIS: 109;F;36004;5;;Richter, Anne;000000;372;W;2012;;SV 1990 Zschopau;3382;00:01:57,72;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 372;109;F;25;00:00:58,79;
+PNERGEBNIS: 109;F;36004;0;AB;Riegler, Aada;000000;64;W;2012;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 109;F;36004;0;AB;Leuoth, Vanessa;459708;195;W;2012;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 109;F;36003;1;;Decker, Helene;464574;338;W;2013;;SV 1990 Zschopau;3382;00:01:55,54;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 338;109;F;25;00:00:56,37;
+PNERGEBNIS: 109;F;36003;2;;Oestreich, Sophia;458275;124;W;2013;;ST Erzgebirge;5134;00:01:55,60;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 124;109;F;25;00:00:52,75;
+PNERGEBNIS: 109;F;36003;3;;Lohse, Talisa;000000;311;W;2013;;SV07 Annaberg-Buchholz;3380;00:01:58,66;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 311;109;F;25;00:00:56,49;
+PNERGEBNIS: 109;F;36003;4;;Klaus, Emma;461960;101;W;2013;;ST Erzgebirge;5134;00:02:03,52;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 101;109;F;25;00:00:57,92;
+PNERGEBNIS: 109;F;36003;5;;Mildner, Donna;000000;114;W;2013;;ST Erzgebirge;5134;00:02:13,95;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 114;109;F;25;00:01:01,64;
+PNERGEBNIS: 109;F;36009;1;;Katsala, Mariia;458276;100;W;2002;20;ST Erzgebirge;5134;00:01:10,97;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 100;109;F;25;00:00:34,24;
+PNERGEBNIS: 109;F;36009;2;;Richter, Nele;402475;132;W;2002;20;ST Erzgebirge;5134;00:01:14,53;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 132;109;F;25;00:00:35,54;
+PNERGEBNIS: 109;F;36009;3;;Rülke, Katyana;343550;317;W;2005;;SV07 Annaberg-Buchholz;3380;00:01:17,64;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 317;109;F;25;00:00:37,41;
+PNERGEBNIS: 109;F;36009;4;;Kreißig, Lilly;393190;361;W;2006;;SV 1990 Zschopau;3382;00:01:21,17;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 361;109;F;25;00:00:39,64;
+PNERGEBNIS: 109;F;36009;5;;Gersten, Julia;301388;230;W;2003;20;SV Schneeberg Schwimmen;7124;00:01:27,43;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 230;109;F;25;00:00:42,71;
+PNERGEBNIS: 109;F;36009;0;AB;Müller, Mia;349891;1;W;2006;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 109;F;36009;0;AB;Bochmann, Sofie;000000;16;W;2004;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 109;F;36008;1;;Hüllenhagen, Zoe;365442;187;W;2008;;FC Erzgebirge Aue;7123;00:01:10,04;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 187;109;F;25;00:00:33,19;
+PNERGEBNIS: 109;F;36008;2;;Zingler, Lotte Pauline;365814;382;W;2007;;SV 1990 Zschopau;3382;00:01:16,34;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 382;109;F;25;00:00:36,55;
+PNERGEBNIS: 109;F;36008;3;;Rößler, Helena;349894;250;W;2008;;SV Schneeberg Schwimmen;7124;00:01:21,60;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 250;109;F;25;00:00:39,57;
+PNERGEBNIS: 109;F;36008;4;;Tanneberger, Fiona;430278;377;W;2007;;SV 1990 Zschopau;3382;00:01:22,06;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 377;109;F;25;00:00:41,09;
+PNERGEBNIS: 109;F;36008;5;;Richter, Tine;429666;133;W;2008;;ST Erzgebirge;5134;00:01:31,16;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 133;109;F;25;00:00:43,64;
+PNERGEBNIS: 109;F;36008;0;AB;Einenkel, Enie;411895;289;W;2008;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 109;F;36008;0;AB;Fritz, Lene;423559;341;W;2008;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 110;F;37007;1;;Findeisen, Erik;415866;81;M;2009;;ST Erzgebirge;5134;00:01:21,37;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 81;110;F;25;00:00:39,57;
+PNERGEBNIS: 110;F;37007;2;;Reichel, Janne;411557;253;M;2009;;SV Schneeberg Schwimmen;7124;00:01:26,05;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 253;110;F;25;00:00:42,11;
+PNERGEBNIS: 110;F;37007;3;;Grunert, Ferdinand;395006;185;M;2009;;FC Erzgebirge Aue;7123;00:01:35,24;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 185;110;F;25;00:00:46,01;
+PNERGEBNIS: 110;F;37007;0;NA;Tutzschky, Lukas;461949;142;M;2009;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 110;F;37007;0;DS;Neubert, Domenic;429667;118;M;2009;;ST Erzgebirge;5134;00:00:00,00;Der Sportler hat bei der ersten und zweiten Wende nach Verlassen der Rückenlage nicht unverzüglich die eigentliche Wendenbewegung ausgeführt.;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 110;F;37006;1;;Kossakowski, Paul;000000;28;M;2010;;SV Tanne Thalheim e.V.;0000;00:01:31,60;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 28;110;F;25;00:00:43,35;
+PNERGEBNIS: 110;F;37006;2;;Weber, Tobias;000000;47;M;2010;;SV Tanne Thalheim e.V.;0000;00:01:32,62;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 47;110;F;25;00:00:44,54;
+PNERGEBNIS: 110;F;37006;3;;Richter, Tomek;437283;319;M;2010;;SV07 Annaberg-Buchholz;3380;00:01:33,96;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 319;110;F;25;00:00:47,43;
+PNERGEBNIS: 110;F;37006;0;NA;Fabian, Dominik;000000;19;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 110;F;37006;0;NA;Günther, Jason;000000;21;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 110;F;37006;0;AB;Kunze, Patrice;459707;238;M;2010;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 110;F;37005;1;;Lötzsch, Theo;419466;194;M;2011;;FC Erzgebirge Aue;7123;00:01:32,97;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 194;110;F;25;00:00:44,48;
+PNERGEBNIS: 110;F;37005;2;;Leichsenring, Jonas;446990;239;M;2011;;SV Schneeberg Schwimmen;7124;00:01:36,90;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 239;110;F;25;00:00:47,68;
+PNERGEBNIS: 110;F;37005;3;;Schmieder, Julian Magnus;394210;8;M;2011;;SV 1990 Zschopau;3382;00:01:40,31;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 8;110;F;25;00:00:49,32;
+PNERGEBNIS: 110;F;37005;4;;Frohs, Erik;000000;82;M;2011;;ST Erzgebirge;5134;00:01:50,91;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 82;110;F;25;00:00:53,24;
+PNERGEBNIS: 110;F;37005;5;;Schubert, Sten;464575;375;M;2011;;SV 1990 Zschopau;3382;00:02:06,94;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 375;110;F;25;00:00:57,53;
+PNERGEBNIS: 110;F;37005;0;AB;Klier, Malwin;000000;27;M;2011;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 110;F;37005;0;AB;Enzmann, Florian;000000;293;M;2011;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 110;F;37004;1;;Gottschalk, Karl;461957;90;M;2012;;ST Erzgebirge;5134;00:02:01,13;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 90;110;F;25;00:00:56,53;
+PNERGEBNIS: 110;F;37004;2;;Weigel, Richard;000000;213;M;2012;;FC Erzgebirge Aue;7123;00:02:02,46;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 213;110;F;25;00:00:58,64;
+PNERGEBNIS: 110;F;37004;3;;Marek, Josia;000000;313;M;2012;;SV07 Annaberg-Buchholz;3380;00:02:04,00;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 313;110;F;25;00:00:59,79;
+PNERGEBNIS: 110;F;37004;0;NA;Morgenstern, Gustav;000000;5;M;2012;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 110;F;37004;0;DS;Schieck, Martin;000000;40;M;2012;;SV Tanne Thalheim e.V.;0000;00:00:00,00;Der Sportler hat bei der zweiten Wende nach Verlassen der Rückenlage die eigentliche Wendenbewegung nicht unverzüglich ausgeführt.;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 110;F;37003;1;;Lindner, Michael;458458;242;M;2013;;SV Schneeberg Schwimmen;7124;00:01:50,48;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 242;110;F;25;00:00:52,60;
+PNERGEBNIS: 110;F;37003;2;;Rebentrost, Helios;461954;127;M;2013;;ST Erzgebirge;5134;00:01:53,07;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 127;110;F;25;00:00:52,84;
+PNERGEBNIS: 110;F;37003;3;;Meyer, Sammy;458126;113;M;2013;;ST Erzgebirge;5134;00:01:58,77;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 113;110;F;25;00:00:55,93;
+PNERGEBNIS: 110;F;37003;4;;Lippold, Paul;000000;61;M;2013;;Zwönitzer Schwimmverein e.V.;0000;00:02:07,78;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 61;110;F;25;00:01:01,45;
+PNERGEBNIS: 110;F;37003;5;;Lippert, Elias;000000;31;M;2013;;SV Tanne Thalheim e.V.;0000;00:02:12,68;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 31;110;F;25;00:01:04,03;
+PNERGEBNIS: 110;F;37009;1;;Rößler, Louis;297284;251;M;2004;;SV Schneeberg Schwimmen;7124;00:01:07,59;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 251;110;F;25;00:00:33,22;
+PNERGEBNIS: 110;F;37009;2;;Weiß, Johann;327133;146;M;2005;;ST Erzgebirge;5134;00:01:08,42;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 146;110;F;25;00:00:33,48;
+PNERGEBNIS: 110;F;37009;3;;Schauer, Lukas;365572;322;M;2006;;SV07 Annaberg-Buchholz;3380;00:01:10,54;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 322;110;F;25;00:00:34,94;
+PNERGEBNIS: 110;F;37009;4;;Püschel, Louis;000000;288;M;2005;;SV Schneeberg Schwimmen;7124;00:01:11,58;;;GER;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 288;110;F;25;00:00:35,43;
+PNERGEBNIS: 110;F;37009;5;;Uhlig, Johannes;361411;256;M;2006;;SV Schneeberg Schwimmen;7124;00:01:14,06;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 256;110;F;25;00:00:36,00;
+PNERGEBNIS: 110;F;37009;0;AB;Bochmann, Robert;000000;15;M;2000;20;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 110;F;37009;0;AB;Hösel, Max;355424;347;M;2006;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 110;F;37008;1;;Richter, Kimi;384061;131;M;2007;;ST Erzgebirge;5134;00:01:09,53;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 131;110;F;25;00:00:33,38;
+PNERGEBNIS: 110;F;37008;2;;Heidenreich, Luca;415867;91;M;2008;;ST Erzgebirge;5134;00:01:18,26;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 91;110;F;25;00:00:39,01;
+PNERGEBNIS: 110;F;37008;3;;Neubert, Johannes;393375;119;M;2007;;ST Erzgebirge;5134;00:01:23,02;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 119;110;F;25;00:00:40,02;
+PNERGEBNIS: 110;F;37008;4;;Kulai, Vasyl;429668;103;M;2008;;ST Erzgebirge;5134;00:01:29,96;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 103;110;F;25;00:00:39,97;
+PNERGEBNIS: 110;F;37008;0;AB;Ilg, Johann Wolfgang;000000;25;M;2007;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 110;F;37008;0;AB;Haase, Tim Justin;000000;167;M;2007;;DLRG Bezirk Bad Schlema;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 111;F;38002;1;;Grunert, Florentine;452985;269;W;2014;;FC Erzgebirge Aue;7123;00:00:54,60;;;GER;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 111;F;38002;2;;Decker, Hanna;459712;178;W;2014;;FC Erzgebirge Aue;7123;00:00:57,53;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 111;F;38002;3;;Schubert, Lena;000000;137;W;2014;;ST Erzgebirge;5134;00:01:08,89;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 111;F;38002;4;;Viertel, Victoria-Luise;461991;144;W;2014;;ST Erzgebirge;5134;00:01:09,02;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 111;F;38002;5;;Meusel, Lotta Chayenne;000000;364;W;2014;;SV 1990 Zschopau;3382;00:01:12,05;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 111;F;38002;6;;Großmann, Amielou Louise;000000;345;W;2014;;SV 1990 Zschopau;3382;00:01:13,95;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 111;F;38002;0;NA;Schmiedel, Rebecca;000000;324;W;2014;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 111;F;38002;0;DS;Wilinga, Joceline;000000;148;W;2014;;ST Erzgebirge;5134;00:00:00,00;Die Sportlerin führte während der Schwimmstrecke einen Brustbeinschlag aus, dabei wurde das Brett nicht vorn umfasst.;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 111;F;38002;0;DS;Gläser, Chloe;000000;184;W;2014;;FC Erzgebirge Aue;7123;00:00:00,00;Das Brett wurde nicht die ganze Schwimmstrecke vorn umfasst.;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 111;F;38002;0;DS;Andrushchyk, Elina;000000;272;W;2014;;BSZ Adam-Ries;0000;00:00:00,00;Das Brett wurde nicht die ganze Schwimmstrecke vorn umfasst.;;GER;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 111;F;38002;0;AB;Fabritzek, Matilda;000000;181;W;2014;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 111;F;38002;0;AB;Hahn, Valentina;000000;189;W;2014;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 111;F;38001;1;;Vazquez Grundig, Frieda Nelli;000000;3;W;2015;;SV07 Annaberg-Buchholz;3380;00:01:03,19;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 111;F;38001;2;;Schlegel, Mia;000000;135;W;2015;;ST Erzgebirge;5134;00:01:14,37;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 111;F;38001;3;;Meuschke, Maxi;460747;197;W;2015;;FC Erzgebirge Aue;7123;00:01:14,85;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 111;F;38001;4;;Lindner, Magdalena;000000;241;W;2015;;SV Schneeberg Schwimmen;7124;00:01:18,70;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 111;F;38001;5;;Morgenstern, Elena;471532;116;W;2015;;ST Erzgebirge;5134;00:01:21,58;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 111;F;38001;6;;Dähn, Mica;465953;177;W;2015;;FC Erzgebirge Aue;7123;00:01:26,65;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 111;F;38001;7;;Wendler, Hilde Ella;000000;262;W;2015;;SV Schneeberg Schwimmen;7124;00:01:36,68;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 111;F;38001;8;;Schönrock, Marie;000000;204;W;2015;;FC Erzgebirge Aue;7123;00:01:54,58;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 111;F;38001;0;DS;Kunze, Ella;000000;104;W;2015;;ST Erzgebirge;5134;00:00:00,00;Beim Anschlag an der Wende hat die Sportlerin das Brett nicht mit beiden Händen vorn umfasst.;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 111;F;38001;0;DS;Preißler, Amy;000000;126;W;2015;;ST Erzgebirge;5134;00:00:00,00;Beim Anschlag an der Wende hat die Sportlerin das Brett nicht mit beiden Händen vorn umfasst.;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 112;F;39002;1;;Gläser, Julian;458122;88;M;2014;;ST Erzgebirge;5134;00:01:00,10;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 112;F;39002;2;;Reuter, Nils;464573;7;M;2014;;SV 1990 Zschopau;3382;00:01:02,84;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 112;F;39002;3;;Ertl, Armin;000000;296;M;2014;;SV07 Annaberg-Buchholz;3380;00:01:09,61;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 112;F;39002;4;;Hüttinger, Richard;000000;348;M;2014;;SV 1990 Zschopau;3382;00:01:21,97;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 112;F;39002;5;;Geißler, Matteo;000000;302;M;2014;;SV07 Annaberg-Buchholz;3380;00:01:28,19;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 112;F;39002;0;NA;Fay, Miroslav;000000;79;M;2014;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 112;F;39002;0;DS;Steiner, Alexander B.;458124;138;M;2014;;ST Erzgebirge;5134;00:00:00,00;Das Brett wurde nicht die ganze Schwimmstrecke vorn umfasst.;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 112;F;39002;0;AB;Winterfeld, Ben;000000;149;M;2014;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 112;F;39002;0;AB;Ratayski, Aaron;000000;268;M;2014;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 112;F;39001;1;;Unger, Bruno;471531;143;M;2015;;ST Erzgebirge;5134;00:01:07,87;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 112;F;39001;2;;Müller, Gustav;000000;111;M;2015;;ST Erzgebirge;5134;00:01:19,93;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 112;F;39001;3;;Reuße, Ben;000000;128;M;2015;;ST Erzgebirge;5134;00:02:18,05;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 112;F;39001;0;DS;Hübner, Niklas;000000;186;M;2015;;FC Erzgebirge Aue;7123;00:00:00,00;Beim Anschlag an der Wende hat der Sportler das Brett nicht mit beiden Händen vorn umfasst.;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 112;F;39001;0;AB;Nitschke, Lenas;000000;32;M;2015;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 112;F;39001;0;AB;Berger, Kurt;000000;174;M;2015;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 113;F;40007;1;;Wittig, Emma;415865;150;W;2009;;ST Erzgebirge;5134;00:01:24,26;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 150;113;F;25;00:00:39,94;
+PNERGEBNIS: 113;F;40007;2;;Hunger, Lea;402166;353;W;2009;;SV 1990 Zschopau;3382;00:01:28,15;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 353;113;F;25;00:00:41,34;
+PNERGEBNIS: 113;F;40007;3;;Koschnicke, Marla;397287;308;W;2009;;SV07 Annaberg-Buchholz;3380;00:01:36,80;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 308;113;F;25;00:00:45,27;
+PNERGEBNIS: 113;F;40007;4;;Lippert, Annalena;000000;30;W;2009;;SV Tanne Thalheim e.V.;0000;00:01:46,90;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 30;113;F;25;00:00:50,49;
+PNERGEBNIS: 113;F;40007;5;;Gersten, Manja;421838;231;W;2009;;SV Schneeberg Schwimmen;7124;00:01:52,22;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 231;113;F;25;00:00:52,21;
+PNERGEBNIS: 113;F;40007;0;AB;Morgenstern, Lia;000000;6;W;2009;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 113;F;40006;1;;Ullmann, Linn;419258;207;W;2010;;FC Erzgebirge Aue;7123;00:01:33,69;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 207;113;F;25;00:00:44,71;
+PNERGEBNIS: 113;F;40006;2;;Frauenlob, Elise;446324;297;W;2010;;SV07 Annaberg-Buchholz;3380;00:01:35,43;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 297;113;F;25;00:00:46,98;
+PNERGEBNIS: 113;F;40006;3;;Göhler, Lucy;402479;83;W;2010;;ST Erzgebirge;5134;00:01:40,46;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 83;113;F;25;00:00:47,90;
+PNERGEBNIS: 113;F;40006;4;;Riegler, Sophia;000000;66;W;2010;;Zwönitzer Schwimmverein e.V.;0000;00:01:47,40;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 66;113;F;25;00:00:50,72;
+PNERGEBNIS: 113;F;40006;0;NA;Thierbach, Zoe;000000;43;W;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 113;F;40005;1;;Hiemann, Elisa;461993;95;W;2011;;ST Erzgebirge;5134;00:01:35,15;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 95;113;F;25;00:00:46,40;
+PNERGEBNIS: 113;F;40005;2;;Schreiter, Melissa;447078;136;W;2011;;ST Erzgebirge;5134;00:01:35,21;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 136;113;F;25;00:00:46,22;
+PNERGEBNIS: 113;F;40005;3;;Müller, Annica;429663;109;W;2011;;ST Erzgebirge;5134;00:01:36,93;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 109;113;F;25;00:00:45,83;
+PNERGEBNIS: 113;F;40005;4;;Seyfarth, Hella;437452;327;W;2011;;SV07 Annaberg-Buchholz;3380;00:01:38,93;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 327;113;F;25;00:00:46,50;
+PNERGEBNIS: 113;F;40005;5;;Nitschke, Lenja;000000;33;W;2011;;SV Tanne Thalheim e.V.;0000;00:01:39,64;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 33;113;F;25;00:00:48,05;
+PNERGEBNIS: 113;F;40004;1;;Riediger, Lani;459623;202;W;2012;;FC Erzgebirge Aue;7123;00:01:43,92;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 202;113;F;25;00:00:48,76;
+PNERGEBNIS: 113;F;40004;2;;Waldenburger, Lina;465925;209;W;2012;;FC Erzgebirge Aue;7123;00:01:44,01;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 209;113;F;25;00:00:50,42;
+PNERGEBNIS: 113;F;40004;3;;Nitsche, Lea;459626;198;W;2012;;FC Erzgebirge Aue;7123;00:01:47,20;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 198;113;F;25;00:00:49,88;
+PNERGEBNIS: 113;F;40004;4;;Müller, Frida;461992;110;W;2012;;ST Erzgebirge;5134;00:01:50,27;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 110;113;F;25;00:00:54,04;
+PNERGEBNIS: 113;F;40004;0;NA;Ulbricht, Emily;000000;331;W;2012;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 113;F;40004;0;AB;Schediwy, Lilly;000000;68;W;2012;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 113;F;40004;0;AB;Tenelsen, Fenja;434707;205;W;2012;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 113;F;40003;1;;Uhlig, Magdalena;451879;257;W;2013;;SV Schneeberg Schwimmen;7124;00:01:44,42;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 257;113;F;25;00:00:48,37;
+PNERGEBNIS: 113;F;40003;2;;Klaus, Emma;461960;101;W;2013;;ST Erzgebirge;5134;00:01:53,62;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 101;113;F;25;00:00:53,77;
+PNERGEBNIS: 113;F;40003;3;;Keller, Emma;460563;357;W;2013;;SV 1990 Zschopau;3382;00:01:55,66;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 357;113;F;25;00:00:54,19;
+PNERGEBNIS: 113;F;40003;4;;Decker, Helene;464574;338;W;2013;;SV 1990 Zschopau;3382;00:01:57,82;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 338;113;F;25;00:00:54,84;
+PNERGEBNIS: 113;F;40003;5;;Lohse, Talisa;000000;311;W;2013;;SV07 Annaberg-Buchholz;3380;00:02:02,49;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 311;113;F;25;00:00:58,23;
+PNERGEBNIS: 113;F;40003;0;AB;Scheffler, Mia;000000;224;W;2013;;GS Altstadt Lößnitz;0000;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 113;F;40009;1;;Polusik, Adele;378079;200;W;2006;;FC Erzgebirge Aue;7123;00:01:25,72;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 200;113;F;25;00:00:39,05;
+PNERGEBNIS: 113;F;40009;2;;Naumann, Sophie;419630;247;W;2006;;SV Schneeberg Schwimmen;7124;00:01:30,33;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 247;113;F;25;00:00:41,55;
+PNERGEBNIS: 113;F;40009;0;NA;Brekau, Lena;000000;17;W;2006;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 113;F;40009;0;NA;Zimmermann, Emma;000000;50;W;2005;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 113;F;40009;0;NA;Mildner, Joelina;332266;115;W;2004;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 113;F;40009;0;AB;Müller, Mia;349891;1;W;2006;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 113;F;40009;0;AB;Bochmann, Sofie;000000;16;W;2004;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 113;F;40008;1;;Tanneberger, Fiona;430278;377;W;2007;;SV 1990 Zschopau;3382;00:01:26,65;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 377;113;F;25;00:00:40,99;
+PNERGEBNIS: 113;F;40008;2;;Voigt, Lina;395183;260;W;2007;;SV Schneeberg Schwimmen;7124;00:01:30,15;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 260;113;F;25;00:00:42,53;
+PNERGEBNIS: 113;F;40008;3;;Huschmann, Paula;416419;235;W;2008;;SV Schneeberg Schwimmen;7124;00:01:31,59;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 235;113;F;25;00:00:44,24;
+PNERGEBNIS: 113;F;40008;4;;Wanke, Joy;382217;267;W;2007;;ST Erzgebirge;5134;00:01:38,13;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 267;113;F;25;00:00:45,04;
+PNERGEBNIS: 113;F;40008;0;NA;Blei, Mia;000000;14;W;2007;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 113;F;40008;0;AB;Schwipper, Lisa;397284;326;W;2008;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 114;F;41007;1;;Findeisen, Erik;415866;81;M;2009;;ST Erzgebirge;5134;00:01:27,02;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 81;114;F;25;00:00:41,33;
+PNERGEBNIS: 114;F;41007;2;;Lohse, Rouven;000000;310;M;2009;;SV07 Annaberg-Buchholz;3380;00:01:35,62;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 310;114;F;25;00:00:43,10;
+PNERGEBNIS: 114;F;41007;3;;Bludau, Hannes;464634;336;M;2009;;SV 1990 Zschopau;3382;00:01:35,70;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 336;114;F;25;00:00:43,11;
+PNERGEBNIS: 114;F;41007;4;;Weber, Anton;395001;211;M;2009;;FC Erzgebirge Aue;7123;00:01:36,94;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 211;114;F;25;00:00:46,13;
+PNERGEBNIS: 114;F;41007;0;NA;Tutzschky, Lukas;461949;142;M;2009;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 114;F;41007;0;AB;Keller, Timon;000000;359;M;2009;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 114;F;41006;1;;Zingler, Gustav Albert;409207;381;M;2010;;SV 1990 Zschopau;3382;00:01:23,92;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 381;114;F;25;00:00:39,93;
+PNERGEBNIS: 114;F;41006;2;;Uloth, Darius;000000;44;M;2010;;SV Tanne Thalheim e.V.;0000;00:01:34,82;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 44;114;F;25;00:00:43,79;
+PNERGEBNIS: 114;F;41006;3;;Richter, Tomek;437283;319;M;2010;;SV07 Annaberg-Buchholz;3380;00:01:42,00;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 319;114;F;25;00:00:45,57;
+PNERGEBNIS: 114;F;41006;4;;Eichhorn, Jamie;000000;164;M;2010;;DLRG Bezirk Bad Schlema;0000;00:01:42,89;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 164;114;F;25;00:00:47,28;
+PNERGEBNIS: 114;F;41006;5;;Gläser, Simon;461951;89;M;2010;;ST Erzgebirge;5134;00:01:44,70;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 89;114;F;25;00:00:47,98;
+PNERGEBNIS: 114;F;41006;0;AB;Kunze, Patrice;459707;238;M;2010;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 114;F;41005;1;;Güßmann, Ben;425179;229;M;2011;;SV Schneeberg Schwimmen;7124;00:01:36,13;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 229;114;F;25;00:00:45,56;
+PNERGEBNIS: 114;F;41005;2;;Nestler, Kilian;000000;368;M;2011;;SV 1990 Zschopau;3382;00:01:41,18;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 368;114;F;25;00:00:47,11;
+PNERGEBNIS: 114;F;41005;3;;Leichsenring, Jonas;446990;239;M;2011;;SV Schneeberg Schwimmen;7124;00:01:41,45;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 239;114;F;25;00:00:48,38;
+PNERGEBNIS: 114;F;41005;4;;Kandler, Manuel;000000;26;M;2011;;SV Tanne Thalheim e.V.;0000;00:01:47,64;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 26;114;F;25;00:00:51,85;
+PNERGEBNIS: 114;F;41005;5;;Barth, Lenny;000000;57;M;2011;;Zwönitzer Schwimmverein e.V.;0000;00:01:54,07;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 57;114;F;25;00:00:51,23;
+PNERGEBNIS: 114;F;41005;0;AB;Ernst, Lukas;000000;295;M;2011;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 114;F;41004;1;;Schieck, Martin;000000;40;M;2012;;SV Tanne Thalheim e.V.;0000;00:01:46,92;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 40;114;F;25;00:00:50,24;
+PNERGEBNIS: 114;F;41004;2;;Kopp, Albrecht;000000;270;M;2012;;SV Tanne Thalheim e.V.;0000;00:01:48,70;;;GER;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 270;114;F;25;00:00:51,40;
+PNERGEBNIS: 114;F;41004;3;;Colditz, Lukas;000000;59;M;2012;;Zwönitzer Schwimmverein e.V.;0000;00:01:50,45;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 59;114;F;25;00:00:54,61;
+PNERGEBNIS: 114;F;41004;4;;Päßler, Michael;459761;249;M;2012;;SV Schneeberg Schwimmen;7124;00:02:06,48;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 249;114;F;25;00:01:01,52;
+PNERGEBNIS: 114;F;41004;0;NA;Morgenstern, Gustav;000000;5;M;2012;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 114;F;41003;1;;Konrad, Christian;461953;102;M;2013;;ST Erzgebirge;5134;00:01:53,20;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 102;114;F;25;00:00:53,35;
+PNERGEBNIS: 114;F;41003;2;;Lippold, Paul;000000;61;M;2013;;Zwönitzer Schwimmverein e.V.;0000;00:01:53,72;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 61;114;F;25;00:00:57,23;
+PNERGEBNIS: 114;F;41003;3;;Uloth, Luca;000000;45;M;2013;;SV Tanne Thalheim e.V.;0000;00:01:58,71;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 45;114;F;25;00:00:56,17;
+PNERGEBNIS: 114;F;41003;4;;Bergelt, Kurt;000000;58;M;2013;;Zwönitzer Schwimmverein e.V.;0000;00:02:01,67;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 58;114;F;25;00:00:57,74;
+PNERGEBNIS: 114;F;41003;5;;Lindner, Michael;458458;242;M;2013;;SV Schneeberg Schwimmen;7124;00:02:03,49;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 242;114;F;25;00:00:59,35;
+PNERGEBNIS: 114;F;41003;0;AB;Müller, Julius;000000;63;M;2013;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 114;F;41009;1;;Weiß, Johann;327133;146;M;2005;;ST Erzgebirge;5134;00:01:13,73;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 146;114;F;25;00:00:34,69;
+PNERGEBNIS: 114;F;41009;2;;Conrad, Valentin;000000;18;M;2003;20;SV Tanne Thalheim e.V.;0000;00:01:15,73;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 18;114;F;25;00:00:35,49;
+PNERGEBNIS: 114;F;41009;3;;Goris, Knut;336333;233;M;2005;;SV Schneeberg Schwimmen;7124;00:01:17,51;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 233;114;F;25;00:00:36,26;
+PNERGEBNIS: 114;F;41009;4;;Gerschler, Louis;320389;2;M;2003;20;SV07 Annaberg-Buchholz;3380;00:01:18,71;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 2;114;F;25;00:00:37,11;
+PNERGEBNIS: 114;F;41009;5;;Weiß, Konrad;298099;147;M;2002;20;ST Erzgebirge;5134;00:01:19,80;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 147;114;F;25;00:00:36,60;
+PNERGEBNIS: 114;F;41009;0;AB;Mühlig, Markus;388203;312;M;2006;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 114;F;41008;1;;Richter, Kimi;384061;131;M;2007;;ST Erzgebirge;5134;00:01:19,60;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 131;114;F;25;00:00:37,12;
+PNERGEBNIS: 114;F;41008;2;;Kreißig, Pirmin;409206;4;M;2007;;SV 1990 Zschopau;3382;00:01:23,46;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 4;114;F;25;00:00:38,88;
+PNERGEBNIS: 114;F;41008;3;;Heidenreich, Luca;415867;91;M;2008;;ST Erzgebirge;5134;00:01:23,51;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 91;114;F;25;00:00:40,08;
+PNERGEBNIS: 114;F;41008;4;;Kulai, Vasyl;429668;103;M;2008;;ST Erzgebirge;5134;00:01:25,91;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 103;114;F;25;00:00:40,19;
+PNERGEBNIS: 114;F;41008;5;;Neubert, Johannes;393375;119;M;2007;;ST Erzgebirge;5134;00:01:28,52;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 119;114;F;25;00:00:41,42;
+PNERGEBNIS: 114;F;41008;0;AB;Heimrath, Johannes;000000;24;M;2007;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 115;F;42002;1;;Großmann, Amielou Louise;000000;345;W;2014;;SV 1990 Zschopau;3382;00:01:02,02;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 115;F;42002;2;;Grunert, Florentine;452985;269;W;2014;;FC Erzgebirge Aue;7123;00:01:02,78;;;GER;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 115;F;42002;3;;Viertel, Victoria-Luise;461991;144;W;2014;;ST Erzgebirge;5134;00:01:05,01;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 115;F;42002;4;;Rieger, Olivia;000000;373;W;2014;;SV 1990 Zschopau;3382;00:01:07,34;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 115;F;42002;5;;Schubert, Lena;000000;137;W;2014;;ST Erzgebirge;5134;00:01:10,77;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 115;F;42002;6;;Meyer, Amelie;000000;314;W;2014;;SV07 Annaberg-Buchholz;3380;00:01:20,10;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 115;F;42002;7;;Meusel, Lotta Chayenne;000000;364;W;2014;;SV 1990 Zschopau;3382;00:01:23,71;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 115;F;42002;8;;Gläser, Chloe;000000;184;W;2014;;FC Erzgebirge Aue;7123;00:01:25,67;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 115;F;42002;0;NA;Schönfuß, Emma;000000;223;W;2014;;GS Altstadt Lößnitz;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 115;F;42002;0;DS;Bergmann, Sienna;000000;175;W;2014;;FC Erzgebirge Aue;7123;00:00:00,00;Das Brett wurde vor der Wende los gelassen, dadurch erfolgte der Anschlag an der Wende nicht mit beiden Händen am Brett.;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 115;F;42002;0;AB;Broers, Hannah;000000;219;W;2014;;GS Altstadt Lößnitz;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 115;F;42002;0;AB;Friedemann, Corrie;000000;226;W;2014;;GS Altstadt Lößnitz;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 115;F;42001;1;;Strauß, Josy;000000;70;W;2015;;Zwönitzer Schwimmverein e.V.;0000;00:01:13,34;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 115;F;42001;2;;Dähn, Mica;465953;177;W;2015;;FC Erzgebirge Aue;7123;00:01:13,36;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 115;F;42001;3;;Meuschke, Maxi;460747;197;W;2015;;FC Erzgebirge Aue;7123;00:01:14,09;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 115;F;42001;4;;Kunze, Ella;000000;104;W;2015;;ST Erzgebirge;5134;00:01:29,23;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 115;F;42001;5;;Wendler, Hilde Ella;000000;262;W;2015;;SV Schneeberg Schwimmen;7124;00:01:33,39;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 115;F;42001;6;;Lindner, Magdalena;000000;241;W;2015;;SV Schneeberg Schwimmen;7124;00:01:38,67;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 115;F;42001;0;NA;Kalbe, Mathea;000000;236;W;2015;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 115;F;42001;0;NA;Prommerberger, Tami;000000;371;W;2015;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 115;F;42001;0;DS;Morgenstern, Elena;471532;116;W;2015;;ST Erzgebirge;5134;00:00:00,00;Beim Anschlag an der Wende hat die Sportlerin das Brett nicht mit beiden Händen vorn umfasst.;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 115;F;42001;0;AB;Müller, Johanna;000000;62;W;2015;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 115;F;42001;0;AB;Riegler, Larena;000000;65;W;2015;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 115;F;42001;0;AB;Wimmer, Mia;000000;73;W;2015;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 116;F;43002;1;;Neubert, Johann;000000;222;M;2014;;GS Altstadt Lößnitz;0000;00:01:08,72;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 116;F;43002;2;;Steiner, Alexander B.;458124;138;M;2014;;ST Erzgebirge;5134;00:01:11,42;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 116;F;43002;3;;Hüttinger, Richard;000000;348;M;2014;;SV 1990 Zschopau;3382;00:01:11,56;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 116;F;43002;4;;Ertl, Armin;000000;296;M;2014;;SV07 Annaberg-Buchholz;3380;00:01:22,27;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 116;F;43002;0;DS;Geißler, Matteo;000000;302;M;2014;;SV07 Annaberg-Buchholz;3380;00:00:00,00;Der Sportler führte mit den Beinen wechselseitig Bewegungen (Wechselbeinschläge) aus.;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 116;F;43002;0;AB;Fabian, Vincent;000000;20;M;2014;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 116;F;43002;0;AB;Ratayski, Aaron;000000;268;M;2014;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 116;F;43002;0;AB;Baumann, Emilio;000000;334;M;2014;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 116;F;43001;1;;Nitschke, Lenas;000000;32;M;2015;;SV Tanne Thalheim e.V.;0000;00:01:06,75;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 116;F;43001;2;;Reuße, Ben;000000;128;M;2015;;ST Erzgebirge;5134;00:01:16,81;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 116;F;43001;0;DS;Unger, Bruno;471531;143;M;2015;;ST Erzgebirge;5134;00:00:00,00;Beim Anschlag an der Wende hat der Sportler nicht mit den Händen angeschlagen.;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 116;F;43001;0;DS;Müller, Gustav;000000;111;M;2015;;ST Erzgebirge;5134;00:00:00,00;Das Brett wurde vor der Wand los gelassen, dadurch erfolgte der Anschlag nicht mit beiden Händen am Brett.;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 116;F;43001;0;AB;Keller, Valentin;000000;360;M;2015;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 116;F;43001;0;AB;Sowadde, Levi;000000;376;M;2015;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 117;F;44007;1;;Wittig, Emma;415865;150;W;2009;;ST Erzgebirge;5134;00:01:26,82;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 150;117;F;25;00:00:38,40;
+PNERGEBNIS: 117;F;44007;2;;Weißflog, Cora Lena;000000;48;W;2009;;SV Tanne Thalheim e.V.;0000;00:01:44,80;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 48;117;F;25;00:00:48,65;
+PNERGEBNIS: 117;F;44006;1;;Sandow, Kena;433481;203;W;2010;;FC Erzgebirge Aue;7123;00:01:35,00;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 203;117;F;25;00:00:43,12;
+PNERGEBNIS: 117;F;44006;2;;Lorenz, Milena;417871;108;W;2010;;ST Erzgebirge;5134;00:01:46,63;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 108;117;F;25;00:00:48,31;
+PNERGEBNIS: 117;F;44006;3;;Emmrich, Sophie;453164;290;W;2010;;SV07 Annaberg-Buchholz;3380;00:01:56,08;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 290;117;F;25;00:00:54,06;
+PNERGEBNIS: 117;F;44005;1;;Schreiter, Melissa;447078;136;W;2011;;ST Erzgebirge;5134;00:01:35,83;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 136;117;F;25;00:00:43,35;
+PNERGEBNIS: 117;F;44005;2;;Heymann, Fiona;425180;234;W;2011;;SV Schneeberg Schwimmen;7124;00:01:43,00;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 234;117;F;25;00:00:42,67;
+PNERGEBNIS: 117;F;44005;3;;Wolf, Anastasia;425176;264;W;2011;;SV Schneeberg Schwimmen;7124;00:01:43,62;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 264;117;F;25;00:00:44,24;
+PNERGEBNIS: 117;F;44009;1;;Katsala, Mariia;458276;100;W;2002;20;ST Erzgebirge;5134;00:01:13,17;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 100;117;F;25;00:00:33,98;
+PNERGEBNIS: 117;F;44009;2;;Richter, Nele;402475;132;W;2002;20;ST Erzgebirge;5134;00:01:16,88;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 132;117;F;25;00:00:34,79;
+PNERGEBNIS: 117;F;44009;3;;Kreißig, Lilly;393190;361;W;2006;;SV 1990 Zschopau;3382;00:01:18,02;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 361;117;F;25;00:00:35,70;
+PNERGEBNIS: 117;F;44009;4;;Kunze, Alice;380349;237;W;2001;20;SV Schneeberg Schwimmen;7124;00:01:27,79;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 237;117;F;25;00:00:40,05;
+PNERGEBNIS: 117;F;44009;0;NA;Wassermann, Ciara;365444;210;W;2006;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 117;F;44009;0;AB;Brekau, Lena;000000;17;W;2006;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 117;F;44008;1;;Hüllenhagen, Zoe;365442;187;W;2008;;FC Erzgebirge Aue;7123;00:01:15,16;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 187;117;F;25;00:00:33,35;
+PNERGEBNIS: 117;F;44008;2;;Richter, Tine;429666;133;W;2008;;ST Erzgebirge;5134;00:01:42,28;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 133;117;F;25;00:00:40,93;
+PNERGEBNIS: 117;F;44008;3;;Schönherr, Hannah;382221;134;W;2007;;ST Erzgebirge;5134;00:01:42,66;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 134;117;F;25;00:00:43,24;
+PNERGEBNIS: 117;F;44008;4;;Künzel, Collien;393376;98;W;2008;;ST Erzgebirge;5134;00:01:47,78;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 98;117;F;25;00:00:44,41;
+PNERGEBNIS: 117;F;44008;0;NA;Blei, Mia;000000;14;W;2007;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 117;F;44008;0;AB;Einenkel, Enie;411895;289;W;2008;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 118;F;45007;1;;Voigt, Moritz;395182;261;M;2009;;SV Schneeberg Schwimmen;7124;00:01:11,43;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 261;118;F;25;00:00:32,04;
+PNERGEBNIS: 118;F;45007;2;;Findeisen, Erik;415866;81;M;2009;;ST Erzgebirge;5134;00:01:17,85;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 81;118;F;25;00:00:36,28;
+PNERGEBNIS: 118;F;45007;0;DS;Neubert, Domenic;429667;118;M;2009;;ST Erzgebirge;5134;00:00:00,00;Der Sportler führte mit den Beinen wechselseitig Bewegungen aus.;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 118;F;45006;1;;Uloth, Darius;000000;44;M;2010;;SV Tanne Thalheim e.V.;0000;00:01:34,10;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 44;118;F;25;00:00:49,98;
+PNERGEBNIS: 118;F;45006;2;;Weber, Tobias;000000;47;M;2010;;SV Tanne Thalheim e.V.;0000;00:01:43,96;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 47;118;F;25;00:00:45,15;
+PNERGEBNIS: 118;F;45006;0;DS;Kossakowski, Paul;000000;28;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;Die Arme wurden während der Schwimmstrecke nicht gleichzeitig über Wasser nach vorn gebracht.;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 118;F;45005;1;;Güßmann, Ben;425179;229;M;2011;;SV Schneeberg Schwimmen;7124;00:01:28,75;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 229;118;F;25;00:00:42,04;
+PNERGEBNIS: 118;F;45005;2;;Kandler, Manuel;000000;26;M;2011;;SV Tanne Thalheim e.V.;0000;00:01:45,94;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 26;118;F;25;00:00:43,12;
+PNERGEBNIS: 118;F;45009;1;;Siegel, Paul;343558;328;M;2005;;SV07 Annaberg-Buchholz;3380;00:01:05,38;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 328;118;F;25;00:00:30,37;
+PNERGEBNIS: 118;F;45009;2;;Rößler, Louis;297284;251;M;2004;;SV Schneeberg Schwimmen;7124;00:01:05,72;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 251;118;F;25;00:00:29,94;
+PNERGEBNIS: 118;F;45009;3;;Weiß, Johann;327133;146;M;2005;;ST Erzgebirge;5134;00:01:05,75;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 146;118;F;25;00:00:30,61;
+PNERGEBNIS: 118;F;45009;4;;Reuter, Erik;338774;129;M;2005;;ST Erzgebirge;5134;00:01:08,68;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 129;118;F;25;00:00:31,95;
+PNERGEBNIS: 118;F;45009;5;;Goris, Knut;336333;233;M;2005;;SV Schneeberg Schwimmen;7124;00:01:10,08;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 233;118;F;25;00:00:31,95;
+PNERGEBNIS: 118;F;45009;0;AB;Ahner, Arthur;000000;9;M;2000;20;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 118;F;45008;1;;Richter, Kimi;384061;131;M;2007;;ST Erzgebirge;5134;00:01:09,85;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 131;118;F;25;00:00:32,76;
+PNERGEBNIS: 118;F;45008;2;;Ullmann, Konstantin;349898;206;M;2008;;FC Erzgebirge Aue;7123;00:01:11,16;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 206;118;F;25;00:00:32,73;
+PNERGEBNIS: 118;F;45008;3;;Kreißig, Pirmin;409206;4;M;2007;;SV 1990 Zschopau;3382;00:01:19,37;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 4;118;F;25;00:00:35,37;
+PNERGEBNIS: 118;F;45008;4;;Wohlgemuth, Moritz;349897;215;M;2007;;FC Erzgebirge Aue;7123;00:01:24,35;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 215;118;F;25;00:00:36,50;
+PNERGEBNIS: 118;F;45008;5;;Dietel, Cedric;365445;179;M;2007;;FC Erzgebirge Aue;7123;00:01:29,55;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 179;118;F;25;00:00:39,09;
+PNERGEBNIS: 118;F;45008;0;AB;Heimrath, Johannes;000000;24;M;2007;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 118;F;45008;0;AB;Ilg, Johann Wolfgang;000000;25;M;2007;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 119;F;46002;1;;Schubert, Lena;000000;137;W;2014;;ST Erzgebirge;5134;00:01:31,18;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 119;F;46001;1;;Preißler, Amy;000000;126;W;2015;;ST Erzgebirge;5134;00:01:23,76;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 119;F;46001;2;;Kunze, Ella;000000;104;W;2015;;ST Erzgebirge;5134;00:01:35,34;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 119;F;46001;3;;Lindner, Magdalena;000000;241;W;2015;;SV Schneeberg Schwimmen;7124;00:01:39,43;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 119;F;46001;4;;Wendler, Hilde Ella;000000;262;W;2015;;SV Schneeberg Schwimmen;7124;00:02:14,93;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 120;F;47002;1;;Reuter, Nils;464573;7;M;2014;;SV 1990 Zschopau;3382;00:01:17,66;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 120;F;47002;0;DS;Steiner, Alexander B.;458124;138;M;2014;;ST Erzgebirge;5134;00:00:00,00;Der Sportler führte mit den Beinen wechselseitig Bewegungen aus.;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 120;F;47001;1;;Müller, Gustav;000000;111;M;2015;;ST Erzgebirge;5134;00:01:25,39;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 121;F;48007;1;;Petrick, Martha;433480;199;W;2009;;FC Erzgebirge Aue;7123;00:01:09,96;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 199;121;F;25;00:00:33,11;
+PNERGEBNIS: 121;F;48007;2;;Weißflog, Cora Lena;000000;48;W;2009;;SV Tanne Thalheim e.V.;0000;00:01:33,30;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 48;121;F;25;00:00:08,93;
+PNZWISCHENZEIT: 48;121;F;50;00:00:42,88;
+PNERGEBNIS: 121;F;48007;3;;Lippert, Annalena;000000;30;W;2009;;SV Tanne Thalheim e.V.;0000;00:01:37,43;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 30;121;F;25;00:00:45,15;
+PNERGEBNIS: 121;F;48007;0;NA;Wittig, Emma;415865;150;W;2009;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 121;F;48007;0;NA;Häckel, Lilly;402684;304;W;2009;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 121;F;48007;0;AB;Morgenstern, Lia;000000;6;W;2009;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 121;F;48007;0;AB;Koschnicke, Marla;397287;308;W;2009;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 121;F;48006;1;;Sandow, Kena;433481;203;W;2010;;FC Erzgebirge Aue;7123;00:01:16,65;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 203;121;F;25;00:00:37,39;
+PNERGEBNIS: 121;F;48006;2;;Göhler, Lucy;402479;83;W;2010;;ST Erzgebirge;5134;00:01:17,10;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 83;121;F;25;00:00:37,55;
+PNERGEBNIS: 121;F;48006;3;;Ullmann, Linn;419258;207;W;2010;;FC Erzgebirge Aue;7123;00:01:20,67;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 207;121;F;25;00:00:38,39;
+PNERGEBNIS: 121;F;48006;4;;Fischer, Ida;000000;182;W;2010;;FC Erzgebirge Aue;7123;00:01:34,11;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 182;121;F;25;00:00:43,13;
+PNERGEBNIS: 121;F;48006;0;NA;Thierbach, Zoe;000000;43;W;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 121;F;48005;1;;Müller, Annica;429663;109;W;2011;;ST Erzgebirge;5134;00:01:13,73;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 109;121;F;25;00:00:35,15;
+PNERGEBNIS: 121;F;48005;2;;Weidauer, Lavinia;419465;212;W;2011;;FC Erzgebirge Aue;7123;00:01:15,63;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 212;121;F;25;00:00:35,43;
+PNERGEBNIS: 121;F;48005;3;;Wolf, Anastasia;425176;264;W;2011;;SV Schneeberg Schwimmen;7124;00:01:22,87;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 264;121;F;25;00:00:38,86;
+PNERGEBNIS: 121;F;48005;4;;Hiemann, Elisa;461993;95;W;2011;;ST Erzgebirge;5134;00:01:27,36;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 95;121;F;25;00:00:41,52;
+PNERGEBNIS: 121;F;48005;5;;Nitschke, Lenja;000000;33;W;2011;;SV Tanne Thalheim e.V.;0000;00:01:34,20;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 33;121;F;25;00:00:43,88;
+PNERGEBNIS: 121;F;48005;0;AB;Kaden, Nele;466489;99;W;2011;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 121;F;48004;1;;Müller, Zoe;417100;196;W;2012;;FC Erzgebirge Aue;7123;00:01:22,68;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 196;121;F;25;00:00:39,75;
+PNERGEBNIS: 121;F;48004;2;;Müller, Frida;461992;110;W;2012;;ST Erzgebirge;5134;00:01:30,37;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 110;121;F;25;00:00:41,61;
+PNERGEBNIS: 121;F;48004;3;;Langer, Mia;461959;106;W;2012;;ST Erzgebirge;5134;00:01:42,16;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 106;121;F;25;00:00:50,23;
+PNERGEBNIS: 121;F;48004;4;;Ulbricht, Emily;000000;331;W;2012;;SV07 Annaberg-Buchholz;3380;00:01:46,50;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 331;121;F;25;00:00:50,31;
+PNERGEBNIS: 121;F;48004;5;;Heimrath, Dorothea;000000;23;W;2012;;SV Tanne Thalheim e.V.;0000;00:01:52,73;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 23;121;F;25;00:00:47,92;
+PNERGEBNIS: 121;F;48004;0;AB;Auerswald, Alina;459709;173;W;2012;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 121;F;48004;0;AB;Leuoth, Vanessa;459708;195;W;2012;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 121;F;48004;0;AB;Tenelsen, Fenja;434707;205;W;2012;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 121;F;48003;1;;Keller, Emma;460563;357;W;2013;;SV 1990 Zschopau;3382;00:01:31,25;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 357;121;F;25;00:00:40,97;
+PNERGEBNIS: 121;F;48003;2;;Uhlig, Magdalena;451879;257;W;2013;;SV Schneeberg Schwimmen;7124;00:01:32,04;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 257;121;F;25;00:00:42,50;
+PNERGEBNIS: 121;F;48003;3;;Decker, Helene;464574;338;W;2013;;SV 1990 Zschopau;3382;00:01:42,19;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 338;121;F;25;00:00:47,51;
+PNERGEBNIS: 121;F;48003;4;;Oestreich, Sophia;458275;124;W;2013;;ST Erzgebirge;5134;00:01:42,94;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 124;121;F;25;00:00:44,52;
+PNERGEBNIS: 121;F;48003;5;;Lohse, Talisa;000000;311;W;2013;;SV07 Annaberg-Buchholz;3380;00:01:57,86;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 311;121;F;25;00:00:53,46;
+PNERGEBNIS: 121;F;48009;1;;Katsala, Mariia;458276;100;W;2002;20;ST Erzgebirge;5134;00:01:03,69;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 100;121;F;25;00:00:31,41;
+PNERGEBNIS: 121;F;48009;2;;Richter, Nele;402475;132;W;2002;20;ST Erzgebirge;5134;00:01:04,92;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 132;121;F;25;00:00:31,08;
+PNERGEBNIS: 121;F;48009;3;;Kreißig, Lilly;393190;361;W;2006;;SV 1990 Zschopau;3382;00:01:07,79;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 361;121;F;25;00:00:33,07;
+PNERGEBNIS: 121;F;48009;4;;Polusik, Adele;378079;200;W;2006;;FC Erzgebirge Aue;7123;00:01:08,29;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 200;121;F;25;00:00:32,76;
+PNERGEBNIS: 121;F;48009;5;;Schmidt, Charlotte;395180;254;W;2006;;SV Schneeberg Schwimmen;7124;00:01:10,04;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 254;121;F;25;00:00:33,16;
+PNERGEBNIS: 121;F;48009;0;AB;Sorge, Maria;000000;329;W;2005;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 121;F;48008;1;;Hüllenhagen, Zoe;365442;187;W;2008;;FC Erzgebirge Aue;7123;00:01:05,67;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 187;121;F;25;00:00:31,92;
+PNERGEBNIS: 121;F;48008;2;;Tanneberger, Fiona;430278;377;W;2007;;SV 1990 Zschopau;3382;00:01:07,48;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 377;121;F;25;00:00:33,21;
+PNERGEBNIS: 121;F;48008;3;;Steiner, Tiffany;355425;266;W;2007;;ST Erzgebirge;5134;00:01:10,31;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 266;121;F;25;00:00:32,54;
+PNERGEBNIS: 121;F;48008;4;;Zingler, Lotte Pauline;365814;382;W;2007;;SV 1990 Zschopau;3382;00:01:11,68;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 382;121;F;25;00:00:33,12;
+PNERGEBNIS: 121;F;48008;5;;Rößler, Helena;349894;250;W;2008;;SV Schneeberg Schwimmen;7124;00:01:16,34;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 250;121;F;25;00:00:35,95;
+PNERGEBNIS: 121;F;48008;0;AB;Einenkel, Enie;411895;289;W;2008;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 122;F;49007;1;;Voigt, Moritz;395182;261;M;2009;;SV Schneeberg Schwimmen;7124;00:01:04,79;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 261;122;F;25;00:00:30,43;
+PNERGEBNIS: 122;F;49007;2;;Findeisen, Erik;415866;81;M;2009;;ST Erzgebirge;5134;00:01:06,90;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 81;122;F;25;00:00:31,41;
+PNERGEBNIS: 122;F;49007;3;;Reichel, Janne;411557;253;M;2009;;SV Schneeberg Schwimmen;7124;00:01:15,15;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 253;122;F;25;00:00:35,80;
+PNERGEBNIS: 122;F;49007;4;;Weber, Anton;395001;211;M;2009;;FC Erzgebirge Aue;7123;00:01:15,24;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 211;122;F;25;00:00:36,84;
+PNERGEBNIS: 122;F;49007;5;;Grunert, Ferdinand;395006;185;M;2009;;FC Erzgebirge Aue;7123;00:01:15,48;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 185;122;F;25;00:00:35,16;
+PNERGEBNIS: 122;F;49006;1;;Zingler, Gustav Albert;409207;381;M;2010;;SV 1990 Zschopau;3382;00:01:04,61;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 381;122;F;25;00:00:30,86;
+PNERGEBNIS: 122;F;49006;2;;Uloth, Darius;000000;44;M;2010;;SV Tanne Thalheim e.V.;0000;00:01:16,57;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 44;122;F;25;00:00:37,36;
+PNERGEBNIS: 122;F;49006;3;;Wietz, Paul;395002;214;M;2010;;FC Erzgebirge Aue;7123;00:01:18,05;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 214;122;F;25;00:00:36,84;
+PNERGEBNIS: 122;F;49006;4;;Weber, Tobias;000000;47;M;2010;;SV Tanne Thalheim e.V.;0000;00:01:19,77;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 47;122;F;25;00:00:37,40;
+PNERGEBNIS: 122;F;49006;0;NA;Fabian, Dominik;000000;19;M;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 122;F;49005;1;;Güßmann, Ben;425179;229;M;2011;;SV Schneeberg Schwimmen;7124;00:01:18,81;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 229;122;F;25;00:00:38,24;
+PNERGEBNIS: 122;F;49005;2;;Lötzsch, Theo;419466;194;M;2011;;FC Erzgebirge Aue;7123;00:01:23,26;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 194;122;F;25;00:00:39,54;
+PNERGEBNIS: 122;F;49005;3;;Schmieder, Julian Magnus;394210;8;M;2011;;SV 1990 Zschopau;3382;00:01:34,07;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 8;122;F;25;00:00:45,11;
+PNERGEBNIS: 122;F;49005;4;;Kandler, Manuel;000000;26;M;2011;;SV Tanne Thalheim e.V.;0000;00:01:34,85;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 26;122;F;25;00:00:45,52;
+PNERGEBNIS: 122;F;49005;0;NA;Barth, Lenny;000000;57;M;2011;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 122;F;49005;0;AB;Klier, Malwin;000000;27;M;2011;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 122;F;49004;1;;Kraus, Finn;432063;192;M;2012;;FC Erzgebirge Aue;7123;00:01:24,69;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 192;122;F;25;00:00:39,92;
+PNERGEBNIS: 122;F;49004;2;;Colditz, Lukas;000000;59;M;2012;;Zwönitzer Schwimmverein e.V.;0000;00:01:39,70;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 59;122;F;25;00:00:45,97;
+PNERGEBNIS: 122;F;49004;3;;Schieck, Martin;000000;40;M;2012;;SV Tanne Thalheim e.V.;0000;00:01:40,36;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 40;122;F;25;00:00:46,21;
+PNERGEBNIS: 122;F;49004;4;;Weigel, Richard;000000;213;M;2012;;FC Erzgebirge Aue;7123;00:01:46,19;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 213;122;F;25;00:00:47,02;
+PNERGEBNIS: 122;F;49004;0;NA;Morgenstern, Gustav;000000;5;M;2012;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 122;F;49003;1;;Meyer, Sammy;458126;113;M;2013;;ST Erzgebirge;5134;00:01:43,47;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 113;122;F;25;00:00:49,27;
+PNERGEBNIS: 122;F;49003;2;;Lehmann, Jay;461955;107;M;2013;;ST Erzgebirge;5134;00:01:45,65;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 107;122;F;25;00:00:51,42;
+PNERGEBNIS: 122;F;49003;3;;Konrad, Christian;461953;102;M;2013;;ST Erzgebirge;5134;00:01:48,71;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 102;122;F;25;00:00:48,19;
+PNERGEBNIS: 122;F;49003;4;;Rebentrost, Helios;461954;127;M;2013;;ST Erzgebirge;5134;00:01:53,65;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 127;122;F;25;00:00:51,74;
+PNERGEBNIS: 122;F;49003;5;;Lippold, Paul;000000;61;M;2013;;Zwönitzer Schwimmverein e.V.;0000;00:01:56,39;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 61;122;F;25;00:00:52,71;
+PNERGEBNIS: 122;F;49009;1;;Siegel, Paul;343558;328;M;2005;;SV07 Annaberg-Buchholz;3380;00:00:58,41;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 328;122;F;25;00:00:28,81;
+PNERGEBNIS: 122;F;49009;2;;Rößler, Louis;297284;251;M;2004;;SV Schneeberg Schwimmen;7124;00:00:58,43;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 251;122;F;25;00:00:28,35;
+PNERGEBNIS: 122;F;49009;3;;Reuter, Erik;338774;129;M;2005;;ST Erzgebirge;5134;00:00:59,35;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 129;122;F;25;00:00:28,59;
+PNERGEBNIS: 122;F;49009;4;;Weiß, Johann;327133;146;M;2005;;ST Erzgebirge;5134;00:01:00,04;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 146;122;F;25;00:00:28,47;
+PNERGEBNIS: 122;F;49009;5;;Fischer, Till;363420;228;M;2005;;SV Schneeberg Schwimmen;7124;00:01:01,02;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 228;122;F;25;00:00:29,03;
+PNERGEBNIS: 122;F;49009;0;AB;Hösel, Max;355424;347;M;2006;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 122;F;49008;1;;Meusel, Noah Joel;393191;365;M;2008;;SV 1990 Zschopau;3382;00:01:04,17;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 365;122;F;25;00:00:31,27;
+PNERGEBNIS: 122;F;49008;2;;Ullmann, Konstantin;349898;206;M;2008;;FC Erzgebirge Aue;7123;00:01:04,59;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 206;122;F;25;00:00:31,25;
+PNERGEBNIS: 122;F;49008;3;;Meyer, Oliver;377625;367;M;2007;;SV 1990 Zschopau;3382;00:01:07,86;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 367;122;F;25;00:00:30,88;
+PNERGEBNIS: 122;F;49008;4;;Kraus, Tim;395174;193;M;2008;;FC Erzgebirge Aue;7123;00:01:07,94;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 193;122;F;25;00:00:32,68;
+PNERGEBNIS: 122;F;49008;5;;Wohlgemuth, Moritz;349897;215;M;2007;;FC Erzgebirge Aue;7123;00:01:08,22;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 215;122;F;25;00:00:32,31;
+PNERGEBNIS: 122;F;49008;0;AB;Heimrath, Johannes;000000;24;M;2007;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 123;F;50002;1;;Grunert, Florentine;452985;269;W;2014;;FC Erzgebirge Aue;7123;00:00:56,89;;;GER;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 123;F;50002;2;;Wilinga, Joceline;000000;148;W;2014;;ST Erzgebirge;5134;00:01:07,07;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 123;F;50002;3;;Decker, Hanna;459712;178;W;2014;;FC Erzgebirge Aue;7123;00:01:09,01;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 123;F;50002;4;;Viertel, Victoria-Luise;461991;144;W;2014;;ST Erzgebirge;5134;00:01:11,47;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 123;F;50002;5;;Andrushchyk, Elina;000000;272;W;2014;;BSZ Adam-Ries;0000;00:01:18,79;;;GER;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 123;F;50002;6;;Karakash, Dariia;000000;273;W;2014;;Grundschule Mildenau;0000;00:01:19,48;;;GER;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 123;F;50002;7;;Großmann, Amielou Louise;000000;345;W;2014;;SV 1990 Zschopau;3382;00:01:19,51;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 123;F;50002;8;;Pustovit, Vladislava;000000;274;W;2014;;Grundschule Mildenau;0000;00:01:29,26;;;GER;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 123;F;50002;0;NA;Schubert, Lena;000000;137;W;2014;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 123;F;50002;0;NA;Schmiedel, Rebecca;000000;324;W;2014;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 123;F;50002;0;AB;Fabritzek, Matilda;000000;181;W;2014;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 123;F;50002;0;AB;Hahn, Valentina;000000;189;W;2014;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 123;F;50002;0;AB;Meyer, Amelie;000000;314;W;2014;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 123;F;50001;1;;Vazquez Grundig, Frieda Nelli;000000;3;W;2015;;SV07 Annaberg-Buchholz;3380;00:01:07,20;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 123;F;50001;2;;Wagner, Lina;000000;333;W;2015;;SV07 Annaberg-Buchholz;3380;00:01:10,71;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 123;F;50001;3;;Kunze, Ella;000000;104;W;2015;;ST Erzgebirge;5134;00:01:15,87;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 123;F;50001;4;;Meuschke, Maxi;460747;197;W;2015;;FC Erzgebirge Aue;7123;00:01:19,09;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 123;F;50001;5;;Schlegel, Mia;000000;135;W;2015;;ST Erzgebirge;5134;00:01:21,51;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 123;F;50001;6;;Engert, Sasou;000000;292;W;2015;;SV07 Annaberg-Buchholz;3380;00:01:27,25;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 123;F;50001;7;;Preißler, Amy;000000;126;W;2015;;ST Erzgebirge;5134;00:01:33,97;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 123;F;50001;8;;Wendler, Hilde Ella;000000;262;W;2015;;SV Schneeberg Schwimmen;7124;00:01:40,48;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 123;F;50001;0;NA;Morgenstern, Elena;471532;116;W;2015;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 123;F;50001;0;NA;Prommerberger, Tami;000000;371;W;2015;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 123;F;50001;0;AB;Kästner, Nelly Lou;000000;307;W;2015;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 124;F;51002;1;;Gläser, Julian;458122;88;M;2014;;ST Erzgebirge;5134;00:01:03,69;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 124;F;51002;2;;Reuter, Nils;464573;7;M;2014;;SV 1990 Zschopau;3382;00:01:07,84;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 124;F;51002;3;;Ertl, Armin;000000;296;M;2014;;SV07 Annaberg-Buchholz;3380;00:01:18,06;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 124;F;51002;4;;Geißler, Matteo;000000;302;M;2014;;SV07 Annaberg-Buchholz;3380;00:01:33,16;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 124;F;51002;0;NA;Fay, Miroslav;000000;79;M;2014;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 124;F;51002;0;NA;Beyer, Henry;000000;176;M;2014;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 124;F;51002;0;AB;Fabian, Vincent;000000;20;M;2014;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 124;F;51002;0;AB;Hoppe, Fabian;000000;60;M;2014;;Zwönitzer Schwimmverein e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 124;F;51002;0;AB;Winterfeld, Ben;000000;149;M;2014;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 124;F;51002;0;AB;Baumann, Emilio;000000;334;M;2014;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2014 *)
+PNERGEBNIS: 124;F;51001;1;;Heymann, Jimmy;000000;305;M;2015;;SV07 Annaberg-Buchholz;3380;00:01:13,18;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 124;F;51001;2;;Schaffer, Luke;000000;321;M;2015;;SV07 Annaberg-Buchholz;3380;00:01:20,01;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 124;F;51001;3;;Unger, Bruno;471531;143;M;2015;;ST Erzgebirge;5134;00:01:21,23;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 124;F;51001;4;;Hübner, Niklas;000000;186;M;2015;;FC Erzgebirge Aue;7123;00:01:39,98;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 124;F;51001;5;;Reuße, Ben;000000;128;M;2015;;ST Erzgebirge;5134;00:02:13,48;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 124;F;51001;0;AB;Berger, Kurt;000000;174;M;2015;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2015 *)
+PNERGEBNIS: 125;F;52007;1;;Hunger, Lea;402166;353;W;2009;;SV 1990 Zschopau;3382;00:01:17,61;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 353;125;F;25;00:00:35,86;
+PNERGEBNIS: 125;F;52007;2;;Wittig, Emma;415865;150;W;2009;;ST Erzgebirge;5134;00:01:18,07;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 150;125;F;25;00:00:37,21;
+PNERGEBNIS: 125;F;52007;3;;Petrick, Martha;433480;199;W;2009;;FC Erzgebirge Aue;7123;00:01:18,99;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 199;125;F;25;00:00:36,54;
+PNERGEBNIS: 125;F;52007;4;;Lippert, Annalena;000000;30;W;2009;;SV Tanne Thalheim e.V.;0000;00:01:39,49;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 30;125;F;25;00:00:45,54;
+PNERGEBNIS: 125;F;52007;5;;Weißflog, Cora Lena;000000;48;W;2009;;SV Tanne Thalheim e.V.;0000;00:01:43,30;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 48;125;F;25;00:00:49,43;
+PNERGEBNIS: 125;F;52007;0;AB;Morgenstern, Lia;000000;6;W;2009;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 125;F;52007;0;AB;Koschnicke, Marla;397287;308;W;2009;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 125;F;52006;1;;Göhler, Lucy;402479;83;W;2010;;ST Erzgebirge;5134;00:01:26,37;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 83;125;F;25;00:00:41,62;
+PNERGEBNIS: 125;F;52006;2;;Richter, Mathilda;416938;318;W;2010;;SV07 Annaberg-Buchholz;3380;00:01:27,79;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 318;125;F;25;00:00:40,57;
+PNERGEBNIS: 125;F;52006;3;;Frauenlob, Elise;446324;297;W;2010;;SV07 Annaberg-Buchholz;3380;00:01:37,02;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 297;125;F;25;00:00:48,19;
+PNERGEBNIS: 125;F;52006;0;NA;Thierbach, Zoe;000000;43;W;2010;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 125;F;52006;0;NA;Hermann, Sara;402477;93;W;2010;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 125;F;52005;1;;Schreiter, Melissa;447078;136;W;2011;;ST Erzgebirge;5134;00:01:26,41;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 136;125;F;25;00:00:41,36;
+PNERGEBNIS: 125;F;52005;2;;Weidauer, Lavinia;419465;212;W;2011;;FC Erzgebirge Aue;7123;00:01:27,29;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 212;125;F;25;00:00:40,40;
+PNERGEBNIS: 125;F;52005;3;;Müller, Annica;429663;109;W;2011;;ST Erzgebirge;5134;00:01:28,53;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 109;125;F;25;00:00:42,53;
+PNERGEBNIS: 125;F;52005;4;;Seyfarth, Hella;437452;327;W;2011;;SV07 Annaberg-Buchholz;3380;00:01:33,54;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 327;125;F;25;00:00:43,33;
+PNERGEBNIS: 125;F;52005;5;;Hiemann, Elisa;461993;95;W;2011;;ST Erzgebirge;5134;00:01:35,42;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 95;125;F;25;00:00:45,91;
+PNERGEBNIS: 125;F;52004;1;;Riediger, Lani;459623;202;W;2012;;FC Erzgebirge Aue;7123;00:01:34,17;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 202;125;F;25;00:00:45,52;
+PNERGEBNIS: 125;F;52004;2;;Müller, Frida;461992;110;W;2012;;ST Erzgebirge;5134;00:01:39,40;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 110;125;F;25;00:00:47,05;
+PNERGEBNIS: 125;F;52004;3;;Nitsche, Lea;459626;198;W;2012;;FC Erzgebirge Aue;7123;00:01:40,93;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 198;125;F;25;00:00:47,72;
+PNERGEBNIS: 125;F;52004;4;;Langer, Mia;461959;106;W;2012;;ST Erzgebirge;5134;00:01:54,26;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 106;125;F;25;00:00:55,46;
+PNERGEBNIS: 125;F;52004;5;;Ulbricht, Emily;000000;331;W;2012;;SV07 Annaberg-Buchholz;3380;00:02:00,33;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 331;125;F;25;00:00:59,65;
+PNERGEBNIS: 125;F;52004;0;AB;Schmiedel, Hannah;000000;41;W;2012;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 125;F;52004;0;AB;Leuoth, Vanessa;459708;195;W;2012;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 125;F;52003;1;;Uhlig, Magdalena;451879;257;W;2013;;SV Schneeberg Schwimmen;7124;00:01:38,18;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 257;125;F;25;00:00:45,47;
+PNERGEBNIS: 125;F;52003;2;;Keller, Emma;460563;357;W;2013;;SV 1990 Zschopau;3382;00:01:43,64;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 357;125;F;25;00:00:46,85;
+PNERGEBNIS: 125;F;52003;3;;Decker, Helene;464574;338;W;2013;;SV 1990 Zschopau;3382;00:01:50,07;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 338;125;F;25;00:00:56,14;
+PNERGEBNIS: 125;F;52003;4;;Oestreich, Sophia;458275;124;W;2013;;ST Erzgebirge;5134;00:01:55,19;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 124;125;F;25;00:00:54,06;
+PNERGEBNIS: 125;F;52003;0;DS;Klaus, Emma;461960;101;W;2013;;ST Erzgebirge;5134;00:00:00,00;Die Sportler führte nach dem Start Wechselbeinschläge durch.Die Sportlerin beendete die Teilstrecke Rücken nicht in Rückenlage.Der Abstoß nach der zweiten Wende erfolgte in Rückenlage.;;;;; (* Jahrgang 2013 *)
+PNERGEBNIS: 125;F;52009;1;;Richter, Nele;402475;132;W;2002;20;ST Erzgebirge;5134;00:01:15,20;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 132;125;F;25;00:00:33,14;
+PNERGEBNIS: 125;F;52009;2;;Katsala, Mariia;458276;100;W;2002;20;ST Erzgebirge;5134;00:01:15,36;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 100;125;F;25;00:00:34,64;
+PNERGEBNIS: 125;F;52009;3;;Kreißig, Lilly;393190;361;W;2006;;SV 1990 Zschopau;3382;00:01:17,46;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 361;125;F;25;00:00:36,65;
+PNERGEBNIS: 125;F;52009;4;;Rülke, Katyana;343550;317;W;2005;;SV07 Annaberg-Buchholz;3380;00:01:19,96;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 317;125;F;25;00:00:35,84;
+PNERGEBNIS: 125;F;52009;5;;Naumann, Sophie;419630;247;W;2006;;SV Schneeberg Schwimmen;7124;00:01:20,25;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 247;125;F;25;00:00:36,97;
+PNERGEBNIS: 125;F;52009;0;NA;Polusik, Adele;378079;200;W;2006;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 125;F;52009;0;AB;Sorge, Maria;000000;329;W;2005;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 125;F;52008;1;;Steiner, Tiffany;355425;266;W;2007;;ST Erzgebirge;5134;00:01:17,88;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 266;125;F;25;00:00:34,97;
+PNERGEBNIS: 125;F;52008;2;;Zingler, Lotte Pauline;365814;382;W;2007;;SV 1990 Zschopau;3382;00:01:18,68;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 382;125;F;25;00:00:34,40;
+PNERGEBNIS: 125;F;52008;3;;Voigt, Lina;395183;260;W;2007;;SV Schneeberg Schwimmen;7124;00:01:28,84;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 260;125;F;25;00:00:39,67;
+PNERGEBNIS: 125;F;52008;0;NA;Blei, Mia;000000;14;W;2007;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 125;F;52008;0;NA;Guba, Mailin;393192;346;W;2007;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 125;F;52008;0;AB;Einenkel, Enie;411895;289;W;2008;;SV07 Annaberg-Buchholz;3380;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 125;F;52008;0;AB;Fritz, Lene;423559;341;W;2008;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgänge 2007/2008 *)
+PNERGEBNIS: 126;F;53007;1;;Findeisen, Erik;415866;81;M;2009;;ST Erzgebirge;5134;00:01:17,80;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 81;126;F;25;00:00:36,37;
+PNERGEBNIS: 126;F;53007;2;;Reichel, Janne;411557;253;M;2009;;SV Schneeberg Schwimmen;7124;00:01:24,84;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 253;126;F;25;00:00:41,54;
+PNERGEBNIS: 126;F;53007;3;;Neubert, Domenic;429667;118;M;2009;;ST Erzgebirge;5134;00:01:25,39;;;;;; (* Jahrgang 2009 *)
+PNZWISCHENZEIT: 118;126;F;25;00:00:38,62;
+PNERGEBNIS: 126;F;53007;0;NA;Tutzschky, Lukas;461949;142;M;2009;;ST Erzgebirge;5134;00:00:00,00;;;;;; (* Jahrgang 2009 *)
+PNERGEBNIS: 126;F;53006;1;;Zingler, Gustav Albert;409207;381;M;2010;;SV 1990 Zschopau;3382;00:01:14,40;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 381;126;F;25;00:00:35,72;
+PNERGEBNIS: 126;F;53006;2;;Uloth, Darius;000000;44;M;2010;;SV Tanne Thalheim e.V.;0000;00:01:27,05;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 44;126;F;25;00:00:43,14;
+PNERGEBNIS: 126;F;53006;3;;Weber, Tobias;000000;47;M;2010;;SV Tanne Thalheim e.V.;0000;00:01:32,58;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 47;126;F;25;00:00:43,04;
+PNERGEBNIS: 126;F;53006;4;;Kossakowski, Paul;000000;28;M;2010;;SV Tanne Thalheim e.V.;0000;00:01:33,94;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 28;126;F;25;00:00:42,76;
+PNERGEBNIS: 126;F;53006;5;;Wietz, Paul;395002;214;M;2010;;FC Erzgebirge Aue;7123;00:01:41,49;;;;;; (* Jahrgang 2010 *)
+PNZWISCHENZEIT: 214;126;F;25;00:00:49,95;
+PNERGEBNIS: 126;F;53006;0;AB;Kunze, Patrice;459707;238;M;2010;;SV Schneeberg Schwimmen;7124;00:00:00,00;;;;;; (* Jahrgang 2010 *)
+PNERGEBNIS: 126;F;53005;1;;Güßmann, Ben;425179;229;M;2011;;SV Schneeberg Schwimmen;7124;00:01:25,43;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 229;126;F;25;00:00:40,42;
+PNERGEBNIS: 126;F;53005;2;;Leichsenring, Jonas;446990;239;M;2011;;SV Schneeberg Schwimmen;7124;00:01:33,54;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 239;126;F;25;00:00:43,67;
+PNERGEBNIS: 126;F;53005;3;;Kandler, Manuel;000000;26;M;2011;;SV Tanne Thalheim e.V.;0000;00:01:40,81;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 26;126;F;25;00:00:48,36;
+PNERGEBNIS: 126;F;53005;4;;Schmieder, Julian Magnus;394210;8;M;2011;;SV 1990 Zschopau;3382;00:01:42,23;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 8;126;F;25;00:00:47,91;
+PNERGEBNIS: 126;F;53005;5;;Fauska, Franz;458123;78;M;2011;;ST Erzgebirge;5134;00:01:54,59;;;;;; (* Jahrgang 2011 *)
+PNZWISCHENZEIT: 78;126;F;25;00:00:56,93;
+PNERGEBNIS: 126;F;53005;0;AB;Klier, Malwin;000000;27;M;2011;;SV Tanne Thalheim e.V.;0000;00:00:00,00;;;;;; (* Jahrgang 2011 *)
+PNERGEBNIS: 126;F;53004;1;;Kopp, Albrecht;000000;270;M;2012;;SV Tanne Thalheim e.V.;0000;00:01:40,84;;;GER;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 270;126;F;25;00:00:48,28;
+PNERGEBNIS: 126;F;53004;2;;Schieck, Martin;000000;40;M;2012;;SV Tanne Thalheim e.V.;0000;00:01:49,82;;;;;; (* Jahrgang 2012 *)
+PNZWISCHENZEIT: 40;126;F;25;00:00:54,17;
+PNERGEBNIS: 126;F;53004;0;NA;Morgenstern, Gustav;000000;5;M;2012;;SV 1990 Zschopau;3382;00:00:00,00;;;;;; (* Jahrgang 2012 *)
+PNERGEBNIS: 126;F;53003;1;;Konrad, Christian;461953;102;M;2013;;ST Erzgebirge;5134;00:01:53,23;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 102;126;F;25;00:00:53,90;
+PNERGEBNIS: 126;F;53003;2;;Lindner, Michael;458458;242;M;2013;;SV Schneeberg Schwimmen;7124;00:01:54,71;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 242;126;F;25;00:00:54,20;
+PNERGEBNIS: 126;F;53003;3;;Rebentrost, Helios;461954;127;M;2013;;ST Erzgebirge;5134;00:01:55,08;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 127;126;F;25;00:00:56,75;
+PNERGEBNIS: 126;F;53003;4;;Lehmann, Jay;461955;107;M;2013;;ST Erzgebirge;5134;00:02:00,40;;;;;; (* Jahrgang 2013 *)
+PNZWISCHENZEIT: 107;126;F;25;00:00:59,61;
+PNERGEBNIS: 126;F;53009;1;;Weiß, Johann;327133;146;M;2005;;ST Erzgebirge;5134;00:01:05,76;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 146;126;F;25;00:00:30,03;
+PNERGEBNIS: 126;F;53009;2;;Rößler, Louis;297284;251;M;2004;;SV Schneeberg Schwimmen;7124;00:01:08,43;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 251;126;F;25;00:00:31,87;
+PNERGEBNIS: 126;F;53009;3;;Conrad, Valentin;000000;18;M;2003;20;SV Tanne Thalheim e.V.;0000;00:01:08,65;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 18;126;F;25;00:00:32,01;
+PNERGEBNIS: 126;F;53009;4;;Uhlig, Johannes;361411;256;M;2006;;SV Schneeberg Schwimmen;7124;00:01:12,27;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 256;126;F;25;00:00:32,30;
+PNERGEBNIS: 126;F;53009;5;;Reuter, Erik;338774;129;M;2005;;ST Erzgebirge;5134;00:01:13,58;;;;;; (* Jahrgänge 2006 und älter *)
+PNZWISCHENZEIT: 129;126;F;25;00:00:33,20;
+PNERGEBNIS: 126;F;53009;0;AB;Heydel, Ian;433479;191;M;2006;;FC Erzgebirge Aue;7123;00:00:00,00;;;;;; (* Jahrgänge 2006 und älter *)
+PNERGEBNIS: 126;F;53008;1;;Richter, Kimi;384061;131;M;2007;;ST Erzgebirge;5134;00:01:08,74;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 131;126;F;25;00:00:31,86;
+PNERGEBNIS: 126;F;53008;2;;Heidenreich, Luca;415867;91;M;2008;;ST Erzgebirge;5134;00:01:14,34;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 91;126;F;25;00:00:34,92;
+PNERGEBNIS: 126;F;53008;3;;Meusel, Noah Joel;393191;365;M;2008;;SV 1990 Zschopau;3382;00:01:17,11;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 365;126;F;25;00:00:35,93;
+PNERGEBNIS: 126;F;53008;4;;Kreißig, Pirmin;409206;4;M;2007;;SV 1990 Zschopau;3382;00:01:17,32;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 4;126;F;25;00:00:35,75;
+PNERGEBNIS: 126;F;53008;5;;Reinhold, Tom;419464;201;M;2007;;FC Erzgebirge Aue;7123;00:01:19,77;;;;;; (* Jahrgänge 2007/2008 *)
+PNZWISCHENZEIT: 201;126;F;25;00:00:36,60;
+STERGEBNIS: 27;E;27001;1;;1;390;ST Erzgebirge;5134;00:04:14,50;;;; (* Offene Wertung *)
+STAFFELPERSON: 390;27;E;Katsala, Mariia;458276;1;W;2002;20;GER;;;
+STAFFELPERSON: 390;27;E;Wittig, Emma;415865;2;W;2009;;GER;;;
+STAFFELPERSON: 390;27;E;Richter, Nele;402475;3;W;2002;20;GER;;;
+STAFFELPERSON: 390;27;E;Steiner, Tiffany;355425;4;W;2007;;GER;;;
+STAFFELPERSON: 390;27;E;Richter, Kimi;384061;5;M;2007;;GER;;;
+STAFFELPERSON: 390;27;E;Weiß, Johann;327133;6;M;2005;;GER;;;
+STAFFELPERSON: 390;27;E;Reuter, Erik;338774;7;M;2005;;GER;;;
+STAFFELPERSON: 390;27;E;Weiß, Konrad;298099;8;M;2002;20;GER;;;
+STZWISCHENZEIT: 390;27;E;1;25;00:00:33,30;
+STZWISCHENZEIT: 390;27;E;1;50;00:01:10,99;
+STZWISCHENZEIT: 390;27;E;2;75;00:01:43,10;
+STZWISCHENZEIT: 390;27;E;2;100;00:02:04,04;
+STZWISCHENZEIT: 390;27;E;3;125;00:02:44,92;
+STZWISCHENZEIT: 390;27;E;3;150;00:03:18,09;
+STZWISCHENZEIT: 390;27;E;4;175;00:03:47,29;
+STERGEBNIS: 27;E;27001;2;;1;392;SV Schneeberg Schwimmen;7124;00:04:20,87;;;; (* Offene Wertung *)
+STAFFELPERSON: 392;27;E;Rößler, Helena;349894;1;W;2008;;GER;;;
+STAFFELPERSON: 392;27;E;Naumann, Sophie;419630;2;W;2006;;GER;;;
+STAFFELPERSON: 392;27;E;Kunze, Alice;380349;3;W;2001;20;GER;;;
+STAFFELPERSON: 392;27;E;Schmidt, Charlotte;395180;4;W;2006;;GER;;;
+STAFFELPERSON: 392;27;E;Püschel, Louis;000000;5;M;2005;;GER;;;
+STAFFELPERSON: 392;27;E;Goris, Knut;336333;6;M;2005;;GER;;;
+STAFFELPERSON: 392;27;E;Uhlig, Johannes;361411;7;M;2006;;GER;;;
+STAFFELPERSON: 392;27;E;Rößler, Louis;297284;8;M;2004;;GER;;;
+STZWISCHENZEIT: 392;27;E;1;25;00:00:35,64;
+STZWISCHENZEIT: 392;27;E;1;50;00:01:15,35;
+STZWISCHENZEIT: 392;27;E;2;75;00:01:50,69;
+STZWISCHENZEIT: 392;27;E;2;100;00:02:16,50;
+STZWISCHENZEIT: 392;27;E;3;125;00:02:51,37;
+STZWISCHENZEIT: 392;27;E;3;150;00:03:25,31;
+STZWISCHENZEIT: 392;27;E;4;175;00:03:54,76;
+STERGEBNIS: 27;E;27001;3;;1;389;FC Erzgebirge Aue;7123;00:04:27,08;;;; (* Offene Wertung *)
+STAFFELPERSON: 389;27;E;Petrick, Martha;433480;1;W;2009;;GER;;;
+STAFFELPERSON: 389;27;E;Polusik, Adele;378079;2;W;2006;;GER;;;
+STAFFELPERSON: 389;27;E;Hüllenhagen, Zoe;365442;3;W;2008;;GER;;;
+STAFFELPERSON: 389;27;E;Fritzsch, Julie;363418;4;W;2006;;GER;;;
+STAFFELPERSON: 389;27;E;Kraus, Tim;395174;5;M;2008;;GER;;;
+STAFFELPERSON: 389;27;E;Heydel, Ian;433479;6;M;2006;;GER;;;
+STAFFELPERSON: 389;27;E;Ullmann, Konstantin;349898;7;M;2008;;GER;;;
+STAFFELPERSON: 389;27;E;Wohlgemuth, Moritz;349897;8;M;2007;;GER;;;
+STZWISCHENZEIT: 389;27;E;1;25;00:00:36,26;
+STZWISCHENZEIT: 389;27;E;1;50;00:01:13,40;
+STZWISCHENZEIT: 389;27;E;2;75;00:01:45,15;
+STZWISCHENZEIT: 389;27;E;2;100;00:02:18,12;
+STZWISCHENZEIT: 389;27;E;3;125;00:02:51,10;
+STZWISCHENZEIT: 389;27;E;3;150;00:03:27,31;
+STZWISCHENZEIT: 389;27;E;4;175;00:03:58,16;
+STERGEBNIS: 27;E;27001;4;;1;388;SV 1990 Zschopau;3382;00:04:36,58;;;; (* Offene Wertung *)
+STAFFELPERSON: 388;27;E;Zingler, Lotte Pauline;365814;1;W;2007;;GER;;;
+STAFFELPERSON: 388;27;E;Hunger, Lea;402166;2;W;2009;;GER;;;
+STAFFELPERSON: 388;27;E;Kreißig, Lilly;393190;3;W;2006;;GER;;;
+STAFFELPERSON: 388;27;E;Tanneberger, Fiona;430278;4;W;2007;;GER;;;
+STAFFELPERSON: 388;27;E;Kreißig, Pirmin;409206;5;M;2007;;GER;;;
+STAFFELPERSON: 388;27;E;Zingler, Gustav Albert;409207;6;M;2010;;GER;;;
+STAFFELPERSON: 388;27;E;Meusel, Noah Joel;393191;7;M;2008;;GER;;;
+STAFFELPERSON: 388;27;E;Meyer, Oliver;377625;8;M;2007;;GER;;;
+STZWISCHENZEIT: 388;27;E;1;25;00:00:35,35;
+STZWISCHENZEIT: 388;27;E;1;50;00:01:14,71;
+STZWISCHENZEIT: 388;27;E;2;75;00:01:48,59;
+STZWISCHENZEIT: 388;27;E;2;100;00:02:12,22;
+STZWISCHENZEIT: 388;27;E;3;125;00:02:58,26;
+STZWISCHENZEIT: 388;27;E;3;150;00:03:33,70;
+STZWISCHENZEIT: 388;27;E;4;175;00:04:07,72;
+STERGEBNIS: 27;E;27001;5;;1;391;SV07 Annaberg-Buchholz;3380;00:04:43,58;;;; (* Offene Wertung *)
+STAFFELPERSON: 391;27;E;Richter, Mathilda;416938;1;W;2010;;GER;;;
+STAFFELPERSON: 391;27;E;Frauenlob, Elise;446324;2;W;2010;;GER;;;
+STAFFELPERSON: 391;27;E;Rülke, Katyana;343550;3;W;2005;;GER;;;
+STAFFELPERSON: 391;27;E;Seyfarth, Hella;437452;4;W;2011;;GER;;;
+STAFFELPERSON: 391;27;E;Schauer, Lukas;365572;5;M;2006;;GER;;;
+STAFFELPERSON: 391;27;E;Lohse, Rouven;000000;6;M;2009;;GER;;;
+STAFFELPERSON: 391;27;E;Gerschler, Louis;320389;7;M;2003;20;GER;;;
+STAFFELPERSON: 391;27;E;Siegel, Paul;343558;8;M;2005;;GER;;;
+STZWISCHENZEIT: 391;27;E;1;25;00:00:40,19;
+STZWISCHENZEIT: 391;27;E;1;50;00:01:22,07;
+STZWISCHENZEIT: 391;27;E;2;75;00:01:57,36;
+STZWISCHENZEIT: 391;27;E;2;100;00:02:26,83;
+STZWISCHENZEIT: 391;27;E;3;125;00:03:07,80;
+STZWISCHENZEIT: 391;27;E;3;150;00:03:48,88;
+STZWISCHENZEIT: 391;27;E;4;175;00:04:17,78;
+DATEIENDE

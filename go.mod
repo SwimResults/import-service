@@ -1,9 +1,14 @@
 module github.com/swimresults/import-service
 
-go 1.18
+go 1.20
 
 require (
 	github.com/gin-gonic/gin v1.8.1
+	github.com/konrad2002/dsvparser v1.2.1
+	github.com/ledongthuc/pdf v0.0.0-20220302134840-0c2507a12d80
+	github.com/swimresults/athlete-service v1.5.0
+	github.com/swimresults/meeting-service v0.1.0
+	github.com/swimresults/start-service v0.0.0-20230622182032-aae03a109a89
 	go.mongodb.org/mongo-driver v1.10.0
 )
 
@@ -16,8 +21,6 @@ require (
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/compress v1.13.6 // indirect
-	github.com/konrad2002/dsvparser v1.2.1 // indirect
-	github.com/ledongthuc/pdf v0.0.0-20220302134840-0c2507a12d80 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421 // indirect
@@ -25,10 +28,7 @@ require (
 	github.com/montanaflynn/stats v0.0.0-20171201202039-1bf9dbcd8cbe // indirect
 	github.com/pelletier/go-toml/v2 v2.0.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/swimresults/athlete-service v1.5.0 // indirect
-	github.com/swimresults/meeting-service v0.1.0 // indirect
 	github.com/swimresults/service-core v0.4.0 // indirect
-	github.com/swimresults/start-service v0.0.0-20230622182032-aae03a109a89 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
 	github.com/xdg-go/scram v1.1.1 // indirect

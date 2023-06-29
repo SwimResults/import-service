@@ -8,3 +8,10 @@ func TestDoTheMagic(t *testing.T) {
 		panic(err)
 	}
 }
+
+func TestDoTheResultsMagic(t *testing.T) {
+	err := DoTheResultsMagic()
+	if err != nil {
+		panic(err)
+	}
+}

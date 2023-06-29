@@ -11,6 +11,20 @@ import (
 	"testing"
 )
 
+func TestImportDsvResultFile(t *testing.T) {
+	err := ImportDsvResultFile("../assets/KKJS_Ergebnis.dsv7", "ESS23F")
+	if err != nil {
+		panic(err)
+	}
+}
+
+func TestImportDsvDefinitionFile(t *testing.T) {
+	err := ImportDsvDefinitionFile("../assets/Definitionsdatei.dsv6", "IESC19")
+	if err != nil {
+		panic(err)
+	}
+}
+
 func Test(t *testing.T) {
 	dat, err := os.ReadFile("../assets/Ergebnisdatei.dsv6")
 	if err != nil {
