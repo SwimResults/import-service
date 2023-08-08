@@ -9,6 +9,7 @@ import (
 	eventModel "github.com/swimresults/meeting-service/model"
 	startModel "github.com/swimresults/start-service/model"
 	"os"
+	"time"
 )
 
 func VeranstaltungsortPlz() string {
@@ -75,16 +76,24 @@ func ImportDsvDefinitionFile(file string, meeting string) error {
 	return nil
 }
 
-func ImportDsvResultFile(file string, meeting string) error {
+func ImportDsvResultFile(file string, meeting string) ([5]int, error) {
+
+	var createdStats [5]int
+	createdStats[0] = 0 // team
+	createdStats[1] = 0 // athlete
+	createdStats[2] = 0 // start
+	createdStats[3] = 0 // result
+	createdStats[4] = 0 // disqualification
+
 	dat, err := os.ReadFile(file)
 	if err != nil {
-		return err
+		return createdStats, err
 	}
 	buf := bytes.NewBuffer(dat)
 	r := parser.NewReader(buf)
 	res, err := r.Read()
 	if err != nil {
-		return err
+		return createdStats, err
 	}
 
 	erg := res.(*model.Wettkampfergebnisliste)
@@ -109,22 +118,21 @@ func ImportDsvResultFile(file string, meeting string) error {
 		}
 		newTeam, created, err := tc.ImportTeam(team, meeting)
 		if err != nil {
-			fmt.Printf(err.Error())
+			return createdStats, err
 		}
 		cs := 'o'
 		if created {
 			cs = '+'
+			createdStats[0]++
 		}
 		fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newTeam.Identifier.String(), newTeam.Name, newTeam.Participation)
 	}
 
 	fmt.Printf(" +==============================+ \n")
 
-	resultsImported := 0
-
 	for _, dsvResult := range erg.PNErgebnisse {
 
-		if dsvResult.GrundDerNichtwertung != "" {
+		if dsvResult.GrundDerNichtwertung == "AB" {
 			continue
 		}
 
@@ -145,11 +153,12 @@ func ImportDsvResultFile(file string, meeting string) error {
 		}
 		newAthlete, created, err := ac.ImportAthlete(athlete, meeting)
 		if err != nil {
-			fmt.Printf(err.Error())
+			return createdStats, err
 		}
 		cs := 'o'
 		if created {
 			cs = '+'
+			createdStats[1]++
 		}
 		fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newAthlete.Identifier.String(), newAthlete.Name, newAthlete.Participation)
 
@@ -173,19 +182,46 @@ func ImportDsvResultFile(file string, meeting string) error {
 		}
 		newStart, c, err2 := sc.ImportStart(start)
 		if err2 != nil {
-			return err2
+			return createdStats, err2
 		}
 		if c {
-			return fmt.Errorf("start has been created: id: '%s'; event: '%d', athlete: '%s'", newStart.Identifier, newStart.Event, newStart.AthleteName)
+			createdStats[2]++
+			fmt.Printf("[ ! ] start has been created: id: '%s'; event: '%d', athlete: '%s'", newStart.Identifier, newStart.Event, newStart.AthleteName)
 		}
 
-		_, _, err3 := sc.ImportResult(start, result)
-		if err3 != nil {
-			return err3
+		if dsvResult.GrundDerNichtwertung != "" {
+			disqType := "disqualified"
+			switch dsvResult.GrundDerNichtwertung {
+			case "NA":
+				disqType = "dns"
+				break
+			case "AU":
+				disqType = "dnf"
+				break
+			case "ZU":
+				disqType = "time"
+				break
+			}
+			disqualification, created, err4 := dq.ImportDisqualification(start, dsvResult.Disqualifikationsbemerkung, disqType, time.UnixMicro(0))
+			if err4 != nil {
+				return createdStats, err4
+			}
+			cs := 'o'
+			if created {
+				cs = '+'
+				createdStats[4]++
+			}
+			fmt.Printf("[ %c ] > id: %s, type: %s, reason: %s\n", cs, disqualification.Identifier, disqualification.Type, disqualification.Reason)
+		} else {
+			_, _, err3 := sc.ImportResult(start, result)
+			if err3 != nil {
+				return createdStats, err3
+			}
+			createdStats[3]++
 		}
-		resultsImported++
 
 	}
-	return nil
+
+	return createdStats, nil
 
 }
