@@ -10,13 +10,17 @@ import (
 var client *mongo.Client
 
 func Init(c *mongo.Client) {
-	//database := c.Database(os.Getenv("SR_EXAMPLE_MONGO_DATABASE"))
+	//database := c.Database(os.Getenv("SR_IMPORT_MONGO_DATABASE"))
 	//client = c
 
 	//exampleService(database)
 }
 
 func PingDatabase() bool {
+
+	if client == nil {
+		return true
+	}
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Millisecond*100)
 	defer cancel()

@@ -11,11 +11,11 @@
             "mode": "debug",
             "program": "main.go",
             "env": {
-                "SR_EXAMPLE_MONGO_USERNAME": "",
-                "SR_EXAMPLE_MONGO_PASSWORD": "",
-                "SR_EXAMPLE_MONGO_HOST": "localhost",
-                "SR_EXAMPLE_MONGO_PORT": "27017",
-                "SR_EXAMPLE_PORT": "8787"
+                "SR_IMPORT_MONGO_USERNAME": "",
+                "SR_IMPORT_MONGO_PASSWORD": "",
+                "SR_IMPORT_MONGO_HOST": "localhost",
+                "SR_IMPORT_MONGO_PORT": "27017",
+                "SR_IMPORT_PORT": "8787"
             }
         },
         {

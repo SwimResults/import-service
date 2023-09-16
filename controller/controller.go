@@ -20,6 +20,7 @@ func Run() {
 	}
 
 	timingSoftwareController()
+	importFileController()
 
 	router.GET("/actuator", actuator)
 
