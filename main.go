@@ -16,14 +16,14 @@ import (
 var client *mongo.Client
 
 func main() {
-	//ctx := connectDB()
+	ctx := connectDB()
 	service.Init(client)
 	controller.Run()
 	client2.ExecClient()
 
-	//if err := client.Disconnect(ctx); err != nil {
-	//	panic(err)
-	//}
+	if err := client.Disconnect(ctx); err != nil {
+		panic(err)
+	}
 }
 
 func connectDB() context.Context {

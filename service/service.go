@@ -4,16 +4,17 @@ import (
 	"context"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
+	"os"
 	"time"
 )
 
 var client *mongo.Client
 
 func Init(c *mongo.Client) {
-	//database := c.Database(os.Getenv("SR_IMPORT_MONGO_DATABASE"))
-	//client = c
+	database := c.Database(os.Getenv("SR_IMPORT_MONGO_DATABASE"))
+	client = c
 
-	//exampleService(database)
+	settingsService(database)
 }
 
 func PingDatabase() bool {
