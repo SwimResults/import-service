@@ -60,10 +60,6 @@ func getImportSettingByMeetId(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, setting)
 }
 
-func getImportSettingWithDateBetween(c *gin.Context) {
-	c.String(http.StatusNotImplemented, "not implemented")
-}
-
 func removeImportSetting(c *gin.Context) {
 	id, convErr := primitive.ObjectIDFromHex(c.Param("id"))
 	if convErr != nil {
