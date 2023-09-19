@@ -18,11 +18,11 @@ func importFile(c *gin.Context) {
 		return
 	}
 
-	r, err := service.ImportFile(request)
+	err := service.ImportFile(request)
 	if err != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		return
 	}
 
-	c.IndentedJSON(http.StatusOK, r)
+	c.Status(http.StatusOK)
 }
