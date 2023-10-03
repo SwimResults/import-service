@@ -8,7 +8,7 @@ require (
 	github.com/ledongthuc/pdf v0.0.0-20220302134840-0c2507a12d80
 	github.com/swimresults/athlete-service v1.5.0
 	github.com/swimresults/meeting-service v0.1.0
-	github.com/swimresults/start-service v0.2.0
+	github.com/swimresults/start-service v0.3.0
 	go.mongodb.org/mongo-driver v1.10.0
 )
 

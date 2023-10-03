@@ -104,6 +104,8 @@ github.com/swimresults/start-service v0.1.0 h1:yTWI9lBEqpy1sewSWU0SadJ7doYGMr2Kr
 github.com/swimresults/start-service v0.1.0/go.mod h1:PtH6FueGD77JW7gJTpVOzzP1yRhfG86prK8kBSghih0=
 github.com/swimresults/start-service v0.2.0 h1:8C1XYRVBRjBGxfbR+NfJAFSrz0m1HrpEBFFsMp1wZvw=
 github.com/swimresults/start-service v0.2.0/go.mod h1:gCKgwin+fnRy9Dda4jc5WNsD5NqeieZlLei/nImrFnI=
+github.com/swimresults/start-service v0.3.0 h1:cMOKkiUxkDkyoDVYCSbwOocJaopjSOBSgWx41rMjoC8=
+github.com/swimresults/start-service v0.3.0/go.mod h1:gCKgwin+fnRy9Dda4jc5WNsD5NqeieZlLei/nImrFnI=
 github.com/tidwall/pretty v1.0.0 h1:HsD+QiTn7sK6flMKIvNmpqz1qrpP3Ps6jOKIKMooyg4=
 github.com/tidwall/pretty v1.0.0/go.mod h1:XNkn88O1ChpSDQmQeStsy+sBenx6DDtFZJxhVysOjyk=
 github.com/ugorji/go v1.2.7/go.mod h1:nF9osbDWLy6bDVv/Rtoh6QgnvNDpmCalQV5urGCCS6M=
