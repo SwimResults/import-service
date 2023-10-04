@@ -126,6 +126,8 @@ func ImportDsvResultFile(file string, meeting string, exclude []int, include []i
 
 	fmt.Printf(" +==============================+ \n")
 
+	var starts []startModel.Start
+
 	for _, dsvResult := range erg.PNErgebnisse {
 
 		if dsvResult.GrundDerNichtwertung == "AB" {
@@ -151,6 +153,17 @@ func ImportDsvResultFile(file string, meeting string, exclude []int, include []i
 				Name:  dsvResult.Verein,
 			},
 		}
+
+		if dsvResult.Geschlecht == 'W' {
+			athlete.Gender = "FEMALE"
+		}
+		if dsvResult.Geschlecht == 'M' {
+			athlete.Gender = "MALE"
+		}
+		if dsvResult.Geschlecht == 'D' || dsvResult.Geschlecht == 'X' {
+			athlete.Gender = "MIXED"
+		}
+
 		newAthlete, created, err := ac.ImportAthlete(athlete, meeting)
 		if err != nil {
 			return &stats, err
@@ -191,6 +204,8 @@ func ImportDsvResultFile(file string, meeting string, exclude []int, include []i
 		}
 		stats.Imported.Starts++
 
+		starts = append(starts, *newStart)
+
 		if dsvResult.GrundDerNichtwertung != "" {
 			disqType := "disqualified"
 			switch dsvResult.GrundDerNichtwertung {
@@ -224,6 +239,43 @@ func ImportDsvResultFile(file string, meeting string, exclude []int, include []i
 			stats.Imported.Results++
 		}
 
+	}
+
+	for _, dsvLap := range erg.PNZwischenzeiten {
+		if unusedEvents[dsvLap.Wettkampfnummer] {
+			continue
+		}
+
+		if !IsEventImportable(dsvLap.Wettkampfnummer, exclude, include) {
+			continue
+		}
+
+		// LAP Result
+		lapResult := startModel.Result{
+			Time:       dsvLap.Zwischenzeit.Duration(),
+			ResultType: "lap",
+			LapMeters:  dsvLap.Distanz,
+		}
+
+		var lapStart startModel.Start
+
+		found := false
+		for _, start := range starts {
+			if start.AthleteMeetingId == dsvLap.VeranstaltungsIdSchwimmer && start.Event == dsvLap.Wettkampfnummer {
+				lapStart = start
+				found = true
+				break
+			}
+		}
+
+		if found {
+			_, _, err3 := sc.ImportResult(lapStart, lapResult)
+			if err3 != nil {
+				return &stats, err3
+			}
+			stats.Created.Results++
+			stats.Imported.Results++
+		}
 	}
 
 	return &stats, nil
