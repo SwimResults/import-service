@@ -3,6 +3,7 @@ package importer
 import (
 	"fmt"
 	athleteModel "github.com/swimresults/athlete-service/model"
+	model2 "github.com/swimresults/import-service/model"
 	"github.com/swimresults/meeting-service/model"
 	startModel "github.com/swimresults/start-service/model"
 	"regexp"
@@ -12,10 +13,13 @@ import (
 )
 
 var doTheImport = true
-var meeting = "ESS23F"
+var meeting = "IESC19"
 
 func DoTheMagic() error {
-	str, err1 := ReadPdf("../assets/ME_KKJS.pdf")
+
+	var stats model2.ImportFileStats
+
+	str, err1 := ReadPdf("../assets/ME_24.pdf")
 	if err1 != nil {
 		return err1
 	}
@@ -36,6 +40,10 @@ func DoTheMagic() error {
 		event.Number, err = strconv.Atoi(strings.Trim(sa1[0], " "))
 		if err != nil {
 			panic(err)
+		}
+
+		if event.Number <= 0 {
+			continue
 		}
 
 		sr1 := sa1[1]
@@ -77,6 +85,10 @@ func DoTheMagic() error {
 			continue
 		}
 
+		if strings.Contains(sr3, "Staffel") {
+			continue
+		}
+
 		sr3 = substr(sr3, "(")
 		sr3 = substr(sr3, "Final")
 		sr3 = substr(sr3, "Lauf")
@@ -93,9 +105,11 @@ func DoTheMagic() error {
 
 			if created {
 				print("(+) ")
+				stats.Created.Events++
 			} else {
 				print("( ) ")
 			}
+			stats.Imported.Events++
 
 			println(newEvent.Number)
 		}
@@ -105,7 +119,7 @@ func DoTheMagic() error {
 		heats := strings.Split(s1, "Lauf")
 
 		for _, s2 := range heats {
-			if !strings.Contains(s2, "Uhr") {
+			if !strings.Contains(s2, "Uhr") || strings.Contains(s2, "Finalabschnittes") {
 				continue
 			}
 			heat := startModel.Heat{
@@ -118,7 +132,9 @@ func DoTheMagic() error {
 
 			heat.StartEstimation, _ = time.Parse("15:04", strings.Trim(s3, " "))
 
-			heat.Number, _ = strconv.Atoi(substr(s2, "/"))
+			heat.Number, _ = strconv.Atoi(substr(strings.Trim(s2, " "), " ")) // TODO for ESS "/"
+
+			fmt.Println(heat)
 
 			if doTheImport {
 				newHeat, created, err5 := hc.ImportHeat(heat)
@@ -128,9 +144,11 @@ func DoTheMagic() error {
 
 				if created {
 					print("(+) ")
+					stats.Created.Heats++
 				} else {
 					print("( ) ")
 				}
+				stats.Imported.Heats++
 
 				println(newHeat.Number)
 				heat = *newHeat
@@ -138,7 +156,7 @@ func DoTheMagic() error {
 
 			lanes := strings.Split(s2, "Bahn")
 			for _, s4 := range lanes {
-				if strings.Contains(s4, "Meldezeit") || strings.Contains(s4, "Uhr") {
+				if strings.Contains(s4, "Meldezeit") || strings.Contains(s4, "Uhr") || strings.Contains(s4, "Mannschaft") {
 					continue
 				}
 
@@ -165,6 +183,9 @@ func DoTheMagic() error {
 
 				s5 := substrr(s4, y1)
 				s5 = substr(s5, "Erzgebirgsspiele")
+				s5 = substr(s5, "erzeugt")
+				s5 = substr(s5, "16:15 - Beginn")
+				s5 = substr(s5, "Pause")
 				s5 = substr(s5, "---")
 				s5 = s5[:len(s5)-8]
 
@@ -172,7 +193,7 @@ func DoTheMagic() error {
 
 				team := athleteModel.Team{
 					Name:    s5,
-					Country: "GER",
+					Country: "unset",
 				}
 
 				s6 := substr(s4, sa3[1])
@@ -192,8 +213,10 @@ func DoTheMagic() error {
 
 					if created {
 						print("(+) ")
+						stats.Created.Teams++
 						fmt.Println(newTeam)
 					}
+					stats.Imported.Teams++
 					athlete.Team.Name = newTeam.Name
 
 					newAthlete, created, err4 := ac.ImportAthlete(athlete, meeting)
@@ -203,8 +226,11 @@ func DoTheMagic() error {
 
 					if created {
 						print("(+) ")
+						stats.Created.Athletes++
 						fmt.Println(newAthlete)
 					}
+
+					stats.Imported.Athletes++
 
 					start := startModel.Start{
 						Meeting:         meeting,
@@ -225,8 +251,11 @@ func DoTheMagic() error {
 
 					if created {
 						print("(+) ")
+						stats.Created.Starts++
 						fmt.Println(newStart)
 					}
+
+					stats.Imported.Starts++
 
 					s7 := substrr(s4, s5)
 					s7 = strings.Trim(s7, " ")
@@ -252,19 +281,17 @@ func DoTheMagic() error {
 
 					if created {
 						fmt.Printf("(+) result: %s\n", s7)
+						stats.Created.Results++
 					}
+
+					stats.Imported.Results++
 				}
 
 			}
 		}
 	}
+
+	stats.PrintReport()
+
 	return nil
-}
-
-func substr(s string, substr string) string {
-	return strings.Trim(strings.SplitN(s, substr, 2)[0], " ")
-}
-
-func substrr(s string, substr string) string {
-	return strings.Trim(strings.SplitN(s, substr, 2)[1], " ")
 }
