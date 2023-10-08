@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	client2 "github.com/swimresults/import-service/client"
 	"github.com/swimresults/import-service/controller"
 	"github.com/swimresults/import-service/service"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -19,7 +18,6 @@ func main() {
 	ctx := connectDB()
 	service.Init(client)
 	controller.Run()
-	client2.ExecClient()
 
 	if err := client.Disconnect(ctx); err != nil {
 		panic(err)
