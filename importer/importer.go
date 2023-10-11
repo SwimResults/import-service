@@ -4,6 +4,7 @@ import (
 	athleteClient "github.com/swimresults/athlete-service/client"
 	"github.com/swimresults/meeting-service/client"
 	startClient "github.com/swimresults/start-service/client"
+	"strings"
 )
 
 //var startServiceUrl = "https://api.swimresults.de/start/v1/"
@@ -13,6 +14,10 @@ import (
 var startServiceUrl = "http://localhost:8087/"
 var athleteServiceUrl = "http://localhost:8086/"
 var meetingServiceUrl = "http://localhost:8089/"
+
+//var startServiceUrl = os.Getenv("SR_IMPORT_START_URL")
+//var athleteServiceUrl = os.Getenv("SR_IMPORT_ATHLETE_URL")
+//var meetingServiceUrl = os.Getenv("SR_IMPORT_MEETING_URL")
 
 var ec = client.NewEventClient(meetingServiceUrl)
 var hc = startClient.NewHeatClient(startServiceUrl)
@@ -41,4 +46,17 @@ func IsEventImportable(ev int, ex []int, in []int) bool {
 
 	return true
 
+}
+
+func substr(s string, substr string) string {
+	return strings.Trim(strings.SplitN(s, substr, 2)[0], " ")
+}
+
+func substrr(s string, substr string) string {
+	s1 := strings.SplitN(s, substr, 2)
+	s2 := s
+	if len(s1) > 1 {
+		s2 = s1[1]
+	}
+	return strings.Trim(s2, " ")
 }
