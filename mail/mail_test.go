@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"net/smtp"
+	"os"
 	"testing"
 	"text/template"
 )
@@ -41,6 +42,10 @@ func TestMails(tst *testing.T) {
 		Name:    "Konrad Weiß",
 		Message: "This is a test message in a HTML template from SwimResults",
 	})
+
+	if os.Getenv("SR_SEND_MAILS") == "" {
+		return
+	}
 
 	// Sending email.
 	err := smtp.SendMail(smtpHost+":"+smtpPort, auth, from, to, body.Bytes())
