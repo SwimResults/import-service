@@ -1,16 +1,14 @@
 # EasyWK Livetiming
 
+> **Warning**
+> For the use of SwimResults it is mandatory to deactivate the setting "Ready-Signal der Anlage schreibt neuen Lauf" in order to receive new heat data at the moment of the start and write the "start at" time correctly.
+
 The import service is able to receive data from EasyWK Livetiming.
 In a regular use case EasyWK issues HTTP POST Request against a php file (`livework.php`) which is then in charge of storing the received data and building HTML tables with the data to be displayed.
 For reference the used `livework.php` file can be found in this directory. 
 
 In SwimResults we are going to create an HTTP POST endpoint inside the import service that can be called by EasyWK in the same way as the php file.
 This endpoint is then used to send the received data to the correct microservice.
-
-
-> **Warning**
->
-> For the use of SwimResults it is mandatory to deactivate the setting "Ready-Signal der Anlage schreibt neuen Lauf" in order to receive new heat data at the moment of the start and write the "start at" time correctly.
 
 To be able to create the endpoints it is mandatory to go through the `livework.php` file and analyse how the data is submitted by EasyWK.
 
