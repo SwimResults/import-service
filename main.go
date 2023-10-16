@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/swimresults/import-service/controller"
+	"github.com/swimresults/import-service/importer"
 	"github.com/swimresults/import-service/service"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -17,6 +18,7 @@ var client *mongo.Client
 func main() {
 	ctx := connectDB()
 	service.Init(client)
+	importer.SetEasyWkMeeting()
 	controller.Run()
 
 	if err := client.Disconnect(ctx); err != nil {
