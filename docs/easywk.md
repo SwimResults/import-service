@@ -239,3 +239,36 @@ The following table lists all actions and the corresponding import processes.
 | disq       | do nothing                                                               |
 | text       | do nothing                                                               |
 | raceresult | set heat finished at time                                                |
+
+
+## Time Formats
+
+Times are send by EasyWk as integer numbers. Reaction times have to be parsed as well as lap and finish times.
+
+### Reaction Time
+
+Reaction time is indicated in the "time" action by setting the `meters` field to `"RT"`.
+The time consists of a number with 1 to 3 digits and is parsed by padding the number with zeros on the left until it reaches 3 digits length. After that a comma is added between the first and second digit.
+
+```
+345 -> "3,45"
+23  -> "0,23"
+3   -> "0,03"
+```
+
+### Result and Lap Times
+
+Result and lap times are parsed in a similar way.
+The number value is padded with zeros on the left until it reaches a length of 8 digits. This 8 digits are then inserted in the following pattern: `"00:00:00,00"`
+
+```
+12345678    -> "12:34:56,78"
+2345678     -> "02:34:56,78"
+345678      -> "00:34:56,78"
+45678       -> "00:04:56,78"
+5678        -> "00:00:56,78"
+678         -> "00:00:06,78"
+78          -> "00:00:00,78"
+8           -> "00:00:00,08"
+0           -> "00:00:00,00"
+```
