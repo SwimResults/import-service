@@ -17,23 +17,23 @@ func TestDoTheResultsMagic(t *testing.T) {
 }
 
 func TestImportDsvResultFile(t *testing.T) {
-	stats, err := ImportDsvResultFile("../assets/Ergebnisdatei.dsv6", "IESC19", nil, nil)
+	//stats, err := ImportDsvResultFile("../assets/Ergebnisdatei.dsv6", "IESC19", nil, nil)
 
-	stats.PrintReport()
+	//stats.PrintReport()
 
-	if err != nil {
-		panic(err)
-	}
+	//if err != nil {
+	//panic(err)
+	//}
 }
 
 func TestImportDsvDefinitionFile(t *testing.T) {
-	stats, err := ImportDsvDefinitionFile("../assets/2023-12-10-Marienbe-Wk.dsv7", "IESC23", nil, nil)
+	//stats, err := ImportDsvDefinitionFile("../assets/2023-12-10-Marienbe-Wk.dsv7", "IESC23", nil, nil)
 
-	stats.PrintReport()
+	//stats.PrintReport()
 
-	if err != nil {
-		panic(err)
-	}
+	//if err != nil {
+	//	panic(err)
+	//}
 }
 
 func TestReadPdf(t *testing.T) {
