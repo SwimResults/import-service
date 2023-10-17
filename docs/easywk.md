@@ -160,7 +160,7 @@ the same as `newrace`
 
 ### time
 
-receives a result time for a single lane. It is either a final result or a split time. 
+receives a result time for a single lane. It is either "RT" for reaction time or a split or final result time. 
 
 ```json
 {

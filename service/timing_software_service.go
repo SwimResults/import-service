@@ -42,11 +42,11 @@ func EasyWkLivetimingRequest(request model.EasyWkActionRequest) (string, error) 
 			return "OK", fmt.Errorf("[EasyWk Time Import] meter not set for E: %d, H: %d, L: %d", currentEvent, currentHeat, request.Lane)
 		}
 
-		finish := false
+		reaction := false
 		m := 0
 
 		if request.Meter == "RT" {
-			finish = true
+			reaction = true
 		} else {
 			mStr := strings.ReplaceAll(request.Meter, "m", "")
 			mStr = strings.Trim(mStr, " ")
@@ -61,7 +61,7 @@ func EasyWkLivetimingRequest(request model.EasyWkActionRequest) (string, error) 
 			return "OK", fmt.Errorf("[EasyWk Time Import] time to duration conversion failed for: %d", request.Time)
 		}
 
-		err = importer.ImportResult(currentEvent, currentHeat, request.Lane, t, m, finish)
+		err = importer.ImportResult(currentEvent, currentHeat, request.Lane, t, m, reaction, request.Finished == "yes")
 
 		return "OK", err
 	case "raceresult":

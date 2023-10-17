@@ -51,7 +51,7 @@ func SetHeatTime(event int, heatNumber int, startAt time.Time, finishedAt time.T
 	return err
 }
 
-func ImportResult(event int, heat int, lane int, time time.Duration, meter int, finalResult bool) error {
+func ImportResult(event int, heat int, lane int, time time.Duration, meter int, reaction bool, finished bool) error {
 	if CurrentMeeting.Meeting == "" {
 		return errors.New("no meeting for live services declared")
 	}
@@ -65,8 +65,10 @@ func ImportResult(event int, heat int, lane int, time time.Duration, meter int, 
 
 	var rt string
 
-	if finalResult {
-		rt = "result_list"
+	if reaction {
+		rt = "reaction"
+	} else if finished {
+		rt = "livetiming_result"
 	} else {
 		rt = "lap"
 	}
@@ -76,7 +78,7 @@ func ImportResult(event int, heat int, lane int, time time.Duration, meter int, 
 		ResultType: rt,
 	}
 
-	if !finalResult {
+	if !reaction {
 		result.LapMeters = meter
 	}
 
