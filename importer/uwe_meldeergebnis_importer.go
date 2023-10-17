@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-var doTheImport = true
+var doTheImport = false
 var meeting = "IESC19"
 
 func DoTheMagic() error {

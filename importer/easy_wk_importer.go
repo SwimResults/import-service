@@ -1,46 +1,63 @@
 package importer
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/swimresults/import-service/model"
 	startModel "github.com/swimresults/start-service/model"
 	"os"
 	"time"
 )
 
-var currentMeeting string
+var CurrentMeeting model.EasyWkMeeting
 
 func SetEasyWkMeeting() {
-	dat, _ := os.ReadFile("config/live_meeting.txt")
-	currentMeeting = string(dat)
-	fmt.Printf("set meeting for live services to: %s\n", currentMeeting)
+	dat, _ := os.ReadFile("config/live_meeting.json")
+	err := json.Unmarshal(dat, &CurrentMeeting)
+	if err != nil {
+		panic(err)
+		return
+	}
+	fmt.Printf("set meeting for live services to: '%s'; password is: '%s'\n", CurrentMeeting.Meeting, CurrentMeeting.Password)
 }
 
 func SetHeatStartTime(event int, heat int) error {
-	if currentMeeting == "" {
+	if CurrentMeeting.Meeting == "" {
 		return errors.New("no meeting for live services declared")
 	}
-	// TODO set heat started at time
 
-	return nil
+	return SetHeatTime(event, heat, time.Now(), time.Time{})
 }
 
 func SetHeatFinishTime(event int, heat int) error {
-	if currentMeeting == "" {
+	if CurrentMeeting.Meeting == "" {
 		return errors.New("no meeting for live services declared")
 	}
-	// TODO set heat finished at time
 
-	return nil
+	return SetHeatTime(event, heat, time.Time{}, time.Now())
+}
+
+func SetHeatTime(event int, heatNumber int, startAt time.Time, finishedAt time.Time) error {
+	heat := startModel.Heat{
+		Meeting:    CurrentMeeting.Meeting,
+		Event:      event,
+		Number:     heatNumber,
+		StartAt:    startAt,
+		FinishedAt: finishedAt,
+	}
+
+	_, _, err := hc.ImportHeat(heat)
+	return err
 }
 
 func ImportResult(event int, heat int, lane int, time time.Duration, meter int, finalResult bool) error {
-	if currentMeeting == "" {
+	if CurrentMeeting.Meeting == "" {
 		return errors.New("no meeting for live services declared")
 	}
 
 	start := startModel.Start{
-		Meeting:    currentMeeting,
+		Meeting:    CurrentMeeting.Meeting,
 		Event:      event,
 		HeatNumber: heat,
 		Lane:       lane,

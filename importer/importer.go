@@ -4,6 +4,7 @@ import (
 	athleteClient "github.com/swimresults/athlete-service/client"
 	"github.com/swimresults/meeting-service/client"
 	startClient "github.com/swimresults/start-service/client"
+	"os"
 	"strings"
 )
 
@@ -11,13 +12,13 @@ import (
 //var athleteServiceUrl = "https://api.swimresults.de/athlete/v1/"
 //var meetingServiceUrl = "https://api.swimresults.de/meeting/v1/"
 
-var startServiceUrl = "http://localhost:8087/"
-var athleteServiceUrl = "http://localhost:8086/"
-var meetingServiceUrl = "http://localhost:8089/"
+//var startServiceUrl = "http://localhost:8087/"
+//var athleteServiceUrl = "http://localhost:8086/"
+//var meetingServiceUrl = "http://localhost:8089/"
 
-//var startServiceUrl = os.Getenv("SR_IMPORT_START_URL")
-//var athleteServiceUrl = os.Getenv("SR_IMPORT_ATHLETE_URL")
-//var meetingServiceUrl = os.Getenv("SR_IMPORT_MEETING_URL")
+var startServiceUrl = os.Getenv("SR_IMPORT_START_URL")
+var athleteServiceUrl = os.Getenv("SR_IMPORT_ATHLETE_URL")
+var meetingServiceUrl = os.Getenv("SR_IMPORT_MEETING_URL")
 
 var ec = client.NewEventClient(meetingServiceUrl)
 var hc = startClient.NewHeatClient(startServiceUrl)
