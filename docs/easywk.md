@@ -243,7 +243,7 @@ The following table lists all actions and the corresponding import processes.
 
 ## Time Formats
 
-Times are send by EasyWk as integer numbers. Reaction times have to be parsed as well as lap and finish times.
+Times are send by EasyWK as integer numbers. Reaction times have to be parsed as well as lap and finish times.
 
 ### Reaction Time
 
