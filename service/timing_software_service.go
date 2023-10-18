@@ -56,7 +56,15 @@ func EasyWkLivetimingRequest(request model.EasyWkActionRequest) (string, error) 
 			}
 		}
 
-		t, err2 := EasyWkTimeToDuration(request.Time)
+		var t time.Duration
+		var err2 error
+
+		if request.Meter == "RT" {
+			t, err2 = EasyWkReactionToDuration(request.Time)
+		} else {
+			t, err2 = EasyWkTimeToDuration(request.Time)
+		}
+
 		if err2 != nil {
 			return "OK", fmt.Errorf("[EasyWk Time Import] time to duration conversion failed for: %d", request.Time)
 		}
@@ -85,6 +93,18 @@ func EasyWkTimeToDuration(t int) (time.Duration, error) {
 		tStr[0:2] + "h" +
 			tStr[2:4] + "m" +
 			tStr[4:6] + "s" +
+			fmt.Sprintf("%03d", h*10) + "ms")
+	return d, err
+}
+
+func EasyWkReactionToDuration(t int) (time.Duration, error) {
+	tStr := fmt.Sprintf("%03d", t)
+	h, _ := strconv.Atoi(tStr[1:3])
+	fmt.Println(
+		tStr[0:1] + "s" +
+			fmt.Sprintf("%03d", h*10) + "ms")
+	d, err := time.ParseDuration(
+		tStr[0:1] + "s" +
 			fmt.Sprintf("%03d", h*10) + "ms")
 	return d, err
 }
