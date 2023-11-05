@@ -18,12 +18,15 @@ import (
 )
 
 func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include []int) (*importModel.ImportFileStats, error) {
+
+	var stats importModel.ImportFileStats
 	var buf io.Reader
+
 	if strings.Contains(file, "http") {
 		// get file content from url
 		resp, err := http.Get(file)
 		if err != nil {
-			return nil, err
+			return &stats, err
 		}
 
 		buf = resp.Body
@@ -31,7 +34,7 @@ func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include
 		// get file content from local file
 		dat, err := os.ReadFile(file)
 		if err != nil {
-			return nil, err
+			return &stats, err
 		}
 
 		buf = bytes.NewBuffer(dat)
@@ -44,8 +47,6 @@ func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include
 	}
 
 	def := res.(*model.Wettkampfdefinitionsliste)
-
-	var stats importModel.ImportFileStats
 
 	for _, dsvEvent := range def.Wettkaempfe {
 		if !IsEventImportable(dsvEvent.Wettkampfnummer, exclude, include) {
@@ -97,11 +98,25 @@ func ImportDsvResultFile(file string, meeting string, exclude []int, include []i
 
 	var stats importModel.ImportFileStats
 
-	dat, err := os.ReadFile(file)
-	if err != nil {
-		return &stats, err
+	var buf io.Reader
+	if strings.Contains(file, "http") {
+		// get file content from url
+		resp, err := http.Get(file)
+		if err != nil {
+			return &stats, err
+		}
+
+		buf = resp.Body
+	} else {
+		// get file content from local file
+		dat, err := os.ReadFile(file)
+		if err != nil {
+			return &stats, err
+		}
+
+		buf = bytes.NewBuffer(dat)
 	}
-	buf := bytes.NewBuffer(dat)
+
 	r := parser.NewReader(buf)
 	res, err := r.Read()
 	if err != nil {
