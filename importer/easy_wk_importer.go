@@ -16,7 +16,7 @@ func SetEasyWkMeeting() {
 	dat, _ := os.ReadFile("config/live_meeting.json")
 	err := json.Unmarshal(dat, &CurrentMeeting)
 	if err != nil {
-		println(err)
+		println(err.Error())
 		return
 	}
 	fmt.Printf("set meeting for live services to: '%s'; password is: '%s'\n", CurrentMeeting.Meeting, CurrentMeeting.Password)
