@@ -9,17 +9,34 @@ import (
 	importModel "github.com/swimresults/import-service/model"
 	eventModel "github.com/swimresults/meeting-service/model"
 	startModel "github.com/swimresults/start-service/model"
+	"io"
+	"net/http"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 )
 
 func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include []int) (*importModel.ImportFileStats, error) {
-	dat, err := os.ReadFile(file)
-	if err != nil {
-		return nil, err
+	var buf io.Reader
+	if strings.Contains(file, "http") {
+		// get file content from url
+		resp, err := http.Get(file)
+		if err != nil {
+			return nil, err
+		}
+
+		buf = resp.Body
+	} else {
+		// get file content from local file
+		dat, err := os.ReadFile(file)
+		if err != nil {
+			return nil, err
+		}
+
+		buf = bytes.NewBuffer(dat)
 	}
-	buf := bytes.NewBuffer(dat)
+
 	r := parser.NewReader(buf)
 	res, err := r.Read()
 	if err != nil {

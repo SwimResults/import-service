@@ -14,7 +14,7 @@ func ImportFile(r model.ImportFileRequest) error {
 			go func() {
 				stats, err := importer.ImportDsvDefinitionFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
 				if err != nil {
-					panic(err)
+					println(err)
 				}
 				stats.PrintReport()
 			}()
@@ -22,7 +22,7 @@ func ImportFile(r model.ImportFileRequest) error {
 			go func() {
 				stats, err := importer.ImportDsvResultFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
 				if err != nil {
-					panic(err)
+					println(err)
 				}
 				stats.PrintReport()
 			}()
@@ -36,7 +36,7 @@ func ImportFile(r model.ImportFileRequest) error {
 			go func() {
 				stats, err := importer.ImportPdfStartListFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
 				if err != nil {
-					panic(err)
+					println(err)
 				}
 				stats.PrintReport()
 			}()
@@ -44,7 +44,7 @@ func ImportFile(r model.ImportFileRequest) error {
 			go func() {
 				stats, err := importer.ImportDsvResultFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
 				if err != nil {
-					panic(err)
+					println(err)
 				}
 				stats.PrintReport()
 			}()
