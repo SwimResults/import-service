@@ -9,6 +9,7 @@ import (
 
 func timingSoftwareController() {
 	router.POST("/easywk", easyWkLivetiming)
+	router.OPTIONS("/easywk", ok)
 }
 
 func easyWkLivetiming(c *gin.Context) {
@@ -25,4 +26,8 @@ func easyWkLivetiming(c *gin.Context) {
 	}
 
 	c.String(http.StatusOK, str)
+}
+
+func ok(c *gin.Context) {
+	c.Status(200)
 }
