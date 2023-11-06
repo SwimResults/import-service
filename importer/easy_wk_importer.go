@@ -13,7 +13,13 @@ import (
 var CurrentMeeting model.EasyWkMeeting
 
 func SetEasyWkMeeting() {
-	dat, _ := os.ReadFile("./config/live_meeting.json")
+	wd, _ := os.Getwd()
+	println(wd)
+	dat, err1 := os.ReadFile("../config/live_meeting.json")
+	if err1 != nil {
+		println(err1.Error())
+		return
+	}
 	err := json.Unmarshal(dat, &CurrentMeeting)
 	if err != nil {
 		println(err.Error())
