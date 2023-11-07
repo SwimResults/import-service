@@ -48,10 +48,16 @@ func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include
 
 	def := res.(*model.Wettkampfdefinitionsliste)
 
+	println("read definition")
+
 	for _, dsvEvent := range def.Wettkaempfe {
+		fmt.Printf("%d", dsvEvent.Wettkampfnummer)
 		if !IsEventImportable(dsvEvent.Wettkampfnummer, exclude, include) {
+			print(" => no import")
 			continue
 		}
+
+		println("event loop")
 
 		event := eventModel.Event{
 			Number:   dsvEvent.Wettkampfnummer,

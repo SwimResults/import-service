@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"fmt"
 	athleteClient "github.com/swimresults/athlete-service/client"
 	"github.com/swimresults/meeting-service/client"
 	startClient "github.com/swimresults/start-service/client"
@@ -28,7 +29,8 @@ var ac = athleteClient.NewAthleteClient(athleteServiceUrl)
 var tc = athleteClient.NewTeamClient(athleteServiceUrl)
 
 func IsEventImportable(ev int, ex []int, in []int) bool {
-	if ex != nil {
+	fmt.Printf("\nimportable check: %d, ex: %d, in: %d", ev, ex, in)
+	if ex != nil && len(ex) > 0 {
 		for _, e := range ex {
 			if ev == e { // in exclude list -> next
 				return false
@@ -36,7 +38,7 @@ func IsEventImportable(ev int, ex []int, in []int) bool {
 		}
 	}
 
-	if in != nil {
+	if in != nil && len(in) > 0 {
 		for _, e := range in {
 			if ev == e {
 				return true
