@@ -18,6 +18,10 @@ type ImportFileStatsEntries struct {
 }
 
 func (stats *ImportFileStats) PrintReport() {
+	if stats == nil {
+		println("trying to print nil ImportFileStats")
+		return
+	}
 	fmt.Printf("\n\n--===[ IMPORT REPORT ]===--\n")
 	fmt.Printf("  -> events: (%d, %d)\n", stats.Created.Events, stats.Imported.Events)
 	fmt.Printf("  -> teams: (%d, %d)\n", stats.Created.Teams, stats.Imported.Teams)
