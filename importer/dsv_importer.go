@@ -40,11 +40,6 @@ func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include
 		buf = bytes.NewBuffer(dat)
 	}
 
-	b := new(strings.Builder)
-	_, err := io.Copy(b, buf)
-	// check errors
-	fmt.Println(b.String())
-
 	r := parser.NewReader(buf)
 	res, err := r.Read()
 	if err != nil {
