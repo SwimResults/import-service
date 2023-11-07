@@ -26,7 +26,7 @@ func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include
 		// get file content from url
 		resp, err := http.Get(file)
 		if err != nil {
-			return &stats, err
+			return nil, err
 		}
 
 		buf = resp.Body
@@ -34,7 +34,7 @@ func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include
 		// get file content from local file
 		dat, err := os.ReadFile(file)
 		if err != nil {
-			return &stats, err
+			return nil, err
 		}
 
 		buf = bytes.NewBuffer(dat)
