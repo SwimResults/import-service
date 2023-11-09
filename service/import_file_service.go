@@ -57,9 +57,7 @@ func DsvResultListImport(r model.ImportFileRequest) {
 }
 
 func PdfStartListImport(r model.ImportFileRequest) {
-	println("kappa")
 	settings, err := GetImportSettingByMeeting(r.Meeting)
-	println("kappa")
 	if err != nil {
 		println(err.Error())
 		return
