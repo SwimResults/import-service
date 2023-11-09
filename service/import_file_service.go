@@ -24,13 +24,7 @@ func ImportFile(r model.ImportFileRequest) error {
 		case "START_LIST":
 			go PdfStartListImport(r)
 		case "RESULT_LIST":
-			go func() {
-				stats, err := importer.ImportDsvResultFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
-				if err != nil {
-					println(err.Error())
-				}
-				stats.PrintReport()
-			}()
+			go PdfResultListImport(r)
 		default:
 			return fmt.Errorf("unknown file_type for PDF (%s)", r.FileType)
 		}
@@ -63,6 +57,19 @@ func PdfStartListImport(r model.ImportFileRequest) {
 		return
 	}
 	stats, err := importer.ImportPdfStartList(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents, settings.PdfStartListSettings)
+	if err != nil {
+		println(err.Error())
+	}
+	stats.PrintReport()
+}
+
+func PdfResultListImport(r model.ImportFileRequest) {
+	settings, err := GetImportSettingByMeeting(r.Meeting)
+	if err != nil {
+		println(err.Error())
+		return
+	}
+	stats, err := importer.ImportPdfResultList(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents, settings.PdfResultListSettings)
 	if err != nil {
 		println(err.Error())
 	}

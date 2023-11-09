@@ -367,6 +367,16 @@ func ImportPdfStartList(file string, meeting string, exclude []int, include []in
 	return &stats, nil
 }
 
+// ImportPdfResultList takes the path to a pdf file that contains a result
+// list. All teams, athletes and results will be imported.
+// If exclude is set, given event numbers will be excluded from import.
+// If include is set, only given event numbers will be imported.
+//
+// For import process details see documentation on GitHub.
+func ImportPdfResultList(file string, meeting string, exclude []int, include []int, stg importModel.ImportPdfResultListSettings) (*importModel.ImportFileStats, error) {
+	return nil, nil
+}
+
 func shouldSkip(s string, skipStrings []string, requiredStrings []string) bool {
 	skip := false
 	for _, skipString := range skipStrings {
