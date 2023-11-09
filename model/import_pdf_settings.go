@@ -7,7 +7,7 @@ type ImportPdfStartListSettings struct {
 	EventNumberSeparator   string       `json:"event_number_separator,omitempty" bson:"event_number_separator,omitempty"`       // -
 	DistanceSeparator      string       `json:"distance_separator,omitempty" bson:"distance_separator,omitempty"`               // m
 	GenderMapping          [3][2]string `json:"gender_mapping,omitempty" bson:"gender_mapping,omitempty"`                       // "männlich" -> "MALE"
-	StyleNameSkipString    []string     `json:"style_name_skip_string,omitempty" bson:"style_name_skip_string,omitempty"`       // staffel, beine
+	StyleNameSkipStrings   []string     `json:"style_name_skip_strings,omitempty" bson:"style_name_skip_strings,omitempty"`     // staffel, beine
 	HeatSeparator          string       `json:"heat_separator,omitempty" bson:"heat_separator,omitempty"`                       // Lauf
 	HeatSkipStrings        []string     `json:"heat_skip_strings,omitempty" bson:"heat_skip_strings,omitempty"`                 // Finalabschnittes
 	HeatRequiredStrings    []string     `json:"heat_required_strings,omitempty" bson:"heat_required_strings,omitempty"`         // Uhr, Meldezeit
@@ -19,6 +19,7 @@ type ImportPdfStartListSettings struct {
 	LaneSkipStrings        []string     `json:"lane_skip_strings,omitempty" bson:"lane_skip_strings,omitempty"`                 // Meldezeit, Uhr
 	LaneNumberPattern      string       `json:"lane_number_pattern,omitempty" bson:"lane_number_pattern,omitempty"`             // [0-9]+
 	YearPattern            string       `json:"year_pattern,omitempty" bson:"year_pattern,omitempty"`                           // [0-9]{4}
+	YearOpenString         string       `json:"year_open_string,omitempty" bson:"year_open_string,omitempty"`                   // Offen
 	SwimTimePattern        string       `json:"swim_time_pattern,omitempty" bson:"swim_time_pattern,omitempty"`                 // [0-9]{2}:[0-9]{2},[0-9]{2}
 }
 

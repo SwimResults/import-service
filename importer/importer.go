@@ -29,7 +29,6 @@ var ac = athleteClient.NewAthleteClient(athleteServiceUrl)
 var tc = athleteClient.NewTeamClient(athleteServiceUrl)
 
 func IsEventImportable(ev int, ex []int, in []int) bool {
-	fmt.Printf("\nimportable check: %d, ex: %d, in: %d", ev, ex, in)
 	if ex != nil && len(ex) > 0 {
 		for _, e := range ex {
 			if ev == e { // in exclude list -> next
@@ -51,10 +50,12 @@ func IsEventImportable(ev int, ex []int, in []int) bool {
 
 }
 
-func substr(s string, substr string) string {
-	return strings.Trim(strings.SplitN(s, substr, 2)[0], " ")
+// substr returns everything from s until sep appears
+func substr(s string, sep string) string {
+	return strings.Trim(strings.SplitN(s, sep, 2)[0], " ")
 }
 
+// substrr returns everything from s that comes after sep; if sep does not occur, s is returned
 func substrr(s string, substr string) string {
 	s1 := strings.SplitN(s, substr, 2)
 	s2 := s
@@ -62,4 +63,17 @@ func substrr(s string, substr string) string {
 		s2 = s1[1]
 	}
 	return strings.Trim(s2, " ")
+}
+
+func trim(s string) string {
+	return strings.Trim(s, " ")
+}
+
+func runImport() bool {
+	return os.Getenv("SR_NO_IMPORT") == ""
+}
+
+func importError(text string, err error) {
+	fmt.Println(text)
+	fmt.Println(err)
 }

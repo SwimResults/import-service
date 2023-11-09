@@ -12,6 +12,7 @@ import (
 )
 
 var settingsCollection *mongo.Collection
+var settingsForMeetingNotFoundError = "no setting with given meeting found"
 
 func settingsService(database *mongo.Database) {
 	settingsCollection = database.Collection("settings")
@@ -72,7 +73,7 @@ func GetImportSettingByMeeting(meeting string) (model.ImportSetting, error) {
 		return settings[0], nil
 	}
 
-	return model.ImportSetting{}, errors.New("no setting with given meeting found")
+	return model.ImportSetting{}, errors.New(settingsForMeetingNotFoundError)
 }
 
 func RemoveImportSettingById(id primitive.ObjectID) error {
@@ -91,22 +92,23 @@ func AddImportSetting(setting model.ImportSetting) (model.ImportSetting, error) 
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	r, err := settingsCollection.InsertOne(ctx, setting)
+	stg, err1 := GetImportSettingByMeeting(setting.Meeting)
+	if err1 != nil {
+		if err1.Error() == settingsForMeetingNotFoundError {
+			r, err := settingsCollection.InsertOne(ctx, setting)
+			if err != nil {
+				return model.ImportSetting{}, err
+			}
+			return GetImportSettingById(r.InsertedID.(primitive.ObjectID))
+		}
+		return model.ImportSetting{}, err1
+	}
+
+	_, err := settingsCollection.ReplaceOne(ctx, bson.D{{"_id", stg.Identifier}}, setting)
 	if err != nil {
 		return model.ImportSetting{}, err
 	}
 
-	return GetImportSettingById(r.InsertedID.(primitive.ObjectID))
-}
+	return GetImportSettingById(stg.Identifier)
 
-func UpdateImportSetting(setting model.ImportSetting) (model.ImportSetting, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-
-	_, err := settingsCollection.ReplaceOne(ctx, bson.D{{"_id", setting.Identifier}}, setting)
-	if err != nil {
-		return model.ImportSetting{}, err
-	}
-
-	return GetImportSettingById(setting.Identifier)
 }

@@ -11,21 +11,9 @@ func ImportFile(r model.ImportFileRequest) error {
 	case "DSV":
 		switch r.FileType {
 		case "DEFINITION":
-			go func() {
-				stats, err := importer.ImportDsvDefinitionFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
-				if err != nil {
-					println(err.Error())
-				}
-				stats.PrintReport()
-			}()
+			go DsvDefinitionImport(r)
 		case "RESULT_LIST":
-			go func() {
-				stats, err := importer.ImportDsvResultFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
-				if err != nil {
-					println(err.Error())
-				}
-				stats.PrintReport()
-			}()
+			go DsvResultListImport(r)
 		default:
 			return fmt.Errorf("unknown file_type for DSV (%s)", r.FileType)
 		}
@@ -33,13 +21,7 @@ func ImportFile(r model.ImportFileRequest) error {
 	case "PDF":
 		switch r.FileType {
 		case "START_LIST":
-			go func() {
-				stats, err := importer.ImportPdfStartListFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
-				if err != nil {
-					println(err.Error())
-				}
-				stats.PrintReport()
-			}()
+			go PdfStartListImport(r)
 		case "RESULT_LIST":
 			go func() {
 				stats, err := importer.ImportDsvResultFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
@@ -55,4 +37,35 @@ func ImportFile(r model.ImportFileRequest) error {
 	default:
 		return fmt.Errorf("unknown file extension (%s)", r.FileExtension)
 	}
+}
+
+func DsvDefinitionImport(r model.ImportFileRequest) {
+	stats, err := importer.ImportDsvDefinitionFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
+	if err != nil {
+		println(err.Error())
+	}
+	stats.PrintReport()
+}
+
+func DsvResultListImport(r model.ImportFileRequest) {
+	stats, err := importer.ImportDsvResultFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
+	if err != nil {
+		println(err.Error())
+	}
+	stats.PrintReport()
+}
+
+func PdfStartListImport(r model.ImportFileRequest) {
+	println("kappa")
+	settings, err := GetImportSettingByMeeting(r.Meeting)
+	println("kappa")
+	if err != nil {
+		println(err.Error())
+		return
+	}
+	stats, err := importer.ImportPdfStartList(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents, settings.PdfStartListSettings)
+	if err != nil {
+		println(err.Error())
+	}
+	stats.PrintReport()
 }
