@@ -74,6 +74,7 @@ func runImport() bool {
 }
 
 func importError(text string, err error) {
-	fmt.Println(text)
+	fmt.Println("\033[31m" + text + "\033[33m")
 	fmt.Println(err)
+	fmt.Println("\033[0m")
 }

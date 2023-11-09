@@ -7,6 +7,7 @@ import (
 )
 
 func ImportFile(r model.ImportFileRequest) error {
+	printImportInfo(r)
 	switch r.FileExtension {
 	case "DSV":
 		switch r.FileType {
@@ -68,4 +69,20 @@ func PdfStartListImport(r model.ImportFileRequest) {
 		println(err.Error())
 	}
 	stats.PrintReport()
+}
+
+func printImportInfo(r model.ImportFileRequest) {
+	fmt.Println()
+	fmt.Println()
+	fmt.Printf("\t+----======================================----+\n")
+	fmt.Printf("\t|       \033[36mFILE IMPORT GO ROUTINE STARTED!\033[0m        |\n")
+	fmt.Printf("\t+----======================================----+\n")
+	fmt.Printf("\n")
+	fmt.Printf("\t\033[37mFile: \033[36m%s\033[0m\n", r.Url)
+	fmt.Printf("\t\033[37mExtension: \033[36m%s\033[0m\n", r.FileExtension)
+	fmt.Printf("\t\033[37mType: \033[36m%s\033[0m\n", r.FileType)
+	fmt.Printf("\t\033[37mInclude: \033[36m%d\033[0m\n", r.IncludeEvents)
+	fmt.Printf("\t\033[37mExclude: \033[36m%d\033[0m\n", r.ExcludeEvents)
+	fmt.Println()
+	fmt.Println()
 }
