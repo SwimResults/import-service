@@ -2,6 +2,8 @@
 
 This documentation describes how a pdf file is imported into the swimresults system.
 
+![](start_list.png)
+
 ## General
 
 ### Read PDF
