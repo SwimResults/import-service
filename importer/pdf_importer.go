@@ -36,20 +36,7 @@ func ReadPdf(path string) (string, error) {
 
 // GetPdfFileContent fetches pdf from source (local path or online source) and returns content as text string
 func GetPdfFileContent(file string) (string, error) {
-	buf, err := getFileReader(file)
-	if err != nil {
-		return "", err
-	}
-
-	buff := bytes.NewBuffer([]byte{})
-	_, err = io.Copy(buff, buf)
-	if err != nil {
-		return "", err
-	}
-
-	rdr := bytes.NewReader(buff.Bytes())
-
-	reader, err := pdf.NewReader(rdr, rdr.Size())
+	reader, err := GetPdfReader(file)
 	if err != nil {
 		return "", err
 	}
@@ -66,6 +53,24 @@ func GetPdfFileContent(file string) (string, error) {
 	}
 
 	return bf.String(), nil
+}
+
+// GetPdfReader fetches pdf from source (local path or online source) and returns pdf.Reader
+func GetPdfReader(file string) (*pdf.Reader, error) {
+	buf, err := getFileReader(file)
+	if err != nil {
+		return nil, err
+	}
+
+	buff := bytes.NewBuffer([]byte{})
+	_, err = io.Copy(buff, buf)
+	if err != nil {
+		return nil, err
+	}
+
+	rdr := bytes.NewReader(buff.Bytes())
+
+	return pdf.NewReader(rdr, rdr.Size())
 }
 
 // ImportPdfStartList takes the path to a pdf file that contains a start
@@ -122,10 +127,13 @@ func ImportPdfStartList(file string, meeting string, exclude []int, include []in
 		}
 
 		var style string
-		for _, genders := range stg.GenderMapping {
-			if strings.Contains(distanceSplit[1], genders[0]) {
-				event.Gender = genders[1]
-				style = trim(substr(distanceSplit[1], genders[0]))
+		pos := 1000
+		for _, gender := range stg.GenderMapping {
+			genderPos := strings.Index(distanceSplit[1], gender[0])
+			if genderPos > 0 && genderPos < pos {
+				pos = genderPos
+				event.Gender = gender[1]
+				style = trim(substr(distanceSplit[1], gender[0]))
 			}
 		}
 
@@ -421,10 +429,13 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 		}
 
 		var style string
-		for _, genders := range stg.GenderMapping {
-			if strings.Contains(distanceSplit[1], genders[0]) {
-				event.Gender = genders[1]
-				style = trim(substr(distanceSplit[1], genders[0]))
+		pos := 1000
+		for _, gender := range stg.GenderMapping {
+			genderPos := strings.Index(distanceSplit[1], gender[0])
+			if genderPos > 0 && genderPos < pos {
+				pos = genderPos
+				event.Gender = gender[1]
+				style = trim(substr(distanceSplit[1], gender[0]))
 			}
 		}
 
