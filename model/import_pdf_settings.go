@@ -24,7 +24,11 @@ type ImportPdfStartListSettings struct {
 }
 
 type ImportPdfResultListSettings struct {
-	EventSeparator     string   `json:"event_separator,omitempty" bson:"event_separator,omitempty"`
-	EventSkipStrings   []string `json:"event_skip_strings,omitempty" bson:"event_skip_strings,omitempty"`
-	EventNoSkipStrings []string `json:"event_no_skip_strings,omitempty" bson:"event_no_skip_strings,omitempty"`
+	EventSeparator       string       `json:"event_separator,omitempty" bson:"event_separator,omitempty"`                 // Wettkampf
+	EventSkipStrings     []string     `json:"event_skip_strings,omitempty" bson:"event_skip_strings,omitempty"`           //
+	EventRequiredStrings []string     `json:"event_required_strings,omitempty" bson:"event_required_strings,omitempty"`   // Meldezeit
+	EventNumberSeparator string       `json:"event_number_separator,omitempty" bson:"event_number_separator,omitempty"`   // -
+	DistanceSeparator    string       `json:"distance_separator,omitempty" bson:"distance_separator,omitempty"`           // m
+	GenderMapping        [3][2]string `json:"gender_mapping,omitempty" bson:"gender_mapping,omitempty"`                   // "männlich" -> "MALE"
+	StyleNameSkipStrings []string     `json:"style_name_skip_strings,omitempty" bson:"style_name_skip_strings,omitempty"` // staffel, beine
 }

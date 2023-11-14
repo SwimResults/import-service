@@ -374,6 +374,83 @@ func ImportPdfStartList(file string, meeting string, exclude []int, include []in
 //
 // For import process details see documentation on GitHub.
 func ImportPdfResultList(file string, meeting string, exclude []int, include []int, stg importModel.ImportPdfResultListSettings) (*importModel.ImportFileStats, error) {
+
+	text, err := GetPdfFileContent(file)
+	if err != nil {
+		return nil, err
+	}
+
+	var stats importModel.ImportFileStats
+
+	// split by event
+	eventSplit := strings.Split(text, stg.EventSeparator)
+	for _, eventString := range eventSplit {
+
+		// eliminate some events
+		if shouldSkip(eventString, stg.EventSkipStrings, stg.EventRequiredStrings) {
+			continue
+		}
+
+		event := model.Event{
+			Meeting: meeting,
+		}
+
+		eventNumberSplit := strings.SplitN(eventString, stg.EventNumberSeparator, 2)
+		event.Number, err = strconv.Atoi(trim(eventNumberSplit[0]))
+		if err != nil {
+			return &stats, err
+		}
+
+		if event.Number <= 0 {
+			continue
+		}
+
+		if !IsEventImportable(event.Number, exclude, include) {
+			continue
+		}
+
+		distanceSplit := strings.SplitN(eventNumberSplit[1], stg.DistanceSeparator, 2)
+		distance := trim(distanceSplit[0])
+		event.Distance, err = strconv.Atoi(distance)
+		if err != nil {
+			if strings.Contains(distance, "x") {
+				event.RelayDistance = distance
+			} else {
+				return &stats, err
+			}
+		}
+
+		var style string
+		for _, genders := range stg.GenderMapping {
+			if strings.Contains(distanceSplit[1], genders[0]) {
+				event.Gender = genders[1]
+				style = trim(substr(distanceSplit[1], genders[0]))
+			}
+		}
+
+		if shouldSkip(style, stg.StyleNameSkipStrings, []string{}) {
+			importError(fmt.Sprintf("skipped event %d with style '%s'", event.Number, style), errors.New(""))
+			continue
+		}
+
+		fmt.Printf("WK %d - %dm %s (%s)\n", event.Number, event.Distance, style, event.Gender)
+
+		// +===========================+
+		//        EVENT IMPORT
+		// +===========================+
+
+		if runImport() {
+			_, c, err := ec.ImportEvent(event, style, 1)
+			if err != nil {
+				importError(fmt.Sprintf("import event request failed for event %d!", event.Number), err)
+				continue
+			}
+			if c {
+				stats.Created.Events++
+			}
+			stats.Imported.Events++
+		}
+	}
 	return nil, nil
 }
 
