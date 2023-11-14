@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"fmt"
 	athleteClient "github.com/swimresults/athlete-service/client"
 	"github.com/swimresults/meeting-service/client"
 	startClient "github.com/swimresults/start-service/client"
@@ -28,7 +29,7 @@ var ac = athleteClient.NewAthleteClient(athleteServiceUrl)
 var tc = athleteClient.NewTeamClient(athleteServiceUrl)
 
 func IsEventImportable(ev int, ex []int, in []int) bool {
-	if ex != nil {
+	if ex != nil && len(ex) > 0 {
 		for _, e := range ex {
 			if ev == e { // in exclude list -> next
 				return false
@@ -36,7 +37,7 @@ func IsEventImportable(ev int, ex []int, in []int) bool {
 		}
 	}
 
-	if in != nil {
+	if in != nil && len(in) > 0 {
 		for _, e := range in {
 			if ev == e {
 				return true
@@ -49,10 +50,12 @@ func IsEventImportable(ev int, ex []int, in []int) bool {
 
 }
 
-func substr(s string, substr string) string {
-	return strings.Trim(strings.SplitN(s, substr, 2)[0], " ")
+// substr returns everything from s until sep appears
+func substr(s string, sep string) string {
+	return strings.Trim(strings.SplitN(s, sep, 2)[0], " ")
 }
 
+// substrr returns everything from s that comes after sep; if sep does not occur, s is returned
 func substrr(s string, substr string) string {
 	s1 := strings.SplitN(s, substr, 2)
 	s2 := s
@@ -60,4 +63,18 @@ func substrr(s string, substr string) string {
 		s2 = s1[1]
 	}
 	return strings.Trim(s2, " ")
+}
+
+func trim(s string) string {
+	return strings.Trim(s, " ")
+}
+
+func runImport() bool {
+	return os.Getenv("SR_NO_IMPORT") == ""
+}
+
+func importError(text string, err error) {
+	fmt.Println("\033[31m" + text + "\033[33m")
+	fmt.Println(err)
+	fmt.Println("\033[0m")
 }

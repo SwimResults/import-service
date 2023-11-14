@@ -15,7 +15,6 @@ func settingsController() {
 
 	router.DELETE("/settings/:id", removeImportSetting)
 	router.POST("/settings", addImportSetting)
-	router.PUT("/settings", updateImportSetting)
 }
 
 func getImportSettings(c *gin.Context) {
@@ -86,22 +85,6 @@ func addImportSetting(c *gin.Context) {
 	r, err := service.AddImportSetting(setting)
 	if err != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
-		return
-	}
-
-	c.IndentedJSON(http.StatusOK, r)
-}
-
-func updateImportSetting(c *gin.Context) {
-	var setting model.ImportSetting
-	if err := c.BindJSON(&setting); err != nil {
-		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
-		return
-	}
-
-	r, err := service.UpdateImportSetting(setting)
-	if err != nil {
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": err.Error()})
 		return
 	}
 

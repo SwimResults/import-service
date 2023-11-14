@@ -17,10 +17,8 @@ import (
 	"time"
 )
 
-func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include []int) (*importModel.ImportFileStats, error) {
-
-	var stats importModel.ImportFileStats
-	var buf io.Reader
+func getFileReader(file string) (io.Reader, error) {
+	var r io.Reader
 
 	if strings.Contains(file, "http") {
 		// get file content from url
@@ -29,7 +27,7 @@ func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include
 			return nil, err
 		}
 
-		buf = resp.Body
+		r = resp.Body
 	} else {
 		// get file content from local file
 		dat, err := os.ReadFile(file)
@@ -37,13 +35,20 @@ func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include
 			return nil, err
 		}
 
-		buf = bytes.NewBuffer(dat)
+		r = bytes.NewBuffer(dat)
 	}
 
-	b := new(strings.Builder)
-	_, err := io.Copy(b, buf)
-	// check errors
-	fmt.Println(b.String())
+	return r, nil
+}
+
+func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include []int) (*importModel.ImportFileStats, error) {
+
+	var stats importModel.ImportFileStats
+
+	buf, err1 := getFileReader(file)
+	if err1 != nil {
+		return nil, err1
+	}
 
 	r := parser.NewReader(buf)
 	res, err := r.Read()
@@ -53,10 +58,16 @@ func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include
 
 	def := res.(*model.Wettkampfdefinitionsliste)
 
+	println("read definition")
+
 	for _, dsvEvent := range def.Wettkaempfe {
+		fmt.Printf("%d", dsvEvent.Wettkampfnummer)
 		if !IsEventImportable(dsvEvent.Wettkampfnummer, exclude, include) {
+			print(" => no import")
 			continue
 		}
+
+		println("event loop")
 
 		event := eventModel.Event{
 			Number:   dsvEvent.Wettkampfnummer,
@@ -103,23 +114,9 @@ func ImportDsvResultFile(file string, meeting string, exclude []int, include []i
 
 	var stats importModel.ImportFileStats
 
-	var buf io.Reader
-	if strings.Contains(file, "http") {
-		// get file content from url
-		resp, err := http.Get(file)
-		if err != nil {
-			return &stats, err
-		}
-
-		buf = resp.Body
-	} else {
-		// get file content from local file
-		dat, err := os.ReadFile(file)
-		if err != nil {
-			return &stats, err
-		}
-
-		buf = bytes.NewBuffer(dat)
+	buf, err1 := getFileReader(file)
+	if err1 != nil {
+		return nil, err1
 	}
 
 	r := parser.NewReader(buf)
