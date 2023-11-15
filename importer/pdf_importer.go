@@ -390,6 +390,10 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 
 	var stats importModel.ImportFileStats
 
+	lastEvent := 0
+	results := make(map[int][]string)
+	var rankCount int
+
 	// split by event
 	eventSplit := strings.Split(text, stg.EventSeparator)
 	for _, eventString := range eventSplit {
@@ -461,7 +465,84 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 			}
 			stats.Imported.Events++
 		}
+
+		// +===========================+
+		//           RATING
+		// +===========================+
+
+		var ratingSplit []string
+		ratingSplit = append(ratingSplit, eventString)
+		for _, separator := range stg.RatingSeparators {
+			var newSplits []string
+			for _, split := range ratingSplit {
+				newSplit := strings.Split(split, separator)
+				newSplits = append(newSplits, newSplit...)
+			}
+			ratingSplit = newSplits
+		}
+
+		if lastEvent != event.Number {
+			lastEvent = event.Number
+			rankCount = 2
+		}
+
+		for _, ratingString := range ratingSplit {
+			if strings.Contains(ratingString, "Endzeit") {
+				resultsString := substrr(ratingString, "Endzeit")
+
+				if strings.Index(resultsString, "1.") == 0 {
+					rankCount = 2
+				}
+
+				for strings.Contains(resultsString, strconv.Itoa(rankCount)+".") {
+					resultString := substr(resultsString, strconv.Itoa(rankCount)+".")
+					if resultString != "" {
+						results[event.Number] = append(results[event.Number], resultString)
+					}
+					resultsString = strconv.Itoa(rankCount) + ". " + substrr(resultsString, strconv.Itoa(rankCount)+".")
+					rankCount++
+				}
+
+				if resultsString != "" {
+					results[event.Number] = append(results[event.Number], resultsString)
+				}
+			}
+
+			if strings.Contains(ratingString, "disqualifiziert") {
+				//disqualificationString := substrr(ratingString, "disqualifiziert")
+				//println("d\t\t" + disqualificationString)
+			}
+
+			if strings.Contains(ratingString, "nicht am Start") {
+				//dnsString := substrr(ratingString, "nicht am Start")
+				//println("n\t\t" + dnsString)
+			}
+
+			if strings.Contains(ratingString, "abgemeldet") {
+				//canceledString := substrr(ratingString, "abgemeldet")
+				//println("a\t\t" + canceledString)
+			}
+		}
+
+		println("")
+		println("")
+		println("---------------------")
+		println("")
+		println("")
+		println("")
+		println("")
 	}
+
+	println("")
+	println("")
+
+	for ev, eventResults := range results {
+		println("WK: " + strconv.Itoa(ev))
+		for _, result := range eventResults {
+			println("t:\t\t" + result)
+		}
+	}
+
 	return nil, nil
 }
 

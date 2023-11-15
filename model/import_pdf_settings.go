@@ -31,4 +31,9 @@ type ImportPdfResultListSettings struct {
 	DistanceSeparator    string       `json:"distance_separator,omitempty" bson:"distance_separator,omitempty"`           // m
 	GenderMapping        [3][2]string `json:"gender_mapping,omitempty" bson:"gender_mapping,omitempty"`                   // "männlich" -> "MALE"
 	StyleNameSkipStrings []string     `json:"style_name_skip_strings,omitempty" bson:"style_name_skip_strings,omitempty"` // staffel, beine
+	RatingSeparators     []string     `json:"rating_separators,omitempty" bson:"rating_separators,omitempty"`             // Jahrgang, Jahrgänge, Offene Wertung
+	YearPattern          string       `json:"year_pattern,omitempty" bson:"year_pattern,omitempty"`                       // [0-9]{4}
+	YearOpenString       string       `json:"year_open_string,omitempty" bson:"year_open_string,omitempty"`               // Offen
+	SwimTimePattern      string       `json:"swim_time_pattern,omitempty" bson:"swim_time_pattern,omitempty"`             // [0-9]{2}:[0-9]{2},[0-9]{2}
+
 }
