@@ -393,6 +393,7 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 	lastEvent := 0
 	results := make(map[int][]string)
 	var rankCount int
+	var rankRepetition int
 
 	// split by event
 	eventSplit := strings.Split(text, stg.EventSeparator)
@@ -483,62 +484,88 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 
 		if lastEvent != event.Number {
 			lastEvent = event.Number
-			rankCount = 2
+			rankCount = 1
+			rankRepetition = 0
 		}
 
 		for _, ratingString := range ratingSplit {
-			if strings.Contains(ratingString, "Endzeit") {
-				resultsString := substrr(ratingString, "Endzeit")
+
+			// extract result rows
+			if strings.Contains(ratingString, stg.ResultSeparator) {
+				resultsString := substrr(ratingString, stg.ResultSeparator)
+
+				for _, cutString := range stg.ResultEndCutStrings {
+					resultsString = substr(resultsString, cutString)
+				}
 
 				if strings.Index(resultsString, "1.") == 0 {
-					rankCount = 2
+					rankCount = 1
+					rankRepetition = 0
 				}
 
-				for strings.Contains(resultsString, strconv.Itoa(rankCount)+".") {
-					resultString := substr(resultsString, strconv.Itoa(rankCount)+".")
-					if resultString != "" {
-						results[event.Number] = append(results[event.Number], resultString)
+				for resultsString != "" {
+					var rs string
+
+					// check what is coming first
+					nextRank := strings.Index(resultsString, strconv.Itoa(rankCount+rankRepetition)+".")
+					sameRank := strings.Index(resultsString, strconv.Itoa(rankCount)+".")
+
+					if nextRank == -1 && sameRank == -1 { // nextRank = -1; sameRank -1
+						rs = resultsString
+						resultsString = ""
+						// next higher rank
+					} else if sameRank == -1 || (nextRank != -1 && nextRank < sameRank) {
+						rs = substr(resultsString, strconv.Itoa(rankCount+rankRepetition)+".")
+						resultsString = strconv.Itoa(rankCount+rankRepetition) + "# " + substrr(resultsString, strconv.Itoa(rankCount+rankRepetition)+".")
+						rankCount += rankRepetition
+						rankRepetition = 1
+						// still the same rank
+					} else {
+						rs = substr(resultsString, strconv.Itoa(rankCount)+".")
+						resultsString = strconv.Itoa(rankCount) + "# " + substrr(resultsString, strconv.Itoa(rankCount)+".")
+						rankRepetition++
 					}
-					resultsString = strconv.Itoa(rankCount) + ". " + substrr(resultsString, strconv.Itoa(rankCount)+".")
-					rankCount++
+
+					results[event.Number] = append(results[event.Number], strings.Replace(rs, "#", ".", 1))
 				}
 
-				if resultsString != "" {
-					results[event.Number] = append(results[event.Number], resultsString)
-				}
 			}
 
+			// extract disqualification
 			if strings.Contains(ratingString, "disqualifiziert") {
 				//disqualificationString := substrr(ratingString, "disqualifiziert")
 				//println("d\t\t" + disqualificationString)
 			}
 
+			// extract dns
 			if strings.Contains(ratingString, "nicht am Start") {
 				//dnsString := substrr(ratingString, "nicht am Start")
 				//println("n\t\t" + dnsString)
 			}
 
+			// extract canceled starts
 			if strings.Contains(ratingString, "abgemeldet") {
 				//canceledString := substrr(ratingString, "abgemeldet")
 				//println("a\t\t" + canceledString)
 			}
 		}
 
-		println("")
-		println("")
-		println("---------------------")
-		println("")
-		println("")
-		println("")
-		println("")
 	}
-
-	println("")
-	println("")
 
 	for ev, eventResults := range results {
 		println("WK: " + strconv.Itoa(ev))
 		for _, result := range eventResults {
+
+			for _, cutString := range stg.ResultEndCutStrings {
+				result = substr(result, cutString)
+			}
+
+			resultRegex := regexp.MustCompile(stg.ResultPattern)
+
+			if !resultRegex.Match([]byte(result)) {
+				continue
+			}
+
 			println("t:\t\t" + result)
 		}
 	}
