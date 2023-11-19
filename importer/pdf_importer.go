@@ -36,20 +36,7 @@ func ReadPdf(path string) (string, error) {
 
 // GetPdfFileContent fetches pdf from source (local path or online source) and returns content as text string
 func GetPdfFileContent(file string) (string, error) {
-	buf, err := getFileReader(file)
-	if err != nil {
-		return "", err
-	}
-
-	buff := bytes.NewBuffer([]byte{})
-	_, err = io.Copy(buff, buf)
-	if err != nil {
-		return "", err
-	}
-
-	rdr := bytes.NewReader(buff.Bytes())
-
-	reader, err := pdf.NewReader(rdr, rdr.Size())
+	reader, err := GetPdfReader(file)
 	if err != nil {
 		return "", err
 	}
@@ -66,6 +53,24 @@ func GetPdfFileContent(file string) (string, error) {
 	}
 
 	return bf.String(), nil
+}
+
+// GetPdfReader fetches pdf from source (local path or online source) and returns pdf.Reader
+func GetPdfReader(file string) (*pdf.Reader, error) {
+	buf, err := getFileReader(file)
+	if err != nil {
+		return nil, err
+	}
+
+	buff := bytes.NewBuffer([]byte{})
+	_, err = io.Copy(buff, buf)
+	if err != nil {
+		return nil, err
+	}
+
+	rdr := bytes.NewReader(buff.Bytes())
+
+	return pdf.NewReader(rdr, rdr.Size())
 }
 
 // ImportPdfStartList takes the path to a pdf file that contains a start
@@ -122,10 +127,13 @@ func ImportPdfStartList(file string, meeting string, exclude []int, include []in
 		}
 
 		var style string
-		for _, genders := range stg.GenderMapping {
-			if strings.Contains(distanceSplit[1], genders[0]) {
-				event.Gender = genders[1]
-				style = trim(substr(distanceSplit[1], genders[0]))
+		pos := 1000
+		for _, gender := range stg.GenderMapping {
+			genderPos := strings.Index(distanceSplit[1], gender[0])
+			if genderPos > 0 && genderPos < pos {
+				pos = genderPos
+				event.Gender = gender[1]
+				style = trim(substr(distanceSplit[1], gender[0]))
 			}
 		}
 
@@ -374,6 +382,194 @@ func ImportPdfStartList(file string, meeting string, exclude []int, include []in
 //
 // For import process details see documentation on GitHub.
 func ImportPdfResultList(file string, meeting string, exclude []int, include []int, stg importModel.ImportPdfResultListSettings) (*importModel.ImportFileStats, error) {
+
+	text, err := GetPdfFileContent(file)
+	if err != nil {
+		return nil, err
+	}
+
+	var stats importModel.ImportFileStats
+
+	lastEvent := 0
+	results := make(map[int][]string)
+	var rankCount int
+	var rankRepetition int
+
+	// split by event
+	eventSplit := strings.Split(text, stg.EventSeparator)
+	for _, eventString := range eventSplit {
+
+		// eliminate some events
+		if shouldSkip(eventString, stg.EventSkipStrings, stg.EventRequiredStrings) {
+			continue
+		}
+
+		event := model.Event{
+			Meeting: meeting,
+		}
+
+		eventNumberSplit := strings.SplitN(eventString, stg.EventNumberSeparator, 2)
+		event.Number, err = strconv.Atoi(trim(eventNumberSplit[0]))
+		if err != nil {
+			return &stats, err
+		}
+
+		if event.Number <= 0 {
+			continue
+		}
+
+		if !IsEventImportable(event.Number, exclude, include) {
+			continue
+		}
+
+		distanceSplit := strings.SplitN(eventNumberSplit[1], stg.DistanceSeparator, 2)
+		distance := trim(distanceSplit[0])
+		event.Distance, err = strconv.Atoi(distance)
+		if err != nil {
+			if strings.Contains(distance, "x") {
+				event.RelayDistance = distance
+			} else {
+				return &stats, err
+			}
+		}
+
+		var style string
+		pos := 1000
+		for _, gender := range stg.GenderMapping {
+			genderPos := strings.Index(distanceSplit[1], gender[0])
+			if genderPos > 0 && genderPos < pos {
+				pos = genderPos
+				event.Gender = gender[1]
+				style = trim(substr(distanceSplit[1], gender[0]))
+			}
+		}
+
+		if shouldSkip(style, stg.StyleNameSkipStrings, []string{}) {
+			importError(fmt.Sprintf("skipped event %d with style '%s'", event.Number, style), errors.New(""))
+			continue
+		}
+
+		fmt.Printf("WK %d - %dm %s (%s)\n", event.Number, event.Distance, style, event.Gender)
+
+		// +===========================+
+		//        EVENT IMPORT
+		// +===========================+
+
+		if runImport() {
+			_, c, err := ec.ImportEvent(event, style, 1)
+			if err != nil {
+				importError(fmt.Sprintf("import event request failed for event %d!", event.Number), err)
+				continue
+			}
+			if c {
+				stats.Created.Events++
+			}
+			stats.Imported.Events++
+		}
+
+		// +===========================+
+		//           RATING
+		// +===========================+
+
+		var ratingSplit []string
+		ratingSplit = append(ratingSplit, eventString)
+		for _, separator := range stg.RatingSeparators {
+			var newSplits []string
+			for _, split := range ratingSplit {
+				newSplit := strings.Split(split, separator)
+				newSplits = append(newSplits, newSplit...)
+			}
+			ratingSplit = newSplits
+		}
+
+		if lastEvent != event.Number {
+			lastEvent = event.Number
+			rankCount = 1
+			rankRepetition = 0
+		}
+
+		for _, ratingString := range ratingSplit {
+
+			// extract result rows
+			if strings.Contains(ratingString, stg.ResultSeparator) {
+				resultsString := substrr(ratingString, stg.ResultSeparator)
+
+				for _, cutString := range stg.ResultEndCutStrings {
+					resultsString = substr(resultsString, cutString)
+				}
+
+				if strings.Index(resultsString, "1.") == 0 {
+					rankCount = 1
+					rankRepetition = 0
+				}
+
+				for resultsString != "" {
+					var rs string
+
+					// check what is coming first
+					nextRank := strings.Index(resultsString, strconv.Itoa(rankCount+rankRepetition)+".")
+					sameRank := strings.Index(resultsString, strconv.Itoa(rankCount)+".")
+
+					if nextRank == -1 && sameRank == -1 { // nextRank = -1; sameRank -1
+						rs = resultsString
+						resultsString = ""
+						// next higher rank
+					} else if sameRank == -1 || (nextRank != -1 && nextRank < sameRank) {
+						rs = substr(resultsString, strconv.Itoa(rankCount+rankRepetition)+".")
+						resultsString = strconv.Itoa(rankCount+rankRepetition) + "# " + substrr(resultsString, strconv.Itoa(rankCount+rankRepetition)+".")
+						rankCount += rankRepetition
+						rankRepetition = 1
+						// still the same rank
+					} else {
+						rs = substr(resultsString, strconv.Itoa(rankCount)+".")
+						resultsString = strconv.Itoa(rankCount) + "# " + substrr(resultsString, strconv.Itoa(rankCount)+".")
+						rankRepetition++
+					}
+
+					results[event.Number] = append(results[event.Number], strings.Replace(rs, "#", ".", 1))
+				}
+
+			}
+
+			// extract disqualification
+			if strings.Contains(ratingString, "disqualifiziert") {
+				//disqualificationString := substrr(ratingString, "disqualifiziert")
+				//println("d\t\t" + disqualificationString)
+			}
+
+			// extract dns
+			if strings.Contains(ratingString, "nicht am Start") {
+				//dnsString := substrr(ratingString, "nicht am Start")
+				//println("n\t\t" + dnsString)
+			}
+
+			// extract canceled starts
+			if strings.Contains(ratingString, "abgemeldet") {
+				//canceledString := substrr(ratingString, "abgemeldet")
+				//println("a\t\t" + canceledString)
+			}
+		}
+
+	}
+
+	for ev, eventResults := range results {
+		println("WK: " + strconv.Itoa(ev))
+		for _, result := range eventResults {
+
+			for _, cutString := range stg.ResultEndCutStrings {
+				result = substr(result, cutString)
+			}
+
+			resultRegex := regexp.MustCompile(stg.ResultPattern)
+
+			if !resultRegex.Match([]byte(result)) {
+				continue
+			}
+
+			println("t:\t\t" + result)
+		}
+	}
+
 	return nil, nil
 }
 

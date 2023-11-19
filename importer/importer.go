@@ -58,7 +58,7 @@ func substr(s string, sep string) string {
 // substrr returns everything from s that comes after sep; if sep does not occur, s is returned
 func substrr(s string, substr string) string {
 	s1 := strings.SplitN(s, substr, 2)
-	s2 := s
+	s2 := ""
 	if len(s1) > 1 {
 		s2 = s1[1]
 	}
