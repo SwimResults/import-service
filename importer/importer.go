@@ -22,6 +22,7 @@ var athleteServiceUrl = os.Getenv("SR_IMPORT_ATHLETE_URL")
 var meetingServiceUrl = os.Getenv("SR_IMPORT_MEETING_URL")
 
 var ec = client.NewEventClient(meetingServiceUrl)
+var gc = client.NewAgeGroupClient(meetingServiceUrl)
 var hc = startClient.NewHeatClient(startServiceUrl)
 var sc = startClient.NewStartClient(startServiceUrl)
 var dq = startClient.NewDisqualificationClient(startServiceUrl)

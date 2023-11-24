@@ -7,7 +7,7 @@ import (
 	"github.com/konrad2002/dsvparser/parser"
 	athleteModel "github.com/swimresults/athlete-service/model"
 	importModel "github.com/swimresults/import-service/model"
-	eventModel "github.com/swimresults/meeting-service/model"
+	meetingModel "github.com/swimresults/meeting-service/model"
 	startModel "github.com/swimresults/start-service/model"
 	"io"
 	"net/http"
@@ -60,6 +60,33 @@ func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include
 
 	println("read definition")
 
+	for _, dsvRanking := range def.Wertungen {
+		ageGroup := meetingModel.AgeGroup{
+			Meeting: meeting,
+			Event:   dsvRanking.Wettkampfnummer,
+			Default: false,
+			MinAge:  dsvRanking.MindestJahrgang,
+			MaxAge:  dsvRanking.MaximalJahrgang,
+			IsYear:  true,
+			Name:    dsvRanking.Wertungsname,
+		}
+
+		newAgeGroup, created, err5 := gc.ImportAgeGroup(ageGroup)
+		if err5 != nil {
+			return nil, err5
+		}
+
+		if created {
+			stats.Created.AgeGroups++
+			print("(+) ")
+		} else {
+			print("( ) ")
+		}
+		println(newAgeGroup)
+
+		stats.Imported.AgeGroups++
+	}
+
 	for _, dsvEvent := range def.Wettkaempfe {
 		fmt.Printf("%d", dsvEvent.Wettkampfnummer)
 		if !IsEventImportable(dsvEvent.Wettkampfnummer, exclude, include) {
@@ -69,7 +96,7 @@ func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include
 
 		println("event loop")
 
-		event := eventModel.Event{
+		event := meetingModel.Event{
 			Number:   dsvEvent.Wettkampfnummer,
 			Distance: dsvEvent.Einzelstrecke,
 			Meeting:  meeting,
