@@ -71,6 +71,16 @@ func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include
 			Name:    dsvRanking.Wertungsname,
 		}
 
+		if dsvRanking.Geschlecht == 'W' {
+			ageGroup.Gender = "FEMALE"
+		}
+		if dsvRanking.Geschlecht == 'M' {
+			ageGroup.Gender = "MALE"
+		}
+		if dsvRanking.Geschlecht == 'D' || dsvRanking.Geschlecht == 'X' {
+			ageGroup.Gender = "MIXED"
+		}
+
 		newAgeGroup, created, err5 := gc.ImportAgeGroup(ageGroup)
 		if err5 != nil {
 			return nil, err5
