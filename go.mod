@@ -8,7 +8,7 @@ require (
 	github.com/ledongthuc/pdf v0.0.0-20220302134840-0c2507a12d80
 	github.com/stretchr/testify v1.8.4
 	github.com/swimresults/athlete-service v1.5.0
-	github.com/swimresults/meeting-service v0.4.0
+	github.com/swimresults/meeting-service v0.5.0
 	github.com/swimresults/start-service v0.4.0
 	go.mongodb.org/mongo-driver v1.13.0
 )
