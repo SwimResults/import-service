@@ -388,10 +388,16 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 		return nil, err
 	}
 
+	teams, _, err := tc.GetTeamsByMeeting(meeting)
+	if err != nil {
+		return nil, err
+	}
+
 	var stats importModel.ImportFileStats
 
 	lastEvent := 0
 	results := make(map[int][]string)
+	disqualifications := make(map[int][]string)
 	var rankCount int
 	var rankRepetition int
 
@@ -532,41 +538,113 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 			}
 
 			// extract disqualification
+			// TODO collect disqualifications
 			if strings.Contains(ratingString, "disqualifiziert") {
-				//disqualificationString := substrr(ratingString, "disqualifiziert")
-				//println("d\t\t" + disqualificationString)
+				disqualificationString := substrr(ratingString, "disqualifiziert")
+
+				for _, cutString := range stg.ResultEndCutStrings {
+					disqualificationString = substr(disqualificationString, cutString)
+				}
+
+				timeRegex := regexp.MustCompile(stg.DisqualificationTimePattern)
+
+				for timeRegex.Match([]byte(disqualificationString)) && disqualificationString != "" {
+					disqualificationSplit := timeRegex.Split(disqualificationString, 2)
+
+					var appendString string
+					if len(disqualificationSplit) < 2 || disqualificationSplit[1] == "" {
+						appendString = disqualificationString
+						disqualificationString = ""
+					} else {
+						appendString = substr(disqualificationString, disqualificationSplit[1])
+						disqualificationString = disqualificationSplit[1]
+					}
+
+					disqualifications[event.Number] = append(disqualifications[event.Number], appendString)
+				}
 			}
 
 			// extract dns
-			if strings.Contains(ratingString, "nicht am Start") {
-				//dnsString := substrr(ratingString, "nicht am Start")
-				//println("n\t\t" + dnsString)
-			}
+			// TODO collect dns starts (not easily possible, won't be done now; use DSV7)
+			//if strings.Contains(ratingString, "nicht am Start") {
+			//	dnsString := substrr(ratingString, "nicht am Start")
+			//
+			//	for _, cutString := range stg.ResultEndCutStrings {
+			//		dnsString = substr(dnsString, cutString)
+			//	}
+			//	println("n\t\t" + dnsString)
+			//}
 
 			// extract canceled starts
-			if strings.Contains(ratingString, "abgemeldet") {
-				//canceledString := substrr(ratingString, "abgemeldet")
-				//println("a\t\t" + canceledString)
-			}
+			// TODO collect logged out starts (not easily possible, won't be done now; use DSV7)
+			//if strings.Contains(ratingString, "abgemeldet") {
+			//	canceledString := substrr(ratingString, "abgemeldet")
+			//
+			//	for _, cutString := range stg.ResultEndCutStrings {
+			//		canceledString = substr(canceledString, cutString)
+			//	}
+			//	println("a\t\t" + canceledString)
+			//}
 		}
 
 	}
 
-	for ev, eventResults := range results {
+	for ev := range results {
 		println("WK: " + strconv.Itoa(ev))
-		for _, result := range eventResults {
+		//for _, result := range eventResults {
 
-			for _, cutString := range stg.ResultEndCutStrings {
-				result = substr(result, cutString)
+		//for _, cutString := range stg.ResultEndCutStrings {
+		//	result = substr(result, cutString)
+		//}
+		//
+		//resultRegex := regexp.MustCompile(stg.ResultPattern)
+		//
+		//if !resultRegex.Match([]byte(result)) {
+		//	continue
+		//}
+		//
+		//println("t:\t\t" + result)
+		//}
+	}
+
+	println("disq")
+
+	for ev, eventDisqualifications := range disqualifications {
+		println("WK: " + strconv.Itoa(ev))
+		for _, disqualification := range eventDisqualifications {
+
+			athlete := athleteModel.Athlete{}
+
+			yearRegex := regexp.MustCompile(stg.YearPattern)
+			nameSplit := yearRegex.Split(disqualification, 2)
+			year := substr(substrr(disqualification, nameSplit[0]), nameSplit[1])
+			reasonTime := trim(nameSplit[1])
+
+			reasonSplit := strings.SplitN(reasonTime, stg.ReasonRightSeparator, 2)
+			reason := reasonSplit[0]
+
+			// remove team name from reason since might be included
+			for _, team := range *teams {
+				reason = strings.ReplaceAll(reason, team.Name, "")
+				for _, alias := range team.Alias {
+					reason = strings.ReplaceAll(reason, alias, "")
+				}
 			}
 
-			resultRegex := regexp.MustCompile(stg.ResultPattern)
-
-			if !resultRegex.Match([]byte(result)) {
-				continue
+			clockTime := "-"
+			if len(reasonSplit) > 1 {
+				timeRegex := regexp.MustCompile(stg.DisqualificationTimePattern)
+				beforeTime := timeRegex.Split(reasonSplit[1], 2)
+				clockTime = substrr(reasonSplit[1], beforeTime[0])
+				if len(clockTime) >= 5 {
+					clockTime = clockTime[:5]
+				}
 			}
 
-			println("t:\t\t" + result)
+			athlete.Name = trim(nameSplit[0])
+			athlete.Year, _ = strconv.Atoi(trim(year))
+
+			fmt.Printf("d:\t\t '%s' (%d) - %s (%s)\n", athlete.Name, athlete.Year, reason, clockTime)
 		}
 	}
 
