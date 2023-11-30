@@ -705,8 +705,9 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 		for _, disqualification := range eventDisqualifications {
 
 			start := startModel.Start{
-				Meeting: meeting,
-				Event:   ev,
+				Meeting:   meeting,
+				Event:     ev,
+				Certified: true,
 			}
 
 			yearRegex := regexp.MustCompile(stg.YearPattern)
