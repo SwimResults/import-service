@@ -588,22 +588,113 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 
 	}
 
-	for ev := range results {
+	for ev, eventResults := range results {
 		println("WK: " + strconv.Itoa(ev))
-		//for _, result := range eventResults {
+		event, err := ec.GetEventByMeetingAndNumber(meeting, ev)
+		if err != nil {
+			importError(fmt.Sprintf("failed to fetch event %d for result import", ev), err)
+			continue
+		}
+		for _, result := range eventResults {
 
-		//for _, cutString := range stg.ResultEndCutStrings {
-		//	result = substr(result, cutString)
-		//}
-		//
-		//resultRegex := regexp.MustCompile(stg.ResultPattern)
-		//
-		//if !resultRegex.Match([]byte(result)) {
-		//	continue
-		//}
-		//
-		//println("t:\t\t" + result)
-		//}
+			for _, cutString := range stg.ResultEndCutStrings {
+				result = substr(result, cutString)
+			}
+
+			resultRegex := regexp.MustCompile(stg.ResultPattern)
+
+			if !resultRegex.Match([]byte(result)) {
+				continue
+			}
+
+			// result like "7. Vazanska, Aneta2008Plavecký klub Litvínov03:31,06259  50m: 00:48,10 | 100m: 01:43,30 | 150m: 02:38,35"
+
+			rankingSplit := strings.SplitN(result, ".", 2)
+			ranking, err := strconv.Atoi(trim(rankingSplit[0]))
+			if err != nil {
+				importError(fmt.Sprintf("failed to parse ranking for result in event %d with content '%s'", ev, result), err)
+				continue
+			}
+
+			yearRegex := regexp.MustCompile(stg.YearPattern)
+			yearSplit := yearRegex.Split(rankingSplit[1], 2)
+
+			athleteName := trim(yearSplit[0])
+			athleteYearString := trim(substrr(rankingSplit[1], athleteName))[:4]
+			athleteYear, err := strconv.Atoi(athleteYearString)
+			if err != nil {
+				importError(fmt.Sprintf("failed to parse year for result e: %d a: %s with content '%s'", ev, athleteName, athleteYearString), err)
+				continue
+			}
+
+			swimTimeRegex := regexp.MustCompile(stg.SwimTimePattern)
+			swimTimeSplit := swimTimeRegex.Split(rankingSplit[1], 2)
+			swimTimeString := trim(substrr(rankingSplit[1], swimTimeSplit[0]))[:8]
+
+			swimTime, err := swimTimeToDuration(swimTimeString)
+			if err != nil {
+				importError(fmt.Sprintf("failed to parse swimtime for result e: %d a: %s (%d) with content '%s'", ev, athleteName, athleteYear, swimTimeString), err)
+				continue
+			}
+
+			athleteTeam := trim(substrr(substr(result, swimTimeString), athleteYearString))
+
+			start := startModel.Start{
+				Meeting:         meeting,
+				Event:           ev,
+				AthleteName:     athleteName,
+				AthleteYear:     athleteYear,
+				AthleteTeamName: athleteTeam,
+				Rank:            ranking,
+				Certified:       true,
+			}
+
+			if event.RelayDistance != "" {
+				start.IsRelay = true
+			}
+
+			//fmt.Printf("\t\tResult %d. - %s (%d) %s -> %s\n", start.Rank, start.AthleteName, start.AthleteYear, start.AthleteTeamName, swimTime.String())
+
+			// +===========================+
+			//         START IMPORT
+			// +===========================+
+
+			if runImport() {
+				newStart, c, err := sc.ImportStart(start)
+				if err != nil {
+					importError(fmt.Sprintf("import start request failed for start e: %d %d. %s (%d)!", start.Event, start.Rank, start.AthleteName, start.AthleteYear), err)
+					continue
+				}
+				if c {
+					stats.Created.Starts++
+				}
+				stats.Imported.Starts++
+
+				start = *newStart
+			}
+
+			result := startModel.Result{
+				Time:       swimTime,
+				ResultType: "result_list",
+				LapMeters:  event.Distance,
+			}
+
+			// +===========================+
+			//        RESULT IMPORT
+			// +===========================+
+
+			if runImport() {
+				_, c, err := sc.ImportResult(start, result)
+				if err != nil {
+					importError(fmt.Sprintf("import result request failed for start %d/%d/%d!", start.Event, start.HeatNumber, start.Lane), err)
+					continue
+				}
+				if c {
+					stats.Created.Results++
+				}
+				stats.Imported.Results++
+			}
+		}
 	}
 
 	// +===========================+
