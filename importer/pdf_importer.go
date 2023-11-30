@@ -538,7 +538,6 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 			}
 
 			// extract disqualification
-			// TODO collect disqualifications
 			if strings.Contains(ratingString, "disqualifiziert") {
 				disqualificationString := substrr(ratingString, "disqualifiziert")
 
@@ -607,13 +606,17 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 		//}
 	}
 
-	println("disq")
+	// +===========================+
+	//       DISQUALIFICATION
+	// +===========================+
 
 	for ev, eventDisqualifications := range disqualifications {
-		println("WK: " + strconv.Itoa(ev))
 		for _, disqualification := range eventDisqualifications {
 
-			athlete := athleteModel.Athlete{}
+			start := startModel.Start{
+				Meeting: meeting,
+				Event:   ev,
+			}
 
 			yearRegex := regexp.MustCompile(stg.YearPattern)
 			nameSplit := yearRegex.Split(disqualification, 2)
@@ -631,24 +634,44 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 				}
 			}
 
-			clockTime := "-"
+			timeHour := 0
+			timeMin := 0
 			if len(reasonSplit) > 1 {
 				timeRegex := regexp.MustCompile(stg.DisqualificationTimePattern)
 				beforeTime := timeRegex.Split(reasonSplit[1], 2)
-				clockTime = substrr(reasonSplit[1], beforeTime[0])
+				clockTime := substrr(reasonSplit[1], beforeTime[0])
 				if len(clockTime) >= 5 {
-					clockTime = clockTime[:5]
+					timeHour, _ = strconv.Atoi(clockTime[:2])
+					timeMin, _ = strconv.Atoi(clockTime[3:5])
 				}
 			}
 
-			athlete.Name = trim(nameSplit[0])
-			athlete.Year, _ = strconv.Atoi(trim(year))
+			now := time.Now()
 
-			fmt.Printf("d:\t\t '%s' (%d) - %s (%s)\n", athlete.Name, athlete.Year, reason, clockTime)
+			clockTime := time.Date(now.Year(), now.Month(), now.Day(), timeHour, timeMin, 0, 0, time.Local)
+
+			start.AthleteName = trim(nameSplit[0])
+			start.AthleteYear, _ = strconv.Atoi(trim(year))
+
+			// +===========================+
+			//    DISQUALIFICATION IMPORT
+			// +===========================+
+
+			if runImport() {
+				_, c, err := dc.ImportDisqualification(start, reason, "disqualified", clockTime)
+				if err != nil {
+					importError(fmt.Sprintf("import disqualification request failed for %s (%d) - %s (%s)!", start.AthleteName, start.AthleteYear, reason, clockTime), err)
+					continue
+				}
+				if c {
+					stats.Created.Disqualifications++
+				}
+				stats.Imported.Disqualifications++
+			}
 		}
 	}
 
-	return nil, nil
+	return &stats, nil
 }
 
 func shouldSkip(s string, skipStrings []string, requiredStrings []string) bool {
