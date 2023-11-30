@@ -746,6 +746,24 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 			start.AthleteYear, _ = strconv.Atoi(trim(year))
 
 			// +===========================+
+			//         START IMPORT
+			// +===========================+
+
+			if runImport() {
+				newStart, c, err := sc.ImportStart(start)
+				if err != nil {
+					importError(fmt.Sprintf("import start request failed for start e: %d %s (%d)!", start.Event, start.AthleteName, start.AthleteYear), err)
+					continue
+				}
+				if c {
+					stats.Created.Starts++
+				}
+				stats.Imported.Starts++
+
+				start = *newStart
+			}
+
+			// +===========================+
 			//    DISQUALIFICATION IMPORT
 			// +===========================+
 
