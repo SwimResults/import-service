@@ -290,7 +290,7 @@ func ImportDsvResultFile(file string, meeting string, exclude []int, include []i
 				disqType = "time"
 				break
 			}
-			disqualification, created, err4 := dq.ImportDisqualification(start, dsvResult.Disqualifikationsbemerkung, disqType, time.UnixMicro(0))
+			disqualification, created, err4 := dc.ImportDisqualification(start, dsvResult.Disqualifikationsbemerkung, disqType, time.UnixMicro(0))
 			if err4 != nil {
 				return &stats, err4
 			}

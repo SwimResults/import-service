@@ -388,10 +388,16 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 		return nil, err
 	}
 
+	teams, _, err := tc.GetTeamsByMeeting(meeting)
+	if err != nil {
+		return nil, err
+	}
+
 	var stats importModel.ImportFileStats
 
 	lastEvent := 0
 	results := make(map[int][]string)
+	disqualifications := make(map[int][]string)
 	var rankCount int
 	var rankRepetition int
 
@@ -533,27 +539,62 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 
 			// extract disqualification
 			if strings.Contains(ratingString, "disqualifiziert") {
-				//disqualificationString := substrr(ratingString, "disqualifiziert")
-				//println("d\t\t" + disqualificationString)
+				disqualificationString := substrr(ratingString, "disqualifiziert")
+
+				for _, cutString := range stg.ResultEndCutStrings {
+					disqualificationString = substr(disqualificationString, cutString)
+				}
+
+				timeRegex := regexp.MustCompile(stg.DisqualificationTimePattern)
+
+				for timeRegex.Match([]byte(disqualificationString)) && disqualificationString != "" {
+					disqualificationSplit := timeRegex.Split(disqualificationString, 2)
+
+					var appendString string
+					if len(disqualificationSplit) < 2 || disqualificationSplit[1] == "" {
+						appendString = disqualificationString
+						disqualificationString = ""
+					} else {
+						appendString = substr(disqualificationString, disqualificationSplit[1])
+						disqualificationString = disqualificationSplit[1]
+					}
+
+					disqualifications[event.Number] = append(disqualifications[event.Number], appendString)
+				}
 			}
 
 			// extract dns
-			if strings.Contains(ratingString, "nicht am Start") {
-				//dnsString := substrr(ratingString, "nicht am Start")
-				//println("n\t\t" + dnsString)
-			}
+			// TODO collect dns starts (not easily possible, won't be done now; use DSV7)
+			//if strings.Contains(ratingString, "nicht am Start") {
+			//	dnsString := substrr(ratingString, "nicht am Start")
+			//
+			//	for _, cutString := range stg.ResultEndCutStrings {
+			//		dnsString = substr(dnsString, cutString)
+			//	}
+			//	println("n\t\t" + dnsString)
+			//}
 
 			// extract canceled starts
-			if strings.Contains(ratingString, "abgemeldet") {
-				//canceledString := substrr(ratingString, "abgemeldet")
-				//println("a\t\t" + canceledString)
-			}
+			// TODO collect logged out starts (not easily possible, won't be done now; use DSV7)
+			//if strings.Contains(ratingString, "abgemeldet") {
+			//	canceledString := substrr(ratingString, "abgemeldet")
+			//
+			//	for _, cutString := range stg.ResultEndCutStrings {
+			//		canceledString = substr(canceledString, cutString)
+			//	}
+			//	println("a\t\t" + canceledString)
+			//}
 		}
 
 	}
 
 	for ev, eventResults := range results {
 		println("WK: " + strconv.Itoa(ev))
+		event, err := ec.GetEventByMeetingAndNumber(meeting, ev)
+		if err != nil {
+			importError(fmt.Sprintf("failed to fetch event %d for result import", ev), err)
+			continue
+		}
 		for _, result := range eventResults {
 
 			for _, cutString := range stg.ResultEndCutStrings {
@@ -566,11 +607,181 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 				continue
 			}
 
-			println("t:\t\t" + result)
+			// result like "7. Vazanska, Aneta2008Plavecký klub Litvínov03:31,06259  50m: 00:48,10 | 100m: 01:43,30 | 150m: 02:38,35"
+
+			rankingSplit := strings.SplitN(result, ".", 2)
+			ranking, err := strconv.Atoi(trim(rankingSplit[0]))
+			if err != nil {
+				importError(fmt.Sprintf("failed to parse ranking for result in event %d with content '%s'", ev, result), err)
+				continue
+			}
+
+			yearRegex := regexp.MustCompile(stg.YearPattern)
+			yearSplit := yearRegex.Split(rankingSplit[1], 2)
+
+			athleteName := trim(yearSplit[0])
+			athleteYearString := trim(substrr(rankingSplit[1], athleteName))[:4]
+			athleteYear, err := strconv.Atoi(athleteYearString)
+			if err != nil {
+				importError(fmt.Sprintf("failed to parse year for result e: %d a: %s with content '%s'", ev, athleteName, athleteYearString), err)
+				continue
+			}
+
+			swimTimeRegex := regexp.MustCompile(stg.SwimTimePattern)
+			swimTimeSplit := swimTimeRegex.Split(rankingSplit[1], 2)
+			swimTimeString := trim(substrr(rankingSplit[1], swimTimeSplit[0]))[:8]
+
+			swimTime, err := swimTimeToDuration(swimTimeString)
+			if err != nil {
+				importError(fmt.Sprintf("failed to parse swimtime for result e: %d a: %s (%d) with content '%s'", ev, athleteName, athleteYear, swimTimeString), err)
+				continue
+			}
+
+			athleteTeam := trim(substrr(substr(result, swimTimeString), athleteYearString))
+
+			start := startModel.Start{
+				Meeting:         meeting,
+				Event:           ev,
+				AthleteName:     athleteName,
+				AthleteYear:     athleteYear,
+				AthleteTeamName: athleteTeam,
+				Rank:            ranking,
+				Certified:       true,
+			}
+
+			if event.RelayDistance != "" {
+				start.IsRelay = true
+			}
+
+			//fmt.Printf("\t\tResult %d. - %s (%d) %s -> %s\n", start.Rank, start.AthleteName, start.AthleteYear, start.AthleteTeamName, swimTime.String())
+
+			// +===========================+
+			//         START IMPORT
+			// +===========================+
+
+			if runImport() {
+				newStart, c, err := sc.ImportStart(start)
+				if err != nil {
+					importError(fmt.Sprintf("import start request failed for start e: %d %d. %s (%d)!", start.Event, start.Rank, start.AthleteName, start.AthleteYear), err)
+					continue
+				}
+				if c {
+					stats.Created.Starts++
+				}
+				stats.Imported.Starts++
+
+				start = *newStart
+			}
+
+			result := startModel.Result{
+				Time:       swimTime,
+				ResultType: "result_list",
+				LapMeters:  event.Distance,
+			}
+
+			// +===========================+
+			//        RESULT IMPORT
+			// +===========================+
+
+			if runImport() {
+				_, c, err := sc.ImportResult(start, result)
+				if err != nil {
+					importError(fmt.Sprintf("import result request failed for start %d/%d/%d!", start.Event, start.HeatNumber, start.Lane), err)
+					continue
+				}
+				if c {
+					stats.Created.Results++
+				}
+				stats.Imported.Results++
+			}
 		}
 	}
 
-	return nil, nil
+	// +===========================+
+	//       DISQUALIFICATION
+	// +===========================+
+
+	for ev, eventDisqualifications := range disqualifications {
+		for _, disqualification := range eventDisqualifications {
+
+			start := startModel.Start{
+				Meeting:   meeting,
+				Event:     ev,
+				Certified: true,
+			}
+
+			yearRegex := regexp.MustCompile(stg.YearPattern)
+			nameSplit := yearRegex.Split(disqualification, 2)
+			year := substr(substrr(disqualification, nameSplit[0]), nameSplit[1])
+			reasonTime := trim(nameSplit[1])
+
+			reasonSplit := strings.SplitN(reasonTime, stg.ReasonRightSeparator, 2)
+			reason := reasonSplit[0]
+
+			// remove team name from reason since might be included
+			for _, team := range *teams {
+				reason = strings.ReplaceAll(reason, team.Name, "")
+				for _, alias := range team.Alias {
+					reason = strings.ReplaceAll(reason, alias, "")
+				}
+			}
+
+			timeHour := 0
+			timeMin := 0
+			if len(reasonSplit) > 1 {
+				timeRegex := regexp.MustCompile(stg.DisqualificationTimePattern)
+				beforeTime := timeRegex.Split(reasonSplit[1], 2)
+				clockTime := substrr(reasonSplit[1], beforeTime[0])
+				if len(clockTime) >= 5 {
+					timeHour, _ = strconv.Atoi(clockTime[:2])
+					timeMin, _ = strconv.Atoi(clockTime[3:5])
+				}
+			}
+
+			now := time.Now()
+
+			clockTime := time.Date(now.Year(), now.Month(), now.Day(), timeHour, timeMin, 0, 0, time.Local)
+
+			start.AthleteName = trim(nameSplit[0])
+			start.AthleteYear, _ = strconv.Atoi(trim(year))
+
+			// +===========================+
+			//         START IMPORT
+			// +===========================+
+
+			if runImport() {
+				newStart, c, err := sc.ImportStart(start)
+				if err != nil {
+					importError(fmt.Sprintf("import start request failed for start e: %d %s (%d)!", start.Event, start.AthleteName, start.AthleteYear), err)
+					continue
+				}
+				if c {
+					stats.Created.Starts++
+				}
+				stats.Imported.Starts++
+
+				start = *newStart
+			}
+
+			// +===========================+
+			//    DISQUALIFICATION IMPORT
+			// +===========================+
+
+			if runImport() {
+				_, c, err := dc.ImportDisqualification(start, reason, "disqualified", clockTime)
+				if err != nil {
+					importError(fmt.Sprintf("import disqualification request failed for %s (%d) - %s (%s)!", start.AthleteName, start.AthleteYear, reason, clockTime), err)
+					continue
+				}
+				if c {
+					stats.Created.Disqualifications++
+				}
+				stats.Imported.Disqualifications++
+			}
+		}
+	}
+
+	return &stats, nil
 }
 
 func shouldSkip(s string, skipStrings []string, requiredStrings []string) bool {

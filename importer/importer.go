@@ -25,7 +25,7 @@ var ec = client.NewEventClient(meetingServiceUrl)
 var gc = client.NewAgeGroupClient(meetingServiceUrl)
 var hc = startClient.NewHeatClient(startServiceUrl)
 var sc = startClient.NewStartClient(startServiceUrl)
-var dq = startClient.NewDisqualificationClient(startServiceUrl)
+var dc = startClient.NewDisqualificationClient(startServiceUrl)
 var ac = athleteClient.NewAthleteClient(athleteServiceUrl)
 var tc = athleteClient.NewTeamClient(athleteServiceUrl)
 
