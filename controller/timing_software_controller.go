@@ -8,8 +8,8 @@ import (
 )
 
 func timingSoftwareController() {
-	router.POST("/easywk", easyWkLivetiming)
-	router.OPTIONS("/easywk", ok)
+	router.POST("/easywk/livework.php", easyWkLivetiming)
+	router.OPTIONS("/easywk/livework.php", ok)
 }
 
 func easyWkLivetiming(c *gin.Context) {
