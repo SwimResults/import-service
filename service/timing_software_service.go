@@ -12,8 +12,57 @@ import (
 var currentEvent int
 var currentHeat int
 
+func EasyWkLivetimingRequestV2(requests []model.EasyWkAction) (string, error) {
+	request := model.EasyWkActionRequest{}
+	for _, r := range requests {
+		switch r.Key {
+		case "pwd":
+			request.Password = r.Value
+			break
+		case "action":
+			request.Action = r.Value
+			break
+		case "keepsum":
+			request.KeepSum = r.Value
+			break
+		case "firstlane":
+			request.FirstLane, _ = strconv.Atoi(r.Value)
+			break
+		case "lanecount":
+			request.LaneCount, _ = strconv.Atoi(r.Value)
+			break
+		case "event":
+			request.Event, _ = strconv.Atoi(r.Value)
+			break
+		case "heat":
+			request.Heat, _ = strconv.Atoi(r.Value)
+			break
+		case "maxheat":
+			request.MaxHeat, _ = strconv.Atoi(r.Value)
+			break
+		case "lane":
+			request.Lane, _ = strconv.Atoi(r.Value)
+			break
+		case "meter":
+			request.Meter = r.Value
+			break
+		case "time":
+			request.Time, _ = strconv.Atoi(r.Value)
+			break
+		case "finished":
+			request.Finished = r.Value
+			break
+		case "content":
+			request.Content = r.Value
+			break
+		}
+	}
+
+	return EasyWkLivetimingRequest(request)
+}
+
 func EasyWkLivetimingRequest(request model.EasyWkActionRequest) (string, error) {
-	if request.Action == "" {
+	if request.Password != importer.CurrentMeeting.Password || request.Action == "" {
 		fmt.Printf("password or no action error with password '%s' and action '%s'\n", request.Password, request.Action)
 		return "ERROR: Passwort nicht korrekt oder keine Aktion definiert", nil
 	}

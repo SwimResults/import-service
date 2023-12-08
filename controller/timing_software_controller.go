@@ -11,6 +11,10 @@ func timingSoftwareController() {
 	router.POST("/easywk/livework.php", easyWkLivetiming)
 	router.GET("/easywk/livework.php", easyWkLivetiming)
 	router.OPTIONS("/easywk/livework.php", ok)
+
+	router.POST("/easywk/v2/livework.php", easyWkLivetimingV2)
+	router.GET("/easywk/v2/livework.php", easyWkLivetimingV2)
+	router.OPTIONS("/easywk/v2/livework.php", ok)
 }
 
 func easyWkLivetiming(c *gin.Context) {
@@ -21,6 +25,22 @@ func easyWkLivetiming(c *gin.Context) {
 	}
 
 	str, err := service.EasyWkLivetimingRequest(request)
+	if err != nil {
+		c.String(http.StatusInternalServerError, "ERROR: %s", err.Error())
+		return
+	}
+
+	c.String(http.StatusOK, str)
+}
+
+func easyWkLivetimingV2(c *gin.Context) {
+	var request []model.EasyWkAction
+	if err := c.BindJSON(&request); err != nil {
+		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
+		return
+	}
+
+	str, err := service.EasyWkLivetimingRequestV2(request)
 	if err != nil {
 		c.String(http.StatusInternalServerError, "ERROR: %s", err.Error())
 		return
