@@ -25,9 +25,9 @@ func easyWkLivetiming(c *gin.Context) {
 	body, _ := io.ReadAll(c.Request.Body)
 	println(string(body))
 
-	c.Request.Body = io.NopCloser(bytes.NewReader(body))
+	c.Request.URL.RawQuery = string(body)
 
-	if err := c.BindQuery(&request); err != nil {
+	if err := c.BindJSON(&request); err != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		return
 	}
