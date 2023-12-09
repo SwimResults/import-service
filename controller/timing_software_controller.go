@@ -1,9 +1,11 @@
 package controller
 
 import (
+	"bytes"
 	"github.com/gin-gonic/gin"
 	"github.com/swimresults/import-service/model"
 	"github.com/swimresults/import-service/service"
+	"io"
 	"net/http"
 )
 
@@ -19,6 +21,12 @@ func timingSoftwareController() {
 
 func easyWkLivetiming(c *gin.Context) {
 	var request model.EasyWkActionRequest
+
+	body, _ := io.ReadAll(c.Request.Body)
+	println(string(body))
+
+	c.Request.Body = io.NopCloser(bytes.NewReader(body))
+
 	if err := c.BindJSON(&request); err != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		return
@@ -35,6 +43,12 @@ func easyWkLivetiming(c *gin.Context) {
 
 func easyWkLivetimingV2(c *gin.Context) {
 	var request []model.EasyWkAction
+
+	body, _ := io.ReadAll(c.Request.Body)
+	println(string(body))
+
+	c.Request.Body = io.NopCloser(bytes.NewReader(body))
+
 	if err := c.BindJSON(&request); err != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		return
