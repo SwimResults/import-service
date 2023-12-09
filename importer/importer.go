@@ -7,6 +7,7 @@ import (
 	startClient "github.com/swimresults/start-service/client"
 	"os"
 	"strings"
+	"time"
 )
 
 //var startServiceUrl = "https://api.swimresults.de/start/v1/"
@@ -78,4 +79,9 @@ func importError(text string, err error) {
 	fmt.Println("\033[31m" + text + "\033[33m")
 	fmt.Println(err)
 	fmt.Println("\033[0m")
+}
+
+func timeNow() time.Time {
+	loc, _ := time.LoadLocation("Europe/Berlin")
+	return time.Now().In(loc)
 }

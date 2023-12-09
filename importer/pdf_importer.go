@@ -738,7 +738,7 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 				}
 			}
 
-			now := time.Now()
+			now := timeNow()
 
 			clockTime := time.Date(now.Year(), now.Month(), now.Day(), timeHour, timeMin, 0, 0, time.Local)
 
