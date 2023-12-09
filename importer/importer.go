@@ -83,5 +83,7 @@ func importError(text string, err error) {
 
 func timeNow() time.Time {
 	loc, _ := time.LoadLocation("Europe/Berlin")
-	return time.Now().In(loc)
+	currentTime := time.Now().In(loc)
+	fmt.Println(currentTime)
+	return currentTime
 }
