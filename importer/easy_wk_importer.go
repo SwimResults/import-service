@@ -31,7 +31,7 @@ func SetHeatStartTime(event int, heat int) error {
 		return errors.New("no meeting for live services declared")
 	}
 
-	return SetHeatTime(event, heat, time.Now(), time.Time{})
+	return SetHeatTime(event, heat, timeNow(), time.Time{})
 }
 
 func SetHeatFinishTime(event int, heat int) error {
@@ -39,7 +39,7 @@ func SetHeatFinishTime(event int, heat int) error {
 		return errors.New("no meeting for live services declared")
 	}
 
-	return SetHeatTime(event, heat, time.Time{}, time.Now())
+	return SetHeatTime(event, heat, time.Time{}, timeNow())
 }
 
 func SetHeatTime(event int, heatNumber int, startAt time.Time, finishedAt time.Time) error {

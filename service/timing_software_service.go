@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/swimresults/import-service/importer"
 	"github.com/swimresults/import-service/model"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -62,7 +63,9 @@ func EasyWkLivetimingRequestV2(requests []model.EasyWkAction) (string, error) {
 }
 
 func EasyWkLivetimingRequest(request model.EasyWkActionRequest) (string, error) {
-	if request.Password != importer.CurrentMeeting.Password || request.Action == "" {
+	pwd := regexp.MustCompile(`[^a-zA-Z0-9 ]+`).ReplaceAllString(request.Password, "")
+	pwdIntern := regexp.MustCompile(`[^a-zA-Z0-9 ]+`).ReplaceAllString(importer.CurrentMeeting.Password, "")
+	if pwd != pwdIntern || request.Action == "" {
 		fmt.Printf("password or no action error with password '%s' and action '%s'\n", request.Password, request.Action)
 		return "ERROR: Passwort nicht korrekt oder keine Aktion definiert", nil
 	}

@@ -17,6 +17,10 @@ func timingSoftwareController() {
 	router.POST("/easywk/v2/livework.php", easyWkLivetimingV2)
 	router.GET("/easywk/v2/livework.php", easyWkLivetimingV2)
 	router.OPTIONS("/easywk/v2/livework.php", ok)
+
+	router.POST("/easywk/v3", easyWkLivetimingV3)
+	router.GET("/easywk/v3", easyWkLivetimingV3)
+	router.OPTIONS("/easywk/v3", ok)
 }
 
 func easyWkLivetiming(c *gin.Context) {
@@ -25,9 +29,26 @@ func easyWkLivetiming(c *gin.Context) {
 	body, _ := io.ReadAll(c.Request.Body)
 	println(string(body))
 
-	c.Request.Body = io.NopCloser(bytes.NewReader(body))
+	c.Request.URL.RawQuery = string(body)
 
 	if err := c.BindQuery(&request); err != nil {
+		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
+		return
+	}
+
+	str, err := service.EasyWkLivetimingRequest(request)
+	if err != nil {
+		c.String(http.StatusInternalServerError, "ERROR: %s", err.Error())
+		return
+	}
+
+	c.String(http.StatusOK, str)
+}
+
+func easyWkLivetimingV3(c *gin.Context) {
+	var request model.EasyWkActionRequest
+
+	if err := c.BindJSON(&request); err != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		return
 	}
