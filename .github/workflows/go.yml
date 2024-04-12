@@ -22,6 +22,7 @@ jobs:
 
     - name: Echo secrets
       run: |
+        rm config/live_meeting.json
         echo -e '${{ secrets.LIVE_MEETING_JSON }}' >> config/live_meeting.json
 
     - name: Set up Go
