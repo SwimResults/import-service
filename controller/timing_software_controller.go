@@ -53,6 +53,8 @@ func easyWkLivetimingV3(c *gin.Context) {
 		return
 	}
 
+	println(request.Password)
+
 	str, err := service.EasyWkLivetimingRequest(request)
 	if err != nil {
 		c.String(http.StatusInternalServerError, "ERROR: %s", err.Error())
