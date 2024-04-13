@@ -34,6 +34,8 @@ func easyWkLivetimingGet(c *gin.Context) {
 	//
 	//c.Request.URL.RawQuery = string(body)
 
+	c.Request.Method = "POST"
+
 	paramPairs := c.Request.URL.Query()
 	for key, values := range paramPairs {
 		fmt.Printf("key = %v, value(s) = %v\n", key, values)
