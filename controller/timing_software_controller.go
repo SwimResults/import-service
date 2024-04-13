@@ -38,6 +38,10 @@ func easyWkLivetimingGet(c *gin.Context) {
 		fmt.Printf("key = %v, value(s) = %v\n", key, values)
 	}
 
+	body, _ := io.ReadAll(c.Request.Body)
+	println("Body:")
+	println(string(body))
+
 	if err := c.BindQuery(&request); err != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		return
