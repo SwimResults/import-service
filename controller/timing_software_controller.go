@@ -28,23 +28,19 @@ func timingSoftwareController() {
 
 func easyWkLivetimingGet(c *gin.Context) {
 	var request model.EasyWkActionRequest
-	//
-	//body, _ := io.ReadAll(c.Request.Body)
-	//println(string(body))
-	//
-	//c.Request.URL.RawQuery = string(body)
-
-	paramPairs := c.Request.URL.Query()
-	for key, values := range paramPairs {
-		fmt.Printf("key = %v, value(s) = %v\n", key, values)
-	}
 
 	body, err := io.ReadAll(c.Request.Body)
 	if err != nil {
 		println(err)
 	}
-	println("Body:")
 	println(string(body))
+
+	c.Request.URL.RawQuery = string(body)
+
+	paramPairs := c.Request.URL.Query()
+	for key, values := range paramPairs {
+		fmt.Printf("key = %v, value(s) = %v\n", key, values)
+	}
 
 	if err := c.BindQuery(&request); err != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
