@@ -662,7 +662,7 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 				start.IsRelay = true
 			}
 
-			//fmt.Printf("\t\tResult %d. - %s (%d) %s -> %s\n", start.Rank, start.AthleteName, start.AthleteYear, start.AthleteTeamName, swimTime.String())
+			fmt.Printf("\t\tResult %d. - %s (%d) %s -> %s\n", start.Rank, start.AthleteName, start.AthleteYear, start.AthleteTeamName, swimTime.String())
 
 			// +===========================+
 			//         START IMPORT
