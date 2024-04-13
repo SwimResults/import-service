@@ -16,7 +16,6 @@ func timingSoftwareController() {
 	router.Any("/easywk/any/livework.php", easyWkLivetimingGet)
 	router.OPTIONS("/easywk/livework.php", ok)
 	router.OPTIONS("/easywk/get/livework.php", ok)
-	router.OPTIONS("/easywk/any/livework.php", ok)
 
 	router.POST("/easywk/v2/livework.php", easyWkLivetimingV2)
 	router.GET("/easywk/v2/livework.php", easyWkLivetimingV2)
