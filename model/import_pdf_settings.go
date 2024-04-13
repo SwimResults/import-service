@@ -32,6 +32,7 @@ type ImportPdfResultListSettings struct {
 	GenderMapping               [3][2]string `json:"gender_mapping,omitempty" bson:"gender_mapping,omitempty"`                               // "männlich" -> "MALE"
 	StyleNameSkipStrings        []string     `json:"style_name_skip_strings,omitempty" bson:"style_name_skip_strings,omitempty"`             // staffel, beine
 	RatingSeparators            []string     `json:"rating_separators,omitempty" bson:"rating_separators,omitempty"`                         // Jahrgang, Jahrgänge, Offene Wertung
+	RatingRightSeparators       []string     `json:"rating_right_separators,omitempty" bson:"rating_right_separators,omitempty"`             // Jahrgang, Jahrgänge, Offene Wertung
 	ResultSeparator             string       `json:"result_separator,omitempty" bson:"result_separator,omitempty"`                           // Endzeit
 	DisqualificationSeparator   string       `json:"disqualification_separator,omitempty" bson:"disqualification_separator,omitempty"`       // disqualifiziert
 	DisqualificationTimePattern string       `json:"disqualification_time_pattern,omitempty" bson:"disqualification_time_pattern,omitempty"` // [0-9]{2}:[0-9]{2}

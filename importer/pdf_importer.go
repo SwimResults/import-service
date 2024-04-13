@@ -496,6 +496,12 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 
 		for _, ratingString := range ratingSplit {
 
+			for _, separator := range stg.RatingRightSeparators {
+				if strings.Contains(ratingString, separator) {
+					ratingString = substr(ratingString, separator)
+				}
+			}
+
 			// extract result rows
 			if strings.Contains(ratingString, stg.ResultSeparator) {
 				resultsString := substrr(ratingString, stg.ResultSeparator)
@@ -656,7 +662,7 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 				start.IsRelay = true
 			}
 
-			//fmt.Printf("\t\tResult %d. - %s (%d) %s -> %s\n", start.Rank, start.AthleteName, start.AthleteYear, start.AthleteTeamName, swimTime.String())
+			fmt.Printf("\t\tResult %d. - %s (%d) %s -> %s\n", start.Rank, start.AthleteName, start.AthleteYear, start.AthleteTeamName, swimTime.String())
 
 			// +===========================+
 			//         START IMPORT
