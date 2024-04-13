@@ -41,6 +41,7 @@ type ImportPdfResultListSettings struct {
 	ResultPattern               string       `json:"result_pattern,omitempty" bson:"result_pattern,omitempty"`                               // [0-9]*\..*[0-9]{4}.*[0-9]{2}:[0-9]{2},[0-9]{2}
 	YearPattern                 string       `json:"year_pattern,omitempty" bson:"year_pattern,omitempty"`                                   // [0-9]{4}
 	YearOpenString              string       `json:"year_open_string,omitempty" bson:"year_open_string,omitempty"`                           // Offen
+	AthleteReplaceStrings       []string     `json:"athlete_replace_strings,omitempty" bson:"athlete_replace_strings,omitempty"`             // Bezirksmeister
 	SwimTimePattern             string       `json:"swim_time_pattern,omitempty" bson:"swim_time_pattern,omitempty"`                         // [0-9]{2}:[0-9]{2},[0-9]{2}
 	ReasonRightSeparator        string       `json:"reason_right_separator,omitempty" bson:"reason_right_separator,omitempty"`               // Uhrzeit der Bekanntgabe
 }

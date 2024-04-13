@@ -620,6 +620,9 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 			yearSplit := yearRegex.Split(rankingSplit[1], 2)
 
 			athleteName := trim(yearSplit[0])
+			for _, replaceString := range stg.AthleteReplaceStrings {
+				athleteName = strings.Replace(athleteName, replaceString, "", -1)
+			}
 			athleteYearString := trim(substrr(rankingSplit[1], athleteName))[:4]
 			athleteYear, err := strconv.Atoi(athleteYearString)
 			if err != nil {
