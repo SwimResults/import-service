@@ -12,7 +12,7 @@ import (
 
 func timingSoftwareController() {
 	router.POST("/easywk/livework.php", easyWkLivetiming)
-	router.GET("/easywk/livework.php", easyWkLivetimingGet)
+	router.GET("/easywk/get/livework.php", easyWkLivetimingGet)
 	router.OPTIONS("/easywk/livework.php", ok)
 
 	router.POST("/easywk/v2/livework.php", easyWkLivetimingV2)
