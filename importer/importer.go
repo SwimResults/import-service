@@ -80,6 +80,10 @@ func importError(text string, err error) {
 	fmt.Println(err)
 	fmt.Println("\033[0m")
 }
+func importWarning(text string) {
+	fmt.Println("\033[35m" + text)
+	fmt.Println("\033[0m")
+}
 
 func timeNow() time.Time {
 	loc, _ := time.LoadLocation("Europe/Berlin")

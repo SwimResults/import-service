@@ -375,6 +375,11 @@ func ImportPdfStartList(file string, meeting string, exclude []int, include []in
 	return &stats, nil
 }
 
+type importedKey struct {
+	event   int
+	athlete string
+}
+
 // ImportPdfResultList takes the path to a pdf file that contains a result
 // list. All teams, athletes and results will be imported.
 // If exclude is set, given event numbers will be excluded from import.
@@ -394,6 +399,8 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 	}
 
 	var stats importModel.ImportFileStats
+
+	importedAthletes := make(map[importedKey]bool)
 
 	lastEvent := 0
 	results := make(map[int][]string)
@@ -662,6 +669,16 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 				start.IsRelay = true
 			}
 
+			athleteKey := importedKey{
+				event:   start.Event,
+				athlete: start.AthleteName,
+			}
+
+			if stg.OncePerEvent && importedAthletes[athleteKey] {
+				importWarning(fmt.Sprintf("do not import again: e: %d - %s", athleteKey.event, athleteKey.athlete))
+				continue
+			}
+
 			fmt.Printf("\t\tResult %d. - %s (%d) %s -> %s\n", start.Rank, start.AthleteName, start.AthleteYear, start.AthleteTeamName, swimTime.String())
 
 			// +===========================+
@@ -680,6 +697,8 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 				stats.Imported.Starts++
 
 				start = *newStart
+
+				importedAthletes[athleteKey] = true
 			}
 
 			result := startModel.Result{
