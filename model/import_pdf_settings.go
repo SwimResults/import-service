@@ -24,6 +24,7 @@ type ImportPdfStartListSettings struct {
 }
 
 type ImportPdfResultListSettings struct {
+	OncePerEvent                bool         `json:"once_per_event,omitempty" bson:"once_per_event,omitempty"`                               // true
 	EventSeparator              string       `json:"event_separator,omitempty" bson:"event_separator,omitempty"`                             // Wettkampf
 	EventSkipStrings            []string     `json:"event_skip_strings,omitempty" bson:"event_skip_strings,omitempty"`                       //
 	EventRequiredStrings        []string     `json:"event_required_strings,omitempty" bson:"event_required_strings,omitempty"`               // Meldezeit
