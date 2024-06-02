@@ -97,6 +97,8 @@ func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include
 		stats.Imported.AgeGroups++
 	}
 
+	eventOrdering := 1
+
 	for _, dsvEvent := range def.Wettkaempfe {
 		fmt.Printf("%d", dsvEvent.Wettkampfnummer)
 		if !IsEventImportable(dsvEvent.Wettkampfnummer, exclude, include) {
@@ -110,7 +112,10 @@ func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include
 			Number:   dsvEvent.Wettkampfnummer,
 			Distance: dsvEvent.Einzelstrecke,
 			Meeting:  meeting,
+			Ordering: eventOrdering,
 		}
+
+		eventOrdering++
 
 		if dsvEvent.Geschlecht == 'W' {
 			event.Gender = "FEMALE"
