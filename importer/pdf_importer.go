@@ -88,6 +88,10 @@ func ImportPdfStartList(file string, meeting string, exclude []int, include []in
 
 	var stats importModel.ImportFileStats
 
+	for _, omit := range stg.OmitFirst {
+		text = strings.ReplaceAll(text, omit, "")
+	}
+
 	// split by event
 	eventSplit := strings.Split(text, stg.EventSeparator)
 	for _, eventString := range eventSplit {
@@ -148,6 +152,8 @@ func ImportPdfStartList(file string, meeting string, exclude []int, include []in
 		//        EVENT IMPORT
 		// +===========================+
 
+		stats.Found.Events++
+
 		if runImport() {
 			_, c, err := ec.ImportEvent(event, style, 1)
 			if err != nil {
@@ -198,6 +204,7 @@ func ImportPdfStartList(file string, meeting string, exclude []int, include []in
 			//          HEAT IMPORT
 			// +===========================+
 
+			stats.Found.Heats++
 			if runImport() {
 				_, c, err := hc.ImportHeat(heat)
 				if err != nil {
@@ -241,8 +248,8 @@ func ImportPdfStartList(file string, meeting string, exclude []int, include []in
 				athleteNameString := trim(yearSplit[0])
 				teamNameString := trim(swimTimeSplit[0])
 				laneNumberString := trim(substr(laneString, athleteNameString))
-				yearString := trim(substrr(substr(laneString, teamNameString), athleteNameString))
-				swimTimeRestString := trim(substrr(laneString, teamNameString))
+				yearString := trim(substrr(substr(laneString, yearSplit[1]), athleteNameString))
+				swimTimeRestString := trim(substrr(yearSplit[1], teamNameString))
 
 				laneNumber, err := strconv.Atoi(laneNumberString)
 				if err != nil {
@@ -267,6 +274,7 @@ func ImportPdfStartList(file string, meeting string, exclude []int, include []in
 				//          TEAM IMPORT
 				// +===========================+
 
+				stats.Found.Teams++
 				if runImport() {
 					newTeam, c, err := tc.ImportTeam(team, meeting)
 					if err != nil {
@@ -291,19 +299,22 @@ func ImportPdfStartList(file string, meeting string, exclude []int, include []in
 				// +===========================+
 				//        ATHLETE IMPORT
 				// +===========================+
+				if event.RelayDistance == "" {
 
-				if runImport() && event.RelayDistance == "" {
-					newAthlete, c, err := ac.ImportAthlete(athlete, meeting)
-					if err != nil {
-						importError(fmt.Sprintf("import athlete request failed for start %d/%d/%d and athlete '%s'!", event.Number, heat.Number, laneNumber, athlete.Name), err)
-						continue
-					}
-					if c {
-						stats.Created.Athletes++
-					}
-					stats.Imported.Athletes++
+					stats.Found.Athletes++
+					if runImport() {
+						newAthlete, c, err := ac.ImportAthlete(athlete, meeting)
+						if err != nil {
+							importError(fmt.Sprintf("import athlete request failed for start %d/%d/%d and athlete '%s'!", event.Number, heat.Number, laneNumber, athlete.Name), err)
+							continue
+						}
+						if c {
+							stats.Created.Athletes++
+						}
+						stats.Imported.Athletes++
 
-					athlete = *newAthlete
+						athlete = *newAthlete
+					}
 				}
 
 				start := startModel.Start{
@@ -326,6 +337,7 @@ func ImportPdfStartList(file string, meeting string, exclude []int, include []in
 				//         START IMPORT
 				// +===========================+
 
+				stats.Found.Starts++
 				if runImport() {
 					newStart, c, err := sc.ImportStart(start)
 					if err != nil {
@@ -356,6 +368,7 @@ func ImportPdfStartList(file string, meeting string, exclude []int, include []in
 				//        RESULT IMPORT
 				// +===========================+
 
+				stats.Found.Results++
 				if runImport() {
 					_, c, err := sc.ImportResult(start, result)
 					if err != nil {
@@ -468,6 +481,7 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 		//        EVENT IMPORT
 		// +===========================+
 
+		stats.Found.Events++
 		if runImport() {
 			_, c, err := ec.ImportEvent(event, style, 1)
 			if err != nil {
@@ -685,6 +699,7 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 			//         START IMPORT
 			// +===========================+
 
+			stats.Found.Starts++
 			if runImport() {
 				newStart, c, err := sc.ImportStart(start)
 				if err != nil {
@@ -711,6 +726,7 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 			//        RESULT IMPORT
 			// +===========================+
 
+			stats.Found.Results++
 			if runImport() {
 				_, c, err := sc.ImportResult(start, result)
 				if err != nil {
@@ -777,6 +793,7 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 			//         START IMPORT
 			// +===========================+
 
+			stats.Found.Starts++
 			if runImport() {
 				newStart, c, err := sc.ImportStart(start)
 				if err != nil {
@@ -795,6 +812,7 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 			//    DISQUALIFICATION IMPORT
 			// +===========================+
 
+			stats.Found.Disqualifications++
 			if runImport() {
 				_, c, err := dc.ImportDisqualification(start, reason, "disqualified", clockTime)
 				if err != nil {
