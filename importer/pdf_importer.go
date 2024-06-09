@@ -73,20 +73,27 @@ func GetPdfReader(file string) (*pdf.Reader, error) {
 	return pdf.NewReader(rdr, rdr.Size())
 }
 
+// ImportPdfStartListFile takes the path to a pdf file that contains a start
+// list and runs the import ImportPdfStartList
+func ImportPdfStartListFile(file string, meeting string, exclude []int, include []int, stg importModel.ImportPdfStartListSettings) (*importModel.ImportFileStats, error) {
+	text, err := GetPdfFileContent(file)
+	if err != nil {
+		return nil, err
+	}
+
+	return ImportPdfStartList(text, meeting, exclude, include, stg)
+}
+
 // ImportPdfStartList takes the path to a pdf file that contains a start
 // list. All events, teams, athletes, heats and starts will be imported.
 // If exclude is set, given event numbers will be excluded from import.
 // If include is set, only given event numbers will be imported.
 //
 // For import process details see documentation on GitHub.
-func ImportPdfStartList(file string, meeting string, exclude []int, include []int, stg importModel.ImportPdfStartListSettings) (*importModel.ImportFileStats, error) {
-
-	text, err := GetPdfFileContent(file)
-	if err != nil {
-		return nil, err
-	}
+func ImportPdfStartList(text string, meeting string, exclude []int, include []int, stg importModel.ImportPdfStartListSettings) (*importModel.ImportFileStats, error) {
 
 	var stats importModel.ImportFileStats
+	var err error
 
 	for _, omit := range stg.OmitFirst {
 		text = strings.ReplaceAll(text, omit, "")
@@ -393,25 +400,32 @@ type importedKey struct {
 	athlete string
 }
 
+// ImportPdfResultListFile takes the path to a pdf file that contains a result
+// list and runs the import ImportPdfResultList
+func ImportPdfResultListFile(file string, meeting string, exclude []int, include []int, stg importModel.ImportPdfResultListSettings) (*importModel.ImportFileStats, error) {
+	text, err := GetPdfFileContent(file)
+	if err != nil {
+		return nil, err
+	}
+
+	return ImportPdfResultList(text, meeting, exclude, include, stg)
+}
+
 // ImportPdfResultList takes the path to a pdf file that contains a result
 // list. All teams, athletes and results will be imported.
 // If exclude is set, given event numbers will be excluded from import.
 // If include is set, only given event numbers will be imported.
 //
 // For import process details see documentation on GitHub.
-func ImportPdfResultList(file string, meeting string, exclude []int, include []int, stg importModel.ImportPdfResultListSettings) (*importModel.ImportFileStats, error) {
+func ImportPdfResultList(text string, meeting string, exclude []int, include []int, stg importModel.ImportPdfResultListSettings) (*importModel.ImportFileStats, error) {
 
-	text, err := GetPdfFileContent(file)
-	if err != nil {
-		return nil, err
-	}
+	var stats importModel.ImportFileStats
+	var err error
 
 	teams, _, err := tc.GetTeamsByMeeting(meeting)
 	if err != nil {
 		return nil, err
 	}
-
-	var stats importModel.ImportFileStats
 
 	importedAthletes := make(map[importedKey]bool)
 
@@ -435,9 +449,14 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 		}
 
 		eventNumberSplit := strings.SplitN(eventString, stg.EventNumberSeparator, 2)
-		event.Number, err = strconv.Atoi(trim(eventNumberSplit[0]))
+
+		eventNumberString := trim(eventNumberSplit[0])
+
+		event.Number, err = strconv.Atoi(eventNumberString)
 		if err != nil {
-			return &stats, err
+			importWarning(fmt.Sprintf("event number is not a number, try to separate multiple event numbers using '%s' at '%s'", stg.EventMultipleNumbersSeparator, eventNumberString))
+			importError("ATTENTION! This feature is not implemented yet!", nil)
+			continue
 		}
 
 		if event.Number <= 0 {

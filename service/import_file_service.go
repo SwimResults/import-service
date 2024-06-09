@@ -29,6 +29,16 @@ func ImportFile(r model.ImportFileRequest) error {
 			return fmt.Errorf("unknown file_type for PDF (%s)", r.FileType)
 		}
 		return nil
+	case "PDF_TXT":
+		switch r.FileType {
+		case "START_LIST":
+			go PdfTxtStartListImport(r)
+		case "RESULT_LIST":
+			go PdfTxtResultListImport(r)
+		default:
+			return fmt.Errorf("unknown file_type for PDF_TXT (%s)", r.FileType)
+		}
+		return nil
 	default:
 		return fmt.Errorf("unknown file extension (%s)", r.FileExtension)
 	}
@@ -56,7 +66,7 @@ func PdfStartListImport(r model.ImportFileRequest) {
 		println(err.Error())
 		return
 	}
-	stats, err := importer.ImportPdfStartList(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents, settings.PdfStartListSettings)
+	stats, err := importer.ImportPdfStartListFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents, settings.PdfStartListSettings)
 	if err != nil {
 		println(err.Error())
 	}
@@ -69,7 +79,33 @@ func PdfResultListImport(r model.ImportFileRequest) {
 		println(err.Error())
 		return
 	}
-	stats, err := importer.ImportPdfResultList(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents, settings.PdfResultListSettings)
+	stats, err := importer.ImportPdfResultListFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents, settings.PdfResultListSettings)
+	if err != nil {
+		println(err.Error())
+	}
+	stats.PrintReport()
+}
+
+func PdfTxtStartListImport(r model.ImportFileRequest) {
+	settings, err := GetImportSettingByMeeting(r.Meeting)
+	if err != nil {
+		println(err.Error())
+		return
+	}
+	stats, err := importer.ImportPdfStartList(r.Text, r.Meeting, r.ExcludeEvents, r.IncludeEvents, settings.PdfStartListSettings)
+	if err != nil {
+		println(err.Error())
+	}
+	stats.PrintReport()
+}
+
+func PdfTxtResultListImport(r model.ImportFileRequest) {
+	settings, err := GetImportSettingByMeeting(r.Meeting)
+	if err != nil {
+		println(err.Error())
+		return
+	}
+	stats, err := importer.ImportPdfResultList(r.Text, r.Meeting, r.ExcludeEvents, r.IncludeEvents, settings.PdfResultListSettings)
 	if err != nil {
 		println(err.Error())
 	}
