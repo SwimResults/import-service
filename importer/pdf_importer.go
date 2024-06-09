@@ -435,9 +435,14 @@ func ImportPdfResultList(file string, meeting string, exclude []int, include []i
 		}
 
 		eventNumberSplit := strings.SplitN(eventString, stg.EventNumberSeparator, 2)
-		event.Number, err = strconv.Atoi(trim(eventNumberSplit[0]))
+
+		eventNumberString := trim(eventNumberSplit[0])
+
+		event.Number, err = strconv.Atoi(eventNumberString)
 		if err != nil {
-			return &stats, err
+			importWarning(fmt.Sprintf("event number is not a number, try to separate multiple event numbers using '%s' at '%s'", stg.EventMultipleNumbersSeparator, eventNumberString))
+			importError("ATTENTION! This feature is not implemented yet!", nil)
+			continue
 		}
 
 		if event.Number <= 0 {
