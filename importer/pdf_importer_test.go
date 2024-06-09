@@ -44,7 +44,7 @@ func TestImportPdfStartList_BMSWS24(t *testing.T) {
 	err := os.Setenv("SR_NO_IMPORT", "true")
 	assert.NoError(t, err)
 
-	stats, err1 := ImportPdfStartList("../assets/ME_BMSWS24.pdf", "IESC23", nil, nil, settings)
+	stats, err1 := ImportPdfStartListFile("../assets/ME_BMSWS24.pdf", "IESC23", nil, nil, settings)
 	assert.NoError(t, err1)
 	stats.PrintReport()
 
@@ -90,7 +90,7 @@ func TestImportPdfStartList_IESC23(t *testing.T) {
 	err := os.Setenv("SR_NO_IMPORT", "true")
 	assert.NoError(t, err)
 
-	stats, err1 := ImportPdfStartList("../assets/ME_26_IESC_2023.pdf", "IESC23", nil, nil, settings)
+	stats, err1 := ImportPdfStartListFile("../assets/ME_26_IESC_2023.pdf", "IESC23", nil, nil, settings)
 	assert.NoError(t, err1)
 	stats.PrintReport()
 
