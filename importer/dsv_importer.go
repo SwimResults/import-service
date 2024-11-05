@@ -132,7 +132,13 @@ func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include
 			event.Distance = dsvEvent.AnzahlStarter * dsvEvent.Einzelstrecke
 		}
 
-		newEvent, created, err3 := ec.ImportEvent(event, string(dsvEvent.Technik), dsvEvent.Abschnittsnummer)
+		styleString := string(dsvEvent.Technik)
+
+		if dsvEvent.Ausuebung != "GL" {
+			styleString += dsvEvent.Ausuebung
+		}
+
+		newEvent, created, err3 := ec.ImportEvent(event, styleString, dsvEvent.Abschnittsnummer)
 		if err3 != nil {
 			return nil, err3
 		}
