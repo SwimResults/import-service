@@ -24,6 +24,8 @@ func timingSoftwareController() {
 	router.POST("/easywk/v3", easyWkLivetimingV3) // used from admin backend
 	router.GET("/easywk/v3", easyWkLivetimingV3)
 	router.OPTIONS("/easywk/v3", ok)
+
+	router.POST("/alge", algeLivetimingData)
 }
 
 func easyWkLivetimingGet(c *gin.Context) {
@@ -111,6 +113,23 @@ func easyWkLivetimingV2(c *gin.Context) {
 	}
 
 	str, err := service.EasyWkLivetimingRequestV2(request)
+	if err != nil {
+		c.String(http.StatusInternalServerError, "ERROR: %s", err.Error())
+		return
+	}
+
+	c.String(http.StatusOK, str)
+}
+
+func algeLivetimingData(c *gin.Context) {
+	var request model.AlgeActionRequest
+
+	if err := c.BindJSON(&request); err != nil {
+		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
+		return
+	}
+
+	str, err := service.AlgeLivetimingRequest(request)
 	if err != nil {
 		c.String(http.StatusInternalServerError, "ERROR: %s", err.Error())
 		return

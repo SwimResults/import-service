@@ -160,3 +160,76 @@ func EasyWkReactionToDuration(t int) (time.Duration, error) {
 			fmt.Sprintf("%03d", h*10) + "ms")
 	return d, err
 }
+
+func AlgeLivetimingRequest(request model.AlgeActionRequest) (string, error) {
+	pwd := regexp.MustCompile(`[^a-zA-Z0-9 ]+`).ReplaceAllString(request.Password, "")
+	pwdIntern := regexp.MustCompile(`[^a-zA-Z0-9 ]+`).ReplaceAllString(importer.CurrentMeeting.Password, "")
+	if pwd != pwdIntern || request.Action == "" {
+		fmt.Printf("password or no action error with password '%s' and action '%s'\n", request.Password, request.Action)
+		return "ERROR: Passwort nicht korrekt oder keine Aktion definiert", nil
+	}
+
+	var err error
+
+	switch request.Action {
+	case "START":
+		// store current event and heat for later timings import
+		currentEvent = request.Event
+		currentHeat = request.Heat
+
+		// start heat by setting start time
+		err = importer.SetHeatStartTime(currentEvent, currentHeat)
+
+		return "OK", err
+	case "time":
+		// import result time
+		if currentEvent == 0 || currentHeat == 0 {
+			return "OK", fmt.Errorf("[EasyWk Time Import] no event or heat set, skipping import")
+		}
+
+		if request.Meter == 0 {
+			return "OK", fmt.Errorf("[EasyWk Time Import] meter not set for E: %d, H: %d, L: %d", currentEvent, currentHeat, request.Lane)
+		}
+		var t time.Duration
+		var err2 error
+
+		t, err2 = AlgeTimeToDuration(request.Time)
+
+		if err2 != nil {
+			return "OK", fmt.Errorf("[EasyWk Time Import] time to duration conversion failed for: %d", request.Time)
+		}
+
+		err = importer.ImportResult(currentEvent, currentHeat, request.Lane, t, request.Meter, false, request.Finished == "yes")
+
+		return "OK", err
+	case "STOP":
+		// set heat to finished
+		err = importer.SetHeatFinishTime(currentEvent, currentHeat)
+		return "OK", err
+	default:
+		return "ERROR: Unbekannte Aktion", nil
+	}
+}
+
+func AlgeTimeToDuration(t int) (time.Duration, error) {
+	//956128
+	tStr := strconv.Itoa(t)
+	tL := len(tStr)
+	h, _ := strconv.Atoi(tStr[tL-4 : tL-1])
+	s, _ := strconv.Atoi(tStr[:tL-4])
+	m := s / 60
+	H := m / 60
+	s = s % 60
+	m = m % 60
+	fmt.Println(
+		strconv.Itoa(H) + "h" +
+			strconv.Itoa(m) + "m" +
+			strconv.Itoa(s) + "s" +
+			strconv.Itoa(h) + "ms")
+	d, err := time.ParseDuration(
+		strconv.Itoa(H) + "h" +
+			strconv.Itoa(m) + "m" +
+			strconv.Itoa(s) + "s" +
+			strconv.Itoa(h) + "ms")
+	return d, err
+}
