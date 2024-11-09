@@ -172,6 +172,8 @@ func AlgeLivetimingRequest(request model.AlgeActionRequest) (string, error) {
 	var err error
 
 	switch request.Action {
+	case "PING":
+		return "OK", err
 	case "START":
 		// store current event and heat for later timings import
 		currentEvent = request.Event
