@@ -9,6 +9,7 @@ import (
 )
 
 var router = gin.Default()
+var serviceKey string
 
 func Run() {
 
@@ -17,6 +18,12 @@ func Run() {
 	if port == "" {
 		fmt.Println("no application port given! Please set SR_IMPORT_PORT.")
 		return
+	}
+
+	serviceKey = os.Getenv("SR_SERVICE_KEY")
+
+	if serviceKey == "" {
+		fmt.Println("no security for inter-service communication given! Please set SR_SERVICE_KEY.")
 	}
 
 	timingSoftwareController()

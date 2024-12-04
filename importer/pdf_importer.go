@@ -8,6 +8,7 @@ import (
 	athleteModel "github.com/swimresults/athlete-service/model"
 	importModel "github.com/swimresults/import-service/model"
 	"github.com/swimresults/meeting-service/model"
+	"github.com/swimresults/service-core/misc"
 	startModel "github.com/swimresults/start-service/model"
 	"io"
 	"regexp"
@@ -801,7 +802,7 @@ func ImportPdfResultList(text string, meeting string, exclude []int, include []i
 				}
 			}
 
-			now := timeNow()
+			now := misc.TimeNow()
 
 			clockTime := time.Date(now.Year(), now.Month(), now.Day(), timeHour, timeMin, 0, 0, time.Local)
 

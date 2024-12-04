@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/swimresults/import-service/model"
+	"github.com/swimresults/service-core/misc"
 	startModel "github.com/swimresults/start-service/model"
 	"os"
 	"time"
@@ -31,7 +32,9 @@ func SetHeatStartTime(event int, heat int) error {
 		return errors.New("no meeting for live services declared")
 	}
 
-	return SetHeatTime(event, heat, timeNow(), time.Time{})
+	_, err := hc.SetHeatStart(CurrentMeeting.Meeting, event, heat)
+	return err
+	//return SetHeatTime(event, heat, misc.TimeNow(), time.Time{})
 }
 
 func SetHeatFinishTime(event int, heat int) error {
@@ -39,7 +42,7 @@ func SetHeatFinishTime(event int, heat int) error {
 		return errors.New("no meeting for live services declared")
 	}
 
-	return SetHeatTime(event, heat, time.Time{}, timeNow())
+	return SetHeatTime(event, heat, time.Time{}, misc.TimeNow())
 }
 
 func SetHeatTime(event int, heatNumber int, startAt time.Time, finishedAt time.Time) error {
