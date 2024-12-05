@@ -44,3 +44,9 @@ func TestEasyWkReactionToDuration_Max(t *testing.T) {
 	d, _ := EasyWkReactionToDuration(ti)
 	assert.Equal(t, "9.99s", d.String())
 }
+
+func TestAlgeTimeToDuration(t *testing.T) {
+	ti := 693060
+	d, _ := AlgeTimeToDuration(ti)
+	assert.Equal(t, "1m9.306s", d.String())
+}
