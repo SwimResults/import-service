@@ -22,7 +22,14 @@ func getFileReader(file string) (io.Reader, error) {
 
 	if strings.Contains(file, "http") {
 		// get file content from url
-		resp, err := http.Get(file)
+		req, err := http.NewRequest("GET", file, nil)
+		if err != nil {
+			return nil, err
+		}
+
+		req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT x.y; rv:10.0) Gecko/20100101 Firefox/10.0")
+		client := &http.Client{}
+		resp, err := client.Do(req)
 		if err != nil {
 			return nil, err
 		}
