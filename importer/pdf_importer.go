@@ -244,6 +244,11 @@ func ImportPdfStartList(text string, meeting string, exclude []int, include []in
 
 				laneNumberSplit := laneNumberRegex.Split(laneString, 2)
 
+				if len(laneNumberSplit) != 2 {
+					fmt.Printf("\t\tskipping empty lane...\n")
+					continue
+				}
+
 				isOpen := false
 				var yearSplit []string
 				if strings.Contains(laneNumberSplit[1], stg.YearOpenString) {
