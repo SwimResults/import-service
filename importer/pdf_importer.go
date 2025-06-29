@@ -199,13 +199,16 @@ func ImportPdfStartList(text string, meeting string, exclude []int, include []in
 				continue
 			}
 
+			var heatTimeString string
 			if stg.HeatHasNoTime == false {
-				heatTimeString := trim(substrr(substr(heatString, stg.HeatTimeRightSeparator), stg.HeatTimeLeftSeparator))
+				heatTimeString = trim(substrr(substr(heatString, stg.HeatTimeRightSeparator), stg.HeatTimeLeftSeparator))
 				heat.StartEstimation, err = time.Parse(stg.HeatTimeLayout, heatTimeString)
 				if err != nil {
 					importError(fmt.Sprintf("failed to parse time for heat %d/%d!", event.Number, heat.Number), err)
 					continue
 				}
+			} else {
+				heatTimeString = heatString
 			}
 
 			fmt.Printf("\tHeat %d (%s)\n", heat.Number, heat.StartEstimation.Format("15:04"))
