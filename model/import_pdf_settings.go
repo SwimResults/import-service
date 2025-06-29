@@ -13,7 +13,7 @@ type ImportPdfStartListSettings struct {
 	HeatSkipStrings        []string     `json:"heat_skip_strings,omitempty" bson:"heat_skip_strings,omitempty"`                 // Finalabschnittes
 	HeatRequiredStrings    []string     `json:"heat_required_strings,omitempty" bson:"heat_required_strings,omitempty"`         // Uhr, Meldezeit
 	HeatNumberSeparator    string       `json:"heat_number_separator,omitempty" bson:"heat_number_separator,omitempty"`         // /
-	HeatHasNoTime          bool         `json:"heat_has_time,omitempty" bson:"heat_has_time,omitempty"`                         // false
+	HeatHasNoTime          bool         `json:"heat_has_no_time,omitempty" bson:"heat_has_no_time,omitempty"`                   // false
 	HeatTimeLeftSeparator  string       `json:"heat_time_left_separator,omitempty" bson:"heat_time_left_separator,omitempty"`   // (ca.
 	HeatTimeRightSeparator string       `json:"heat_time_right_separator,omitempty" bson:"heat_time_right_separator,omitempty"` // Uhr
 	HeatTimeLayout         string       `json:"heat_time_layout,omitempty" bson:"heat_time_layout,omitempty"`                   // 15:04
