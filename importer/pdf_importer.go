@@ -249,6 +249,7 @@ func ImportPdfStartList(text string, meeting string, exclude []int, include []in
 
 				if len(laneNumberSplit) != 2 {
 					fmt.Printf("\t\tskipping empty lane...\n")
+					println(laneNumberSplit[0])
 					continue
 				}
 
