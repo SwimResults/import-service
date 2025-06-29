@@ -109,3 +109,8 @@ func TestImportPdfStartList_IESC23(t *testing.T) {
 	assert.Equal(t, 1813, stats.Found.Results)
 	assert.Equal(t, 0, stats.Found.Disqualifications)
 }
+
+func TestSwimTimeToDuration(t *testing.T) {
+	timeString := "01:02,64"
+	println(SwimTimeToDuration(timeString))
+}

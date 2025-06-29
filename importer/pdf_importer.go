@@ -199,11 +199,13 @@ func ImportPdfStartList(text string, meeting string, exclude []int, include []in
 				continue
 			}
 
-			heatTimeString := trim(substrr(substr(heatString, stg.HeatTimeRightSeparator), stg.HeatTimeLeftSeparator))
-			heat.StartEstimation, err = time.Parse(stg.HeatTimeLayout, heatTimeString)
-			if err != nil {
-				importError(fmt.Sprintf("failed to parse time for heat %d/%d!", event.Number, heat.Number), err)
-				continue
+			if stg.HeatHasNoTime == false {
+				heatTimeString := trim(substrr(substr(heatString, stg.HeatTimeRightSeparator), stg.HeatTimeLeftSeparator))
+				heat.StartEstimation, err = time.Parse(stg.HeatTimeLayout, heatTimeString)
+				if err != nil {
+					importError(fmt.Sprintf("failed to parse time for heat %d/%d!", event.Number, heat.Number), err)
+					continue
+				}
 			}
 
 			fmt.Printf("\tHeat %d (%s)\n", heat.Number, heat.StartEstimation.Format("15:04"))
@@ -361,7 +363,7 @@ func ImportPdfStartList(text string, meeting string, exclude []int, include []in
 				}
 
 				swimTimeString := swimTimeRestString[:8]
-				dur, err := swimTimeToDuration(swimTimeString)
+				dur, err := SwimTimeToDuration(swimTimeString)
 				if err != nil {
 					importError(fmt.Sprintf("failed to parse duration for start %d/%d/%d with content '%s'", event.Number, heat.Number, start.Lane, swimTimeString), err)
 					continue
@@ -622,7 +624,7 @@ func ImportPdfResultList(text string, meeting string, exclude []int, include []i
 			//}
 
 			// extract canceled starts
-			// TODO collect logged out starts (not easily possible, won't be done now; use DSV7)
+			// TODO collect deregistered starts (not easily possible, won't be done now; use DSV7)
 			//if strings.Contains(ratingString, "abgemeldet") {
 			//	canceledString := substrr(ratingString, "abgemeldet")
 			//
@@ -681,7 +683,7 @@ func ImportPdfResultList(text string, meeting string, exclude []int, include []i
 			swimTimeSplit := swimTimeRegex.Split(rankingSplit[1], 2)
 			swimTimeString := trim(substrr(rankingSplit[1], swimTimeSplit[0]))[:8]
 
-			swimTime, err := swimTimeToDuration(swimTimeString)
+			swimTime, err := SwimTimeToDuration(swimTimeString)
 			if err != nil {
 				importError(fmt.Sprintf("failed to parse swimtime for result e: %d a: %s (%d) with content '%s'", ev, athleteName, athleteYear, swimTimeString), err)
 				continue
@@ -867,7 +869,7 @@ func shouldSkip(s string, skipStrings []string, requiredStrings []string) bool {
 	return skip
 }
 
-func swimTimeToDuration(tm string) (time.Duration, error) {
+func SwimTimeToDuration(tm string) (time.Duration, error) {
 	tm = strings.Replace(tm, ":", "m", 1)
 	tm = strings.Replace(tm, ",", "s", 1)
 	tm += "0ms"
