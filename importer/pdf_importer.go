@@ -241,13 +241,15 @@ func ImportPdfStartList(text string, meeting string, exclude []int, include []in
 					continue
 				}
 
+				laneString = trim(substr(laneString, stg.LaneRightSeparator))
+
 				laneNumberRegex := regexp.MustCompile(stg.LaneNumberPattern)
 				yearRegex := regexp.MustCompile(stg.YearPattern)
 				swimTimeRegex := regexp.MustCompile(stg.SwimTimePattern)
 
 				laneNumberSplit := laneNumberRegex.Split(laneString, 2)
 
-				if len(laneNumberSplit) != 2 {
+				if len(laneNumberSplit) != 2 || trim(laneNumberSplit[1]) == "" {
 					fmt.Printf("\t\tskipping empty lane...\n")
 					println(laneString)
 					continue
