@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/swimresults/import-service/service"
+	ginprometheus "github.com/zsais/go-gin-prometheus"
 	"net/http"
 	"os"
 )
@@ -25,6 +26,11 @@ func Run() {
 	if serviceKey == "" {
 		fmt.Println("no security for inter-service communication given! Please set SR_SERVICE_KEY.")
 	}
+
+	p := ginprometheus.NewWithConfig(ginprometheus.Config{
+		Subsystem: "gin",
+	})
+	p.Use(router)
 
 	timingSoftwareController()
 	importFileController()
