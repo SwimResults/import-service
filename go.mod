@@ -7,12 +7,13 @@ toolchain go1.24.4
 require (
 	github.com/gin-gonic/gin v1.10.1
 	github.com/konrad2002/dsvparser v1.2.1
-	github.com/ledongthuc/pdf v0.0.0-20250511090121-5959a4027728
+	github.com/ledongthuc/pdf v0.0.0-20220302134840-0c2507a12d80
 	github.com/stretchr/testify v1.10.0
 	github.com/swimresults/athlete-service v0.3.0
 	github.com/swimresults/meeting-service v0.8.0
 	github.com/swimresults/service-core v0.7.0
 	github.com/swimresults/start-service v0.6.1
+	github.com/zsais/go-gin-prometheus v1.0.0
 	go.mongodb.org/mongo-driver v1.17.4
 )
 
@@ -52,7 +53,6 @@ require (
 	github.com/xdg-go/scram v1.1.2 // indirect
 	github.com/xdg-go/stringprep v1.0.4 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20240726163527-a2c0da244d78 // indirect
-	github.com/zsais/go-gin-prometheus v1.0.0 // indirect
 	golang.org/x/arch v0.18.0 // indirect
 	golang.org/x/crypto v0.39.0 // indirect
 	golang.org/x/net v0.41.0 // indirect
