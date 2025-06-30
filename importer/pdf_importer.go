@@ -233,7 +233,7 @@ func ImportPdfStartList(text string, meeting string, exclude []int, include []in
 			// +=================================+
 			//    LANE / ATHLETE / TEAM PARSING
 			// +=================================+
-
+			fmt.Printf("LANE SEP: %s, HEAT STRING: \n %s\n", stg.LaneSeparator, heatString)
 			laneSplit := strings.Split(heatString, stg.LaneSeparator)
 			for _, laneString := range laneSplit {
 				// eliminate some heats
