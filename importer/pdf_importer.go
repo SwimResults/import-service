@@ -241,7 +241,9 @@ func ImportPdfStartList(text string, meeting string, exclude []int, include []in
 					continue
 				}
 
-				laneString = trim(substr(laneString, stg.LaneRightSeparator))
+				if stg.LaneRightSeparator != "" {
+					laneString = trim(substr(laneString, stg.LaneRightSeparator))
+				}
 
 				laneNumberRegex := regexp.MustCompile(stg.LaneNumberPattern)
 				yearRegex := regexp.MustCompile(stg.YearPattern)
