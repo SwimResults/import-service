@@ -251,7 +251,7 @@ func ImportPdfStartList(text string, meeting string, exclude []int, include []in
 				laneNumberSplit := laneNumberRegex.Split(laneString, 2)
 
 				if len(laneNumberSplit) != 2 || trim(laneNumberSplit[1]) == "" {
-					fmt.Printf("\t\tLane %d - skipping empty lane...\n", laneNumberSplit[0])
+					fmt.Printf("\t\tLane %s - skipping empty lane...\n", laneNumberSplit[0])
 					continue
 				}
 
