@@ -13,10 +13,12 @@ type ImportPdfStartListSettings struct {
 	HeatSkipStrings        []string     `json:"heat_skip_strings,omitempty" bson:"heat_skip_strings,omitempty"`                 // Finalabschnittes
 	HeatRequiredStrings    []string     `json:"heat_required_strings,omitempty" bson:"heat_required_strings,omitempty"`         // Uhr, Meldezeit
 	HeatNumberSeparator    string       `json:"heat_number_separator,omitempty" bson:"heat_number_separator,omitempty"`         // /
+	HeatHasNoTime          bool         `json:"heat_has_no_time,omitempty" bson:"heat_has_no_time,omitempty"`                   // false
 	HeatTimeLeftSeparator  string       `json:"heat_time_left_separator,omitempty" bson:"heat_time_left_separator,omitempty"`   // (ca.
 	HeatTimeRightSeparator string       `json:"heat_time_right_separator,omitempty" bson:"heat_time_right_separator,omitempty"` // Uhr
 	HeatTimeLayout         string       `json:"heat_time_layout,omitempty" bson:"heat_time_layout,omitempty"`                   // 15:04
 	LaneSeparator          string       `json:"lane_separator,omitempty" bson:"lane_separator,omitempty"`                       // Bahn
+	LaneRightSeparator     string       `json:"lane_right_separator,omitempty" bson:"lane_right_separator,omitempty"`           // Mitteldeutsche Mei
 	LaneSkipStrings        []string     `json:"lane_skip_strings,omitempty" bson:"lane_skip_strings,omitempty"`                 // Meldezeit, Uhr
 	LaneNumberPattern      string       `json:"lane_number_pattern,omitempty" bson:"lane_number_pattern,omitempty"`             // [0-9]+
 	YearPattern            string       `json:"year_pattern,omitempty" bson:"year_pattern,omitempty"`                           // [0-9]{4}
