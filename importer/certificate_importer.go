@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/openai/openai-go" // imported as openai
 	"github.com/openai/openai-go/option"
-	athleteClient "github.com/swimresults/athlete-service/client"
 	"github.com/swimresults/athlete-service/model"
 	importModel "github.com/swimresults/import-service/model"
 	"github.com/swimresults/service-core/misc"
@@ -67,7 +66,6 @@ func ImportCertificates(directory string, meeting string) (*importModel.ImportCe
 	// | GET ALL ATHLETES FOR MEETING  |
 	// +-------------------------------+
 
-	var ac = athleteClient.NewAthleteClient("https://api.swimresults.de/athlete/v1/")
 	athletes, err := ac.GetAthletesByMeeting(meeting)
 	if err != nil {
 		log.Fatal(err)
