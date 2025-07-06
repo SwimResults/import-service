@@ -12,7 +12,7 @@ import (
 func importFileController() {
 	router.POST("/file", importFile)
 	router.POST("/pdf_to_text", readPdfToText)
-	router.POST("/certificate", importCertificate)
+	router.POST("/certificates", importCertificates)
 }
 
 func importFile(c *gin.Context) {
@@ -48,7 +48,7 @@ func readPdfToText(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, request)
 }
 
-func importCertificate(c *gin.Context) {
+func importCertificates(c *gin.Context) {
 	var request dto.ImportCertificatesRequestDto
 	if err := c.BindJSON(&request); err != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
