@@ -18,7 +18,14 @@ import (
 )
 
 func ImportCertificates(directory string, meeting string) (*importModel.ImportCertificateStats, error) {
-	entries, err := os.ReadDir(directory)
+	pwd, _ := exec.Command("pwd").Output()
+	fmt.Printf("reading certificates from: %s\n", string(pwd))
+
+	systemPath := "/app/assets/files/"
+
+	osDir := filepath.Join(systemPath, directory)
+
+	entries, err := os.ReadDir(osDir)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -28,9 +35,9 @@ func ImportCertificates(directory string, meeting string) (*importModel.ImportCe
 			continue
 		}
 
-		path := directory + e.Name()
+		path := osDir + e.Name()
 		filename := substr(e.Name(), ".")
-		outDir := directory + filename + "/"
+		outDir := osDir + filename + "/"
 		outfile := outDir + e.Name()
 
 		amount, err := exec.Command("qpdf", "--show-npages", path).Output()
@@ -77,7 +84,7 @@ func ImportCertificates(directory string, meeting string) (*importModel.ImportCe
 	// | READ SINGLE FILE CERTIFICATES |
 	// +-------------------------------+
 
-	dirs, err := os.ReadDir(directory)
+	dirs, err := os.ReadDir(osDir)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -87,14 +94,14 @@ func ImportCertificates(directory string, meeting string) (*importModel.ImportCe
 			continue
 		}
 
-		files, err := os.ReadDir(directory + d.Name() + "/")
+		files, err := os.ReadDir(osDir + d.Name() + "/")
 		if err != nil {
 			println("fatal")
 			log.Fatal(err)
 		}
 
 		for _, f := range files {
-			pdf, err := ReadPdf(filepath.Join(directory, d.Name(), f.Name()))
+			pdf, err := ReadPdf(filepath.Join(osDir, d.Name(), f.Name()))
 			if err != nil {
 				println("could not read pdf")
 				log.Fatal(err)
@@ -136,7 +143,7 @@ func ImportCertificates(directory string, meeting string) (*importModel.ImportCe
 
 			certName := chatCompletion.Choices[0].Message.Content
 
-			_, _, err = ac.ImportCertificate(certName, foundAthlete.Identifier, meeting, filepath.Join(directory, d.Name()))
+			_, _, err = ac.ImportCertificate(certName, foundAthlete.Identifier, meeting, filepath.Join(directory, d.Name(), f.Name()))
 			if err != nil {
 				println("cert import failed")
 				log.Fatal(err)
