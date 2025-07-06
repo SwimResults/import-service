@@ -35,10 +35,10 @@ func ImportCertificates(directory string, meeting string) (*importModel.ImportCe
 			continue
 		}
 
-		path := osDir + e.Name()
+		path := filepath.Join(osDir, e.Name())
 		filename := substr(e.Name(), ".")
-		outDir := osDir + filename + "/"
-		outfile := outDir + e.Name()
+		outDir := filepath.Join(osDir, filename) + "/"
+		outfile := filepath.Join(outDir, e.Name())
 
 		fmt.Printf("run qpdf show pages on: %s\n", path)
 		amount, err := exec.Command("qpdf", "--show-npages", path).Output()
@@ -95,7 +95,7 @@ func ImportCertificates(directory string, meeting string) (*importModel.ImportCe
 			continue
 		}
 
-		files, err := os.ReadDir(osDir + d.Name() + "/")
+		files, err := os.ReadDir(filepath.Join(osDir, d.Name()) + "/")
 		if err != nil {
 			println("fatal")
 			log.Fatal(err)
