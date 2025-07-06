@@ -35,3 +35,7 @@ func (stats *ImportFileStats) PrintReport() {
 	fmt.Printf("  -> disqualifications: (%d, %d, %d)\n", stats.Found.Disqualifications, stats.Created.Disqualifications, stats.Imported.Disqualifications)
 	fmt.Printf("\n---------------------------\n\n")
 }
+
+type ImportCertificateStats struct {
+	Amount int `json:"amount"`
+}

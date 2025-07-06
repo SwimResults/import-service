@@ -8,8 +8,9 @@ require (
 	github.com/gin-gonic/gin v1.10.1
 	github.com/konrad2002/dsvparser v1.2.1
 	github.com/ledongthuc/pdf v0.0.0-20220302134840-0c2507a12d80
+	github.com/openai/openai-go v1.8.2
 	github.com/stretchr/testify v1.10.0
-	github.com/swimresults/athlete-service v0.3.0
+	github.com/swimresults/athlete-service v0.4.0
 	github.com/swimresults/meeting-service v0.8.0
 	github.com/swimresults/service-core v0.7.0
 	github.com/swimresults/start-service v0.6.1
@@ -47,6 +48,10 @@ require (
 	github.com/prometheus/common v0.65.0 // indirect
 	github.com/prometheus/procfs v0.16.1 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
+	github.com/tidwall/gjson v1.14.4 // indirect
+	github.com/tidwall/match v1.1.1 // indirect
+	github.com/tidwall/pretty v1.2.1 // indirect
+	github.com/tidwall/sjson v1.2.5 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.3.0 // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
