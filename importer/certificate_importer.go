@@ -40,6 +40,7 @@ func ImportCertificates(directory string, meeting string) (*importModel.ImportCe
 		outDir := osDir + filename + "/"
 		outfile := outDir + e.Name()
 
+		fmt.Printf("run qpdf show pages on: %s\n", path)
 		amount, err := exec.Command("qpdf", "--show-npages", path).Output()
 		if err != nil {
 			println("fatal")
