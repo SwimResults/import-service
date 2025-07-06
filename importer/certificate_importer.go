@@ -16,7 +16,7 @@ import (
 	"strings"
 )
 
-func ImportCertificates(directory string, meeting string) (*importModel.ImportCertificateStats, error) {
+func ImportCertificates(directory string, meeting string, stg importModel.ImportCertificateSettings) (*importModel.ImportCertificateStats, error) {
 	pwd, _ := exec.Command("pwd").Output()
 	fmt.Printf("reading certificates from: %s\n", string(pwd))
 
@@ -131,7 +131,7 @@ func ImportCertificates(directory string, meeting string) (*importModel.ImportCe
 
 			chatCompletion, err := client.Chat.Completions.New(context.TODO(), openai.ChatCompletionNewParams{
 				Messages: []openai.ChatCompletionMessageParamUnion{
-					openai.SystemMessage("Aus Urkundentext eines Schwimmwettkampfs einen Dateinamen erzeugen: Strecke + Stil + relevante Zusätze (z.B. Vorlauf, Finale, Masters, Punktbeste Leistung), ohne Name, Verein, Veranstaltung, Platz, Jahrgang, Ort, Datum. Zusätze nur, wenn es klare infos dazu gibt! Ausgabe nur der Name!"),
+					openai.SystemMessage(stg.AiSystemPrompt),
 					openai.UserMessage(pdf),
 				},
 				Model: openai.ChatModelGPT4_1Mini,
