@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/openai/openai-go" // imported as openai
 	"github.com/openai/openai-go/option"
-	athleteClient "github.com/swimresults/athlete-service/client"
 	"github.com/swimresults/athlete-service/model"
 	importModel "github.com/swimresults/import-service/model"
 	"github.com/swimresults/service-core/misc"
@@ -17,7 +16,7 @@ import (
 	"strings"
 )
 
-func ImportCertificates(directory string, meeting string) (*importModel.ImportCertificateStats, error) {
+func ImportCertificates(directory string, meeting string, stg importModel.ImportCertificateSettings) (*importModel.ImportCertificateStats, error) {
 	pwd, _ := exec.Command("pwd").Output()
 	fmt.Printf("reading certificates from: %s\n", string(pwd))
 
@@ -35,11 +34,12 @@ func ImportCertificates(directory string, meeting string) (*importModel.ImportCe
 			continue
 		}
 
-		path := osDir + e.Name()
+		path := filepath.Join(osDir, e.Name())
 		filename := substr(e.Name(), ".")
-		outDir := osDir + filename + "/"
-		outfile := outDir + e.Name()
+		outDir := filepath.Join(osDir, filename) + "/"
+		outfile := filepath.Join(outDir, e.Name())
 
+		fmt.Printf("run qpdf show pages on: %s\n", path)
 		amount, err := exec.Command("qpdf", "--show-npages", path).Output()
 		if err != nil {
 			println("fatal")
@@ -66,7 +66,6 @@ func ImportCertificates(directory string, meeting string) (*importModel.ImportCe
 	// | GET ALL ATHLETES FOR MEETING  |
 	// +-------------------------------+
 
-	var ac = athleteClient.NewAthleteClient("https://api.swimresults.de/athlete/v1/")
 	athletes, err := ac.GetAthletesByMeeting(meeting)
 	if err != nil {
 		log.Fatal(err)
@@ -94,7 +93,7 @@ func ImportCertificates(directory string, meeting string) (*importModel.ImportCe
 			continue
 		}
 
-		files, err := os.ReadDir(osDir + d.Name() + "/")
+		files, err := os.ReadDir(filepath.Join(osDir, d.Name()) + "/")
 		if err != nil {
 			println("fatal")
 			log.Fatal(err)
@@ -132,7 +131,7 @@ func ImportCertificates(directory string, meeting string) (*importModel.ImportCe
 
 			chatCompletion, err := client.Chat.Completions.New(context.TODO(), openai.ChatCompletionNewParams{
 				Messages: []openai.ChatCompletionMessageParamUnion{
-					openai.SystemMessage("Aus Urkundentext eines Schwimmwettkampfs einen Dateinamen erzeugen: Strecke + Stil + relevante Zusätze (z.B. Vorlauf, Finale, Masters, Punktbeste Leistung), ohne Name, Verein, Veranstaltung, Platz, Jahrgang, Ort, Datum. Zusätze nur, wenn es klare infos dazu gibt! Ausgabe nur der Name!"),
+					openai.SystemMessage(stg.AiSystemPrompt),
 					openai.UserMessage(pdf),
 				},
 				Model: openai.ChatModelGPT4_1Mini,

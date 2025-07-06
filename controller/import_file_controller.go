@@ -55,11 +55,11 @@ func importCertificates(c *gin.Context) {
 		return
 	}
 
-	stats, err := importer.ImportCertificates(request.Directory, request.Meeting)
+	err := service.ImportCertificates(request)
 	if err != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		return
 	}
 
-	c.IndentedJSON(http.StatusOK, stats)
+	c.Status(http.StatusOK)
 }
