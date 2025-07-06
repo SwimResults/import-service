@@ -2,6 +2,7 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/swimresults/import-service/dto"
 	"github.com/swimresults/import-service/importer"
 	"github.com/swimresults/import-service/model"
 	"github.com/swimresults/import-service/service"
@@ -11,6 +12,7 @@ import (
 func importFileController() {
 	router.POST("/file", importFile)
 	router.POST("/pdf_to_text", readPdfToText)
+	router.POST("/certificate", importCertificate)
 }
 
 func importFile(c *gin.Context) {
@@ -44,4 +46,20 @@ func readPdfToText(c *gin.Context) {
 
 	request.Text = text
 	c.IndentedJSON(http.StatusOK, request)
+}
+
+func importCertificate(c *gin.Context) {
+	var request dto.ImportCertificatesRequestDto
+	if err := c.BindJSON(&request); err != nil {
+		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
+		return
+	}
+
+	stats, err := importer.ImportCertificates(request.Directory, request.Meeting)
+	if err != nil {
+		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
+		return
+	}
+
+	c.IndentedJSON(http.StatusOK, stats)
 }

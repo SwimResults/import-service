@@ -3,7 +3,13 @@ package service
 import (
 	"github.com/stretchr/testify/assert"
 	"testing"
+	"time"
 )
+
+func TestGetDurationFromTimeString(t *testing.T) {
+	d2, _ := time.ParseDuration("1m05.26s")
+	println(d2)
+}
 
 func TestEasyWkTimeToDuration_Simple(t *testing.T) {
 	ti := 31415
