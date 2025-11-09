@@ -19,6 +19,9 @@ func ImportFile(r model.ImportFileRequest) error {
 			return fmt.Errorf("unknown file_type for DSV (%s)", r.FileType)
 		}
 		return nil
+	case "LEF":
+		go LenexImport(r)
+		return nil
 	case "PDF":
 		switch r.FileType {
 		case "START_LIST":
@@ -54,6 +57,14 @@ func DsvDefinitionImport(r model.ImportFileRequest) {
 
 func DsvResultListImport(r model.ImportFileRequest) {
 	stats, err := importer.ImportDsvResultFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
+	if err != nil {
+		println(err.Error())
+	}
+	stats.PrintReport()
+}
+
+func LenexImport(r model.ImportFileRequest) {
+	stats, err := importer.ImportLenexFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
 	if err != nil {
 		println(err.Error())
 	}
