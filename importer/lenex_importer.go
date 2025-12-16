@@ -148,7 +148,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 				// COLLECT RANKS
 				for _, ranking := range ageGroup.Rankings {
-					if ranks[ranking.ResultId].Place > ranking.Place {
+					if ranks[ranking.ResultId].Place < ranking.Place {
 						ranks[ranking.ResultId] = ranking
 					}
 				}
@@ -320,7 +320,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 						ResultType: "registration",
 					}
 
-					_, _, err3 := sc.ImportResult(start, resultModel)
+					_, _, err3 := sc.ImportResult(*newStart, resultModel)
 					if err3 != nil {
 						return &stats, err3
 					}
@@ -357,6 +357,8 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 					Rank:            rankValue,
 					Certified:       true,
 				}
+				fmt.Printf("[   ] import start from result: event: '%d', athlete: '%s', rank: %d\n", start.Event, start.AthleteName, start.Rank)
+
 				newStart, c, err2 := sc.ImportStart(start)
 				if err2 != nil {
 					return &stats, err2
@@ -391,7 +393,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 						ResultType: "result_list",
 					}
 
-					_, _, err3 := sc.ImportResult(start, resultModel)
+					_, _, err3 := sc.ImportResult(*newStart, resultModel)
 					if err3 != nil {
 						return &stats, err3
 					}
