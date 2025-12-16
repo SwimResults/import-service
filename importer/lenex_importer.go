@@ -11,6 +11,7 @@ import (
 	startModel "github.com/swimresults/start-service/model"
 	"io"
 	"strconv"
+	"time"
 )
 
 func ImportLenexFile(file string, meeting string, exclude []int, include []int) (*importModel.ImportFileStats, error) {
@@ -37,7 +38,8 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int) 
 	eventOrdering := 1
 	meetingYear := meet.EntryStartDate.Year()
 
-	heats := map[int]startModel.Heat{}
+	heats := map[int]startModel.Heat{}  // map heat id to heat
+	ranks := map[int]elements.Ranking{} // map result id to rank (first occurrence)
 
 	for _, session := range meet.Sessions {
 		for _, event := range session.Events {
@@ -128,20 +130,56 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int) 
 				} else {
 					print("( ) ")
 				}
-				println(newAgeGroup)
+				println(newAgeGroup.Name)
 
 				stats.Imported.AgeGroups++
+
+				// COLLECT RANKS
+				for _, ranking := range ageGroup.Rankings {
+					if ranks[ranking.ResultId].Place > ranking.Place {
+						ranks[ranking.ResultId] = ranking
+					}
+				}
 			}
 
 			// HEATS
 			for _, heat := range event.Heats {
-				heats[heat.HeatId] = startModel.Heat{
+				startTime := heat.Daytime.Time
+
+				// if Daytime does not include but date only hours, add date of the session
+				if startTime.Year() < 1980 {
+					startTime = session.Date.Add(time.Duration(startTime.Nanosecond()))
+				}
+
+				heatModel := startModel.Heat{
 					Meeting:         meeting,
 					Event:           event.Number,
 					Number:          heat.Number,
 					StartEstimation: heat.Daytime.Time,
 				}
-				// TODO: import heats
+
+				stats.Found.Heats++
+
+				// TODO: for EasyWk heat 0 contains withdrawn starts
+				if heat.Number == 0 {
+					heats[heat.HeatId] = heatModel // set to heat model so later can check if number == 0
+					continue
+				}
+
+				// IMPORT HEAT
+				newHeat, c, err := hc.ImportHeat(heatModel)
+				if err != nil {
+					importError(fmt.Sprintf("import heat request failed for heat %d/%d!", event.Number, heat.Number), err)
+					continue
+				}
+				fmt.Printf("[ o ] import heat: event: '%d', number: '%d', start: '%s', start before: '%s'\n", newHeat.Event, newHeat.Number, newHeat.StartEstimation, startTime)
+
+				if c {
+					stats.Created.Heats++
+				}
+				stats.Imported.Heats++
+
+				heats[heat.HeatId] = *newHeat
 			}
 		}
 	}
@@ -204,7 +242,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int) 
 				Year:      athlete.Birthdate.Year(),
 				DsvId:     dsvAthlete,
 				Team: athleteModel.Team{
-					Identifier: newTeam.Identifier, // TODO: check if import with team id exists
+					Identifier: newTeam.Identifier,
 				},
 			}
 
@@ -232,8 +270,16 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int) 
 			fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newAthlete.Identifier.String(), newAthlete.Name, newAthlete.Participation)
 
 			// STARTS + RESULTS + DISQUALIFICATIONS
+			// TODO: support withdrawn start (heat 0 in easy wk)
+			// TODO: support entry lists (no heat)
 			for _, result := range athlete.Results {
 				heat := heats[result.HeatId]
+				rank := ranks[result.ResultId]
+
+				rankValue := 0
+				if rank.ResultId == result.ResultId {
+					rankValue = rank.Place
+				}
 
 				// START
 				start := startModel.Start{
@@ -246,7 +292,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int) 
 					AthleteYear:     athlete.Birthdate.Year(),
 					AthleteTeam:     newAthlete.Team.Identifier,
 					AthleteTeamName: team.Name,
-					Rank:            0, // TODO: get ranks before
+					Rank:            rankValue,
 					Certified:       true,
 				}
 				newStart, c, err2 := sc.ImportStart(start)
@@ -255,7 +301,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int) 
 				}
 				if c {
 					stats.Created.Starts++
-					fmt.Printf("[ ! ] start has been created: id: '%s'; event: '%d', athlete: '%s'", newStart.Identifier, newStart.Event, newStart.AthleteName)
+					fmt.Printf("[ ! ] start has been created: id: '%s'; event: '%d', athlete: '%s'\n", newStart.Identifier, newStart.Event, newStart.AthleteName)
 				}
 				stats.Imported.Starts++
 			}
