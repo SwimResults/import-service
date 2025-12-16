@@ -2,6 +2,7 @@ package importer
 
 import (
 	"encoding/xml"
+	"errors"
 	"fmt"
 	"github.com/konrad2002/lenexparser/model/elements"
 	"github.com/konrad2002/lenexparser/model/enums"
@@ -40,6 +41,11 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 	heats := map[int]startModel.Heat{}  // map heat id to heat
 	ranks := map[int]elements.Ranking{} // map result id to rank (first occurrence)
+
+	loc, err := time.LoadLocation(stg.TimeZone)
+	if err != nil {
+		return nil, errors.New("timezone " + stg.TimeZone + " is not a valid timezone")
+	}
 
 	for _, session := range meet.Sessions {
 		for _, event := range session.Events {
@@ -148,7 +154,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 				// if Daytime does not include but date only hours, add date of the session
 				if startTime.Year() < 1980 {
-					startTime = time.Date(session.Date.Year(), session.Date.Month(), session.Date.Day(), startTime.Hour(), startTime.Minute(), startTime.Second(), startTime.Nanosecond(), stg.TimeZone.Location())
+					startTime = time.Date(session.Date.Year(), session.Date.Month(), session.Date.Day(), startTime.Hour(), startTime.Minute(), startTime.Second(), startTime.Nanosecond(), loc)
 				}
 
 				heatModel := startModel.Heat{

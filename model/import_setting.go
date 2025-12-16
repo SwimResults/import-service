@@ -2,7 +2,6 @@ package model
 
 import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"time"
 )
 
 type ImportSetting struct {
@@ -11,7 +10,7 @@ type ImportSetting struct {
 	PdfStartListSettings  ImportPdfStartListSettings  `json:"pdf_start_list_settings,omitempty" bson:"pdf_start_list_settings,omitempty"`
 	PdfResultListSettings ImportPdfResultListSettings `json:"pdf_result_list_settings,omitempty" bson:"pdf_result_list_settings,omitempty"`
 	CertificateSettings   ImportCertificateSettings   `json:"certificate_settings,omitempty" bson:"certificate_settings,omitempty"`
-	TimeZone              time.Time                   `json:"time_zone,omitempty" bson:"time_zone,omitempty"` // time string, only the time zone is used
+	TimeZone              string                      `json:"time_zone,omitempty" bson:"time_zone,omitempty"` // time string, only the time zone is used
 }
 
 type ImportCertificateSettings struct {
