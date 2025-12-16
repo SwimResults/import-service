@@ -276,6 +276,11 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int) 
 				heat := heats[result.HeatId]
 				rank := ranks[result.ResultId]
 
+				if !IsEventImportable(heat.Event, exclude, include) {
+					fmt.Printf("result of '%s' for event: '%d' => no import\n", newAthlete.Name, heat.Event)
+					continue
+				}
+
 				rankValue := 0
 				if rank.ResultId == result.ResultId {
 					rankValue = rank.Place
@@ -304,6 +309,70 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int) 
 					fmt.Printf("[ ! ] start has been created: id: '%s'; event: '%d', athlete: '%s'\n", newStart.Identifier, newStart.Event, newStart.AthleteName)
 				}
 				stats.Imported.Starts++
+
+				for _, split := range result.Splits {
+					// LAP Result
+					lapResult := startModel.Result{
+						Time:       split.SwimTime.Duration,
+						ResultType: "lap",
+						LapMeters:  split.Distance,
+					}
+
+					_, _, err3 := sc.ImportResult(*newStart, lapResult)
+					if err3 != nil {
+						return &stats, err3
+					}
+					stats.Created.Results++
+					stats.Imported.Results++
+				}
+
+				if result.SwimTime.Milliseconds() > 0 {
+					resultModel := startModel.Result{
+						Time:       result.SwimTime.Duration,
+						ResultType: "result_list",
+					}
+
+					_, _, err3 := sc.ImportResult(start, resultModel)
+					if err3 != nil {
+						return &stats, err3
+					}
+					stats.Created.Results++
+					stats.Imported.Results++
+				}
+
+				disqType := ""
+				switch result.Status {
+				case enums.ResultStatusDSQ:
+					disqType = "disqualified"
+					break
+				case enums.ResultStatusDNS:
+					disqType = "dns"
+					break
+				case enums.ResultStatusDNF:
+					disqType = "dnf"
+					break
+				case enums.ResultStatusSICK:
+					disqType = "sick"
+					break
+				case enums.ResultStatusWDR:
+					disqType = "withdrawn"
+					break
+				}
+
+				if disqType != "" {
+					disqualification, created, err4 := dc.ImportDisqualification(*newStart, result.Comment, disqType, time.UnixMicro(0))
+					if err4 != nil {
+						return &stats, err4
+					}
+					cs := 'o'
+					if created {
+						cs = '+'
+						stats.Created.Disqualifications++
+					}
+					stats.Imported.Disqualifications++
+					fmt.Printf("[ %c ] > id: %s, type: %s, reason: %s\n", cs, disqualification.Identifier, disqualification.Type, disqualification.Reason)
+				}
+
 			}
 		}
 	}
