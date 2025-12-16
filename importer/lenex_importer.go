@@ -148,14 +148,14 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int) 
 
 				// if Daytime does not include but date only hours, add date of the session
 				if startTime.Year() < 1980 {
-					startTime = startTime.AddDate(session.Date.Year(), int(session.Date.Month()), session.Date.Day())
+					startTime = time.Date(session.Date.Year(), session.Date.Month(), session.Date.Day(), startTime.Hour(), startTime.Minute(), startTime.Second(), startTime.Nanosecond(), session.Date.Location())
 				}
 
 				heatModel := startModel.Heat{
 					Meeting:         meeting,
 					Event:           event.Number,
 					Number:          heat.Number,
-					StartEstimation: heat.Daytime.Time,
+					StartEstimation: startTime,
 				}
 
 				stats.Found.Heats++
