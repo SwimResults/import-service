@@ -148,7 +148,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int) 
 
 				// if Daytime does not include but date only hours, add date of the session
 				if startTime.Year() < 1980 {
-					startTime = session.Date.Add(time.Duration(startTime.Nanosecond()))
+					startTime = startTime.AddDate(session.Date.Year(), int(session.Date.Month()), session.Date.Day())
 				}
 
 				heatModel := startModel.Heat{
@@ -270,8 +270,53 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int) 
 			fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newAthlete.Identifier.String(), newAthlete.Name, newAthlete.Participation)
 
 			// STARTS + RESULTS + DISQUALIFICATIONS
-			// TODO: support withdrawn start (heat 0 in easy wk)
 			// TODO: support entry lists (no heat)
+			for _, entry := range athlete.Entries {
+				heat := heats[entry.HeatId]
+
+				if !IsEventImportable(heat.Event, exclude, include) {
+					fmt.Printf("entry of '%s' for event: '%d' => no import\n", newAthlete.Name, heat.Event)
+					continue
+				}
+
+				// START
+				start := startModel.Start{
+					Meeting:         meeting,
+					Event:           heat.Event,
+					HeatNumber:      heat.Number,
+					Lane:            entry.Lane,
+					Athlete:         newAthlete.Identifier,
+					AthleteName:     athlete.Firstname + " " + athlete.Lastname,
+					AthleteYear:     athlete.Birthdate.Year(),
+					AthleteTeam:     newAthlete.Team.Identifier,
+					AthleteTeamName: team.Name,
+				}
+				newStart, c, err2 := sc.ImportStart(start)
+				if err2 != nil {
+					return &stats, err2
+				}
+				if c {
+					stats.Created.Starts++
+					fmt.Printf("[ ! ] start has been created from entry: id: '%s'; event: '%d', athlete: '%s'\n", newStart.Identifier, newStart.Event, newStart.AthleteName)
+				}
+				stats.Imported.Starts++
+
+				// IMPORT REGISTRATION TIME
+				if entry.EntryTime.Milliseconds() > 0 {
+					resultModel := startModel.Result{
+						Time:       entry.EntryTime.Duration,
+						ResultType: "registration",
+					}
+
+					_, _, err3 := sc.ImportResult(start, resultModel)
+					if err3 != nil {
+						return &stats, err3
+					}
+					stats.Created.Results++
+					stats.Imported.Results++
+				}
+			}
+
 			for _, result := range athlete.Results {
 				heat := heats[result.HeatId]
 				rank := ranks[result.ResultId]
@@ -306,10 +351,11 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int) 
 				}
 				if c {
 					stats.Created.Starts++
-					fmt.Printf("[ ! ] start has been created: id: '%s'; event: '%d', athlete: '%s'\n", newStart.Identifier, newStart.Event, newStart.AthleteName)
+					fmt.Printf("[ ! ] start has been created from result: id: '%s'; event: '%d', athlete: '%s'\n", newStart.Identifier, newStart.Event, newStart.AthleteName)
 				}
 				stats.Imported.Starts++
 
+				// IMPORT TIME SPLITS
 				for _, split := range result.Splits {
 					// LAP Result
 					lapResult := startModel.Result{
@@ -326,6 +372,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int) 
 					stats.Imported.Results++
 				}
 
+				// IMPORT RESULT
 				if result.SwimTime.Milliseconds() > 0 {
 					resultModel := startModel.Result{
 						Time:       result.SwimTime.Duration,
@@ -340,6 +387,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int) 
 					stats.Imported.Results++
 				}
 
+				// DISQUALIFICATION
 				disqType := ""
 				switch result.Status {
 				case enums.ResultStatusDSQ:
