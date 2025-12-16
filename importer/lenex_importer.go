@@ -14,7 +14,7 @@ import (
 	"time"
 )
 
-func ImportLenexFile(file string, meeting string, exclude []int, include []int) (*importModel.ImportFileStats, error) {
+func ImportLenexFile(file string, meeting string, exclude []int, include []int, stg importModel.ImportSetting) (*importModel.ImportFileStats, error) {
 	var stats importModel.ImportFileStats
 
 	buf, err1 := getFileReader(file)
@@ -148,7 +148,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int) 
 
 				// if Daytime does not include but date only hours, add date of the session
 				if startTime.Year() < 1980 {
-					startTime = time.Date(session.Date.Year(), session.Date.Month(), session.Date.Day(), startTime.Hour(), startTime.Minute(), startTime.Second(), startTime.Nanosecond(), session.Date.Location())
+					startTime = time.Date(session.Date.Year(), session.Date.Month(), session.Date.Day(), startTime.Hour(), startTime.Minute(), startTime.Second(), startTime.Nanosecond(), stg.TimeZone.Location())
 				}
 
 				heatModel := startModel.Heat{

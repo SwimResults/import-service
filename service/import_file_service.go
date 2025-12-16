@@ -64,7 +64,12 @@ func DsvResultListImport(r model.ImportFileRequest) {
 }
 
 func LenexImport(r model.ImportFileRequest) {
-	stats, err := importer.ImportLenexFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
+	settings, err := GetImportSettingByMeeting(r.Meeting)
+	if err != nil {
+		println(err.Error())
+		return
+	}
+	stats, err := importer.ImportLenexFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents, settings)
 	if err != nil {
 		println(err.Error())
 	}
