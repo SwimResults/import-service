@@ -37,7 +37,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 	meet := lenex.Meets[0]
 
 	eventOrdering := 1
-	meetingYear := meet.EntryStartDate.Year()
+	meetingYear := meet.AgeDate.Value.Year()
 
 	heats := map[int]startModel.Heat{}  // map heat id to heat
 	ranks := map[int]elements.Ranking{} // map result id to rank (first occurrence)
@@ -104,6 +104,10 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 				minAge := meetingYear - ageGroup.AgeMin
 				maxAge := meetingYear - ageGroup.AgeMax
 
+				if ageGroup.AgeMax <= 0 {
+					maxAge = 1900
+				}
+
 				importAgeGroup := meetingModel.AgeGroup{
 					Meeting: meeting,
 					Event:   event.Number,
@@ -116,13 +120,15 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 				switch ageGroup.Gender {
 				case enums.AgeGroupGenderFemale:
-					importEvent.Gender = "FEMALE"
+					importAgeGroup.Gender = "FEMALE"
 					break
 				case enums.AgeGroupGenderMale:
-					importEvent.Gender = "MALE"
+					importAgeGroup.Gender = "MALE"
 					break
+				case enums.AgeGroupGenderMixed:
+					importAgeGroup.Gender = "MIXED"
 				default:
-					importEvent.Gender = "MIXED"
+					importAgeGroup.Gender = "UNSET"
 				}
 
 				newAgeGroup, created, err5 := gc.ImportAgeGroup(importAgeGroup)
