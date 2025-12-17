@@ -7,7 +7,7 @@ toolchain go1.24.4
 require (
 	github.com/gin-gonic/gin v1.10.1
 	github.com/konrad2002/dsvparser v1.2.1
-	github.com/konrad2002/lenexparser v0.1.1
+	github.com/konrad2002/lenexparser v0.2.0
 	github.com/ledongthuc/pdf v0.0.0-20220302134840-0c2507a12d80
 	github.com/openai/openai-go v1.8.2
 	github.com/stretchr/testify v1.11.1
