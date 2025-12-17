@@ -7,7 +7,7 @@ import (
 )
 
 func TestGetDurationFromTimeString(t *testing.T) {
-	d2, _ := time.ParseDuration("1m05.26s")
+	d2, _ := time.ParseDuration("2m34.69s")
 	println(d2)
 }
 
