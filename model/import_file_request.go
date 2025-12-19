@@ -8,4 +8,5 @@ type ImportFileRequest struct {
 	ExcludeEvents []int  `json:"exclude_events"` // events to exclude from import as array
 	IncludeEvents []int  `json:"include_events"` // events to include in import process as array
 	Meeting       string `json:"meeting"`        // meeting in which to import the data
+	SessionID     string `json:"session_id"`     // optional session ID for progress streaming
 }

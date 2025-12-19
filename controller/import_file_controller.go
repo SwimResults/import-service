@@ -6,11 +6,13 @@ import (
 	"github.com/swimresults/import-service/importer"
 	"github.com/swimresults/import-service/model"
 	"github.com/swimresults/import-service/service"
+	"io"
 	"net/http"
 )
 
 func importFileController() {
 	router.POST("/file", importFile)
+	router.GET("/stream/:sessionId", streamProgress)
 	router.POST("/pdf_to_text", readPdfToText)
 	router.POST("/certificates", importCertificates)
 }
@@ -62,4 +64,41 @@ func importCertificates(c *gin.Context) {
 	}
 
 	c.Status(http.StatusOK)
+}
+
+// streamProgress establishes an SSE connection for real-time progress updates
+func streamProgress(c *gin.Context) {
+	sessionID := c.Param("sessionId")
+
+	// Create a new session
+	session := service.CreateSession(sessionID)
+
+	// Set headers for SSE
+	c.Header("Content-Type", "text/event-stream")
+	c.Header("Cache-Control", "no-cache")
+	c.Header("Connection", "keep-alive")
+	c.Header("Access-Control-Allow-Origin", "*")
+
+	// Send initial connection success message
+	service.SendLog(sessionID, "Connected to import stream", "info")
+
+	// Stream events to client
+	c.Stream(func(w io.Writer) bool {
+		select {
+		case <-session.Done:
+			// Session closed, stop streaming
+			return false
+		case msg, ok := <-session.Channel:
+			if !ok {
+				// Channel closed
+				return false
+			}
+			// Send SSE formatted message
+			c.SSEvent("message", msg)
+			return true
+		}
+	})
+
+	// Cleanup when client disconnects
+	service.CloseSession(sessionID)
 }
