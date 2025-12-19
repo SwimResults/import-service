@@ -369,6 +369,21 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 				}
 				stats.Imported.Starts++
 
+				// IMPORT RESULT
+				if result.EntryTime.Milliseconds() > 0 {
+					resultModel := startModel.Result{
+						Time:       result.EntryTime.Duration,
+						ResultType: "registration",
+					}
+
+					_, _, err3 := sc.ImportResult(*newStart, resultModel)
+					if err3 != nil {
+						return &stats, err3
+					}
+					stats.Created.Results++
+					stats.Imported.Results++
+				}
+
 				// IMPORT TIME SPLITS
 				for _, split := range result.Splits {
 					// LAP Result
