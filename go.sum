@@ -50,6 +50,8 @@ github.com/konrad2002/lenexparser v0.1.1 h1:k2/MPhsWLpOhjNKk+b07nRcgTdGpor+YzCSJ
 github.com/konrad2002/lenexparser v0.1.1/go.mod h1:V+RhwytdvIfRqj5bPU8W0V79FabAveqUe9HLcXgSg4M=
 github.com/konrad2002/lenexparser v0.2.0 h1:cLVSXFfIfgleQN+P/MK8QatSXsTAo50RsvrEFOY7sWs=
 github.com/konrad2002/lenexparser v0.2.0/go.mod h1:V+RhwytdvIfRqj5bPU8W0V79FabAveqUe9HLcXgSg4M=
+github.com/konrad2002/lenexparser v0.2.2 h1:tNpkFwgMYqUnhFX5Ynd4WGzRXXIMNocq1aVRj4neADA=
+github.com/konrad2002/lenexparser v0.2.2/go.mod h1:V+RhwytdvIfRqj5bPU8W0V79FabAveqUe9HLcXgSg4M=
 github.com/kr/pretty v0.3.1 h1:flRD4NNwYAUpkphVc1HcthR4KEIFJ65n8Mw5qdRn3LE=
 github.com/kr/pretty v0.3.1/go.mod h1:hoEshYVHaxMs3cyo3Yncou5ZscifuDolrwPKZanG3xk=
 github.com/kr/text v0.2.0 h1:5Nx0Ya0ZqY2ygV366QzturHI13Jq95ApcVaJBhpS+AY=
