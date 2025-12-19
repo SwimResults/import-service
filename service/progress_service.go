@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"sync"
+	"time"
 )
 
 // ProgressEvent represents a progress update event
@@ -15,9 +16,10 @@ type ProgressEvent struct {
 
 // LogEvent represents a log message event
 type LogEvent struct {
-	Type    string `json:"type"`    // "log"
-	Message string `json:"message"` // log message
-	Level   string `json:"level"`   // "info", "error", "warning", "success"
+	Type      string `json:"type"`      // "log"
+	Message   string `json:"message"`   // log message
+	Level     string `json:"level"`     // "info", "error", "warning", "success"
+	Timestamp string `json:"timestamp"` // ISO 8601 timestamp
 }
 
 // StreamSession represents an active SSE connection
@@ -109,9 +111,10 @@ func SendLog(sessionID string, message string, level string) {
 	}
 
 	event := LogEvent{
-		Type:    "log",
-		Message: message,
-		Level:   level,
+		Type:      "log",
+		Message:   message,
+		Level:     level,
+		Timestamp: time.Now().Format(time.RFC3339),
 	}
 
 	data, err := json.Marshal(event)

@@ -48,9 +48,12 @@ func ImportFile(r model.ImportFileRequest) error {
 }
 
 func DsvDefinitionImport(r model.ImportFileRequest) {
+	fmt.Printf("\t[DSV Definition Import] SessionID: '%s'\n", r.SessionID)
 	if r.SessionID != "" {
 		SendLog(r.SessionID, "Starting DSV definition import...", "info")
 		SendProgress(r.SessionID, 10, "Initializing import")
+	} else {
+		fmt.Println("\t[DSV Definition Import] WARNING: No SessionID provided, streaming disabled")
 	}
 
 	stats, err := importer.ImportDsvDefinitionFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
@@ -72,9 +75,12 @@ func DsvDefinitionImport(r model.ImportFileRequest) {
 }
 
 func DsvResultListImport(r model.ImportFileRequest) {
+	fmt.Printf("\t[DSV Result List Import] SessionID: '%s'\n", r.SessionID)
 	if r.SessionID != "" {
 		SendLog(r.SessionID, "Starting DSV result list import...", "info")
 		SendProgress(r.SessionID, 10, "Initializing import")
+	} else {
+		fmt.Println("\t[DSV Result List Import] WARNING: No SessionID provided, streaming disabled")
 	}
 
 	stats, err := importer.ImportDsvResultFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
