@@ -9,5 +9,7 @@ type ImportFileRequest struct {
 	IncludeEvents []int    `json:"include_events"` // events to include in import process as array
 	Meeting       string   `json:"meeting"`        // meeting in which to import the data
 	SessionID     string   `json:"session_id"`     // optional session ID for progress streaming
-	Features      []string `json:"features"`       // included features are imported, missing features are ignored, options: event, age_group, heat, start, result, disqualification, athlete, team
+	Features      []string `json:"features"`       // included features are imported, missing features are ignored,
+	// options: event, age_group, heat, start, result, disqualification
+	// only used by lenex for now
 }
