@@ -52,10 +52,6 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 			// EVENT IMPORT
 			fmt.Printf("%d", event.Number)
-			if !IsEventImportable(event.Number, exclude, include) {
-				print(" => no import")
-				continue
-			}
 
 			println("event import")
 
@@ -84,74 +80,79 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 				importEvent.Distance = event.SwimStyle.RelayCount * event.SwimStyle.Distance
 			}
 
-			newEvent, created, err3 := ec.ImportEvent(importEvent, string(event.SwimStyle.Stroke), session.Number)
-			if err3 != nil {
-				return nil, err3
-			}
-
-			if created {
-				stats.Created.Events++
-				print("(+) ")
-			} else {
-				print("( ) ")
-			}
-			println(newEvent.Number)
-
-			stats.Imported.Events++
-
-			// AGE GROUP IMPORT
-			for _, ageGroup := range event.AgeGroups {
-				minAge := meetingYear - ageGroup.AgeMin
-				maxAge := meetingYear - ageGroup.AgeMax
-
-				if ageGroup.AgeMax <= 0 {
-					maxAge = 1900
-				}
-
-				importAgeGroup := meetingModel.AgeGroup{
-					Meeting: meeting,
-					Event:   event.Number,
-					Default: false,
-					MinAge:  strconv.Itoa(minAge),
-					MaxAge:  strconv.Itoa(maxAge),
-					IsYear:  true,
-					Name:    ageGroup.Name,
-				}
-
-				switch ageGroup.Gender {
-				case enums.AgeGroupGenderFemale:
-					importAgeGroup.Gender = "FEMALE"
-					break
-				case enums.AgeGroupGenderMale:
-					importAgeGroup.Gender = "MALE"
-					break
-				case enums.AgeGroupGenderMixed:
-					importAgeGroup.Gender = "MIXED"
-				default:
-					importAgeGroup.Gender = "UNSET"
-				}
-
-				newAgeGroup, created, err5 := gc.ImportAgeGroup(importAgeGroup)
-				if err5 != nil {
-					return nil, err5
+			if IsEventImportable(event.Number, exclude, include) { // only import if in import list, but do not skip, heats need to be set
+				newEvent, created, err3 := ec.ImportEvent(importEvent, string(event.SwimStyle.Stroke), session.Number)
+				if err3 != nil {
+					return nil, err3
 				}
 
 				if created {
-					stats.Created.AgeGroups++
+					stats.Created.Events++
 					print("(+) ")
 				} else {
 					print("( ) ")
 				}
-				println(newAgeGroup.Name)
+				println(newEvent.Number)
 
-				stats.Imported.AgeGroups++
+				stats.Imported.Events++
 
-				// COLLECT RANKS
-				for _, ranking := range ageGroup.Rankings {
-					if ranks[ranking.ResultId].Place < ranking.Place {
-						ranks[ranking.ResultId] = ranking
+				// AGE GROUP IMPORT
+				for _, ageGroup := range event.AgeGroups {
+					minAge := meetingYear - ageGroup.AgeMin
+					maxAge := meetingYear - ageGroup.AgeMax
+
+					if ageGroup.AgeMax <= 0 {
+						maxAge = 1900
+					}
+
+					importAgeGroup := meetingModel.AgeGroup{
+						Meeting: meeting,
+						Event:   event.Number,
+						Default: false,
+						MinAge:  strconv.Itoa(minAge),
+						MaxAge:  strconv.Itoa(maxAge),
+						IsYear:  true,
+						Name:    ageGroup.Name,
+					}
+
+					switch ageGroup.Gender {
+					case enums.AgeGroupGenderFemale:
+						importAgeGroup.Gender = "FEMALE"
+						break
+					case enums.AgeGroupGenderMale:
+						importAgeGroup.Gender = "MALE"
+						break
+					case enums.AgeGroupGenderMixed:
+						importAgeGroup.Gender = "MIXED"
+					default:
+						importAgeGroup.Gender = "UNSET"
+					}
+
+					newAgeGroup, created, err5 := gc.ImportAgeGroup(importAgeGroup)
+					if err5 != nil {
+						return nil, err5
+					}
+
+					if created {
+						stats.Created.AgeGroups++
+						print("(+) ")
+					} else {
+						print("( ) ")
+					}
+					println(newAgeGroup.Name)
+
+					stats.Imported.AgeGroups++
+
+					// COLLECT RANKS
+					for _, ranking := range ageGroup.Rankings {
+						if ranks[ranking.ResultId].Place < ranking.Place {
+							ranks[ranking.ResultId] = ranking
+						}
 					}
 				}
+
+			} else {
+				print(" => no import")
 			}
 
 			// HEATS
@@ -178,20 +179,24 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 					continue
 				}
 
-				// IMPORT HEAT
-				newHeat, c, err := hc.ImportHeat(heatModel)
-				if err != nil {
-					importError(fmt.Sprintf("import heat request failed for heat %d/%d!", event.Number, heat.Number), err)
-					continue
-				}
-				fmt.Printf("[ o ] import heat: event: '%d', number: '%d', start: '%s', start before: '%s'\n", newHeat.Event, newHeat.Number, newHeat.StartEstimation, startTime)
+				if IsEventImportable(event.Number, exclude, include) { // only import if in import list, but do not skip, heats need to be set
+					// IMPORT HEAT
+					newHeat, c, err := hc.ImportHeat(heatModel)
+					if err != nil {
+						importError(fmt.Sprintf("import heat request failed for heat %d/%d!", event.Number, heat.Number), err)
+						continue
+					}
+					fmt.Printf("[ o ] import heat: event: '%d', number: '%d', start: '%s', start before: '%s'\n", newHeat.Event, newHeat.Number, newHeat.StartEstimation, startTime)
 
-				if c {
-					stats.Created.Heats++
-				}
-				stats.Imported.Heats++
+					if c {
+						stats.Created.Heats++
+					}
+					stats.Imported.Heats++
 
-				heats[heat.HeatId] = *newHeat
+					heatModel = *newHeat
+				}
+
+				heats[heat.HeatId] = heatModel
 			}
 		}
 	}
