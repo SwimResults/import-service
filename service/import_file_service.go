@@ -48,84 +48,242 @@ func ImportFile(r model.ImportFileRequest) error {
 }
 
 func DsvDefinitionImport(r model.ImportFileRequest) {
+	fmt.Printf("\t[DSV Definition Import] SessionID: '%s'\n", r.SessionID)
+	if r.SessionID != "" {
+		SendLog(r.SessionID, "Starting DSV definition import...", "info")
+		SendProgress(r.SessionID, 10, "Initializing import")
+	} else {
+		fmt.Println("\t[DSV Definition Import] WARNING: No SessionID provided, streaming disabled")
+	}
+
 	stats, err := importer.ImportDsvDefinitionFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
 	if err != nil {
 		println(err.Error())
+		if r.SessionID != "" {
+			SendError(r.SessionID, err)
+		}
+		return
 	}
+
 	stats.PrintReport()
+
+	if r.SessionID != "" {
+		SendProgress(r.SessionID, 100, "Import completed")
+		SendLog(r.SessionID, "DSV definition import finished successfully", "success")
+		SendComplete(r.SessionID)
+	}
 }
 
 func DsvResultListImport(r model.ImportFileRequest) {
+	fmt.Printf("\t[DSV Result List Import] SessionID: '%s'\n", r.SessionID)
+	if r.SessionID != "" {
+		SendLog(r.SessionID, "Starting DSV result list import...", "info")
+		SendProgress(r.SessionID, 10, "Initializing import")
+	} else {
+		fmt.Println("\t[DSV Result List Import] WARNING: No SessionID provided, streaming disabled")
+	}
+
 	stats, err := importer.ImportDsvResultFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents)
 	if err != nil {
 		println(err.Error())
+		if r.SessionID != "" {
+			SendError(r.SessionID, err)
+		}
+		return
 	}
+
 	stats.PrintReport()
+
+	if r.SessionID != "" {
+		SendProgress(r.SessionID, 100, "Import completed")
+		SendLog(r.SessionID, "DSV result list import finished successfully", "success")
+		SendComplete(r.SessionID)
+	}
 }
 
 func LenexImport(r model.ImportFileRequest) {
+	if r.SessionID != "" {
+		SendLog(r.SessionID, "Starting Lenex import...", "info")
+		SendProgress(r.SessionID, 5, "Fetching import settings")
+	}
+
 	settings, err := GetImportSettingByMeeting(r.Meeting)
 	if err != nil {
 		println(err.Error())
+		if r.SessionID != "" {
+			SendError(r.SessionID, err)
+		}
 		return
 	}
+
+	if r.SessionID != "" {
+		SendProgress(r.SessionID, 15, "Processing Lenex file")
+	}
+
 	stats, err := importer.ImportLenexFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents, settings)
 	if err != nil {
 		println(err.Error())
+		if r.SessionID != "" {
+			SendError(r.SessionID, err)
+		}
+		return
 	}
+
 	stats.PrintReport()
+
+	if r.SessionID != "" {
+		SendProgress(r.SessionID, 100, "Import completed")
+		SendLog(r.SessionID, "Lenex import finished successfully", "success")
+		SendComplete(r.SessionID)
+	}
 }
 
 func PdfStartListImport(r model.ImportFileRequest) {
+	if r.SessionID != "" {
+		SendLog(r.SessionID, "Starting PDF start list import...", "info")
+		SendProgress(r.SessionID, 5, "Fetching import settings")
+	}
+
 	settings, err := GetImportSettingByMeeting(r.Meeting)
 	if err != nil {
 		println(err.Error())
+		if r.SessionID != "" {
+			SendError(r.SessionID, err)
+		}
 		return
 	}
+
+	if r.SessionID != "" {
+		SendProgress(r.SessionID, 15, "Processing PDF file")
+	}
+
 	stats, err := importer.ImportPdfStartListFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents, settings.PdfStartListSettings)
 	if err != nil {
 		println(err.Error())
+		if r.SessionID != "" {
+			SendError(r.SessionID, err)
+		}
+		return
 	}
+
 	stats.PrintReport()
+
+	if r.SessionID != "" {
+		SendProgress(r.SessionID, 100, "Import completed")
+		SendLog(r.SessionID, "PDF start list import finished successfully", "success")
+		SendComplete(r.SessionID)
+	}
 }
 
 func PdfResultListImport(r model.ImportFileRequest) {
+	if r.SessionID != "" {
+		SendLog(r.SessionID, "Starting PDF result list import...", "info")
+		SendProgress(r.SessionID, 5, "Fetching import settings")
+	}
+
 	settings, err := GetImportSettingByMeeting(r.Meeting)
 	if err != nil {
 		println(err.Error())
+		if r.SessionID != "" {
+			SendError(r.SessionID, err)
+		}
 		return
 	}
+
+	if r.SessionID != "" {
+		SendProgress(r.SessionID, 15, "Processing PDF file")
+	}
+
 	stats, err := importer.ImportPdfResultListFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents, settings.PdfResultListSettings)
 	if err != nil {
 		println(err.Error())
+		if r.SessionID != "" {
+			SendError(r.SessionID, err)
+		}
+		return
 	}
+
 	stats.PrintReport()
+
+	if r.SessionID != "" {
+		SendProgress(r.SessionID, 100, "Import completed")
+		SendLog(r.SessionID, "PDF result list import finished successfully", "success")
+		SendComplete(r.SessionID)
+	}
 }
 
 func PdfTxtStartListImport(r model.ImportFileRequest) {
+	if r.SessionID != "" {
+		SendLog(r.SessionID, "Starting PDF text start list import...", "info")
+		SendProgress(r.SessionID, 5, "Fetching import settings")
+	}
+
 	settings, err := GetImportSettingByMeeting(r.Meeting)
 	if err != nil {
 		println(err.Error())
+		if r.SessionID != "" {
+			SendError(r.SessionID, err)
+		}
 		return
 	}
+
+	if r.SessionID != "" {
+		SendProgress(r.SessionID, 15, "Processing text data")
+	}
+
 	stats, err := importer.ImportPdfStartList(r.Text, r.Meeting, r.ExcludeEvents, r.IncludeEvents, settings.PdfStartListSettings)
 	if err != nil {
 		println(err.Error())
+		if r.SessionID != "" {
+			SendError(r.SessionID, err)
+		}
+		return
 	}
+
 	stats.PrintReport()
+
+	if r.SessionID != "" {
+		SendProgress(r.SessionID, 100, "Import completed")
+		SendLog(r.SessionID, "PDF text start list import finished successfully", "success")
+		SendComplete(r.SessionID)
+	}
 }
 
 func PdfTxtResultListImport(r model.ImportFileRequest) {
+	if r.SessionID != "" {
+		SendLog(r.SessionID, "Starting PDF text result list import...", "info")
+		SendProgress(r.SessionID, 5, "Fetching import settings")
+	}
+
 	settings, err := GetImportSettingByMeeting(r.Meeting)
 	if err != nil {
 		println(err.Error())
+		if r.SessionID != "" {
+			SendError(r.SessionID, err)
+		}
 		return
 	}
+
+	if r.SessionID != "" {
+		SendProgress(r.SessionID, 15, "Processing text data")
+	}
+
 	stats, err := importer.ImportPdfResultList(r.Text, r.Meeting, r.ExcludeEvents, r.IncludeEvents, settings.PdfResultListSettings)
 	if err != nil {
 		println(err.Error())
+		if r.SessionID != "" {
+			SendError(r.SessionID, err)
+		}
+		return
 	}
+
 	stats.PrintReport()
+
+	if r.SessionID != "" {
+		SendProgress(r.SessionID, 100, "Import completed")
+		SendLog(r.SessionID, "PDF text result list import finished successfully", "success")
+		SendComplete(r.SessionID)
+	}
 }
 
 func printImportInfo(r model.ImportFileRequest) {
