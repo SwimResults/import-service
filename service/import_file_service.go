@@ -120,7 +120,7 @@ func LenexImport(r model.ImportFileRequest) {
 		SendProgress(r.SessionID, 15, "Processing Lenex file")
 	}
 
-	stats, err := importer.ImportLenexFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents, settings)
+	stats, err := importer.ImportLenexFile(r.Url, r.Meeting, r.ExcludeEvents, r.IncludeEvents, r.Features, settings)
 	if err != nil {
 		println(err.Error())
 		if r.SessionID != "" {

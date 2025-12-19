@@ -11,11 +11,12 @@ import (
 	meetingModel "github.com/swimresults/meeting-service/model"
 	startModel "github.com/swimresults/start-service/model"
 	"io"
+	"slices"
 	"strconv"
 	"time"
 )
 
-func ImportLenexFile(file string, meeting string, exclude []int, include []int, stg importModel.ImportSetting) (*importModel.ImportFileStats, error) {
+func ImportLenexFile(file string, meeting string, exclude []int, include []int, features []string, stg importModel.ImportSetting) (*importModel.ImportFileStats, error) {
 	var stats importModel.ImportFileStats
 
 	buf, err1 := getFileReader(file)
@@ -81,20 +82,22 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 			}
 
 			if IsEventImportable(event.Number, exclude, include) { // only import if in import list, but do not skip, heats need to be set
-				newEvent, created, err3 := ec.ImportEvent(importEvent, string(event.SwimStyle.Stroke), session.Number)
-				if err3 != nil {
-					return nil, err3
-				}
+				if slices.Contains(features, "event") {
+					newEvent, created, err3 := ec.ImportEvent(importEvent, string(event.SwimStyle.Stroke), session.Number)
+					if err3 != nil {
+						return nil, err3
+					}
 
-				if created {
-					stats.Created.Events++
-					print("(+) ")
-				} else {
-					print("( ) ")
-				}
-				println(newEvent.Number)
+					if created {
+						stats.Created.Events++
+						print("(+) ")
+					} else {
+						print("( ) ")
+					}
+					println(newEvent.Number)
 
-				stats.Imported.Events++
+					stats.Imported.Events++
+				}
 
 				// AGE GROUP IMPORT
 				for _, ageGroup := range event.AgeGroups {
@@ -128,20 +131,23 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 						importAgeGroup.Gender = "UNSET"
 					}
 
-					newAgeGroup, created, err5 := gc.ImportAgeGroup(importAgeGroup)
-					if err5 != nil {
-						return nil, err5
-					}
+					if slices.Contains(features, "age_group") {
 
-					if created {
-						stats.Created.AgeGroups++
-						print("(+) ")
-					} else {
-						print("( ) ")
-					}
-					println(newAgeGroup.Name)
+						newAgeGroup, created, err5 := gc.ImportAgeGroup(importAgeGroup)
+						if err5 != nil {
+							return nil, err5
+						}
 
-					stats.Imported.AgeGroups++
+						if created {
+							stats.Created.AgeGroups++
+							print("(+) ")
+						} else {
+							print("( ) ")
+						}
+						println(newAgeGroup.Name)
+
+						stats.Imported.AgeGroups++
+					}
 
 					// COLLECT RANKS
 					for _, ranking := range ageGroup.Rankings {
@@ -149,6 +155,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 							ranks[ranking.ResultId] = ranking
 						}
 					}
+
 				}
 
 			} else {
@@ -181,19 +188,22 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 				if IsEventImportable(event.Number, exclude, include) { // only import if in import list, but do not skip, heats need to be set
 					// IMPORT HEAT
-					newHeat, c, err := hc.ImportHeat(heatModel)
-					if err != nil {
-						importError(fmt.Sprintf("import heat request failed for heat %d/%d!", event.Number, heat.Number), err)
-						continue
-					}
-					fmt.Printf("[ o ] import heat: event: '%d', number: '%d', start: '%s', start before: '%s'\n", newHeat.Event, newHeat.Number, newHeat.StartEstimation, startTime)
 
-					if c {
-						stats.Created.Heats++
-					}
-					stats.Imported.Heats++
+					if slices.Contains(features, "heat") {
+						newHeat, c, err := hc.ImportHeat(heatModel)
+						if err != nil {
+							importError(fmt.Sprintf("import heat request failed for heat %d/%d!", event.Number, heat.Number), err)
+							continue
+						}
+						fmt.Printf("[ o ] import heat: event: '%d', number: '%d', start: '%s', start before: '%s'\n", newHeat.Event, newHeat.Number, newHeat.StartEstimation, startTime)
 
-					heatModel = *newHeat
+						if c {
+							stats.Created.Heats++
+						}
+						stats.Imported.Heats++
+
+						heatModel = *newHeat
+					}
 				}
 
 				heats[heat.HeatId] = heatModel
@@ -381,12 +391,14 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 						ResultType: "registration",
 					}
 
-					_, _, err3 := sc.ImportResult(*newStart, resultModel)
-					if err3 != nil {
-						return &stats, err3
+					if slices.Contains(features, "result") {
+						_, _, err3 := sc.ImportResult(*newStart, resultModel)
+						if err3 != nil {
+							return &stats, err3
+						}
+						stats.Created.Results++
+						stats.Imported.Results++
 					}
-					stats.Created.Results++
-					stats.Imported.Results++
 				}
 
 				// IMPORT TIME SPLITS
@@ -398,12 +410,14 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 						LapMeters:  split.Distance,
 					}
 
-					_, _, err3 := sc.ImportResult(*newStart, lapResult)
-					if err3 != nil {
-						return &stats, err3
+					if slices.Contains(features, "result") {
+						_, _, err3 := sc.ImportResult(*newStart, lapResult)
+						if err3 != nil {
+							return &stats, err3
+						}
+						stats.Created.Results++
+						stats.Imported.Results++
 					}
-					stats.Created.Results++
-					stats.Imported.Results++
 				}
 
 				// IMPORT RESULT
@@ -413,12 +427,14 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 						ResultType: "result_list",
 					}
 
-					_, _, err3 := sc.ImportResult(*newStart, resultModel)
-					if err3 != nil {
-						return &stats, err3
+					if slices.Contains(features, "result") {
+						_, _, err3 := sc.ImportResult(*newStart, resultModel)
+						if err3 != nil {
+							return &stats, err3
+						}
+						stats.Created.Results++
+						stats.Imported.Results++
 					}
-					stats.Created.Results++
-					stats.Imported.Results++
 				}
 
 				// DISQUALIFICATION
@@ -442,17 +458,19 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 				}
 
 				if disqType != "" {
-					disqualification, created, err4 := dc.ImportDisqualification(*newStart, result.Comment, disqType, time.UnixMicro(0))
-					if err4 != nil {
-						return &stats, err4
+					if slices.Contains(features, "disqualification") {
+						disqualification, created, err4 := dc.ImportDisqualification(*newStart, result.Comment, disqType, time.UnixMicro(0))
+						if err4 != nil {
+							return &stats, err4
+						}
+						cs := 'o'
+						if created {
+							cs = '+'
+							stats.Created.Disqualifications++
+						}
+						stats.Imported.Disqualifications++
+						fmt.Printf("[ %c ] > id: %s, type: %s, reason: %s\n", cs, disqualification.Identifier, disqualification.Type, disqualification.Reason)
 					}
-					cs := 'o'
-					if created {
-						cs = '+'
-						stats.Created.Disqualifications++
-					}
-					stats.Imported.Disqualifications++
-					fmt.Printf("[ %c ] > id: %s, type: %s, reason: %s\n", cs, disqualification.Identifier, disqualification.Type, disqualification.Reason)
 				}
 
 			}
