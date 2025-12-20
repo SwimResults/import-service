@@ -301,6 +301,10 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 			for _, entry := range athlete.Entries {
 				heat := heats[entry.HeatId]
 
+				if heat.Number == 0 {
+					continue
+				}
+
 				if !IsEventImportable(heat.Event, exclude, include) {
 					fmt.Printf("entry of '%s' for event: '%d' => no import\n", newAthlete.Name, heat.Event)
 					continue
@@ -347,6 +351,10 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 			for _, result := range athlete.Results {
 				heat := heats[result.HeatId]
 				rank := ranks[result.ResultId]
+
+				if heat.Number == 0 {
+					continue
+				}
 
 				if !IsEventImportable(heat.Event, exclude, include) {
 					fmt.Printf("result of '%s' for event: '%d' => no import\n", newAthlete.Name, heat.Event)
@@ -472,7 +480,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 						fmt.Printf("[ %c ] > id: %s, type: %s, reason: %s\n", cs, disqualification.Identifier, disqualification.Type, disqualification.Reason)
 					}
 				}
-
+				// only heats with heat number != 0 are imported until here!
 			}
 		}
 	}
