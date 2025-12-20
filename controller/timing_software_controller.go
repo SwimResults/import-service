@@ -26,6 +26,7 @@ func timingSoftwareController() {
 	router.OPTIONS("/easywk/v3", ok)
 
 	router.POST("/alge", algeLivetimingData)
+	router.POST("/alge/meet/:meeting", algeLivetimingDataWithAuth)
 }
 
 func easyWkLivetimingGet(c *gin.Context) {
@@ -129,7 +130,30 @@ func algeLivetimingData(c *gin.Context) {
 		return
 	}
 
-	str, err := service.AlgeLivetimingRequest(request)
+	str, err := service.AlgeLivetimingRequestWithPassword(request)
+	if err != nil {
+		c.String(http.StatusInternalServerError, "ERROR: %s", err.Error())
+		return
+	}
+
+	c.String(http.StatusOK, str)
+}
+
+func algeLivetimingDataWithAuth(c *gin.Context) {
+	meeting := c.Param("meeting")
+	if meeting == "" {
+		c.String(http.StatusInternalServerError, "ERROR: given meeting was empty")
+		return
+	}
+
+	var request model.AlgeActionRequest // password not required
+
+	if err := c.BindJSON(&request); err != nil {
+		c.String(http.StatusInternalServerError, "ERROR: %s", err.Error())
+		return
+	}
+
+	str, err := service.AlgeLivetimingRequest(meeting, request)
 	if err != nil {
 		c.String(http.StatusInternalServerError, "ERROR: %s", err.Error())
 		return

@@ -1,6 +1,7 @@
 package service
 
 import (
+	"errors"
 	"fmt"
 	"github.com/swimresults/import-service/importer"
 	"github.com/swimresults/import-service/model"
@@ -70,6 +71,12 @@ func EasyWkLivetimingRequest(request model.EasyWkActionRequest) (string, error) 
 		return "ERROR: Passwort nicht korrekt oder keine Aktion definiert", nil
 	}
 
+	meeting := importer.GetCurrentEasyWkMeetingId()
+
+	if meeting == "" {
+		return "ERROR", errors.New("no meeting for live services declared")
+	}
+
 	var err error
 
 	switch request.Action {
@@ -81,7 +88,7 @@ func EasyWkLivetimingRequest(request model.EasyWkActionRequest) (string, error) 
 		currentHeat = request.Heat
 
 		// start heat by setting start time
-		err = importer.SetHeatStartTime(currentEvent, currentHeat)
+		err = importer.SetHeatStartTime(meeting, currentEvent, currentHeat)
 
 		return "OK", err
 	case "time":
@@ -121,12 +128,12 @@ func EasyWkLivetimingRequest(request model.EasyWkActionRequest) (string, error) 
 			return "OK", fmt.Errorf("[EasyWk Time Import] time to duration conversion failed for: %d", request.Time)
 		}
 
-		err = importer.ImportResult(currentEvent, currentHeat, request.Lane, t, m, reaction, request.Finished == "yes")
+		err = importer.ImportResult(meeting, currentEvent, currentHeat, request.Lane, t, m, reaction, request.Finished == "yes")
 
 		return "OK", err
 	case "raceresult":
 		// set heat to finished
-		err = importer.SetHeatFinishTime(currentEvent, currentHeat)
+		err = importer.SetHeatFinishTime(meeting, currentEvent, currentHeat)
 		return "OK", err
 	default:
 		return "ERROR: Unbekannte Aktion", nil
@@ -161,7 +168,7 @@ func EasyWkReactionToDuration(t int) (time.Duration, error) {
 	return d, err
 }
 
-func AlgeLivetimingRequest(request model.AlgeActionRequest) (string, error) {
+func AlgeLivetimingRequestWithPassword(request model.AlgeActionRequest) (string, error) {
 	pwd := regexp.MustCompile(`[^a-zA-Z0-9 ]+`).ReplaceAllString(request.Password, "")
 	pwdIntern := regexp.MustCompile(`[^a-zA-Z0-9 ]+`).ReplaceAllString(importer.CurrentMeeting.Password, "")
 	if pwd != pwdIntern || request.Action == "" {
@@ -169,6 +176,16 @@ func AlgeLivetimingRequest(request model.AlgeActionRequest) (string, error) {
 		return "ERROR: Passwort nicht korrekt oder keine Aktion definiert", nil
 	}
 
+	meeting := importer.GetCurrentEasyWkMeetingId()
+
+	if meeting == "" {
+		return "ERROR", errors.New("no meeting for live services declared")
+	}
+
+	return AlgeLivetimingRequest(meeting, request)
+}
+
+func AlgeLivetimingRequest(meeting string, request model.AlgeActionRequest) (string, error) {
 	var err error
 
 	switch request.Action {
@@ -180,7 +197,7 @@ func AlgeLivetimingRequest(request model.AlgeActionRequest) (string, error) {
 		currentHeat = request.Heat
 
 		// start heat by setting start time
-		err = importer.SetHeatStartTime(currentEvent, currentHeat)
+		err = importer.SetHeatStartTime(meeting, currentEvent, currentHeat)
 
 		return "OK", err
 	case "time":
@@ -201,12 +218,12 @@ func AlgeLivetimingRequest(request model.AlgeActionRequest) (string, error) {
 			return "OK", fmt.Errorf("[EasyWk Time Import] time to duration conversion failed for: %d", request.Time)
 		}
 
-		err = importer.ImportResult(currentEvent, currentHeat, request.Lane, t, request.Meter, false, request.Finished == "yes")
+		err = importer.ImportResult(meeting, currentEvent, currentHeat, request.Lane, t, request.Meter, false, request.Finished == "yes")
 
 		return "OK", err
 	case "STOP":
 		// set heat to finished
-		err = importer.SetHeatFinishTime(currentEvent, currentHeat)
+		err = importer.SetHeatFinishTime(meeting, currentEvent, currentHeat)
 		return "OK", err
 	default:
 		return "ERROR: Unbekannte Aktion", nil
