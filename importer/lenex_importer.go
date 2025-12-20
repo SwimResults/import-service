@@ -17,6 +17,8 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+	"sync"
+	"sync/atomic"
 	"time"
 )
 
@@ -100,6 +102,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 	}
 
 	// helper to process one athlete including starts, results, splits and disqualifications
+	var processedItems64 int64
 	processAthleteForTeam := func(teamName string, teamImported athleteModel.Team, athlete elements.Athlete) error {
 		dsvAthlete, err := strconv.Atoi(athlete.License)
 		if err != nil {
@@ -171,6 +174,9 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 			}
 			stats.Imported.Starts++
 
+			// progress unit: entry processed
+			atomic.AddInt64(&processedItems64, 1)
+
 			if entry.EntryTime.Milliseconds() > 0 {
 				resultModel := startModel.Result{
 					Time:       entry.EntryTime.Duration,
@@ -183,6 +189,8 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 				}
 				stats.Created.Results++
 				stats.Imported.Results++
+				// progress unit: result processed
+				atomic.AddInt64(&processedItems64, 1)
 			}
 		}
 
@@ -242,6 +250,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 					}
 					stats.Created.Results++
 					stats.Imported.Results++
+					atomic.AddInt64(&processedItems64, 1)
 				}
 			}
 
@@ -275,6 +284,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 					}
 					stats.Created.Results++
 					stats.Imported.Results++
+					atomic.AddInt64(&processedItems64, 1)
 				}
 			}
 
@@ -339,6 +349,8 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 	totalItems := totalEvents + totalAgeGroups + totalHeats + totalTeams + totalAthletes + totalEntries + totalResults
 	processedItems := 0
+	// initialize atomic counter with already processed units
+	processedItems64 = int64(processedItems)
 
 	progress(20, fmt.Sprintf("Starting import with %d total items to process", totalItems))
 
@@ -556,15 +568,27 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 		stats.Imported.Teams++
 		fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newTeam.Identifier.String(), newTeam.Name, newTeam.Participation)
 
-		// ATHLETES
+		// ATHLETES (bounded concurrency: N=5)
+		const athleteWorkers = 5
+		sem := make(chan struct{}, athleteWorkers)
+		var wg sync.WaitGroup
 		for _, athlete := range team.Athletes {
-			processedItems++
-			if err := processAthleteForTeam(team.Name, *newTeam, athlete); err != nil {
-				return &stats, err
-			}
-			progressPct := 20 + (float64(processedItems)/float64(totalItems))*80
-			progress(progressPct, fmt.Sprintf("Processing athletes: %d / %d", processedItems, totalItems))
+			sem <- struct{}{}
+			wg.Add(1)
+			go func(a elements.Athlete) {
+				defer wg.Done()
+				defer func() { <-sem }()
+				if err := processAthleteForTeam(team.Name, *newTeam, a); err != nil {
+					importError("athlete processing failed", err)
+					return
+				}
+				// progress after athlete finished
+				progressPct := 20 + (float64(atomic.LoadInt64(&processedItems64))/float64(totalItems))*80
+				progress(progressPct, fmt.Sprintf("Processing athletes: %d / %d", atomic.LoadInt64(&processedItems64), totalItems))
+			}(athlete)
 		}
+		// wait for team athletes to finish before moving to next team
+		wg.Wait()
 	}
 
 	fmt.Printf(" +==============================+ \n")
