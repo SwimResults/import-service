@@ -2,7 +2,6 @@ package importer
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"github.com/swimresults/import-service/model"
 	"github.com/swimresults/service-core/misc"
@@ -27,27 +26,23 @@ func SetEasyWkMeeting() {
 	fmt.Printf("set meeting for live services to: '%s'; password is: '%s'\n", CurrentMeeting.Meeting, CurrentMeeting.Password)
 }
 
-func SetHeatStartTime(event int, heat int) error {
-	if CurrentMeeting.Meeting == "" {
-		return errors.New("no meeting for live services declared")
-	}
+func GetCurrentEasyWkMeetingId() string {
+	return CurrentMeeting.Meeting
+}
 
-	_, err := hc.SetHeatStart(CurrentMeeting.Meeting, event, heat)
+func SetHeatStartTime(meeting string, event int, heat int) error {
+	_, err := hc.SetHeatStart(meeting, event, heat)
 	return err
 	//return SetHeatTime(event, heat, misc.TimeNow(), time.Time{})
 }
 
-func SetHeatFinishTime(event int, heat int) error {
-	if CurrentMeeting.Meeting == "" {
-		return errors.New("no meeting for live services declared")
-	}
-
-	return SetHeatTime(event, heat, time.Time{}, misc.TimeNow())
+func SetHeatFinishTime(meeting string, event int, heat int) error {
+	return SetHeatTime(meeting, event, heat, time.Time{}, misc.TimeNow())
 }
 
-func SetHeatTime(event int, heatNumber int, startAt time.Time, finishedAt time.Time) error {
+func SetHeatTime(meeting string, event int, heatNumber int, startAt time.Time, finishedAt time.Time) error {
 	heat := startModel.Heat{
-		Meeting:    CurrentMeeting.Meeting,
+		Meeting:    meeting,
 		Event:      event,
 		Number:     heatNumber,
 		StartAt:    startAt,
@@ -58,13 +53,9 @@ func SetHeatTime(event int, heatNumber int, startAt time.Time, finishedAt time.T
 	return err
 }
 
-func ImportResult(event int, heat int, lane int, time time.Duration, meter int, reaction bool, finished bool) error {
-	if CurrentMeeting.Meeting == "" {
-		return errors.New("no meeting for live services declared")
-	}
-
+func ImportResult(meeting string, event int, heat int, lane int, time time.Duration, meter int, reaction bool, finished bool) error {
 	start := startModel.Start{
-		Meeting:    CurrentMeeting.Meeting,
+		Meeting:    meeting,
 		Event:      event,
 		HeatNumber: heat,
 		Lane:       lane,

@@ -111,6 +111,6 @@ func TestImportPdfStartList_IESC23(t *testing.T) {
 }
 
 func TestSwimTimeToDuration(t *testing.T) {
-	timeString := "01:02,64"
+	timeString := "02:25,21"
 	println(SwimTimeToDuration(timeString))
 }
