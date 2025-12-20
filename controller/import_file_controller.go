@@ -8,6 +8,9 @@ import (
 	"github.com/swimresults/import-service/service"
 	"io"
 	"net/http"
+	"os"
+	"path/filepath"
+	"strings"
 )
 
 func importFileController() {
@@ -18,19 +21,84 @@ func importFileController() {
 }
 
 func importFile(c *gin.Context) {
-	var request model.ImportFileRequest
-	if err := c.BindJSON(&request); err != nil {
-		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
-		return
-	}
-
-	err := service.ImportFile(request)
+	request, cleanup, err := parseImportFileRequest(c)
 	if err != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		return
 	}
 
+	err = service.ImportFile(request, cleanup)
+	if err != nil {
+		cleanup()
+		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
+		return
+	}
+
 	c.Status(http.StatusOK)
+}
+
+// parseImportFileRequest supports both JSON (existing clients) and multipart uploads (new clients).
+// For multipart, the file is saved to a temporary path and the request URL is set to that path.
+// The caller receives a cleanup function to remove the temporary file.
+func parseImportFileRequest(c *gin.Context) (model.ImportFileRequest, func(), error) {
+	cleanup := func() {}
+	contentType := c.ContentType()
+
+	// Multipart file upload path
+	if strings.HasPrefix(contentType, "multipart/") {
+		var req model.ImportFileRequest
+		if err := c.ShouldBind(&req); err != nil {
+			return req, cleanup, err
+		}
+
+		fileHeader, err := c.FormFile("file")
+		if err != nil {
+			return req, cleanup, err
+		}
+
+		src, err := fileHeader.Open()
+		if err != nil {
+			return req, cleanup, err
+		}
+		defer src.Close()
+
+		tmp, err := os.CreateTemp("", "import-*"+filepath.Ext(fileHeader.Filename))
+		if err != nil {
+			return req, cleanup, err
+		}
+
+		if _, err = io.Copy(tmp, src); err != nil {
+			tmp.Close()
+			os.Remove(tmp.Name())
+			return req, cleanup, err
+		}
+
+		if err = tmp.Close(); err != nil {
+			os.Remove(tmp.Name())
+			return req, cleanup, err
+		}
+
+		req.Url = tmp.Name()
+
+		// Infer extension from uploaded filename if not provided
+		if req.FileExtension == "" {
+			ext := strings.TrimPrefix(strings.ToUpper(filepath.Ext(fileHeader.Filename)), ".")
+			req.FileExtension = ext
+		}
+
+		cleanup = func() {
+			os.Remove(tmp.Name())
+		}
+
+		return req, cleanup, nil
+	}
+
+	// JSON path (existing behavior)
+	var req model.ImportFileRequest
+	if err := c.BindJSON(&req); err != nil {
+		return req, cleanup, err
+	}
+	return req, cleanup, nil
 }
 
 func readPdfToText(c *gin.Context) {

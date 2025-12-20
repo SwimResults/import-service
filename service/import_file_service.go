@@ -6,28 +6,28 @@ import (
 	"github.com/swimresults/import-service/model"
 )
 
-func ImportFile(r model.ImportFileRequest) error {
+func ImportFile(r model.ImportFileRequest, cleanup func()) error {
 	printImportInfo(r)
 	switch r.FileExtension {
 	case "DSV":
 		switch r.FileType {
 		case "DEFINITION":
-			go DsvDefinitionImport(r)
+			go DsvDefinitionImport(r, cleanup)
 		case "RESULT_LIST":
-			go DsvResultListImport(r)
+			go DsvResultListImport(r, cleanup)
 		default:
 			return fmt.Errorf("unknown file_type for DSV (%s)", r.FileType)
 		}
 		return nil
 	case "LEF":
-		go LenexImport(r)
+		go LenexImport(r, cleanup)
 		return nil
 	case "PDF":
 		switch r.FileType {
 		case "START_LIST":
-			go PdfStartListImport(r)
+			go PdfStartListImport(r, cleanup)
 		case "RESULT_LIST":
-			go PdfResultListImport(r)
+			go PdfResultListImport(r, cleanup)
 		default:
 			return fmt.Errorf("unknown file_type for PDF (%s)", r.FileType)
 		}
@@ -35,9 +35,9 @@ func ImportFile(r model.ImportFileRequest) error {
 	case "PDF_TXT":
 		switch r.FileType {
 		case "START_LIST":
-			go PdfTxtStartListImport(r)
+			go PdfTxtStartListImport(r, cleanup)
 		case "RESULT_LIST":
-			go PdfTxtResultListImport(r)
+			go PdfTxtResultListImport(r, cleanup)
 		default:
 			return fmt.Errorf("unknown file_type for PDF_TXT (%s)", r.FileType)
 		}
@@ -47,7 +47,8 @@ func ImportFile(r model.ImportFileRequest) error {
 	}
 }
 
-func DsvDefinitionImport(r model.ImportFileRequest) {
+func DsvDefinitionImport(r model.ImportFileRequest, cleanup func()) {
+	defer cleanup()
 	fmt.Printf("\t[DSV Definition Import] SessionID: '%s'\n", r.SessionID)
 	if r.SessionID != "" {
 		SendLog(r.SessionID, "Starting DSV definition import...", "info")
@@ -74,7 +75,8 @@ func DsvDefinitionImport(r model.ImportFileRequest) {
 	}
 }
 
-func DsvResultListImport(r model.ImportFileRequest) {
+func DsvResultListImport(r model.ImportFileRequest, cleanup func()) {
+	defer cleanup()
 	fmt.Printf("\t[DSV Result List Import] SessionID: '%s'\n", r.SessionID)
 	if r.SessionID != "" {
 		SendLog(r.SessionID, "Starting DSV result list import...", "info")
@@ -101,7 +103,8 @@ func DsvResultListImport(r model.ImportFileRequest) {
 	}
 }
 
-func LenexImport(r model.ImportFileRequest) {
+func LenexImport(r model.ImportFileRequest, cleanup func()) {
+	defer cleanup()
 	if r.SessionID != "" {
 		SendLog(r.SessionID, "Starting Lenex import...", "info")
 		SendProgress(r.SessionID, 5, "Fetching import settings")
@@ -138,7 +141,8 @@ func LenexImport(r model.ImportFileRequest) {
 	}
 }
 
-func PdfStartListImport(r model.ImportFileRequest) {
+func PdfStartListImport(r model.ImportFileRequest, cleanup func()) {
+	defer cleanup()
 	if r.SessionID != "" {
 		SendLog(r.SessionID, "Starting PDF start list import...", "info")
 		SendProgress(r.SessionID, 5, "Fetching import settings")
@@ -175,7 +179,8 @@ func PdfStartListImport(r model.ImportFileRequest) {
 	}
 }
 
-func PdfResultListImport(r model.ImportFileRequest) {
+func PdfResultListImport(r model.ImportFileRequest, cleanup func()) {
+	defer cleanup()
 	if r.SessionID != "" {
 		SendLog(r.SessionID, "Starting PDF result list import...", "info")
 		SendProgress(r.SessionID, 5, "Fetching import settings")
@@ -212,7 +217,8 @@ func PdfResultListImport(r model.ImportFileRequest) {
 	}
 }
 
-func PdfTxtStartListImport(r model.ImportFileRequest) {
+func PdfTxtStartListImport(r model.ImportFileRequest, cleanup func()) {
+	defer cleanup()
 	if r.SessionID != "" {
 		SendLog(r.SessionID, "Starting PDF text start list import...", "info")
 		SendProgress(r.SessionID, 5, "Fetching import settings")
@@ -249,7 +255,8 @@ func PdfTxtStartListImport(r model.ImportFileRequest) {
 	}
 }
 
-func PdfTxtResultListImport(r model.ImportFileRequest) {
+func PdfTxtResultListImport(r model.ImportFileRequest, cleanup func()) {
+	defer cleanup()
 	if r.SessionID != "" {
 		SendLog(r.SessionID, "Starting PDF text result list import...", "info")
 		SendProgress(r.SessionID, 5, "Fetching import settings")

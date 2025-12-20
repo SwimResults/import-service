@@ -1,6 +1,8 @@
 package importer
 
 import (
+	"archive/zip"
+	"bytes"
 	"encoding/xml"
 	"errors"
 	"fmt"
@@ -11,22 +13,62 @@ import (
 	meetingModel "github.com/swimresults/meeting-service/model"
 	startModel "github.com/swimresults/start-service/model"
 	"io"
+	"path/filepath"
 	"slices"
 	"strconv"
+	"strings"
 	"time"
 )
 
 func ImportLenexFile(file string, meeting string, exclude []int, include []int, features []string, stg importModel.ImportSetting) (*importModel.ImportFileStats, error) {
 	var stats importModel.ImportFileStats
 
+	// Read content via getFileReader for both local and remote sources
 	buf, err1 := getFileReader(file)
 	if err1 != nil {
 		return nil, err1
 	}
 
-	xmlString, err := io.ReadAll(buf)
+	data, err := io.ReadAll(buf)
 	if err != nil {
 		return nil, err
+	}
+
+	// Read LEF content directly or extract from LXF (zip) first
+	var xmlString []byte
+	ext := strings.ToLower(filepath.Ext(file))
+	if ext == ".lxf" {
+		fmt.Printf("[ unzip ] detected .lxf archive: %s\n", file)
+		zr, err := zip.NewReader(bytes.NewReader(data), int64(len(data)))
+		if err != nil {
+			return nil, err
+		}
+
+		found := false
+		for _, zf := range zr.File {
+			if strings.HasSuffix(strings.ToLower(zf.Name), ".lef") {
+				rc, err := zf.Open()
+				if err != nil {
+					return nil, err
+				}
+				b, err := io.ReadAll(rc)
+				rc.Close()
+				if err != nil {
+					return nil, err
+				}
+				xmlString = b
+				fmt.Printf("[ unzip ] using LEF from archive entry: %s\n", zf.Name)
+				found = true
+				break
+			}
+		}
+		if !found {
+			fmt.Printf("[ unzip ] no .lef file found inside archive: %s\n", file)
+			return nil, fmt.Errorf("no .lef file found inside archive: %s", file)
+		}
+	} else {
+		fmt.Printf("[ direct ] reading LEF file directly: %s\n", file)
+		xmlString = data
 	}
 
 	var lenex elements.Lenex
@@ -297,9 +339,13 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 			fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newAthlete.Identifier.String(), newAthlete.Name, newAthlete.Participation)
 
 			// STARTS + RESULTS + DISQUALIFICATIONS
-			// TODO: support entry lists (no heat)
+			// TODO: support entry lists (no heat) -> entries already can have lanes and heats
 			for _, entry := range athlete.Entries {
 				heat := heats[entry.HeatId]
+
+				if heat.Number == 0 {
+					continue
+				}
 
 				if !IsEventImportable(heat.Event, exclude, include) {
 					fmt.Printf("entry of '%s' for event: '%d' => no import\n", newAthlete.Name, heat.Event)
@@ -347,6 +393,10 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 			for _, result := range athlete.Results {
 				heat := heats[result.HeatId]
 				rank := ranks[result.ResultId]
+
+				if heat.Number == 0 {
+					continue
+				}
 
 				if !IsEventImportable(heat.Event, exclude, include) {
 					fmt.Printf("result of '%s' for event: '%d' => no import\n", newAthlete.Name, heat.Event)
@@ -472,7 +522,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 						fmt.Printf("[ %c ] > id: %s, type: %s, reason: %s\n", cs, disqualification.Identifier, disqualification.Type, disqualification.Reason)
 					}
 				}
-
+				// only heats with heat number != 0 are imported until here!
 			}
 		}
 	}
