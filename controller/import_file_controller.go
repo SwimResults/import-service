@@ -26,10 +26,10 @@ func importFile(c *gin.Context) {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		return
 	}
-	defer cleanup()
 
-	err = service.ImportFile(request)
+	err = service.ImportFile(request, cleanup)
 	if err != nil {
+		cleanup()
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		return
 	}
