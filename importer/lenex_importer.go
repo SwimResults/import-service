@@ -20,8 +20,17 @@ import (
 	"time"
 )
 
-func ImportLenexFile(file string, meeting string, exclude []int, include []int, features []string, stg importModel.ImportSetting) (*importModel.ImportFileStats, error) {
+type ProgressCallback func(progress float64, message string)
+
+func ImportLenexFile(file string, meeting string, exclude []int, include []int, features []string, stg importModel.ImportSetting, progressCallback ProgressCallback) (*importModel.ImportFileStats, error) {
 	var stats importModel.ImportFileStats
+
+	// Helper function to handle nil callback
+	progress := func(pct float64, msg string) {
+		if progressCallback != nil {
+			progressCallback(pct, msg)
+		}
+	}
 
 	// Read content via getFileReader for both local and remote sources
 	buf, err1 := getFileReader(file)
@@ -90,8 +99,39 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 		return nil, errors.New("timezone " + stg.TimeZone + " is not a valid timezone")
 	}
 
+	// CALCULATE TOTAL ITEMS FOR PROGRESS TRACKING
+	totalTeams := len(meet.Clubs)
+	totalAthletes := 0
+	totalEntries := 0
+	totalResults := 0
+	totalHeats := 0
+	totalEvents := 0
+	totalAgeGroups := 0
+
 	for _, session := range meet.Sessions {
 		for _, event := range session.Events {
+			totalEvents++
+			totalAgeGroups += len(event.AgeGroups)
+			totalHeats += len(event.Heats)
+		}
+	}
+
+	for _, team := range meet.Clubs {
+		totalAthletes += len(team.Athletes)
+		for _, athlete := range team.Athletes {
+			totalEntries += len(athlete.Entries)
+			totalResults += len(athlete.Results)
+		}
+	}
+
+	totalItems := totalEvents + totalAgeGroups + totalHeats + totalTeams + totalAthletes + totalEntries + totalResults
+	processedItems := 0
+
+	progress(20, fmt.Sprintf("Starting import with %d total items to process", totalItems))
+
+	for _, session := range meet.Sessions {
+		for _, event := range session.Events {
+			processedItems++
 
 			// EVENT IMPORT
 			fmt.Printf("%d", event.Number)
@@ -143,6 +183,8 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 				// AGE GROUP IMPORT
 				for _, ageGroup := range event.AgeGroups {
+					processedItems++
+
 					minAge := meetingYear - ageGroup.AgeMin
 					maxAge := meetingYear - ageGroup.AgeMax
 
@@ -206,6 +248,8 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 			// HEATS
 			for _, heat := range event.Heats {
+				processedItems++
+
 				startTime := heat.Daytime.Time
 
 				// if Daytime does not include but date only hours, add date of the session
@@ -255,6 +299,8 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 	// TEAMS
 	for _, team := range meet.Clubs {
+		processedItems++
+
 		stateId, err := strconv.Atoi(team.Region)
 		if err != nil {
 			stateId = 0
@@ -299,6 +345,8 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 		// ATHLETES
 		for _, athlete := range team.Athletes {
+			processedItems++
+
 			dsvAthlete, err := strconv.Atoi(athlete.License)
 			if err != nil {
 				dsvAthlete = 0
@@ -341,6 +389,8 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 			// STARTS + RESULTS + DISQUALIFICATIONS
 			// TODO: support entry lists (no heat) -> entries already can have lanes and heats
 			for _, entry := range athlete.Entries {
+				processedItems++
+
 				heat := heats[entry.HeatId]
 
 				if heat.Number == 0 {
@@ -391,6 +441,8 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 			}
 
 			for _, result := range athlete.Results {
+				processedItems++
+
 				heat := heats[result.HeatId]
 				rank := ranks[result.ResultId]
 
@@ -524,106 +576,16 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 				}
 				// only heats with heat number != 0 are imported until here!
 			}
+
+			// Update progress after each athlete
+			progressPct := 20 + (float64(processedItems)/float64(totalItems))*80
+			progress(progressPct, fmt.Sprintf("Processing athletes: %d / %d", processedItems, totalItems))
 		}
 	}
 
 	fmt.Printf(" +==============================+ \n")
 
-	//var starts []startModel.Start
-	//
-	//for _, dsvResult := range erg.PNErgebnisse {
-	//
-	//	if dsvResult.GrundDerNichtwertung == "AB" {
-	//		continue
-	//	}
-	//
-	//	if unusedEvents[dsvResult.Wettkampfnummer] {
-	//		continue
-	//	}
-	//
-	//	if !IsEventImportable(dsvResult.Wettkampfnummer, exclude, include) {
-	//		continue
-	//	}
-	//
-	//	// RESULT
-	//	result := startModel.Result{
-	//		Time:       dsvResult.Endzeit.Duration(),
-	//		ResultType: "result_list",
-	//	}
-	//
-	//	starts = append(starts, *newStart)
-	//
-	//	if dsvResult.GrundDerNichtwertung != "" {
-	//		disqType := "disqualified"
-	//		switch dsvResult.GrundDerNichtwertung {
-	//		case "NA":
-	//			disqType = "dns"
-	//			break
-	//		case "AU":
-	//			disqType = "dnf"
-	//			break
-	//		case "ZU":
-	//			disqType = "time"
-	//			break
-	//		}
-	//		disqualification, created, err4 := dc.ImportDisqualification(start, dsvResult.Disqualifikationsbemerkung, disqType, time.UnixMicro(0))
-	//		if err4 != nil {
-	//			return &stats, err4
-	//		}
-	//		cs := 'o'
-	//		if created {
-	//			cs = '+'
-	//			stats.Created.Disqualifications++
-	//		}
-	//		stats.Imported.Disqualifications++
-	//		fmt.Printf("[ %c ] > id: %s, type: %s, reason: %s\n", cs, disqualification.Identifier, disqualification.Type, disqualification.Reason)
-	//	} else {
-	//		_, _, err3 := sc.ImportResult(start, result)
-	//		if err3 != nil {
-	//			return &stats, err3
-	//		}
-	//		stats.Created.Results++
-	//		stats.Imported.Results++
-	//	}
-	//
-	//}
-	//
-	//for _, dsvLap := range erg.PNZwischenzeiten {
-	//	if unusedEvents[dsvLap.Wettkampfnummer] {
-	//		continue
-	//	}
-	//
-	//	if !IsEventImportable(dsvLap.Wettkampfnummer, exclude, include) {
-	//		continue
-	//	}
-	//
-	//	// LAP Result
-	//	lapResult := startModel.Result{
-	//		Time:       dsvLap.Zwischenzeit.Duration(),
-	//		ResultType: "lap",
-	//		LapMeters:  dsvLap.Distanz,
-	//	}
-	//
-	//	var lapStart startModel.Start
-	//
-	//	found := false
-	//	for _, start := range starts {
-	//		if start.AthleteMeetingId == dsvLap.VeranstaltungsIdSchwimmer && start.Event == dsvLap.Wettkampfnummer {
-	//			lapStart = start
-	//			found = true
-	//			break
-	//		}
-	//	}
-	//
-	//	if found {
-	//		_, _, err3 := sc.ImportResult(lapStart, lapResult)
-	//		if err3 != nil {
-	//			return &stats, err3
-	//		}
-	//		stats.Created.Results++
-	//		stats.Imported.Results++
-	//	}
-	//}
+	progress(95, "Finalizing import...")
 
 	return &stats, nil
 }
