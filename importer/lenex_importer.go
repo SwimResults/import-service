@@ -17,11 +17,22 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+	"sync"
+	"sync/atomic"
 	"time"
 )
 
-func ImportLenexFile(file string, meeting string, exclude []int, include []int, features []string, stg importModel.ImportSetting) (*importModel.ImportFileStats, error) {
+type ProgressCallback func(progress float64, message string)
+
+func ImportLenexFile(file string, meeting string, exclude []int, include []int, features []string, stg importModel.ImportSetting, progressCallback ProgressCallback) (*importModel.ImportFileStats, error) {
 	var stats importModel.ImportFileStats
+
+	// Helper function to handle nil callback
+	progress := func(pct float64, msg string) {
+		if progressCallback != nil {
+			progressCallback(pct, msg)
+		}
+	}
 
 	// Read content via getFileReader for both local and remote sources
 	buf, err1 := getFileReader(file)
@@ -90,8 +101,262 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 		return nil, errors.New("timezone " + stg.TimeZone + " is not a valid timezone")
 	}
 
+	// helper to process one athlete including starts, results, splits and disqualifications
+	var processedItems64 int64
+	processAthleteForTeam := func(teamName string, teamImported athleteModel.Team, athlete elements.Athlete) error {
+		dsvAthlete, err := strconv.Atoi(athlete.License)
+		if err != nil {
+			dsvAthlete = 0
+		}
+
+		importAthlete := athleteModel.Athlete{
+			Name:      athlete.Firstname + " " + athlete.Lastname,
+			Firstname: athlete.Firstname,
+			Lastname:  athlete.Lastname,
+			Year:      athlete.Birthdate.Year(),
+			DsvId:     dsvAthlete,
+			Team: athleteModel.Team{
+				Identifier: teamImported.Identifier,
+			},
+		}
+
+		switch athlete.Gender {
+		case enums.GenderFemale:
+			importAthlete.Gender = "FEMALE"
+		case enums.GenderMale:
+			importAthlete.Gender = "MALE"
+		default:
+			importAthlete.Gender = "MIXED"
+		}
+
+		newAthlete, created, err := ac.ImportAthlete(importAthlete, meeting)
+		if err != nil {
+			return err
+		}
+		cs := 'o'
+		if created {
+			cs = '+'
+			stats.Created.Athletes++
+		}
+		stats.Imported.Athletes++
+		fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newAthlete.Identifier.String(), newAthlete.Name, newAthlete.Participation)
+
+		for _, entry := range athlete.Entries {
+			heat := heats[entry.HeatId]
+
+			if heat.Number == 0 {
+				continue
+			}
+
+			if !IsEventImportable(heat.Event, exclude, include) {
+				fmt.Printf("entry of '%s' for event: '%d' => no import\n", newAthlete.Name, heat.Event)
+				continue
+			}
+
+			start := startModel.Start{
+				Meeting:         meeting,
+				Event:           heat.Event,
+				HeatNumber:      heat.Number,
+				Lane:            entry.Lane,
+				Athlete:         newAthlete.Identifier,
+				AthleteName:     athlete.Firstname + " " + athlete.Lastname,
+				AthleteYear:     athlete.Birthdate.Year(),
+				AthleteTeam:     newAthlete.Team.Identifier,
+				AthleteTeamName: teamName,
+			}
+			newStart, c, err2 := sc.ImportStart(start)
+			if err2 != nil {
+				return err2
+			}
+			if c {
+				stats.Created.Starts++
+				fmt.Printf("[ ! ] start has been created from entry: id: '%s'; event: '%d', athlete: '%s'\n", newStart.Identifier, newStart.Event, newStart.AthleteName)
+			}
+			stats.Imported.Starts++
+
+			// progress unit: entry processed
+			atomic.AddInt64(&processedItems64, 1)
+
+			if entry.EntryTime.Milliseconds() > 0 {
+				resultModel := startModel.Result{
+					Time:       entry.EntryTime.Duration,
+					ResultType: "registration",
+				}
+
+				_, _, err3 := sc.ImportResult(*newStart, resultModel)
+				if err3 != nil {
+					return err3
+				}
+				stats.Created.Results++
+				stats.Imported.Results++
+				// progress unit: result processed
+				atomic.AddInt64(&processedItems64, 1)
+			}
+		}
+
+		for _, result := range athlete.Results {
+			heat := heats[result.HeatId]
+			rank := ranks[result.ResultId]
+
+			if heat.Number == 0 {
+				continue
+			}
+
+			if !IsEventImportable(heat.Event, exclude, include) {
+				fmt.Printf("result of '%s' for event: '%d' => no import\n", newAthlete.Name, heat.Event)
+				continue
+			}
+
+			rankValue := 0
+			if rank.ResultId == result.ResultId {
+				rankValue = rank.Place
+			}
+
+			start := startModel.Start{
+				Meeting:         meeting,
+				Event:           heat.Event,
+				HeatNumber:      heat.Number,
+				Lane:            result.Lane,
+				Athlete:         newAthlete.Identifier,
+				AthleteName:     athlete.Firstname + " " + athlete.Lastname,
+				AthleteYear:     athlete.Birthdate.Year(),
+				AthleteTeam:     newAthlete.Team.Identifier,
+				AthleteTeamName: teamName,
+				Rank:            rankValue,
+				Certified:       true,
+			}
+			fmt.Printf("[   ] import start from result: event: '%d', athlete: '%s', rank: %d\n", start.Event, start.AthleteName, start.Rank)
+
+			newStart, c, err2 := sc.ImportStart(start)
+			if err2 != nil {
+				return err2
+			}
+			if c {
+				stats.Created.Starts++
+				fmt.Printf("[ ! ] start has been created from result: id: '%s'; event: '%d', athlete: '%s'\n", newStart.Identifier, newStart.Event, newStart.AthleteName)
+			}
+			stats.Imported.Starts++
+
+			if result.EntryTime.Milliseconds() > 0 {
+				resultModel := startModel.Result{
+					Time:       result.EntryTime.Duration,
+					ResultType: "registration",
+				}
+
+				if slices.Contains(features, "result") {
+					_, _, err3 := sc.ImportResult(*newStart, resultModel)
+					if err3 != nil {
+						return err3
+					}
+					stats.Created.Results++
+					stats.Imported.Results++
+					atomic.AddInt64(&processedItems64, 1)
+				}
+			}
+
+			for _, split := range result.Splits {
+				lapResult := startModel.Result{
+					Time:       split.SwimTime.Duration,
+					ResultType: "lap",
+					LapMeters:  split.Distance,
+				}
+
+				if slices.Contains(features, "result") {
+					_, _, err3 := sc.ImportResult(*newStart, lapResult)
+					if err3 != nil {
+						return err3
+					}
+					stats.Created.Results++
+					stats.Imported.Results++
+				}
+			}
+
+			if result.SwimTime.Milliseconds() > 0 {
+				resultModel := startModel.Result{
+					Time:       result.SwimTime.Duration,
+					ResultType: "result_list",
+				}
+
+				if slices.Contains(features, "result") {
+					_, _, err3 := sc.ImportResult(*newStart, resultModel)
+					if err3 != nil {
+						return err3
+					}
+					stats.Created.Results++
+					stats.Imported.Results++
+					atomic.AddInt64(&processedItems64, 1)
+				}
+			}
+
+			disqType := ""
+			switch result.Status {
+			case enums.ResultStatusDSQ:
+				disqType = "disqualified"
+			case enums.ResultStatusDNS:
+				disqType = "dns"
+			case enums.ResultStatusDNF:
+				disqType = "dnf"
+			case enums.ResultStatusSICK:
+				disqType = "sick"
+			case enums.ResultStatusWDR:
+				disqType = "withdrawn"
+			}
+
+			if disqType != "" {
+				if slices.Contains(features, "disqualification") {
+					disqualification, created, err4 := dc.ImportDisqualification(*newStart, result.Comment, disqType, time.UnixMicro(0))
+					if err4 != nil {
+						return err4
+					}
+					cs := 'o'
+					if created {
+						cs = '+'
+						stats.Created.Disqualifications++
+					}
+					stats.Imported.Disqualifications++
+					fmt.Printf("[ %c ] > id: %s, type: %s, reason: %s\n", cs, disqualification.Identifier, disqualification.Type, disqualification.Reason)
+				}
+			}
+		}
+
+		return nil
+	}
+
+	// CALCULATE TOTAL ITEMS FOR PROGRESS TRACKING
+	totalTeams := len(meet.Clubs)
+	totalAthletes := 0
+	totalEntries := 0
+	totalResults := 0
+	totalHeats := 0
+	totalEvents := 0
+	totalAgeGroups := 0
+
 	for _, session := range meet.Sessions {
 		for _, event := range session.Events {
+			totalEvents++
+			totalAgeGroups += len(event.AgeGroups)
+			totalHeats += len(event.Heats)
+		}
+	}
+
+	for _, team := range meet.Clubs {
+		totalAthletes += len(team.Athletes)
+		for _, athlete := range team.Athletes {
+			totalEntries += len(athlete.Entries)
+			totalResults += len(athlete.Results)
+		}
+	}
+
+	totalItems := totalEvents + totalAgeGroups + totalHeats + totalTeams + totalAthletes + totalEntries + totalResults
+	processedItems := 0
+	// initialize atomic counter with already processed units
+	processedItems64 = int64(processedItems)
+
+	progress(20, fmt.Sprintf("Starting import with %d total items to process", totalItems))
+
+	for _, session := range meet.Sessions {
+		for _, event := range session.Events {
+			processedItems++
 
 			// EVENT IMPORT
 			fmt.Printf("%d", event.Number)
@@ -143,6 +408,8 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 				// AGE GROUP IMPORT
 				for _, ageGroup := range event.AgeGroups {
+					processedItems++
+
 					minAge := meetingYear - ageGroup.AgeMin
 					maxAge := meetingYear - ageGroup.AgeMax
 
@@ -206,6 +473,8 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 			// HEATS
 			for _, heat := range event.Heats {
+				processedItems++
+
 				startTime := heat.Daytime.Time
 
 				// if Daytime does not include but date only hours, add date of the session
@@ -255,6 +524,8 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 	// TEAMS
 	for _, team := range meet.Clubs {
+		processedItems++
+
 		stateId, err := strconv.Atoi(team.Region)
 		if err != nil {
 			stateId = 0
@@ -297,333 +568,32 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 		stats.Imported.Teams++
 		fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newTeam.Identifier.String(), newTeam.Name, newTeam.Participation)
 
-		// ATHLETES
+		// ATHLETES (bounded concurrency: N=5)
+		const athleteWorkers = 5
+		sem := make(chan struct{}, athleteWorkers)
+		var wg sync.WaitGroup
 		for _, athlete := range team.Athletes {
-			dsvAthlete, err := strconv.Atoi(athlete.License)
-			if err != nil {
-				dsvAthlete = 0
-			}
-
-			importAthlete := athleteModel.Athlete{
-				Name:      athlete.Firstname + " " + athlete.Lastname,
-				Firstname: athlete.Firstname,
-				Lastname:  athlete.Lastname,
-				Year:      athlete.Birthdate.Year(),
-				DsvId:     dsvAthlete,
-				Team: athleteModel.Team{
-					Identifier: newTeam.Identifier,
-				},
-			}
-
-			switch athlete.Gender {
-			case enums.GenderFemale:
-				importAthlete.Gender = "FEMALE"
-				break
-			case enums.GenderMale:
-				importAthlete.Gender = "MALE"
-				break
-			default:
-				importAthlete.Gender = "MIXED"
-			}
-
-			newAthlete, created, err := ac.ImportAthlete(importAthlete, meeting)
-			if err != nil {
-				return &stats, err
-			}
-			cs := 'o'
-			if created {
-				cs = '+'
-				stats.Created.Athletes++
-			}
-			stats.Imported.Athletes++
-			fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newAthlete.Identifier.String(), newAthlete.Name, newAthlete.Participation)
-
-			// STARTS + RESULTS + DISQUALIFICATIONS
-			// TODO: support entry lists (no heat) -> entries already can have lanes and heats
-			for _, entry := range athlete.Entries {
-				heat := heats[entry.HeatId]
-
-				if heat.Number == 0 {
-					continue
+			sem <- struct{}{}
+			wg.Add(1)
+			go func(a elements.Athlete) {
+				defer wg.Done()
+				defer func() { <-sem }()
+				if err := processAthleteForTeam(team.Name, *newTeam, a); err != nil {
+					importError("athlete processing failed", err)
+					return
 				}
-
-				if !IsEventImportable(heat.Event, exclude, include) {
-					fmt.Printf("entry of '%s' for event: '%d' => no import\n", newAthlete.Name, heat.Event)
-					continue
-				}
-
-				// START
-				start := startModel.Start{
-					Meeting:         meeting,
-					Event:           heat.Event,
-					HeatNumber:      heat.Number,
-					Lane:            entry.Lane,
-					Athlete:         newAthlete.Identifier,
-					AthleteName:     athlete.Firstname + " " + athlete.Lastname,
-					AthleteYear:     athlete.Birthdate.Year(),
-					AthleteTeam:     newAthlete.Team.Identifier,
-					AthleteTeamName: team.Name,
-				}
-				newStart, c, err2 := sc.ImportStart(start)
-				if err2 != nil {
-					return &stats, err2
-				}
-				if c {
-					stats.Created.Starts++
-					fmt.Printf("[ ! ] start has been created from entry: id: '%s'; event: '%d', athlete: '%s'\n", newStart.Identifier, newStart.Event, newStart.AthleteName)
-				}
-				stats.Imported.Starts++
-
-				// IMPORT REGISTRATION TIME
-				if entry.EntryTime.Milliseconds() > 0 {
-					resultModel := startModel.Result{
-						Time:       entry.EntryTime.Duration,
-						ResultType: "registration",
-					}
-
-					_, _, err3 := sc.ImportResult(*newStart, resultModel)
-					if err3 != nil {
-						return &stats, err3
-					}
-					stats.Created.Results++
-					stats.Imported.Results++
-				}
-			}
-
-			for _, result := range athlete.Results {
-				heat := heats[result.HeatId]
-				rank := ranks[result.ResultId]
-
-				if heat.Number == 0 {
-					continue
-				}
-
-				if !IsEventImportable(heat.Event, exclude, include) {
-					fmt.Printf("result of '%s' for event: '%d' => no import\n", newAthlete.Name, heat.Event)
-					continue
-				}
-
-				rankValue := 0
-				if rank.ResultId == result.ResultId {
-					rankValue = rank.Place
-				}
-
-				// START
-				start := startModel.Start{
-					Meeting:         meeting,
-					Event:           heat.Event,
-					HeatNumber:      heat.Number,
-					Lane:            result.Lane,
-					Athlete:         newAthlete.Identifier,
-					AthleteName:     athlete.Firstname + " " + athlete.Lastname,
-					AthleteYear:     athlete.Birthdate.Year(),
-					AthleteTeam:     newAthlete.Team.Identifier,
-					AthleteTeamName: team.Name,
-					Rank:            rankValue,
-					Certified:       true,
-				}
-				fmt.Printf("[   ] import start from result: event: '%d', athlete: '%s', rank: %d\n", start.Event, start.AthleteName, start.Rank)
-
-				newStart, c, err2 := sc.ImportStart(start)
-				if err2 != nil {
-					return &stats, err2
-				}
-				if c {
-					stats.Created.Starts++
-					fmt.Printf("[ ! ] start has been created from result: id: '%s'; event: '%d', athlete: '%s'\n", newStart.Identifier, newStart.Event, newStart.AthleteName)
-				}
-				stats.Imported.Starts++
-
-				// IMPORT RESULT
-				if result.EntryTime.Milliseconds() > 0 {
-					resultModel := startModel.Result{
-						Time:       result.EntryTime.Duration,
-						ResultType: "registration",
-					}
-
-					if slices.Contains(features, "result") {
-						_, _, err3 := sc.ImportResult(*newStart, resultModel)
-						if err3 != nil {
-							return &stats, err3
-						}
-						stats.Created.Results++
-						stats.Imported.Results++
-					}
-				}
-
-				// IMPORT TIME SPLITS
-				for _, split := range result.Splits {
-					// LAP Result
-					lapResult := startModel.Result{
-						Time:       split.SwimTime.Duration,
-						ResultType: "lap",
-						LapMeters:  split.Distance,
-					}
-
-					if slices.Contains(features, "result") {
-						_, _, err3 := sc.ImportResult(*newStart, lapResult)
-						if err3 != nil {
-							return &stats, err3
-						}
-						stats.Created.Results++
-						stats.Imported.Results++
-					}
-				}
-
-				// IMPORT RESULT
-				if result.SwimTime.Milliseconds() > 0 {
-					resultModel := startModel.Result{
-						Time:       result.SwimTime.Duration,
-						ResultType: "result_list",
-					}
-
-					if slices.Contains(features, "result") {
-						_, _, err3 := sc.ImportResult(*newStart, resultModel)
-						if err3 != nil {
-							return &stats, err3
-						}
-						stats.Created.Results++
-						stats.Imported.Results++
-					}
-				}
-
-				// DISQUALIFICATION
-				disqType := ""
-				switch result.Status {
-				case enums.ResultStatusDSQ:
-					disqType = "disqualified"
-					break
-				case enums.ResultStatusDNS:
-					disqType = "dns"
-					break
-				case enums.ResultStatusDNF:
-					disqType = "dnf"
-					break
-				case enums.ResultStatusSICK:
-					disqType = "sick"
-					break
-				case enums.ResultStatusWDR:
-					disqType = "withdrawn"
-					break
-				}
-
-				if disqType != "" {
-					if slices.Contains(features, "disqualification") {
-						disqualification, created, err4 := dc.ImportDisqualification(*newStart, result.Comment, disqType, time.UnixMicro(0))
-						if err4 != nil {
-							return &stats, err4
-						}
-						cs := 'o'
-						if created {
-							cs = '+'
-							stats.Created.Disqualifications++
-						}
-						stats.Imported.Disqualifications++
-						fmt.Printf("[ %c ] > id: %s, type: %s, reason: %s\n", cs, disqualification.Identifier, disqualification.Type, disqualification.Reason)
-					}
-				}
-				// only heats with heat number != 0 are imported until here!
-			}
+				// progress after athlete finished
+				progressPct := 20 + (float64(atomic.LoadInt64(&processedItems64))/float64(totalItems))*80
+				progress(progressPct, fmt.Sprintf("Processing athletes: %d / %d", atomic.LoadInt64(&processedItems64), totalItems))
+			}(athlete)
 		}
+		// wait for team athletes to finish before moving to next team
+		wg.Wait()
 	}
 
 	fmt.Printf(" +==============================+ \n")
 
-	//var starts []startModel.Start
-	//
-	//for _, dsvResult := range erg.PNErgebnisse {
-	//
-	//	if dsvResult.GrundDerNichtwertung == "AB" {
-	//		continue
-	//	}
-	//
-	//	if unusedEvents[dsvResult.Wettkampfnummer] {
-	//		continue
-	//	}
-	//
-	//	if !IsEventImportable(dsvResult.Wettkampfnummer, exclude, include) {
-	//		continue
-	//	}
-	//
-	//	// RESULT
-	//	result := startModel.Result{
-	//		Time:       dsvResult.Endzeit.Duration(),
-	//		ResultType: "result_list",
-	//	}
-	//
-	//	starts = append(starts, *newStart)
-	//
-	//	if dsvResult.GrundDerNichtwertung != "" {
-	//		disqType := "disqualified"
-	//		switch dsvResult.GrundDerNichtwertung {
-	//		case "NA":
-	//			disqType = "dns"
-	//			break
-	//		case "AU":
-	//			disqType = "dnf"
-	//			break
-	//		case "ZU":
-	//			disqType = "time"
-	//			break
-	//		}
-	//		disqualification, created, err4 := dc.ImportDisqualification(start, dsvResult.Disqualifikationsbemerkung, disqType, time.UnixMicro(0))
-	//		if err4 != nil {
-	//			return &stats, err4
-	//		}
-	//		cs := 'o'
-	//		if created {
-	//			cs = '+'
-	//			stats.Created.Disqualifications++
-	//		}
-	//		stats.Imported.Disqualifications++
-	//		fmt.Printf("[ %c ] > id: %s, type: %s, reason: %s\n", cs, disqualification.Identifier, disqualification.Type, disqualification.Reason)
-	//	} else {
-	//		_, _, err3 := sc.ImportResult(start, result)
-	//		if err3 != nil {
-	//			return &stats, err3
-	//		}
-	//		stats.Created.Results++
-	//		stats.Imported.Results++
-	//	}
-	//
-	//}
-	//
-	//for _, dsvLap := range erg.PNZwischenzeiten {
-	//	if unusedEvents[dsvLap.Wettkampfnummer] {
-	//		continue
-	//	}
-	//
-	//	if !IsEventImportable(dsvLap.Wettkampfnummer, exclude, include) {
-	//		continue
-	//	}
-	//
-	//	// LAP Result
-	//	lapResult := startModel.Result{
-	//		Time:       dsvLap.Zwischenzeit.Duration(),
-	//		ResultType: "lap",
-	//		LapMeters:  dsvLap.Distanz,
-	//	}
-	//
-	//	var lapStart startModel.Start
-	//
-	//	found := false
-	//	for _, start := range starts {
-	//		if start.AthleteMeetingId == dsvLap.VeranstaltungsIdSchwimmer && start.Event == dsvLap.Wettkampfnummer {
-	//			lapStart = start
-	//			found = true
-	//			break
-	//		}
-	//	}
-	//
-	//	if found {
-	//		_, _, err3 := sc.ImportResult(lapStart, lapResult)
-	//		if err3 != nil {
-	//			return &stats, err3
-	//		}
-	//		stats.Created.Results++
-	//		stats.Imported.Results++
-	//	}
-	//}
+	progress(95, "Finalizing import...")
 
 	return &stats, nil
 }
