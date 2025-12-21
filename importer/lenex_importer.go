@@ -189,8 +189,6 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 				}
 				stats.Created.Results++
 				stats.Imported.Results++
-				// progress unit: result processed
-				atomic.AddInt64(&processedItems64, 1)
 			}
 		}
 
@@ -250,7 +248,6 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 					}
 					stats.Created.Results++
 					stats.Imported.Results++
-					atomic.AddInt64(&processedItems64, 1)
 				}
 			}
 
@@ -284,7 +281,6 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 					}
 					stats.Created.Results++
 					stats.Imported.Results++
-					atomic.AddInt64(&processedItems64, 1)
 				}
 			}
 
@@ -317,6 +313,9 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 					fmt.Printf("[ %c ] > id: %s, type: %s, reason: %s\n", cs, disqualification.Identifier, disqualification.Type, disqualification.Reason)
 				}
 			}
+
+			// progress unit: result processed (count once per result)
+			atomic.AddInt64(&processedItems64, 1)
 		}
 
 		return nil
@@ -349,8 +348,9 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 	totalItems := totalEvents + totalAgeGroups + totalHeats + totalTeams + totalAthletes + totalEntries + totalResults
 	processedItems := 0
-	// initialize atomic counter with already processed units
-	processedItems64 = int64(processedItems)
+	// atomic counter tracks athlete-related work units only (entries + results)
+	processedItems64 = 0
+	athleteWorkTotal := totalEntries + totalResults
 
 	progress(20, fmt.Sprintf("Starting import with %d total items to process", totalItems))
 
@@ -583,8 +583,17 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 					return
 				}
 				// progress after athlete finished
-				progressPct := 20 + (float64(atomic.LoadInt64(&processedItems64))/float64(totalItems))*80
-				progress(progressPct, fmt.Sprintf("Processing athletes: %d / %d", atomic.LoadInt64(&processedItems64), totalItems))
+				units := atomic.LoadInt64(&processedItems64)
+				var progressPct float64
+				if athleteWorkTotal > 0 {
+					progressPct = 20 + (float64(units)/float64(athleteWorkTotal))*75
+				} else {
+					progressPct = 20
+				}
+				if progressPct > 95 {
+					progressPct = 95
+				}
+				progress(progressPct, fmt.Sprintf("Processing athletes: %d / %d", units, athleteWorkTotal))
 			}(athlete)
 		}
 		// wait for team athletes to finish before moving to next team
