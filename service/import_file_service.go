@@ -104,6 +104,9 @@ func DsvResultListImport(r model.ImportFileRequest, cleanup func()) {
 }
 
 func LenexImport(r model.ImportFileRequest, cleanup func()) {
+
+	fmt.Printf("\t[Lenex Import] with features: '%s'\n", r.Features)
+
 	defer cleanup()
 	if r.SessionID != "" {
 		SendLog(r.SessionID, "Starting Lenex import...", "info")
