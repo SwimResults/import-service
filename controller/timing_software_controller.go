@@ -3,11 +3,12 @@ package controller
 import (
 	"bytes"
 	"fmt"
+	"io"
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"github.com/swimresults/import-service/model"
 	"github.com/swimresults/import-service/service"
-	"io"
-	"net/http"
 )
 
 func timingSoftwareController() {
@@ -143,6 +144,7 @@ func algeLivetimingDataWithAuth(c *gin.Context) {
 	meeting := c.Param("meeting")
 	if meeting == "" {
 		c.String(http.StatusInternalServerError, "ERROR: given meeting was empty")
+		println("ERROR: given meeting was empty")
 		return
 	}
 
@@ -150,12 +152,14 @@ func algeLivetimingDataWithAuth(c *gin.Context) {
 
 	if err := c.BindJSON(&request); err != nil {
 		c.String(http.StatusInternalServerError, "ERROR: %s", err.Error())
+		println("ERROR: %s", err.Error())
 		return
 	}
 
 	str, err := service.AlgeLivetimingRequest(meeting, request)
 	if err != nil {
 		c.String(http.StatusInternalServerError, "ERROR: %s", err.Error())
+		println("ERROR: %s", err.Error())
 		return
 	}
 
