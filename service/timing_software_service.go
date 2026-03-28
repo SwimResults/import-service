@@ -8,11 +8,41 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 )
 
-var currentEvent int
-var currentHeat int
+type meetingRaceState struct {
+	event int
+	heat  int
+}
+
+var (
+	meetingRaceStatesMu sync.RWMutex
+	meetingRaceStates   = make(map[string]meetingRaceState)
+)
+
+func setCurrentHeatEvent(meeting string, event int, heat int) {
+	meetingRaceStatesMu.Lock()
+	defer meetingRaceStatesMu.Unlock()
+
+	meetingRaceStates[meeting] = meetingRaceState{
+		event: event,
+		heat:  heat,
+	}
+}
+
+func getCurrentHeatEvent(meeting string) (int, int) {
+	meetingRaceStatesMu.RLock()
+	defer meetingRaceStatesMu.RUnlock()
+
+	state, ok := meetingRaceStates[meeting]
+	if !ok {
+		return 0, 0
+	}
+
+	return state.event, state.heat
+}
 
 func EasyWkLivetimingRequestV2(requests []model.EasyWkAction) (string, error) {
 	request := model.EasyWkActionRequest{}
@@ -84,8 +114,8 @@ func EasyWkLivetimingRequest(request model.EasyWkActionRequest) (string, error) 
 		return "OK", nil
 	case "newrace", "ready":
 		// store current event and heat for later timings import
-		currentEvent = request.Event
-		currentHeat = request.Heat
+		setCurrentHeatEvent(meeting, request.Event, request.Heat)
+		currentEvent, currentHeat := getCurrentHeatEvent(meeting)
 
 		// start heat by setting start time
 		err = importer.SetHeatStartTime(meeting, currentEvent, currentHeat)
@@ -93,6 +123,7 @@ func EasyWkLivetimingRequest(request model.EasyWkActionRequest) (string, error) 
 		return "OK", err
 	case "time":
 		// import result time
+		currentEvent, currentHeat := getCurrentHeatEvent(meeting)
 		if currentEvent == 0 || currentHeat == 0 {
 			return "OK", fmt.Errorf("[EasyWk Time Import] no event or heat set, skipping import")
 		}
@@ -132,6 +163,7 @@ func EasyWkLivetimingRequest(request model.EasyWkActionRequest) (string, error) 
 
 		return "OK", err
 	case "raceresult":
+		currentEvent, currentHeat := getCurrentHeatEvent(meeting)
 		// set heat to finished
 		err = importer.SetHeatFinishTime(meeting, currentEvent, currentHeat)
 		return "OK", err
@@ -193,8 +225,8 @@ func AlgeLivetimingRequest(meeting string, request model.AlgeActionRequest) (str
 		return "OK", err
 	case "START":
 		// store current event and heat for later timings import
-		currentEvent = request.Event
-		currentHeat = request.Heat
+		setCurrentHeatEvent(meeting, request.Event, request.Heat)
+		currentEvent, currentHeat := getCurrentHeatEvent(meeting)
 
 		// start heat by setting start time
 		err = importer.SetHeatStartTime(meeting, currentEvent, currentHeat)
@@ -202,6 +234,7 @@ func AlgeLivetimingRequest(meeting string, request model.AlgeActionRequest) (str
 		return "OK", err
 	case "time":
 		// import result time
+		currentEvent, currentHeat := getCurrentHeatEvent(meeting)
 		if currentEvent == 0 || currentHeat == 0 {
 			return "OK", fmt.Errorf("[EasyWk Time Import] no event or heat set, skipping import")
 		}
@@ -222,6 +255,7 @@ func AlgeLivetimingRequest(meeting string, request model.AlgeActionRequest) (str
 
 		return "OK", err
 	case "STOP":
+		currentEvent, currentHeat := getCurrentHeatEvent(meeting)
 		// set heat to finished
 		err = importer.SetHeatFinishTime(meeting, currentEvent, currentHeat)
 		return "OK", err
