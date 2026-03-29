@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/swimresults/import-service/dto"
 	"github.com/swimresults/import-service/importer"
@@ -38,7 +39,7 @@ func importFile(c *gin.Context) {
 }
 
 // parseImportFileRequest supports both JSON (existing clients) and multipart uploads (new clients).
-// For multipart, the file is saved to assets/files and the request URL is set to the stored path.
+// For multipart, the file is saved to assets/files/{meeting}/import and the request URL is set to the stored path.
 // The caller receives a cleanup function for compatibility with the JSON flow.
 func parseImportFileRequest(c *gin.Context) (model.ImportFileRequest, func(), error) {
 	cleanup := func() {}
@@ -62,7 +63,15 @@ func parseImportFileRequest(c *gin.Context) (model.ImportFileRequest, func(), er
 		}
 		defer src.Close()
 
-		uploadDir := filepath.Join("assets", "files")
+		meetingID := strings.TrimSpace(req.Meeting)
+		if meetingID == "" {
+			return req, cleanup, fmt.Errorf("meeting is required for multipart upload")
+		}
+		if strings.Contains(meetingID, "/") || strings.Contains(meetingID, "\\") || meetingID == "." || meetingID == ".." {
+			return req, cleanup, fmt.Errorf("invalid meeting id")
+		}
+
+		uploadDir := filepath.Join("assets", "files", meetingID, "import")
 		if err = os.MkdirAll(uploadDir, 0o755); err != nil {
 			return req, cleanup, err
 		}
