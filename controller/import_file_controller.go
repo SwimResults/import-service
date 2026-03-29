@@ -38,8 +38,8 @@ func importFile(c *gin.Context) {
 }
 
 // parseImportFileRequest supports both JSON (existing clients) and multipart uploads (new clients).
-// For multipart, the file is saved to a temporary path and the request URL is set to that path.
-// The caller receives a cleanup function to remove the temporary file.
+// For multipart, the file is saved to assets/files and the request URL is set to the stored path.
+// The caller receives a cleanup function for compatibility with the JSON flow.
 func parseImportFileRequest(c *gin.Context) (model.ImportFileRequest, func(), error) {
 	cleanup := func() {}
 	contentType := c.ContentType()
@@ -62,32 +62,33 @@ func parseImportFileRequest(c *gin.Context) (model.ImportFileRequest, func(), er
 		}
 		defer src.Close()
 
-		tmp, err := os.CreateTemp("", "import-*"+filepath.Ext(fileHeader.Filename))
+		uploadDir := filepath.Join("assets", "files")
+		if err = os.MkdirAll(uploadDir, 0o755); err != nil {
+			return req, cleanup, err
+		}
+
+		storedFile, err := os.CreateTemp(uploadDir, "import-*"+filepath.Ext(fileHeader.Filename))
 		if err != nil {
 			return req, cleanup, err
 		}
 
-		if _, err = io.Copy(tmp, src); err != nil {
-			tmp.Close()
-			os.Remove(tmp.Name())
+		if _, err = io.Copy(storedFile, src); err != nil {
+			storedFile.Close()
+			os.Remove(storedFile.Name())
 			return req, cleanup, err
 		}
 
-		if err = tmp.Close(); err != nil {
-			os.Remove(tmp.Name())
+		if err = storedFile.Close(); err != nil {
+			os.Remove(storedFile.Name())
 			return req, cleanup, err
 		}
 
-		req.Url = tmp.Name()
+		req.Url = storedFile.Name()
 
 		// Infer extension from uploaded filename if not provided
 		if req.FileExtension == "" {
 			ext := strings.TrimPrefix(strings.ToUpper(filepath.Ext(fileHeader.Filename)), ".")
 			req.FileExtension = ext
-		}
-
-		cleanup = func() {
-			os.Remove(tmp.Name())
 		}
 
 		return req, cleanup, nil
