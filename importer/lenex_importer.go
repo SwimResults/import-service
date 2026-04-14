@@ -6,12 +6,6 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
-	"github.com/konrad2002/lenexparser/model/elements"
-	"github.com/konrad2002/lenexparser/model/enums"
-	athleteModel "github.com/swimresults/athlete-service/model"
-	importModel "github.com/swimresults/import-service/model"
-	meetingModel "github.com/swimresults/meeting-service/model"
-	startModel "github.com/swimresults/start-service/model"
 	"io"
 	"path/filepath"
 	"slices"
@@ -20,6 +14,13 @@ import (
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/konrad2002/lenexparser/model/elements"
+	"github.com/konrad2002/lenexparser/model/enums"
+	athleteModel "github.com/swimresults/athlete-service/model"
+	importModel "github.com/swimresults/import-service/model"
+	meetingModel "github.com/swimresults/meeting-service/model"
+	startModel "github.com/swimresults/start-service/model"
 )
 
 type ProgressCallback func(progress float64, message string)
@@ -94,6 +95,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 	meetingYear := meet.AgeDate.Value.Year()
 
 	heats := map[int]startModel.Heat{}  // map heat id to heat
+	events := map[int]int{}             // map event id to event number // could be replaced by event model if necessary
 	ranks := map[int]elements.Ranking{} // map result id to rank (first occurrence)
 
 	loc, err := time.LoadLocation(stg.TimeZone)
@@ -142,21 +144,31 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 		fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newAthlete.Identifier.String(), newAthlete.Name, newAthlete.Participation)
 
 		for _, entry := range athlete.Entries {
-			heat := heats[entry.HeatId]
+			heatNumber := 0
+			eventNumber := 0
 
-			if heat.Number == 0 {
-				continue
+			if entry.HeatId == 0 {
+				eventNumber = events[entry.EventId]
+			} else {
+				heat := heats[entry.HeatId]
+
+				if heat.Number == 0 {
+					continue
+				}
+
+				heatNumber = heat.Number
+				eventNumber = heat.Event
 			}
 
-			if !IsEventImportable(heat.Event, exclude, include) {
-				fmt.Printf("entry of '%s' for event: '%d' => no import\n", newAthlete.Name, heat.Event)
+			if !IsEventImportable(eventNumber, exclude, include) {
+				fmt.Printf("entry of '%s' for event: '%d' => no import\n", newAthlete.Name, eventNumber)
 				continue
 			}
 
 			start := startModel.Start{
 				Meeting:         meeting,
-				Event:           heat.Event,
-				HeatNumber:      heat.Number,
+				Event:           eventNumber,
+				HeatNumber:      heatNumber,
 				Lane:            entry.Lane,
 				Athlete:         newAthlete.Identifier,
 				AthleteName:     athlete.Firstname + " " + athlete.Lastname,
@@ -370,6 +382,8 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 				Ordering: eventOrdering,
 			}
 
+			events[event.EventId] = event.Number
+
 			eventOrdering++
 
 			switch event.Gender {
@@ -491,7 +505,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 				stats.Found.Heats++
 
-				// TODO: for EasyWk heat 0 contains withdrawn starts
+				// TODO: for EasyWk heat 0 contains withdrawn starts, for CPS starts with heat="0" (not correct lenex) are start lists/no heat starts
 				if heat.Number == 0 {
 					heats[heat.HeatId] = heatModel // set to heat model so later can check if number == 0
 					continue
