@@ -488,7 +488,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 						if ranking.Place <= 0 {
 							continue
 						}
-						if ranks[ranking.ResultId].Place > ranking.Place {
+						if ranks[ranking.ResultId].Place == 0 || ranks[ranking.ResultId].Place > ranking.Place {
 							ranks[ranking.ResultId] = ranking
 						}
 					}
