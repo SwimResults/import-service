@@ -485,7 +485,10 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 					// COLLECT RANKS
 					for _, ranking := range ageGroup.Rankings {
-						if ranks[ranking.ResultId].Place < ranking.Place {
+						if ranking.Place <= 0 {
+							continue
+						}
+						if ranks[ranking.ResultId].Place > ranking.Place {
 							ranks[ranking.ResultId] = ranking
 						}
 					}
