@@ -34,6 +34,8 @@ github.com/golang/snappy v1.0.0/go.mod h1:/XxbfmMg8lxefKM7IXC3fBNl/7bRcc72aCRzEW
 github.com/google/go-cmp v0.7.0 h1:wk8382ETsv4JYUZwIsn6YpYiWiBsYLSJiTsyBybVuN8=
 github.com/google/go-cmp v0.7.0/go.mod h1:pXiqmnSA92OHEEa9HXL2W4E7lf9JzCmGVUdgjX3N/iU=
 github.com/google/gofuzz v1.0.0/go.mod h1:dBl0BpW6vV/+mYPU4Po3pmUjxk6FQPldtuIdl/M65Eg=
+github.com/google/uuid v1.6.0 h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=
+github.com/google/uuid v1.6.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/json-iterator/go v1.1.12 h1:PV8peI4a0ysnczrg+LtxykD8LfKY9ML6u2jnxaEnrnM=
 github.com/json-iterator/go v1.1.12/go.mod h1:e30LSqwooZae/UwlEbR2852Gd8hjQvJoHmT4TnhNGBo=
 github.com/klauspost/compress v1.18.0 h1:c/Cqfb0r+Yi+JtIEq73FWXVkRonBlf0CRNYc8Zttxdo=
@@ -111,6 +113,10 @@ github.com/swimresults/service-core v0.7.0 h1:s4ULap/XH+/Ztp3rsCyk7xGQy7+pLPkBl6
 github.com/swimresults/service-core v0.7.0/go.mod h1:PDH00AdKjzQ8nPSPtPIblDBENxm1Q7885duzEEW1aC8=
 github.com/swimresults/start-service v0.6.1 h1:CniacHS0InmR3F53zis8lcfAK4FeTYuN7yqxyruIRCY=
 github.com/swimresults/start-service v0.6.1/go.mod h1:dGgNxE5Q4pQrve2K0SpbcXCgT8PVJWH5ZJ2EZnbWTNU=
+github.com/swimresults/start-service v0.7.1 h1:ZjNOx/2y9ixmldnOySy0A4Eebas8qDIE8Cr6A2n52Sw=
+github.com/swimresults/start-service v0.7.1/go.mod h1:fsGEQlCtjbvFcqD8BHdleLixquDB/0dW0PrnOPk+y2Y=
+github.com/swimresults/user-service v0.1.5 h1:kc+q8ej5dOAnA4ZfvZ2RmszWu22V7R46Q7Jf3D3K0pE=
+github.com/swimresults/user-service v0.1.5/go.mod h1:liyNW+g2Y1mTIA9VfBSnzgsZo5z0y6GeVqztC7Ey3CY=
 github.com/tidwall/gjson v1.14.2/go.mod h1:/wbyibRr2FHMks5tjHJ5F8dMZh3AcwJEMf5vlfC0lxk=
 github.com/tidwall/gjson v1.14.4 h1:uo0p8EbA09J7RQaflQ1aBRffTR7xedD2bcIVSYxLnkM=
 github.com/tidwall/gjson v1.14.4/go.mod h1:/wbyibRr2FHMks5tjHJ5F8dMZh3AcwJEMf5vlfC0lxk=

@@ -14,7 +14,7 @@ require (
 	github.com/swimresults/athlete-service v0.4.0
 	github.com/swimresults/meeting-service v0.8.0
 	github.com/swimresults/service-core v0.7.0
-	github.com/swimresults/start-service v0.6.1
+	github.com/swimresults/start-service v0.7.1
 	github.com/zsais/go-gin-prometheus v1.0.0
 	go.mongodb.org/mongo-driver v1.17.4
 )
