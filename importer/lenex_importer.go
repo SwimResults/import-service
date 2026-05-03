@@ -652,14 +652,15 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 				}
 
 				start := startModel.Start{
-					Meeting:     meeting,
-					Event:       eventNumber,
-					HeatNumber:  heatNumber,
-					Lane:        entry.Lane,
-					AthleteName: relay.Name,
-					// AthleteYear:     0, TODO
+					Meeting:         meeting,
+					Event:           eventNumber,
+					HeatNumber:      heatNumber,
+					Lane:            entry.Lane,
+					AthleteName:     relay.Name,
 					AthleteTeam:     newTeam.Identifier,
 					AthleteTeamName: newTeam.Name,
+					IsRelay:         true,
+					// AthleteYear:     0, TODO
 				}
 				newStart, c, err3 := sc.ImportStart(start)
 				if err3 != nil {
