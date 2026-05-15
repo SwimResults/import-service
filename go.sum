@@ -111,6 +111,12 @@ github.com/swimresults/meeting-service v0.8.0 h1:1JH7dx60Fz5fkynGAfzlqn4Q/CsQIz7
 github.com/swimresults/meeting-service v0.8.0/go.mod h1:CMlCDEdbyLxA3MblOIvfxzD64hUKkYdSwfsupc+GLW4=
 github.com/swimresults/service-core v0.7.0 h1:s4ULap/XH+/Ztp3rsCyk7xGQy7+pLPkBl6dODmRqano=
 github.com/swimresults/service-core v0.7.0/go.mod h1:PDH00AdKjzQ8nPSPtPIblDBENxm1Q7885duzEEW1aC8=
+github.com/swimresults/service-core v0.8.0 h1:kkPDIYMrKkaDwcZfL4jJkXllsQOCPtcg4S2wpH9Vpgs=
+github.com/swimresults/service-core v0.8.0/go.mod h1:z8ywRluddSZBynCS2mW9Sgp3XCk84UDF9uziGRxmkTs=
+github.com/swimresults/service-core v0.8.1 h1:1E3qsC0qD7DURGPdZR7ebOJpnk4hfBc7/hjayNwDAFM=
+github.com/swimresults/service-core v0.8.1/go.mod h1:z8ywRluddSZBynCS2mW9Sgp3XCk84UDF9uziGRxmkTs=
+github.com/swimresults/service-core v0.8.2 h1:mG5DrpEKISl3HVA+VjDSPnmrRq3Hgk67VuLqGjFXlkA=
+github.com/swimresults/service-core v0.8.2/go.mod h1:z8ywRluddSZBynCS2mW9Sgp3XCk84UDF9uziGRxmkTs=
 github.com/swimresults/start-service v0.6.1 h1:CniacHS0InmR3F53zis8lcfAK4FeTYuN7yqxyruIRCY=
 github.com/swimresults/start-service v0.6.1/go.mod h1:dGgNxE5Q4pQrve2K0SpbcXCgT8PVJWH5ZJ2EZnbWTNU=
 github.com/swimresults/start-service v0.7.1 h1:ZjNOx/2y9ixmldnOySy0A4Eebas8qDIE8Cr6A2n52Sw=

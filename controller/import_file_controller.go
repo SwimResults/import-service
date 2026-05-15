@@ -7,6 +7,7 @@ import (
 	"github.com/swimresults/import-service/importer"
 	"github.com/swimresults/import-service/model"
 	"github.com/swimresults/import-service/service"
+	"github.com/swimresults/service-core/security"
 	"io"
 	"net/http"
 	"os"
@@ -15,10 +16,10 @@ import (
 )
 
 func importFileController() {
-	router.POST("/file", importFile)
+	security.Route(router, http.MethodPost, "/file", security.PermissionAdmin, importFile)
 	router.GET("/stream/:sessionId", streamProgress)
-	router.POST("/pdf_to_text", readPdfToText)
-	router.POST("/certificates", importCertificates)
+	security.Route(router, http.MethodPost, "/pdf_to_text", security.PermissionAdmin, readPdfToText)
+	security.Route(router, http.MethodPost, "/certificates", security.PermissionAdmin, importCertificates)
 }
 
 func importFile(c *gin.Context) {

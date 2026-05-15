@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/swimresults/import-service/model"
 	"github.com/swimresults/import-service/service"
+	"github.com/swimresults/service-core/security"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"net/http"
 )
@@ -13,8 +14,8 @@ func settingsController() {
 	router.GET("/settings/:id", getImportSetting)
 	router.GET("/settings/meet/:meet_id", getImportSettingByMeetId)
 
-	router.DELETE("/settings/:id", removeImportSetting)
-	router.POST("/settings", addImportSetting)
+	security.Route(router, http.MethodDelete, "/settings/:id", security.PermissionAdmin, removeImportSetting)
+	security.Route(router, http.MethodPost, "/settings", security.PermissionAdmin, addImportSetting)
 }
 
 func getImportSettings(c *gin.Context) {
