@@ -632,6 +632,72 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 		}
 		// wait for team athletes to finish before moving to next team
 		wg.Wait()
+
+		for _, relay := range team.Relays {
+
+			for _, entry := range relay.Entries {
+				heatNumber := 0
+				eventNumber := 0
+
+				if entry.HeatId == 0 {
+					eventNumber = events[entry.EventId]
+				} else {
+					heat := heats[entry.HeatId]
+
+					if heat.Number == 0 {
+						continue
+					}
+
+					heatNumber = heat.Number
+					eventNumber = heat.Event
+				}
+
+				if !IsEventImportable(eventNumber, exclude, include) {
+					fmt.Printf("entry of relay '%s' for event: '%d' => no import\n", relay.Name, eventNumber)
+					continue
+				}
+
+				start := startModel.Start{
+					Meeting:         meeting,
+					Event:           eventNumber,
+					HeatNumber:      heatNumber,
+					Lane:            entry.Lane,
+					AthleteName:     relay.Name,
+					AthleteTeam:     newTeam.Identifier,
+					AthleteTeamName: newTeam.Name,
+					IsRelay:         true,
+					// AthleteYear:     0, TODO
+				}
+				newStart, c, err3 := sc.ImportStart(start)
+				if err3 != nil {
+					importError("relay processing failed", err)
+					continue
+				}
+				if c {
+					stats.Created.Starts++
+					fmt.Printf("[ ! ] start has been created from entry: id: '%s'; event: '%d', relay: '%s'\n", newStart.Identifier, newStart.Event, newStart.AthleteName)
+				}
+				stats.Imported.Starts++
+
+				// progress unit: entry processed
+				atomic.AddInt64(&processedItems64, 1)
+
+				if entry.EntryTime.Milliseconds() > 0 {
+					resultModel := startModel.Result{
+						Time:       entry.EntryTime.Duration,
+						ResultType: "registration",
+					}
+
+					_, _, err4 := sc.ImportResult(*newStart, resultModel)
+					if err4 != nil {
+						importError("relay registration processing failed", err)
+						continue
+					}
+					stats.Created.Results++
+					stats.Imported.Results++
+				}
+			}
+		}
 	}
 
 	fmt.Printf(" +==============================+ \n")
