@@ -2,24 +2,25 @@ package controller
 
 import (
 	"fmt"
+	"io"
+	"net/http"
+	"os"
+	"path/filepath"
+	"strings"
+
 	"github.com/gin-gonic/gin"
 	"github.com/swimresults/import-service/dto"
 	"github.com/swimresults/import-service/importer"
 	"github.com/swimresults/import-service/model"
 	"github.com/swimresults/import-service/service"
 	"github.com/swimresults/service-core/security"
-	"io"
-	"net/http"
-	"os"
-	"path/filepath"
-	"strings"
 )
 
 func importFileController() {
-	security.Route(router, http.MethodPost, "/file", security.PermissionAdmin, importFile)
+	security.Route(router, http.MethodPost, "/file", security.PermissionManager, importFile)
 	router.GET("/stream/:sessionId", streamProgress)
-	security.Route(router, http.MethodPost, "/pdf_to_text", security.PermissionAdmin, readPdfToText)
-	security.Route(router, http.MethodPost, "/certificates", security.PermissionAdmin, importCertificates)
+	security.Route(router, http.MethodPost, "/pdf_to_text", security.PermissionManager, readPdfToText)
+	security.Route(router, http.MethodPost, "/certificates", security.PermissionManager, importCertificates)
 }
 
 func importFile(c *gin.Context) {
