@@ -228,7 +228,9 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 
 			resultRanks := ranks[result.ResultId]
 
-			rankValue := 0
+			fmt.Printf("[ RANK ] resultRanks: %v\n", resultRanks)
+
+			rankValue := 10000
 
 			for _, rank := range resultRanks {
 				if rank.Rank > 0 && rankValue > rank.Rank {
