@@ -251,6 +251,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 				Rank:            rankValue, // legacy field and for meetings without lenex or dsv import
 				Certified:       true,
 				Ranks:           resultRanks, // all ranks are added here already, so no separate rank import necessary, rankingId already set here
+				Points:          result.Points,
 			}
 			fmt.Printf("[   ] import start from result: event: '%d', athlete: '%s', rank: %d\n", start.Event, start.AthleteName, start.Rank)
 

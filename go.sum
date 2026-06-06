@@ -103,8 +103,8 @@ github.com/swimresults/meeting-service v0.10.0 h1:beaYfWQQbyb7TqFWtLu/fxSwSTRgtb
 github.com/swimresults/meeting-service v0.10.0/go.mod h1:7Xaz1aM9m/VfUm3a6tJIiE1KQpsb7izSdQq6vfqwuII=
 github.com/swimresults/service-core v0.9.3 h1:tz50DgmDABjMwKDWXH5TEEtj/f7RImxNqVKPhkhSK2g=
 github.com/swimresults/service-core v0.9.3/go.mod h1:z8ywRluddSZBynCS2mW9Sgp3XCk84UDF9uziGRxmkTs=
-github.com/swimresults/start-service v0.7.2 h1:3BvVfPSCp3nqWJY9fFdWXxmlsR+UJ8mVfELKzxy6nPw=
-github.com/swimresults/start-service v0.7.2/go.mod h1:G/I/lYKjm3PVL9Xd1zdW3FUgtUPx4VBWO2+n5pj3r8w=
+github.com/swimresults/start-service v0.7.4 h1:IPtL+vl6MLcAar2pOFCm/mSh+7cIsQHbNPNyPvGE2HM=
+github.com/swimresults/start-service v0.7.4/go.mod h1:G/I/lYKjm3PVL9Xd1zdW3FUgtUPx4VBWO2+n5pj3r8w=
 github.com/tidwall/gjson v1.14.2/go.mod h1:/wbyibRr2FHMks5tjHJ5F8dMZh3AcwJEMf5vlfC0lxk=
 github.com/tidwall/gjson v1.14.4 h1:uo0p8EbA09J7RQaflQ1aBRffTR7xedD2bcIVSYxLnkM=
 github.com/tidwall/gjson v1.14.4/go.mod h1:/wbyibRr2FHMks5tjHJ5F8dMZh3AcwJEMf5vlfC0lxk=
