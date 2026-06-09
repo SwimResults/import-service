@@ -2,11 +2,13 @@ package controller
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/swimresults/import-service/service"
-	ginprometheus "github.com/zsais/go-gin-prometheus"
 	"net/http"
 	"os"
+
+	"github.com/gin-gonic/gin"
+	"github.com/swimresults/import-service/service"
+	"github.com/swimresults/service-core/security"
+	ginprometheus "github.com/zsais/go-gin-prometheus"
 )
 
 var router = gin.Default()
@@ -27,10 +29,18 @@ func Run() {
 		fmt.Println("no security for inter-service communication given! Please set SR_SERVICE_KEY.")
 	}
 
+	// Initialize authorization middleware
+	security.InitAuthMiddleware(&security.AuthMiddlewareConfig{
+		ServiceKey:    serviceKey,
+		ExcludedPaths: []string{"/actuator", "/easywk"},
+	})
+
 	p := ginprometheus.NewWithConfig(ginprometheus.Config{
 		Subsystem: "gin",
 	})
 	p.Use(router)
+
+	router.Use(security.AuthMiddleware())
 
 	timingSoftwareController()
 	importFileController()

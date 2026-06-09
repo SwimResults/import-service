@@ -94,9 +94,9 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 	eventOrdering := 1
 	meetingYear := meet.AgeDate.Value.Year()
 
-	heats := map[int]startModel.Heat{}  // map heat id to heat
-	events := map[int]int{}             // map event id to event number // could be replaced by event model if necessary
-	ranks := map[int]elements.Ranking{} // map result id to rank (first occurrence)
+	heats := map[int]startModel.Heat{}   // map heat id to heat
+	events := map[int]int{}              // map event id to event number // could be replaced by event model if necessary
+	ranks := map[int][]startModel.Rank{} // map result id to ranks (no longer first occurrence, collects all with ranking Id from server)
 
 	loc, err := time.LoadLocation(stg.TimeZone)
 	if err != nil {
@@ -226,11 +226,16 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 				continue
 			}
 
-			rank := ranks[result.ResultId]
+			resultRanks := ranks[result.ResultId]
 
-			rankValue := 0
-			if rank.ResultId == result.ResultId {
-				rankValue = rank.Place
+			fmt.Printf("[ RANK ] resultRanks: %v\n", resultRanks)
+
+			rankValue := 10000
+
+			for _, rank := range resultRanks {
+				if rank.Rank > 0 && rankValue > rank.Rank {
+					rankValue = rank.Rank
+				}
 			}
 
 			start := startModel.Start{
@@ -243,8 +248,10 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 				AthleteYear:     athlete.Birthdate.Year(),
 				AthleteTeam:     newAthlete.Team.Identifier,
 				AthleteTeamName: teamName,
-				Rank:            rankValue,
+				Rank:            rankValue, // legacy field and for meetings without lenex or dsv import
 				Certified:       true,
+				Ranks:           resultRanks, // all ranks are added here already, so no separate rank import necessary, rankingId already set here
+				Points:          result.Points,
 			}
 			fmt.Printf("[   ] import start from result: event: '%d', athlete: '%s', rank: %d\n", start.Event, start.AthleteName, start.Rank)
 
@@ -435,62 +442,71 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 				for _, ageGroup := range event.AgeGroups {
 					processedItems++
 
-					minAge := meetingYear - ageGroup.AgeMin
-					maxAge := meetingYear - ageGroup.AgeMax
+					// <AGEGROUP agemax="15" agemin="10" agegroupid="1" /> -> 2011 - 2016
+					// <AGEGROUP agemax="-1" agemin="10" agegroupid="2" /> -> 2011 and older
+
+					minAge := meetingYear - ageGroup.AgeMin // in 2026: 2026 - 10 = 2016; 2026 - 10 = 2016
+					maxAge := meetingYear - ageGroup.AgeMax // in 2026: 2026 - 15 = 2011; 2026 - (-1) = 2027 (but has to be set to high value to work as max age)
 
 					if ageGroup.AgeMax <= 0 {
-						maxAge = 1900
+						maxAge = 0 // and older
 					}
 
-					importAgeGroup := meetingModel.AgeGroup{
+					if ageGroup.AgeMin <= 0 {
+						minAge = 0 // and younger
+					}
+
+					importRanking := startModel.Ranking{
 						Meeting: meeting,
 						Event:   event.Number,
-						Default: false,
 						MinAge:  strconv.Itoa(minAge),
 						MaxAge:  strconv.Itoa(maxAge),
 						IsYear:  true,
 						Name:    ageGroup.Name,
+						LenexId: strconv.Itoa(ageGroup.AgeGroupId),
 					}
 
 					switch ageGroup.Gender {
 					case enums.AgeGroupGenderFemale:
-						importAgeGroup.Gender = "FEMALE"
+						importRanking.Gender = "FEMALE"
 						break
 					case enums.AgeGroupGenderMale:
-						importAgeGroup.Gender = "MALE"
+						importRanking.Gender = "MALE"
 						break
 					case enums.AgeGroupGenderMixed:
-						importAgeGroup.Gender = "MIXED"
+						importRanking.Gender = "MIXED"
 					default:
-						importAgeGroup.Gender = "UNSET"
+						importRanking.Gender = "UNSET"
 					}
 
-					if slices.Contains(features, "age_group") {
+					// import feature check for age group has to be skipped as ranking ids needed for start import, so import is done regardless of feature flag
 
-						newAgeGroup, created, err5 := gc.ImportAgeGroup(importAgeGroup)
-						if err5 != nil {
-							return nil, err5
-						}
-
-						if created {
-							stats.Created.AgeGroups++
-							print("(+) ")
-						} else {
-							print("( ) ")
-						}
-						println(newAgeGroup.Name)
-
-						stats.Imported.AgeGroups++
+					newRanking, created, err5 := rc.ImportRanking(importRanking)
+					if err5 != nil {
+						return nil, err5
 					}
+
+					if created {
+						stats.Created.AgeGroups++
+						print("(+) ")
+					} else {
+						print("( ) ")
+					}
+					println(newRanking.Name)
+
+					stats.Imported.AgeGroups++
 
 					// COLLECT RANKS
 					for _, ranking := range ageGroup.Rankings {
 						if ranking.Place <= 0 {
 							continue
 						}
-						if ranks[ranking.ResultId].Place == 0 || ranks[ranking.ResultId].Place > ranking.Place {
-							ranks[ranking.ResultId] = ranking
+						rank := startModel.Rank{
+							Rank:    ranking.Place,
+							Ranking: *newRanking,
 						}
+
+						ranks[ranking.ResultId] = append(ranks[ranking.ResultId], rank)
 					}
 
 				}

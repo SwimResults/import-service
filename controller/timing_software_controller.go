@@ -9,6 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/swimresults/import-service/model"
 	"github.com/swimresults/import-service/service"
+	"github.com/swimresults/service-core/security"
 )
 
 func timingSoftwareController() {
@@ -27,7 +28,7 @@ func timingSoftwareController() {
 	router.OPTIONS("/easywk/v3", ok)
 
 	router.POST("/alge", algeLivetimingData)
-	router.POST("/alge/meet/:meeting", algeLivetimingDataWithAuth)
+	security.Route(router, http.MethodPost, "/alge/meet/:meeting", security.PermissionMeeting, algeLivetimingDataWithAuth)
 }
 
 func easyWkLivetimingGet(c *gin.Context) {

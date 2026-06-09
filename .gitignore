@@ -18,3 +18,5 @@
 
 # vscode
 .vscode/*
+
+/assets/certs/urk*
