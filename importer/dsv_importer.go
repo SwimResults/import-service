@@ -70,10 +70,12 @@ func ImportDsvDefinitionFile(file string, meeting string, exclude []int, include
 
 	for _, dsvRanking := range def.Wertungen {
 		ranking := startModel.Ranking{
+			// WERTUNG: 25;V;27006;JG;0;2004;W;Jahrgänge 2004 und älter;
+			// WERTUNG: 25;V;27005;JG;2005;2006;W;Jahrgänge 2005/2006;
 			Meeting: meeting,
 			Event:   dsvRanking.Wettkampfnummer,
-			MinAge:  dsvRanking.MindestJahrgang,
-			MaxAge:  dsvRanking.MaximalJahrgang,
+			MinAge:  dsvRanking.MaximalJahrgang, // lowest year (2005) == oldest age, or 0 for open class
+			MaxAge:  dsvRanking.MindestJahrgang, // highest year (2006) == youngest age, or 0 for all younger
 			IsYear:  true,
 			Name:    dsvRanking.Wertungsname,
 			DsvId:   strconv.Itoa(dsvRanking.WertungsID),

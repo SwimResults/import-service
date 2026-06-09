@@ -442,11 +442,18 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 				for _, ageGroup := range event.AgeGroups {
 					processedItems++
 
-					minAge := meetingYear - ageGroup.AgeMin
-					maxAge := meetingYear - ageGroup.AgeMax
+					// <AGEGROUP agemax="15" agemin="10" agegroupid="1" /> -> 2011 - 2016
+					// <AGEGROUP agemax="-1" agemin="10" agegroupid="2" /> -> 2011 and older
+
+					minAge := meetingYear - ageGroup.AgeMin // in 2026: 2026 - 10 = 2016; 2026 - 10 = 2016
+					maxAge := meetingYear - ageGroup.AgeMax // in 2026: 2026 - 15 = 2011; 2026 - (-1) = 2027 (but has to be set to high value to work as max age)
 
 					if ageGroup.AgeMax <= 0 {
-						maxAge = 1900
+						maxAge = 0 // and older
+					}
+
+					if ageGroup.AgeMin <= 0 {
+						minAge = 0 // and younger
 					}
 
 					importRanking := startModel.Ranking{
