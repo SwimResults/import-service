@@ -46,6 +46,8 @@ github.com/klauspost/cpuid/v2 v2.2.11/go.mod h1:hqwkgyIinND0mEev00jJYCxPNVRVXFQe
 github.com/knz/go-libedit v1.10.1/go.mod h1:MZTVkCWyz0oBc7JOWP3wNAzd002ZbM/5hgShxwh4x8M=
 github.com/konrad2002/dsvparser v1.2.1 h1:dJn9wAPtCntoOihknfkKDYjCGyG0eUeNjRfSYlkbHqg=
 github.com/konrad2002/dsvparser v1.2.1/go.mod h1:B0vaMamCG8FW3v38lmqt9g3vFwHd+iEqN/V6MmUnrX4=
+github.com/konrad2002/dsvparser v1.4.0 h1:LGXNcuFhtJsJx/MCe3cOb1NP1mfREjlD22O6h/5pejA=
+github.com/konrad2002/dsvparser v1.4.0/go.mod h1:B0vaMamCG8FW3v38lmqt9g3vFwHd+iEqN/V6MmUnrX4=
 github.com/konrad2002/lenexparser v0.2.2 h1:tNpkFwgMYqUnhFX5Ynd4WGzRXXIMNocq1aVRj4neADA=
 github.com/konrad2002/lenexparser v0.2.2/go.mod h1:V+RhwytdvIfRqj5bPU8W0V79FabAveqUe9HLcXgSg4M=
 github.com/kr/pretty v0.3.1 h1:flRD4NNwYAUpkphVc1HcthR4KEIFJ65n8Mw5qdRn3LE=
