@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"github.com/openai/openai-go" // imported as openai
 	"github.com/openai/openai-go/option"
-	"github.com/swimresults/athlete-service/model"
 	importModel "github.com/swimresults/import-service/model"
 	"github.com/swimresults/service-core/misc"
+	model "github.com/swimresults/swimresults-api/go/athleteapi"
 	"log"
 	"os"
 	"os/exec"
@@ -119,12 +119,12 @@ func ImportCertificates(directory string, meeting string, stg importModel.Import
 						break
 					}
 				}
-				if !foundAthlete.Identifier.IsZero() {
+				if !isZeroID(foundAthlete.Identifier) {
 					break
 				}
 			}
 
-			if foundAthlete.Identifier.IsZero() {
+			if isZeroID(foundAthlete.Identifier) {
 				println("\t- could not find athlete")
 				continue
 			}

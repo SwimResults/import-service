@@ -4,10 +4,6 @@ import (
 	"fmt"
 	"os"
 	"strings"
-
-	athleteClient "github.com/swimresults/athlete-service/client"
-	"github.com/swimresults/meeting-service/client"
-	startClient "github.com/swimresults/start-service/client"
 )
 
 //var startServiceUrl = "https://api.swimresults.de/start/v1/"
@@ -22,13 +18,14 @@ var startServiceUrl = os.Getenv("SR_IMPORT_START_URL")
 var athleteServiceUrl = os.Getenv("SR_IMPORT_ATHLETE_URL")
 var meetingServiceUrl = os.Getenv("SR_IMPORT_MEETING_URL")
 
-var ec = client.NewEventClient(meetingServiceUrl)
-var hc = startClient.NewHeatClient(startServiceUrl)
-var sc = startClient.NewStartClient(startServiceUrl)
-var dc = startClient.NewDisqualificationClient(startServiceUrl)
-var rc = startClient.NewRankingClient(startServiceUrl)
-var ac = athleteClient.NewAthleteClient(athleteServiceUrl)
-var tc = athleteClient.NewTeamClient(athleteServiceUrl)
+// clients for the other services, see clients.go
+var ec = newEventClient(meetingServiceUrl)
+var hc = &heatClient{newStartAPI(startServiceUrl)}
+var sc = &startClient{newStartAPI(startServiceUrl)}
+var dc = &disqualificationClient{newStartAPI(startServiceUrl)}
+var rc = &rankingClient{newStartAPI(startServiceUrl)}
+var ac = &athleteClient{newAthleteAPI(athleteServiceUrl)}
+var tc = &teamClient{newAthleteAPI(athleteServiceUrl)}
 
 func IsEventImportable(ev int, ex []int, in []int) bool {
 	if ex != nil && len(ex) > 0 {
