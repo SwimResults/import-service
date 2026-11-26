@@ -1,10 +1,11 @@
 package importer
 
 import (
-	"github.com/stretchr/testify/assert"
-	"github.com/swimresults/import-service/model"
 	"os"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/swimresults/import-service/model"
 )
 
 func TestGetPdfFileContent(t *testing.T) {
@@ -13,7 +14,7 @@ func TestGetPdfFileContent(t *testing.T) {
 }
 
 func TestGetPdfFileContent_External(t *testing.T) {
-	text, _ := GetPdfFileContent("https://bsv-sws.de/images/dateien/2025/BML/BM_lang_2025.pdf")
+	text, _ := GetPdfFileContent("https://joomla.bsv-sws.de/images/dateien/2025/BML/BM_lang_2025.pdf")
 	println(text)
 	assert.Contains(t, text, "Offene Bezirksjahrgangs- und Bezirksmeisterschaften 2025 - lange Strecken")
 }
