@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/swimresults/import-service/model"
 	"github.com/swimresults/service-core/misc"
-	startModel "github.com/swimresults/start-service/model"
+	startModel "github.com/swimresults/swimresults-api/go/startapi"
 	"os"
 	"time"
 )

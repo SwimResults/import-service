@@ -12,10 +12,10 @@ import (
 
 	"github.com/konrad2002/dsvparser/model"
 	"github.com/konrad2002/dsvparser/parser"
-	athleteModel "github.com/swimresults/athlete-service/model"
 	importModel "github.com/swimresults/import-service/model"
-	meetingModel "github.com/swimresults/meeting-service/model"
-	startModel "github.com/swimresults/start-service/model"
+	athleteModel "github.com/swimresults/swimresults-api/go/athleteapi"
+	meetingModel "github.com/swimresults/swimresults-api/go/meetingapi"
+	startModel "github.com/swimresults/swimresults-api/go/startapi"
 )
 
 func getFileReader(file string) (io.Reader, error) {
@@ -213,7 +213,7 @@ func ImportDsvResultFile(file string, meeting string, exclude []int, include []i
 			stats.Created.Teams++
 		}
 		stats.Imported.Teams++
-		fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newTeam.Identifier.String(), newTeam.Name, newTeam.Participation)
+		fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newTeam.Identifier, newTeam.Name, newTeam.Participation)
 	}
 
 	fmt.Printf(" +==============================+ \n")
@@ -266,7 +266,7 @@ func ImportDsvResultFile(file string, meeting string, exclude []int, include []i
 			stats.Created.Athletes++
 		}
 		stats.Imported.Athletes++
-		fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newAthlete.Identifier.String(), newAthlete.Name, newAthlete.Participation)
+		fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newAthlete.Identifier, newAthlete.Name, newAthlete.Participation)
 
 		// RESULT
 		result := startModel.Result{

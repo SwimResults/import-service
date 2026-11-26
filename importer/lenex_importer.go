@@ -17,10 +17,10 @@ import (
 
 	"github.com/konrad2002/lenexparser/model/elements"
 	"github.com/konrad2002/lenexparser/model/enums"
-	athleteModel "github.com/swimresults/athlete-service/model"
 	importModel "github.com/swimresults/import-service/model"
-	meetingModel "github.com/swimresults/meeting-service/model"
-	startModel "github.com/swimresults/start-service/model"
+	athleteModel "github.com/swimresults/swimresults-api/go/athleteapi"
+	meetingModel "github.com/swimresults/swimresults-api/go/meetingapi"
+	startModel "github.com/swimresults/swimresults-api/go/startapi"
 )
 
 type ProgressCallback func(progress float64, message string)
@@ -141,7 +141,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 			stats.Created.Athletes++
 		}
 		stats.Imported.Athletes++
-		fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newAthlete.Identifier.String(), newAthlete.Name, newAthlete.Participation)
+		fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newAthlete.Identifier, newAthlete.Name, newAthlete.Participation)
 
 		for _, entry := range athlete.Entries {
 			heatNumber := 0
@@ -610,7 +610,7 @@ func ImportLenexFile(file string, meeting string, exclude []int, include []int, 
 			stats.Created.Teams++
 		}
 		stats.Imported.Teams++
-		fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newTeam.Identifier.String(), newTeam.Name, newTeam.Participation)
+		fmt.Printf("[ %c ] > id: %s, name: %s, part: %s\n", cs, newTeam.Identifier, newTeam.Name, newTeam.Participation)
 
 		// ATHLETES (bounded concurrency: N=5)
 		const athleteWorkers = 5
